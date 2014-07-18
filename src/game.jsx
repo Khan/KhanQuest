@@ -20,11 +20,13 @@ var Game = React.createClass({
         user: React.PropTypes.object
     },
 
-    getDefaultProps: {
-        user: {
-            unlockedExercises: ["measuring-lengths-1"]
-        },
-        showSpellbook: false,
+    getDefaultProps: function() {
+        return {
+            user: {
+                unlockedExercises: ["measuring-lengths-1"]
+            },
+            showSpellbook: false,
+        };
     },
 
     render: function () {
@@ -34,6 +36,7 @@ var Game = React.createClass({
         return <div>
             <PropCheckBox
                 showSpellbook={this.props.showSpellbook}
+                label="Show Spellbook"
                 onChange={this.onChange} />
             {this.props.showSpellbook && <Spellbook spells={spells} />}
         </div>;
