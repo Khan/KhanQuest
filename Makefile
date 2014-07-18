@@ -11,6 +11,10 @@ install: npm_install build_ke build_perseus
 
 npm_install:
 	npm install
+	mkdir -p ./node_modules/react
+	echo "module.exports = window.React;" > ./node_modules/react/index.js
+	mkdir -p ./node_modules/underscore
+	echo "module.exports = window._;" > ./node_modules/underscore/index.js
 
 build: install create_build_dir
 	./node_modules/.bin/webpack
