@@ -8,8 +8,20 @@ var CombatScreen = require("./combat-screen.jsx");
 var Changeable = require("./mixins/changeable.jsx");
 var PropCheckBox = require("./prop-check-box.jsx");
 
+var UserStore = require("./user-store.jsx");
+var StateFromStore = require("./flux/state-from-store-mixin.js");
+
 var Game = React.createClass({
     mixins: [Changeable],
+
+    mixins: [
+        StateFromStore({
+            user: {
+                store: UserStore,
+                fetch: store => store.getUser()
+            }
+        })
+    ],
 
     shouldComponentUpdate: function (nextProps, nextState) {
         var stateChanged = !_.isEqual(this.state, nextState);
@@ -24,16 +36,13 @@ var Game = React.createClass({
 
     getDefaultProps: function() {
         return {
-            user: {
-                unlockedExercises: ["measuring-lengths-1", "groups-of-tens"]
-            },
             showSpellbook: false,
             showCombat: false,
         };
     },
 
     render: function () {
-        var spells = _.map(this.props.user.unlockedExercises, (exercise) => {
+        var spells = _.map(this.state.user.unlockedExercises, (exercise) => {
             return new Spell(exercise);
         });
         return <div>

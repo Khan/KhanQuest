@@ -125,12 +125,9 @@ Perseus.init({skipMathJax: false}).then(function() {
     });
 
     window.game = React.renderComponent(
-        window.Map({}, null),
+        window.Game({}, null),
         document.getElementById("kaquest")
     );
-
-    Actions.fetchMapData();
-
 }).then(function() {
 }, function(err) {
     console.error(err);

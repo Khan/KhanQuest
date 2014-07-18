@@ -2,7 +2,8 @@ var AppDispatcher = require("./flux/app-dispatcher.js");
 
 var constants = {
     FETCH_MAP_DATA: "FETCH_MAP_DATA",
-    MOVE: "MOVE"
+    MOVE: "MOVE",
+    ADD_SPELL: "ADD_SPELL"
 };
 
 var Actions = {
@@ -17,6 +18,13 @@ var Actions = {
              actionType: constants.MOVE,
              direction
          });
+     },
+
+     addSpell: function(exerciseName) {
+        AppDispatcher.handleViewAction({
+            actionType: constants.ADD_SPELL,
+            exerciseName: exerciseName
+        });
      }
 };
 
