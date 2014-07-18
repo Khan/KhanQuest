@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>
+KA Quest
+</title>
+
+<!-- perseus/khan-exercises stylesheets -->
+<link rel="stylesheet" type="text/css" href="build/ke/khan-site.css" />
+<link rel="stylesheet" type="text/css" href="build/ke/khan-exercise.css" />
+<link rel="stylesheet" type="text/css" href="build/perseus/katex/fonts/fonts.css" />
+<link rel="stylesheet/less" type="text/css" href="build/perseus/katex/katex.less" />
+<link rel="stylesheet" type="text/css" href="build/perseus/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="build/perseus/mathquill/mathquill.css" />
+<link rel="stylesheet" type="text/css" href="build/perseus.css" />
+<!-- less preprocessor for said stylesheets -->
+<script src="build/perseus/less.js"></script>
+
+<!-- perseus scripts -->
+<script src="build/perseus/jquery.js"></script>
+<script src="build/perseus/underscore.js"></script>
+<script src="build/perseus/marked.js"></script>
+<script src="build/perseus/react-with-addons.js"></script>
+<script src="build/perseus/rcss.js"></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full&amp;delayStartupUntil=configured"></script>
+<script src="build/perseus/katex/katex.js"></script>
+<script src="build/perseus/mathquill/mathquill.js"></script>
+<script src="build/perseus/kas.js"></script>
+
+<!-- khan-exercises scripts -->
+<script src="build/ke/jed.js"></script>
+<script src="build/ke/i18n.js"></script>
+<script src="build/ke/jquery.qtip.js"></script>
+<!-- khan-exercises globals stub -->
+<script>
+    var icu = {
+        getDecimalFormatSymbols: function() {
+            return {
+                decimal_separator: ".",
+                grouping_separator: ",",
+                minus: "-"
+            };
+        }
+    };
+    React.initializeTouchEvents(true);
+</script>
+<script src="build/ke/exercises-stub.js"></script>
+<script src="build/ke.js"></script>
+
+<!-- main perseus script -->
+<script src="build/perseus.js"></script>
+
+<!-- main KAQuest script -->
+<script src="live-build/index.js"></script>
+
+</head>
+<body class="page-body">
+
+<div class="post-wrapper">
+<div id="perseus" class="framework-perseus">
+</div>
+</div>
+
+<script>
+Perseus.init({skipMathJax: false}).then(function() {
+
+    var content = {
+        "content": "[[☃ example-graphie-widget 1]]",
+        "images": {},
+        "widgets": {
+            "example-graphie-widget 1": {
+                "type": "example-graphie-widget",
+                "graded": true,
+                "options": {
+                    "correct": [
+                        -1,
+                        -3
+                    ],
+                    "graph": {
+                        "box": [
+                            340,
+                            340
+                        ],
+                        "labels": [
+                            "x",
+                            "y"
+                        ],
+                        "range": [
+                            [
+                                -10,
+                                10
+                            ],
+                            [
+                                -10,
+                                10
+                            ]
+                        ],
+                        "step": [
+                            1,
+                            1
+                        ],
+                        "gridStep": [
+                            1,
+                            1
+                        ],
+                        "valid": true,
+                        "backgroundImage": null,
+                        "markings": "grid",
+                        "showProtractor": false
+                    }
+                },
+                "version": {
+                    "major": 0,
+                    "minor": 0
+                }
+            }
+        }
+    };
+
+    var props = _.defaults({}, content, {
+        problemNum: 0
+    });
+
+    editor = React.renderComponent(
+        Perseus.Renderer(props, null),
+        document.getElementById("perseus")
+    );
+
+}).then(function() {
+}, function(err) {
+    console.error(err);
+});
+</script>
+</body>
+</html>
