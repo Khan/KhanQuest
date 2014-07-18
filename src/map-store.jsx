@@ -1,5 +1,7 @@
+var EventEmitter = require("events").EventEmitter;
+var AppDispatcher = require("./flux/app-dispatcher.js");
 var { constants } = require("./actions.jsx");
-var { FETCH_MAP_DATA } = constants;
+var { FETCH_MAP_DATA, MOVE } = constants;
 
 // metadata about the map
 var _manifest = null;
@@ -26,7 +28,7 @@ var updateBounds = function() {
 var dispatcherIndex = AppDispatcher.register(function(payload) {
     var action = payload.action;
 
-    switch (action) {
+    switch (action.actionType) {
         case FETCH_MAP_DATA:
             $.getJSON("/art/test.json").done(obj => {
                 _manifest = obj;
@@ -34,15 +36,20 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
                     .each(set => {
                         // var img = document.createElement("img");
                         var img = new Image();
-                        img.src = `/art/${src.image}`;
+                        img.src = `/art/${set.image}`;
+                        img.onload = () => {
+                            MapStore.emitChange();
+                        };
                         _tileImages.push(img);
                     });
             });
+            break;
 
         case MOVE:
             // TODO constrain movement!
-            _currentLocation = action.location;
+            _currentLocation = action.direction;
             updateBounds();
+            break;
 
         default:
             return true;
@@ -52,9 +59,13 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 });
 
 var MapStore = _({}).extend(
-    Backbone.Events,
+    EventEmitter.prototype,
     {
         getLayers: function() {
+            if (_manifest == null) {
+                return [];
+            }
+
             return _(_manifest.tilesets)
                 .map((layer, i) => {
                     return {
@@ -66,8 +77,20 @@ var MapStore = _({}).extend(
 
         getBounds: function() {
             return _currentLocation;
+        },
+
+        addChangeListener: function(callback) {
+            this.on("change", callback);
+        },
+
+        removeChangeListener: function(callback) {
+            this.off("change", callback);
+        },
+
+        emitChange: function() {
+            this.emit("change");
         }
     }
 );
 
-module.exports = ExerciseStore;
+module.exports = MapStore;

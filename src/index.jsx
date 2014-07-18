@@ -4,3 +4,4 @@ window.Sprite = require("./sprite.jsx").Sprite;
 window.SpriteRenderer = require("./sprite.jsx").SpriteRenderer;
 window.Resources = require("./sprite.jsx").Resources;
 window.Map = require("./map.jsx");
+window.Actions = require("./actions.jsx").Actions;

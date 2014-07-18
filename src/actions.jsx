@@ -1,15 +1,23 @@
-var AppDispatcher = require("./app-dispatcher.jsx");
+var AppDispatcher = require("./flux/app-dispatcher.js");
 
 var constants = {
-    FETCH_MAP_DATA: "FETCH_MAP_DATA"
+    FETCH_MAP_DATA: "FETCH_MAP_DATA",
+    MOVE: "MOVE"
 };
 
 var Actions = {
      fetchMapData: function() {
          AppDispatcher.handleViewAction({
-             actionType: FETCH_MAP_DATA
+             actionType: constants.FETCH_MAP_DATA
+         });
+     },
+
+     move: function(direction) {
+         AppDispatcher.handleViewAction({
+             actionType: constants.MOVE,
+             direction
          });
      }
 };
 
-modules.exports = { constants, Actions };
+module.exports = { constants, Actions };

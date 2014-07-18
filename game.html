@@ -129,6 +129,8 @@ Perseus.init({skipMathJax: false}).then(function() {
         document.getElementById("kaquest")
     );
 
+    Actions.fetchMapData();
+
 }).then(function() {
 }, function(err) {
     console.error(err);
