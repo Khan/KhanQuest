@@ -1,0 +1,19 @@
+# http://editorconfig.org
+
+# All rules in this file are based on our style guides:
+# https://sites.google.com/a/khanacademy.org/forge/for-developers/styleguide
+
+# This is the top-most EditorConfig file.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+max_line_length = 80
+insert_final_newline = true
+
+# Don't wrap lines for Git commit messages
+[COMMIT_EDITMSG]
+max_line_length = 0
