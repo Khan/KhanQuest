@@ -1,7 +1,12 @@
 @import "colors.less";
 
 .spellbook {
-    .spell-badge {
+}
+
+.spell-badge {
+    margin-bottom: 10px;
+
+    .spell-badge-icon {
         display: inline-block;
         margin: 5px 10px;
 
@@ -12,5 +17,13 @@
         &.fire {
             box-shadow: 0 0 8px 1px @fire;
         }
+    }
+
+    &:hover {
+        color: grey;
+    }
+
+    &.selected {
+        color: grey;
     }
 }
