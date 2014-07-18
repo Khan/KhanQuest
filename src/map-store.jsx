@@ -66,11 +66,12 @@ var MapStore = _({}).extend(
                 return [];
             }
 
-            return _(_manifest.tilesets)
+            return _(_manifest.layers)
                 .map((layer, i) => {
                     return {
                         layer,
-                        image: _tileImages[i]
+                        scene: _manifest,
+                        images: _tileImages
                     };
                 });
         },

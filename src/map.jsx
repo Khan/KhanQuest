@@ -37,7 +37,7 @@ var Map = React.createClass({
         _(this.state.layers).each(this.renderLayer);
     },
 
-    renderLayer: function({ layer, image }) {
+    renderLayer: function({ layer, scene, images }) {
         // data: [array of tiles, 1-based, position of sprite from top-left]
         // height: integer, height in number of sprites
         // name: "string", internal name of layer
@@ -48,25 +48,34 @@ var Map = React.createClass({
         // x: integer, starting x position
         // y: integer, starting y position
 
-        if (layer.type !== "tilelayer" || !layer.opacity) {
-            return;
-        }
+        var size = scene.tilewidth;
 
-        var size = layer.tilewidth;
-
-        layer.data.forEach(function(tile_idx, i) {
+        layer.data.forEach((tile_idx, i) => {
             if (!tile_idx) {
                 return;
             }
 
-            var tile = layer.tilesets[0];
+            // Find the tileset we need to draw - the first with "firstgid"
+            // less than the index we're looking for.
+            var bestIx = 0, bestValue = 0;
+            _(scene.tilesets).map((tileset, i) => {
+                if (tileset.firstgid <= tile_idx && tileset.firstgid > bestValue) {
+                    bestIx = i;
+                    bestValue = tileset.firstgid;
+                }
+            });
+
+            var tilesetIx = bestIx;
+
+            var tile = scene.tilesets[tilesetIx];
+            tile_idx -= tile.firstgid;
+
             var img_x = (tile_idx % (tile.imagewidth / size)) * size;
             var img_y = ~~(tile_idx / (tile.imagewidth / size)) * size;
             var s_x = (i % layer.width) * size;
             var s_y = ~~(i / layer.width) * size;
-            tile_idx--;
 
-            this.context.drawImage(image, img_x, img_y, size, size,
+            this.context.drawImage(images[tilesetIx], img_x, img_y, size, size,
                 s_x, s_y, size, size);
       });
     },
