@@ -37,7 +37,19 @@ class Entity {
     }
 }
 
-var nextIndex = 0;
+var testPlayer = new Entity({
+    id: "player",
+    sprite: "resources/redwizarddie.png",
+    hp: 100,
+    fire_resist: 0,
+    frost_resist: 0,
+    arcane_resist: 0,
+    magic_resist: 0,
+    armor: 15,
+    physical: 42
+});
+
+var nextIndex = 1;
 var entities = {};
 var EntityStore = {
     createEntity: function(entityStats) {
@@ -49,6 +61,10 @@ var EntityStore = {
 
     getById: function(entityId) {
         return entities[entityId];
+    },
+
+    getPlayer: function() {
+        return testPlayer;
     }
 };
 

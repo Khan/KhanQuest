@@ -7,3 +7,6 @@ window.Map = require("./map.jsx");
 window.Actions = require("./actions.jsx").Actions;
 window.MonsterStore = require("./monster-store.jsx");
 window.EntityStore = require("./entity.jsx");
+
+window.CombatStore = require("./combat/combat-store.jsx");
+window.CombatActions = require("./combat/combat-actions.js");

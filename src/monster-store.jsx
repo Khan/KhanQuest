@@ -18,6 +18,7 @@ var testJSON = JSON.stringify([
             {
                 id: "club",
                 animation: {self: "", target: ""},
+                category: "attack",
                 type: "physical",
                 priority: 1,
                 power: 10,
@@ -26,6 +27,7 @@ var testJSON = JSON.stringify([
             {
                 id: "massive_smash",
                 animation: {self: "", target: ""},
+                category: "attack",
                 type: "physical",
                 power: 20,
                 priority: 0,
@@ -34,6 +36,7 @@ var testJSON = JSON.stringify([
             {
                 id: "regenerate",
                 animation: {self: "", target: ""},
+                category: "buff",
                 type: "magical_heal",
                 power: 10,
                 priority: 0,
