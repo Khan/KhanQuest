@@ -1,5 +1,9 @@
 /** @jsx React.DOM */
 
+// mostly copied from
+// * https://gist.github.com/shaneriley/4078905
+// * http://hashrocket.com/blog/posts/using-tiled-and-canvas-to-render-game-screens
+
 var React = require("react");
 var _ = require("underscore");
 
