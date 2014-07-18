@@ -5,7 +5,13 @@ var Spell = require("./models/spell");
 
 var SpellBadge = React.createClass({
     propTypes: {
-        spell: React.propTypes.instanceOf(Spell)
+        spell: React.PropTypes.instanceOf(Spell)
+    },
+
+    getDefaultProps: function () {
+        return {
+            spell: null
+        };
     },
 
     render: function () {
@@ -17,8 +23,8 @@ var SpellBadge = React.createClass({
 
 var Spellbook = React.createClass({
     propTypes: {
-        spells: React.propTypes.arrayOf(
-            React.propTypes.instanceOf(Spell)
+        spells: React.PropTypes.arrayOf(
+            React.PropTypes.instanceOf(Spell)
         )
     },
 
@@ -30,7 +36,9 @@ var Spellbook = React.createClass({
 
     render: function () {
         return <div>
-            {_.map(this.props.spells, SpellBadge)}
+            {_.map(this.props.spells, (spell, i) => {
+                return <SpellBadge spell={spell} key={i} />;
+            })}
         </div>;
     }
 });

@@ -16,14 +16,18 @@ var Game = React.createClass({
         user: React.PropTypes.object
     },
 
-    getDefaultProps: {
-        user: {
-            unlockedExercises: ["measuring-lengths-1"]
-        }
+    getDefaultProps: function () {
+        return {
+            user: {
+                unlockedExercises: ["measuring-lengths-1"]
+            }
+        };
     },
 
     render: function () {
-        var spells = _.map(this.props.user.unlockedExercises, Spell);
+        var spells = _.map(this.props.user.unlockedExercises, (exercise) => {
+            return new Spell(exercise);
+        });
         return <div>
             <Spellbook spells={spells} />
         </div>;
