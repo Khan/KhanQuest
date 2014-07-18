@@ -3,7 +3,7 @@
 var _ = require("underscore");
 var Spell = require("./models/spell");
 
-var SpellBadge = React.createClass({
+var Badge = React.createClass({
     propTypes: {
         spell: React.PropTypes.instanceOf(Spell)
     },
@@ -20,11 +20,13 @@ var SpellBadge = React.createClass({
     },
 
     render: function () {
-        return <div>
+        return <div style={{marginBottom: 10}}>
             {this._renderImage()}
-            <div>{this.props.spell.displayName}</div>
-            <div>{this.props.spell.caption}</div>
-            <div>{this.props.spell.description}</div>
+            <div style={{display: "inline-block"}}>
+                <div>{this.props.spell.displayName}</div>
+                <div>{this.props.spell.caption}</div>
+                <div>{this.props.spell.description}</div>
+            </div>
         </div>;
     }
 });
@@ -45,7 +47,7 @@ var Spellbook = React.createClass({
     render: function () {
         return <div className="spellbook">
             {_.map(this.props.spells, (spell, i) => {
-                return <SpellBadge spell={spell} key={i} />;
+                return <Badge spell={spell} key={i} />;
             })}
         </div>;
     }
