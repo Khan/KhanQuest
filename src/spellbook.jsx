@@ -22,7 +22,9 @@ var SpellBadge = React.createClass({
     render: function () {
         return <div>
             {this._renderImage()}
-            {this.props.spell.displayName}
+            <div>{this.props.spell.displayName}</div>
+            <div>{this.props.spell.caption}</div>
+            <div>{this.props.spell.description}</div>
         </div>;
     }
 });

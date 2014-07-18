@@ -23,7 +23,7 @@ var Game = React.createClass({
     getDefaultProps: function() {
         return {
             user: {
-                unlockedExercises: ["measuring-lengths-1"]
+                unlockedExercises: ["measuring-lengths-1", "multiplying-fractions"]
             },
             showSpellbook: false,
             showCombat: false,

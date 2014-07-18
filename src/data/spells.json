@@ -1,7 +1,13 @@
 {
     "measuring-lengths-1": {
         "displayName": "Fireball",
-        "caption": "Burn in hell.",
+        "caption": "Interesting caption!",
         "description": "This is an epic spell, with tons of good powers, like damage."
+    },
+
+    "multiplying-fractions": {
+        "displayName": "Firebolt",
+        "caption": "(greensquadron)",
+        "description": "Included to appease Jack."
     }
 }
