@@ -17,7 +17,7 @@ var ActiveSpellbook = React.createClass({
                 className="selected"
                 spell={this.props.currentSpell} />;
         var spellbook = <Spellbook spells={this.props.spells} />;
-        return <div>
+        return <div className="active-spellbook">
             {this.props.currentSpell && currentSpell}
             {spellbook}
         </div>;

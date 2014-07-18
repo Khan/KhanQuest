@@ -2,6 +2,7 @@
 
 var React = require("react");
 var Spellbook = require("./spellbook.jsx");
+var ActiveSpellbook = require("./active-spellbook.jsx");
 var Spell = require("./models/spell.js");
 var CombatScreen = require("./combat-screen.jsx");
 var Changeable = require("./mixins/changeable.jsx");
@@ -44,7 +45,7 @@ var Game = React.createClass({
                 showCombat={this.props.showCombat}
                 label="Show Combat"
                 onChange={this.props.onChange} />
-            {this.props.showSpellbook && <Spellbook spells={spells} />}
+            {this.props.showSpellbook && <ActiveSpellbook currentSpell={_.head(spells)} spells={_.rest(spells)} />}
             {this.props.showCombat && <CombatScreen />}
         </div>;
     }

@@ -1,29 +1,34 @@
 @import "colors.less";
 
-.spellbook {
+/* Shared styles between both spellbooks. */
+.spellbook, .active-spellbook {
+    .spell-badge {
+        margin-bottom: 10px;
+
+        .spell-badge-icon {
+            display: inline-block;
+            margin: 5px 10px;
+
+            &.ice {
+                box-shadow: 0 0 8px 1px @ice;
+            }
+
+            &.fire {
+                box-shadow: 0 0 8px 1px @fire;
+            }
+        }
+    }
 }
 
-.spell-badge {
-    margin-bottom: 10px;
-
-    .spell-badge-icon {
-        display: inline-block;
-        margin: 5px 10px;
-
-        &.ice {
-            box-shadow: 0 0 8px 1px @ice;
+/* Only for active-mode. */
+.active-spellbook {
+    .spell-badge {
+        &:hover {
+            color: grey;
         }
 
-        &.fire {
-            box-shadow: 0 0 8px 1px @fire;
+        &.selected {
+            color: grey;
         }
-    }
-
-    &:hover {
-        color: grey;
-    }
-
-    &.selected {
-        color: grey;
     }
 }
