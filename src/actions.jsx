@@ -4,7 +4,7 @@ var constants = {
     FETCH_MAP_DATA: "FETCH_MAP_DATA",
     MOVE: "MOVE",
     ADD_SPELL: "ADD_SPELL",
-    START_COMBAT: "START_COMBAT",
+    CHANGE_STATE: "CHANGE_STATE",
     SHOW_DIALOG: "SHOW_DIALOG",
     SET_MAP: "SET_MAP"
 };
@@ -30,11 +30,10 @@ var Actions = {
         });
     },
 
-    startCombat: function(enemies) {
-        AppDispatcher.handleViewAction({
-            actionType: constants.START_COMBAT,
-            enemies: enemies
-        });
+    changeGameState: function(data) {
+        AppDispatcher.handleViewAction(_.extend({
+            actionType: constants.CHANGE_STATE
+        }, data));
     },
 
     showDialog: function(scene) {

@@ -12,6 +12,7 @@ var PropCheckBox = require("./prop-check-box.jsx");
 
 var UserStore = require("./user-store.jsx");
 var GameStore = require("./game-store.jsx");
+var CombatStore = require("./combat/combat-store.jsx");
 var StateFromStore = require("./flux/state-from-store-mixin.js");
 
 var Game = React.createClass({
@@ -26,6 +27,10 @@ var Game = React.createClass({
             game: {
                 store: GameStore,
                 fetch: (store) => store.getGame()
+            },
+            combatState: {
+                store: CombatStore,
+                fetch: (store) => store.getState()
             }
         })
     ],
@@ -39,12 +44,12 @@ var Game = React.createClass({
 
     render: function () {
         console.log(this.state.user);
-        var spells = _.map(this.state.user.unlockedExercises, (exercise) => {
-            return new Spell(exercise);
-        });
         return <div>
             <div className="debug-bar">
-                <button onClick={() => Actions.startCombat([])}>
+                <button onClick={() => Actions.changeGameState({state: "MAP"})}>
+                    Show Map
+                </button>
+                <button onClick={() => Actions.changeGameState({state: "COMBAT"})}>
                     Show Combat
                 </button>
                 <PropCheckBox
@@ -53,20 +58,35 @@ var Game = React.createClass({
                     onChange={this.props.onChange} />
             </div>
             <div className="row">
-                <div className="fight-graphics" style={{float: "left"}}>
-                    <img title="cool graphics go here"
-                         src="http://placekitten.com/400/400" />
-                </div>
-                <div className="combat">
-                    {/*TODO: make this collapse to show only active spell when
-                             not clicked */}
-                    <ActiveSpellbook currentSpell={_.head(spells)}
-                                     spells={_.rest(spells)} />
-                    {this.state.game.state === "COMBAT" && <CombatScreen />}
-                </div>
-
-                {this.props.showDialog && <Dialog scene="scene1"/>}
+                {this.state.game.state === "MAP" && this._renderMap()}
+                {this.state.game.state === "COMBAT" && this._renderCombat()}
             </div>
+        </div>;
+    },
+
+    _renderMap: function() {
+        return <div>Map</div>;
+    },
+
+    _renderCombat: function() {
+        var spells = _.map(this.state.user.unlockedExercises, (exercise) => {
+            return new Spell(exercise);
+        });
+
+        return <div>
+            <div className="fight-graphics" style={{float: "left"}}>
+                <img title="cool graphics go here"
+                     src="http://placekitten.com/400/400" />
+            </div>
+            <div className="combat">
+                {/*TODO: make this collapse to show only active spell when
+                         not clicked */}
+                <ActiveSpellbook currentSpell={_.head(spells)}
+                                 spells={_.rest(spells)} />
+                {this.state.combatState === "ATTACK" && <CombatScreen />}
+            </div>
+
+            {this.props.showDialog && <Dialog scene="scene1"/>}
         </div>;
     }
 });

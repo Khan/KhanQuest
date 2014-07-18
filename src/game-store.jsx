@@ -2,7 +2,7 @@ var _ = require("underscore");
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("./flux/app-dispatcher.js");
 var { constants } = require("./actions.jsx");
-var { START_COMBAT } = constants;
+var { CHANGE_STATE } = constants;
 
 /* Information about the user state. */
 
@@ -15,8 +15,8 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
     var action = payload.action;
 
     switch (action.actionType) {
-        case START_COMBAT:
-            _game.state = "COMBAT";
+        case CHANGE_STATE:
+            _game.state = action.state;
             break;
 
         default:

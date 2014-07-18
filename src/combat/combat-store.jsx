@@ -8,6 +8,8 @@ var CHANGE_EVENT = "change";
 var _entities = {};
 var _turnOrder = [];
 var _turnIndex = 0;
+var _state = "ATTACK"; // TODO: Replace this with however we manage whether or
+                       // not the user is attacking
 
 var combatLog = function() {
     var consoleArgs = ["COMBAT LOG"];
@@ -32,6 +34,10 @@ var FluxDatastore = {
 var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
     getEntities: function() {
         return _entities;
+    },
+
+    getState: function() {
+        return _state;
     },
 
     getCurrentTurn: function() {
@@ -121,3 +127,5 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         return _.find(entity.abilities, () => true);
     }
 });
+
+module.exports = CombatStore;
