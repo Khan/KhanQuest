@@ -3,6 +3,7 @@
 var React = require("react");
 var Spellbook = require("./spellbook.jsx");
 var Spell = require("./models/spell.js");
+var CombatScreen = require("./combat-screen.jsx");
 var Changeable = require("./mixins/changeable.jsx");
 var PropCheckBox = require("./prop-check-box.jsx");
 
@@ -44,7 +45,7 @@ var Game = React.createClass({
                 label="Show Combat"
                 onChange={this.props.onChange} />
             {this.props.showSpellbook && <Spellbook spells={spells} />}
-            {this.props.showCombat && "Combat"}
+            {this.props.showCombat && <CombatScreen />}
         </div>;
     }
 });

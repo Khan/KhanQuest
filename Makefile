@@ -15,6 +15,8 @@ npm_install:
 	echo "module.exports = window.React;" > ./node_modules/react/index.js
 	mkdir -p ./node_modules/underscore
 	echo "module.exports = window._;" > ./node_modules/underscore/index.js
+	mkdir -p ./node_modules/perseus
+	echo "module.exports = window.Perseus;" > ./node_modules/perseus/index.js
 
 build: install create_build_dir
 	./node_modules/.bin/webpack
