@@ -14,15 +14,27 @@ var Badge = React.createClass({
         };
     },
 
+    _getClassName: function () {
+        var className = "spell-badge";
+        if (this.props.spell.type) {
+            className += " " + this.props.spell.type;
+        }
+        return className;
+    },
+
     _renderImage: function () {
         var url = "/static/img/spells/" + this.props.spell.exerciseName + ".jpg";
-        return <img className="spell-badge" src={url} />;
+        return <img className={this._getClassName()} src={url} />;
     },
 
     render: function () {
+        var inlineBlock = {
+            display: "inline-block"
+        };
+
         return <div style={{marginBottom: 10}}>
-            {this._renderImage()}
-            <div style={{display: "inline-block"}}>
+            <div style={inlineBlock}>{this._renderImage()}</div>
+            <div style={inlineBlock}>
                 <div>{this.props.spell.displayName}</div>
                 <div>{this.props.spell.caption}</div>
                 <div>{this.props.spell.description}</div>

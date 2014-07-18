@@ -1,9 +1,16 @@
-.spellbook {
-    color: red;
-}
+@import "colors.less";
 
-.spell-badge {
-    box-shadow: 0 0 8px 1px #fc6255;
-    display: inline-block;
-    margin: 5px 10px;
+.spellbook {
+    .spell-badge {
+        display: inline-block;
+        margin: 5px 10px;
+
+        &.ice {
+            box-shadow: 0 0 8px 1px @ice;
+        }
+
+        &.fire {
+            box-shadow: 0 0 8px 1px @fire;
+        }
+    }
 }

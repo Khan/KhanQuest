@@ -2,12 +2,14 @@
     "measuring-lengths-1": {
         "displayName": "Fireball",
         "caption": "Interesting caption!",
-        "description": "This is an epic spell, with tons of good powers, like damage."
+        "description": "This is an epic spell, with tons of good powers, like damage.",
+        "type": "fire"
     },
 
     "multiplying-fractions": {
-        "displayName": "Firebolt",
+        "displayName": "Frostbolt",
         "caption": "(greensquadron)",
-        "description": "Included to appease Jack."
+        "description": "Included to appease Jack.",
+        "type": "ice"
     }
 }
