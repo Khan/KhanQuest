@@ -14,8 +14,14 @@ var SpellBadge = React.createClass({
         };
     },
 
+    _renderImage: function () {
+        var url = "/static/img/spells/" + this.props.spell.exerciseName + ".jpg";
+        return <img className="spell-badge" src={url} />;
+    },
+
     render: function () {
         return <div>
+            {this._renderImage()}
             {this.props.spell.displayName}
         </div>;
     }
