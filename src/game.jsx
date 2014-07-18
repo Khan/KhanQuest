@@ -26,6 +26,7 @@ var Game = React.createClass({
                 unlockedExercises: ["measuring-lengths-1"]
             },
             showSpellbook: false,
+            showCombat: false,
         };
     },
 
@@ -39,6 +40,11 @@ var Game = React.createClass({
                 label="Show Spellbook"
                 onChange={this.props.onChange} />
             {this.props.showSpellbook && <Spellbook spells={spells} />}
+            <PropCheckBox
+                showCombat={this.props.showCombat}
+                label="Show Combat"
+                onChange={this.props.onChange} />
+            {this.props.showCombat && "Combat"}
         </div>;
     }
 });
