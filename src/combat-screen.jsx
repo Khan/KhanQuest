@@ -16,7 +16,9 @@ var CombatScreen = React.createClass({
 
     render: function() {
         return <div>
-            <CombatExercise />
+            <CombatExercise onAttack={() => {
+                console.log("Exercise completed");
+            }} />
         </div>;
     }
 });

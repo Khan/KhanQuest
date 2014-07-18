@@ -3,6 +3,7 @@
 var React = require("react");
 var Perseus = require("perseus");
 var CombatExerciseRenderer = require("./combat-exercise-renderer.jsx");
+var Spell = require("./models/spell.js");
 
 var CombatExercise = React.createClass({
     propTypes: {
@@ -11,9 +12,10 @@ var CombatExercise = React.createClass({
     },
 
     getDefaultProps: function() {
+        console.log(this);
         return {
             spellName: "groups-of-tens",
-            onAttack: function() { }
+            onAttack: function () { }
         };
     },
 
@@ -38,7 +40,11 @@ var CombatExercise = React.createClass({
             return <div>
                 <CombatExerciseRenderer
                     content={this.state.content}
-                    onAttack={this.props.onAttack} />
+                    onAttack={() => {
+                        var spell = new Spell(this.props.spellName);
+                        spell.cast();
+                        this.props.onAttack();
+                    }} />
             </div>;
         } else {
             return <div>
