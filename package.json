@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/Khan/KAQuest/issues"
   },
-  "homepage": "https://github.com/Khan/KAQuest"
+  "homepage": "https://github.com/Khan/KAQuest",
+  "dependencies": {
+    "json-loader": "^0.5.1"
+  }
 }
