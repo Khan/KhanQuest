@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require("react");
+var { Actions } = require("./actions.jsx");
 var Spellbook = require("./spellbook.jsx");
 var ActiveSpellbook = require("./active-spellbook.jsx");
 var Spell = require("./models/spell.js");
@@ -9,6 +10,7 @@ var Changeable = require("./mixins/changeable.jsx");
 var PropCheckBox = require("./prop-check-box.jsx");
 
 var UserStore = require("./user-store.jsx");
+var GameStore = require("./game-store.jsx");
 var StateFromStore = require("./flux/state-from-store-mixin.js");
 
 var Game = React.createClass({
@@ -19,6 +21,10 @@ var Game = React.createClass({
             user: {
                 store: UserStore,
                 fetch: (store) => store.getUser()
+            },
+            game: {
+                store: GameStore,
+                fetch: (store) => store.getGame()
             }
         })
     ],
@@ -36,16 +42,12 @@ var Game = React.createClass({
             return new Spell(exercise);
         });
         return <div>
-            <PropCheckBox
-                showSpellbook={this.props.showSpellbook}
-                label="Show Spellbook"
-                onChange={this.props.onChange} />
-            <PropCheckBox
-                showCombat={this.props.showCombat}
-                label="Show Combat"
-                onChange={this.props.onChange} />
+            <button
+                    onClick={() => Actions.startCombat([])}>
+                Show Combat
+            </button>
             {this.props.showSpellbook && <ActiveSpellbook currentSpell={_.head(spells)} spells={_.rest(spells)} />}
-            {this.props.showCombat && <CombatScreen />}
+            {this.state.game.state === "COMBAT" && <CombatScreen />}
         </div>;
     }
 });

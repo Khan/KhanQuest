@@ -3,7 +3,8 @@ var AppDispatcher = require("./flux/app-dispatcher.js");
 var constants = {
     FETCH_MAP_DATA: "FETCH_MAP_DATA",
     MOVE: "MOVE",
-    ADD_SPELL: "ADD_SPELL"
+    ADD_SPELL: "ADD_SPELL",
+    START_COMBAT: "START_COMBAT"
 };
 
 var Actions = {
@@ -24,6 +25,13 @@ var Actions = {
         AppDispatcher.handleViewAction({
             actionType: constants.ADD_SPELL,
             exerciseName: exerciseName
+        });
+    },
+
+    startCombat: function(enemies) {
+        AppDispatcher.handleViewAction({
+            actionType: constants.START_COMBAT,
+            enemies: enemies
         });
     }
 };
