@@ -1,2 +1,1 @@
-var { message } = { message: "Hello, world!" };
-console.log(message);
+window.Game = require("./game.jsx");

@@ -59,7 +59,7 @@ KA Quest
 <body class="page-body">
 
 <div class="post-wrapper">
-<div id="perseus" class="framework-perseus">
+<div id="kaquest" class="kaquest">
 </div>
 </div>
 
@@ -123,9 +123,9 @@ Perseus.init({skipMathJax: false}).then(function() {
         problemNum: 0
     });
 
-    editor = React.renderComponent(
-        Perseus.Renderer(props, null),
-        document.getElementById("perseus")
+    window.game = React.renderComponent(
+        window.Game({}, null),
+        document.getElementById("kaquest")
     );
 
 }).then(function() {
