@@ -18,21 +18,10 @@ var Game = React.createClass({
         StateFromStore({
             user: {
                 store: UserStore,
-                fetch: store => store.getUser()
+                fetch: (store) => store.getUser()
             }
         })
     ],
-
-    shouldComponentUpdate: function (nextProps, nextState) {
-        var stateChanged = !_.isEqual(this.state, nextState);
-        var propsChanged = !_.isEqual(this.props, nextProps);
-        return propsChanged || stateChanged;
-    },
-
-    propTypes: {
-        map: React.PropTypes.object,
-        user: React.PropTypes.object
-    },
 
     getDefaultProps: function() {
         return {
@@ -42,6 +31,7 @@ var Game = React.createClass({
     },
 
     render: function () {
+        console.log(this.state.user);
         var spells = _.map(this.state.user.unlockedExercises, (exercise) => {
             return new Spell(exercise);
         });

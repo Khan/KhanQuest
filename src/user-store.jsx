@@ -7,18 +7,29 @@ var { ADD_SPELL } = constants;
 /* Information about the user state. */
 var _user = null;
 
+var defaultUser = () => {
+    return {
+        unlockedExercises: []
+    };
+};
+
 var dispatcherIndex = AppDispatcher.register(function(payload) {
     var action = payload.action;
 
     switch (action.actionType) {
         case ADD_SPELL:
+            if (_user == null) {
+                _user = defaultUser();
+            }
             _user.unlockedExercises.push(action.exerciseName);
+            break;
 
         default:
             return true;
-
-        UserStore.emitChange();
     }
+
+    UserStore.emitChange();
+    return true;
 });
 
 var UserStore = _({}).extend(
@@ -26,9 +37,7 @@ var UserStore = _({}).extend(
     {
         getUser: function() {
             if (_user == null) {
-                return {
-                    unlockedExercises: ["groups-of-tens"]
-                };
+                return defaultUser();
             }
 
             return _.clone(_user);
