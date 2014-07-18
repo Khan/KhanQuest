@@ -5,3 +5,5 @@ window.SpriteRenderer = require("./sprite.jsx").SpriteRenderer;
 window.Resources = require("./sprite.jsx").Resources;
 window.Map = require("./map.jsx");
 window.Actions = require("./actions.jsx").Actions;
+window.MonsterStore = require("./monster-store.jsx");
+window.EntityStore = require("./entity.jsx");

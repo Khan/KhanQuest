@@ -20,6 +20,12 @@
             engine.start();
         });
         Resources.load("resources/redmagedie.png");
+
+        console.log(MonsterStore.debug);
+        var forestTrollStats = MonsterStore.getById("forest_troll");
+        var forestTroll = EntityStore.createEntity(forestTrollStats);
+        console.log(forestTroll);
+        console.log("EntityStore", EntityStore.debug);
     </script>
 </body>
 </html>
