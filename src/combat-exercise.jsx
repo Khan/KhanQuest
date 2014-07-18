@@ -38,7 +38,7 @@ var CombatExercise = React.createClass({
             return <div>
                 <CombatExerciseRenderer
                     content={this.state.content}
-                    onAttack={this.props.onAttack} />;
+                    onAttack={this.props.onAttack} />
             </div>;
         } else {
             return <div>
@@ -67,7 +67,7 @@ var CombatExercise = React.createClass({
             // TODO(aria): Make this not break everything if we've received new
             // props
             this.setState({
-                content: item.item_data
+                content: JSON.parse(item.item_data)
             });
         }, (err) => {
             console.error("ERROR LOADING ITEM: ", err);

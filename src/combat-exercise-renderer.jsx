@@ -42,7 +42,6 @@ var CombatExerciseRenderer = React.createClass({
         return <div>
             {Perseus.Renderer(this.props.content.question)}
             {Perseus.AnswerAreaRenderer(this.props.content.answerArea)}
-            <button />
         </div>;
     }
 });
