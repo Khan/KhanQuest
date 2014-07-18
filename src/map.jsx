@@ -8,9 +8,14 @@ var React = require("react");
 var _ = require("underscore");
 var Shortcut = require("./shortcut.js");
 
+var { Actions } = require("./actions.jsx");
+
 var MapStore = require("./map-store.jsx");
 
 var StateFromStore = require("./flux/state-from-store-mixin.js");
+
+var Avatar = new Image();
+Avatar.src = "/static/img/avatar.png";
 
 var Map = React.createClass({
     propTypes: {
@@ -20,7 +25,11 @@ var Map = React.createClass({
         StateFromStore({
             layers: {
                 store: MapStore,
-                fetch: store => store.getLayers()
+                fetch: (store) => store.getLayers()
+            },
+            location: {
+                store: MapStore,
+                fetch: (store) => store.getLocation()
             }
         })
     ],
@@ -33,11 +42,19 @@ var Map = React.createClass({
 
         var actions = {
             "w": {
-                handler: () => { console.log("Up!"); },
+                handler: () => { Actions.move("UP"); },
+                description: ""
+            },
+            "a": {
+                handler: () => { Actions.move("LEFT"); },
                 description: ""
             },
             "s": {
-                handler: () => { console.log("Down!"); },
+                handler: () => { Actions.move("DOWN"); },
+                description: ""
+            },
+            "d": {
+                handler: () => { Actions.move("RIGHT"); },
                 description: ""
             }
         };
@@ -51,13 +68,22 @@ var Map = React.createClass({
     draw: function() {
         var canvas = this.refs.canvas.getDOMNode();
         this.context = canvas.getContext('2d');
-        this.bounds = MapStore.getBounds();
 
         // layers are stored bottom to top, so we can render in order
         var renderableLayers = _(this.state.layers)
             .filter(layer => layer.layer.name !== "interaction layer");
 
         _(renderableLayers).each(this.renderLayer);
+
+        this.renderPlayer();
+    },
+
+    renderPlayer: function() {
+        var size = 32;
+        var location = this.state.location;
+        var x = location.x * size;
+        var y = location.y * size;
+        this.context.drawImage(Avatar, x, y, 32, 32);
     },
 
     renderLayer: function({ layer, scene, images }) {

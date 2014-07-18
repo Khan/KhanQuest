@@ -19,8 +19,8 @@ var clamp = function(n, min, max) {
 
 var updateBounds = function() {
     // TODO smart constraints
-    var x = clamp(_currentLocation.x - 10, 0, 500);
-    var y = clamp(_currentLocation.y - 10, 0, 500);
+    var x = clamp(_currentLocation.x, 0, 50);
+    var y = clamp(_currentLocation.y, 0, 50);
 
     _currentLocation = { x, y };
 }
@@ -47,15 +47,22 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 
         case MOVE:
             // TODO constrain movement!
-            _currentLocation = action.direction;
+            if (action.direction === "UP") {
+                _currentLocation.y--;
+            } else if (action.direction === "DOWN") {
+                _currentLocation.y++;
+            } else if (action.direction === "LEFT") {
+                _currentLocation.x--;
+            } else if (action.direction === "RIGHT") {
+                _currentLocation.x++;
+            }
             updateBounds();
             break;
 
         default:
             return true;
-
-        MapStore.emitChange();
     }
+    MapStore.emitChange();
 });
 
 var MapStore = _({}).extend(
@@ -76,7 +83,7 @@ var MapStore = _({}).extend(
                 });
         },
 
-        getBounds: function() {
+        getLocation: function() {
             return _currentLocation;
         },
 
