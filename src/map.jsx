@@ -6,6 +6,7 @@
 
 var React = require("react");
 var _ = require("underscore");
+var Shortcut = require("./shortcut.js");
 
 var MapStore = require("./map-store.jsx");
 
@@ -29,11 +30,26 @@ var Map = React.createClass({
     },
 
     render: function() {
-        return <canvas width={1000} height={1000} />;
+
+        var actions = {
+            "w": {
+                handler: () => { console.log("Up!"); },
+                description: ""
+            },
+            "s": {
+                handler: () => { console.log("Down!"); },
+                description: ""
+            }
+        };
+
+        return <div>
+            <Shortcut actions={actions} />
+            <canvas ref="canvas" width={1000} height={1000} />
+        </div>;
     },
 
     draw: function() {
-        var canvas = this.getDOMNode();
+        var canvas = this.refs.canvas.getDOMNode();
         this.context = canvas.getContext('2d');
         this.bounds = MapStore.getBounds();
 
