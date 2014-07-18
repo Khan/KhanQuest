@@ -54,7 +54,10 @@ var Map = React.createClass({
         this.bounds = MapStore.getBounds();
 
         // layers are stored bottom to top, so we can render in order
-        _(this.state.layers).each(this.renderLayer);
+        var renderableLayers = _(this.state.layers)
+            .filter(layer => layer.layer.name !== "interaction layer");
+
+        _(renderableLayers).each(this.renderLayer);
     },
 
     renderLayer: function({ layer, scene, images }) {
