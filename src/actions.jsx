@@ -4,7 +4,8 @@ var constants = {
     FETCH_MAP_DATA: "FETCH_MAP_DATA",
     MOVE: "MOVE",
     ADD_SPELL: "ADD_SPELL",
-    START_COMBAT: "START_COMBAT"
+    START_COMBAT: "START_COMBAT",
+    SHOW_DIALOG: "SHOW_DIALOG"
 };
 
 var Actions = {
@@ -32,6 +33,13 @@ var Actions = {
         AppDispatcher.handleViewAction({
             actionType: constants.START_COMBAT,
             enemies: enemies
+        });
+    },
+
+    showDialog: function(scene) {
+        AppDispatcher.handleViewAction({
+            actionType: constants.SHOW_DIALOG,
+            scene: scene
         });
     }
 };

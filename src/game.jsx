@@ -5,6 +5,7 @@ var { Actions } = require("./actions.jsx");
 var Spellbook = require("./spellbook.jsx");
 var ActiveSpellbook = require("./active-spellbook.jsx");
 var Spell = require("./models/spell.js");
+var Dialog = require("./dialog.jsx");
 var CombatScreen = require("./combat-screen.jsx");
 var Changeable = require("./mixins/changeable.jsx");
 var PropCheckBox = require("./prop-check-box.jsx");
@@ -48,6 +49,11 @@ var Game = React.createClass({
             </button>
             {this.props.showSpellbook && <ActiveSpellbook currentSpell={_.head(spells)} spells={_.rest(spells)} />}
             {this.state.game.state === "COMBAT" && <CombatScreen />}
+            <PropCheckBox
+                showDialog={this.props.showDialog}
+                label="Show Dialog"
+                onChange={this.props.onChange} />
+            {this.props.showDialog && <Dialog scene="scene1"/>}
         </div>;
     }
 });

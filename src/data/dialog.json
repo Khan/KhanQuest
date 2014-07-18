@@ -1,0 +1,27 @@
+{
+    "scene1": {
+        "lines": [{
+            "speaker": "Narrator",
+            "line": "The sun is setting and you're on the home stretch of your shift delivering groceries."
+        }, {
+            "speaker": "Narrator",
+            "line": "The final house is your favourite: Sal's house."
+        }, {
+            "speaker": "Narrator",
+            "line": "Every day he has some new piece of wisdom for you."
+        }, {
+            "speaker": "Narrator",
+            "line": "He's gone though! What the heck."
+        }, {
+            "speaker": "Narrator",
+            "line": "There are signs up a struggle"
+        }]
+    },
+
+    "scene2": {
+        "lines": [{
+            "speaker": "Narrator",
+            "line": "You wonder why you are here."
+        }]
+    }
+}
