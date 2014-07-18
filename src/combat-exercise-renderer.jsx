@@ -56,7 +56,7 @@ var CombatExerciseRenderer = React.createClass({
                 } else {
                     console.log("Incorrect");
                 }
-            }} />
+            }}>Cast spell</button>
         </div>;
     },
 
