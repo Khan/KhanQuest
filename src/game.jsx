@@ -39,11 +39,11 @@ var Game = React.createClass({
                 showSpellbook={this.props.showSpellbook}
                 label="Show Spellbook"
                 onChange={this.props.onChange} />
-            {this.props.showSpellbook && <Spellbook spells={spells} />}
             <PropCheckBox
                 showCombat={this.props.showCombat}
                 label="Show Combat"
                 onChange={this.props.onChange} />
+            {this.props.showSpellbook && <Spellbook spells={spells} />}
             {this.props.showCombat && "Combat"}
         </div>;
     }
