@@ -1,0 +1,19 @@
+{
+  "name": "plog",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "perseus": "git://github.com/Khan/perseus",
+    "khan-exercises": "git://github.com/Khan/khan-exercises"
+  },
+  "devDependencies": {
+    "http-server": "^0.6.1"
+  }
+}
