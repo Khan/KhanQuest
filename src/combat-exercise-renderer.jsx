@@ -34,8 +34,30 @@ var CombatExerciseRenderer = React.createClass({
     getDefaultProps: function() {
         return {
             content: PERSEUS_ITEM,
-            onAttack: function() { }
+            onAttack: function() {
+                // TODO: render next problem
+                console.log('hit!');
+                // TODO: end turn
+            },
+            onMissedAttack: function() {
+                console.log('missed');
+                // TODO: end turn
+            }
         };
+    },
+
+    _attemptAttack: function() {
+        var gradedResult = this._scoreInput();
+        if (gradedResult.correct) {
+            this.props.onAttack();
+        } else {
+            this.props.onMissedAttack();
+        }
+    },
+
+    _retreat: function() {
+        console.log("seeya!");
+        // TODO: end battle
     },
 
     render: function() {
@@ -49,14 +71,23 @@ var CombatExerciseRenderer = React.createClass({
         return <div>
             {this.questionRenderer}
             {this.answerAreaRenderer}
-            <button type="submit" onClick={() => {
-                var gradedResult = this._scoreInput();
-                if (gradedResult.correct) {
-                    this.props.onAttack();
-                } else {
-                    console.log("Incorrect");
-                }
-            }}>Cast spell</button>
+            <div>
+                <button className="retreat" onClick={this._retreat}>
+                    Retreat
+                </button>
+                <button className="attempt" onClick={this._attemptAttack}>
+                    Cast spell
+                </button>
+            </div>
+            <div>
+                Hacks:
+                <button className="correct" onClick={this.props.onAttack}>
+                    Correct
+                </button>
+                <button className="wrong" onClick={this.props.onMissedAttack}>
+                    Wrong
+                </button>
+            </div>
         </div>;
     },
 
