@@ -58,8 +58,8 @@ var Game = React.createClass({
                          src="http://placekitten.com/400/400" />
                 </div>
                 <div className="combat">
-                    // TODO: make this collapse to show only active spell when
-                    // not clicked
+                    {/*TODO: make this collapse to show only active spell when
+                             not clicked */}
                     <ActiveSpellbook currentSpell={_.head(spells)}
                                      spells={_.rest(spells)} />
                     {this.state.game.state === "COMBAT" && <CombatScreen />}
