@@ -23,7 +23,7 @@ var FluxDatastore = {
     },
 
     removeChangeListener: function(callback) {
-        this.off(CHANGE_EVENT, callback);
+        this.removeListener(CHANGE_EVENT, callback);
     },
 
     _emitChange: function() {

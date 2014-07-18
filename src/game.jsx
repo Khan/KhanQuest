@@ -7,6 +7,8 @@ var ActiveSpellbook = require("./active-spellbook.jsx");
 var Spell = require("./models/spell.js");
 var Dialog = require("./dialog.jsx");
 var CombatScreen = require("./combat-screen.jsx");
+var Map = require("./map.jsx");
+
 var Changeable = require("./mixins/changeable.jsx");
 var PropCheckBox = require("./prop-check-box.jsx");
 
@@ -65,7 +67,18 @@ var Game = React.createClass({
     },
 
     _renderMap: function() {
-        return <div>Map</div>;
+        return <div>
+            <button onClick={() => Actions.setCurrentMap("overworld")}
+                    type="button">
+                overworld
+            </button>
+            <button onClick={() => Actions.setCurrentMap("cave")}
+                    type="button">
+                cave
+            </button>
+
+            <Map />
+        </div>;
     },
 
     _renderCombat: function() {

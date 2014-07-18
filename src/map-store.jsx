@@ -113,7 +113,7 @@ var MapStore = _({}).extend(
         },
 
         removeChangeListener: function(callback) {
-            this.off("change", callback);
+            this.removeListener("change", callback);
         },
 
         emitChange: function() {
