@@ -37,7 +37,7 @@ var Game = React.createClass({
             <PropCheckBox
                 showSpellbook={this.props.showSpellbook}
                 label="Show Spellbook"
-                onChange={this.onChange} />
+                onChange={this.props.onChange} />
             {this.props.showSpellbook && <Spellbook spells={spells} />}
         </div>;
     }
@@ -46,7 +46,7 @@ var Game = React.createClass({
 var StatefulGame = React.createClass({
     getInitialState: function() {
         return {
-            onChange: this.setState
+            onChange: this.setState.bind(this)
         };
     },
 
