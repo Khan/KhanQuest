@@ -43,17 +43,30 @@ var Game = React.createClass({
             return new Spell(exercise);
         });
         return <div>
-            <button
-                    onClick={() => Actions.startCombat([])}>
-                Show Combat
-            </button>
-            {this.props.showSpellbook && <ActiveSpellbook currentSpell={_.head(spells)} spells={_.rest(spells)} />}
-            {this.state.game.state === "COMBAT" && <CombatScreen />}
-            <PropCheckBox
-                showDialog={this.props.showDialog}
-                label="Show Dialog"
-                onChange={this.props.onChange} />
-            {this.props.showDialog && <Dialog scene="scene1"/>}
+            <div className="debug-bar">
+                <button onClick={() => Actions.startCombat([])}>
+                    Show Combat
+                </button>
+                <PropCheckBox
+                    showDialog={this.props.showDialog}
+                    label="Show Dialog"
+                    onChange={this.props.onChange} />
+            </div>
+            <div className="row">
+                <div className="fight-graphics" style={{float: "left"}}>
+                    <img title="cool graphics go here"
+                         src="http://placekitten.com/400/400" />
+                </div>
+                <div className="combat">
+                    // TODO: make this collapse to show only active spell when
+                    // not clicked
+                    <ActiveSpellbook currentSpell={_.head(spells)}
+                                     spells={_.rest(spells)} />
+                    {this.state.game.state === "COMBAT" && <CombatScreen />}
+                </div>
+
+                {this.props.showDialog && <Dialog scene="scene1"/>}
+            </div>
         </div>;
     }
 });
