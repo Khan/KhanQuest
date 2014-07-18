@@ -40,23 +40,36 @@ var Map = React.createClass({
 
     render: function() {
 
+        var up = {
+            handler: () => { Actions.move("UP"); },
+            description: ""
+        };
+
+        var left = {
+            handler: () => { Actions.move("LEFT"); },
+            description: ""
+        };
+
+        var down = {
+            handler: () => { Actions.move("DOWN"); },
+            description: ""
+        };
+
+        var right = {
+            handler: () => { Actions.move("RIGHT"); },
+            description: ""
+        };
+
         var actions = {
-            "w": {
-                handler: () => { Actions.move("UP"); },
-                description: ""
-            },
-            "a": {
-                handler: () => { Actions.move("LEFT"); },
-                description: ""
-            },
-            "s": {
-                handler: () => { Actions.move("DOWN"); },
-                description: ""
-            },
-            "d": {
-                handler: () => { Actions.move("RIGHT"); },
-                description: ""
-            }
+            "w": up,
+            "a": left,
+            "s": down,
+            "d": right,
+
+            up,
+            down,
+            left,
+            right
         };
 
         return <div>
