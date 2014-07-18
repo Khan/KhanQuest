@@ -1,13 +1,21 @@
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("./flux/app-dispatcher.js");
 var { constants } = require("./actions.jsx");
-var { FETCH_MAP_DATA, MOVE } = constants;
+var { FETCH_MAP_DATA, MOVE, SET_MAP } = constants;
 
-// metadata about the map
-var _manifest = null;
+var MAPS = {
+    overworld: "overworld.json",
+    cave: "cave.json"
+};
+
+var _currentMap = "cave";
+
+// metadata about each map:
+// { overworld: object, cave: object }
+var _manifests = {};
 
 // the tiles are located in a few images
-var _tileImages = [];
+var _tileImages = {};
 
 var _currentLocation = {x: 10, y: 10};
 
@@ -30,18 +38,20 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 
     switch (action.actionType) {
         case FETCH_MAP_DATA:
-            $.getJSON("/art/test.json").done(obj => {
-                _manifest = obj;
-                _(obj.tilesets)
-                    .each(set => {
-                        // var img = document.createElement("img");
-                        var img = new Image();
-                        img.src = `/art/${set.image}`;
-                        img.onload = () => {
-                            MapStore.emitChange();
-                        };
-                        _tileImages.push(img);
-                    });
+            _(MAPS).each((manifestName, mapName) => {
+                $.getJSON(`/art/${manifestName}`).done(obj => {
+                    _manifests[mapName] = obj;
+                    _tileImages[mapName] = [];
+                    _(obj.tilesets)
+                        .each(set => {
+                            var img = new Image();
+                            img.src = `/art/${set.image}`;
+                            img.onload = () => {
+                                MapStore.emitChange();
+                            };
+                            _tileImages[mapName].push(img);
+                        });
+                });
             });
             break;
 
@@ -59,32 +69,43 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             updateBounds();
             break;
 
+        case SET_MAP:
+            // TODO clear previous map!
+            _currentMap = action.name;
+            break;
+
         default:
             return true;
     }
+
     MapStore.emitChange();
+    return true;
 });
 
 var MapStore = _({}).extend(
     EventEmitter.prototype,
     {
         getLayers: function() {
-            if (_manifest == null) {
+            if (_manifests[_currentMap] == null) {
                 return [];
             }
 
-            return _(_manifest.layers)
+            return _(_manifests[_currentMap].layers)
                 .map((layer, i) => {
                     return {
                         layer,
-                        scene: _manifest,
-                        images: _tileImages
+                        scene: _manifests[_currentMap],
+                        images: _tileImages[_currentMap]
                     };
                 });
         },
 
         getLocation: function() {
             return _currentLocation;
+        },
+
+        getCurrentMap: function() {
+            return _currentMap;
         },
 
         addChangeListener: function(callback) {

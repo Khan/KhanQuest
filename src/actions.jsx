@@ -5,7 +5,8 @@ var constants = {
     MOVE: "MOVE",
     ADD_SPELL: "ADD_SPELL",
     START_COMBAT: "START_COMBAT",
-    SHOW_DIALOG: "SHOW_DIALOG"
+    SHOW_DIALOG: "SHOW_DIALOG",
+    SET_MAP: "SET_MAP"
 };
 
 var Actions = {
@@ -40,6 +41,13 @@ var Actions = {
         AppDispatcher.handleViewAction({
             actionType: constants.SHOW_DIALOG,
             scene: scene
+        });
+    },
+
+    setCurrentMap: function(name) {
+        AppDispatcher.handleViewAction({
+            actionType: constants.SET_MAP,
+            name
         });
     }
 };
