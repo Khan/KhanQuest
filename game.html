@@ -130,6 +130,7 @@ Perseus.init({skipMathJax: false}).then(function() {
     );
     Actions.addSpell("groups-of-tens");
     Actions.addSpell("measuring-lengths-1");
+    Actions.fetchMapData();
 }).then(function() {
 }, function(err) {
     console.error(err);
