@@ -60,10 +60,12 @@ var CombatExerciseRenderer = React.createClass({
         var answerProps = _.extend({}, this.props.content.answerArea,
             {ref: "answerAreaRenderer"});
 
-        return <div className="exercise-view">
-            {Perseus.Renderer(questionProps)}
-            {Perseus.AnswerAreaRenderer(answerProps)}
-            <div style={{textAlign: "center"}}>
+        return <div>
+            <div className="exercise-view">
+                {Perseus.Renderer(questionProps)}
+                {Perseus.AnswerAreaRenderer(answerProps)}
+            </div>
+            <div className="buttons-area">
                 <div className="cast shake">
                     <KUIButton type="submit"
                         label="Cast"
@@ -71,7 +73,7 @@ var CombatExerciseRenderer = React.createClass({
                         onClick={this._attemptAttack} />
                 </div>
                 <div className="retreat">
-                    <KUIButton type="submit"
+                    <KUIButton type="button"
                         label="Retreat"
                         domainSlug={"humanities"}
                         width="140px"
