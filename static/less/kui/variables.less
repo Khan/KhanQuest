@@ -1,0 +1,222 @@
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
+
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+@kaGreen: #a8bb6a;
+@kaGreenLight: #bed47a;
+@kaBlue: #314453;
+@kaBlueLight: #4d6779;
+
+// Links
+@linkColor:             #005987;
+@linkColorHover:        #678d00;
+
+// Grays
+@grayExtraDark:         #111;
+@grayDarker:            #333;
+@grayDark:              #555;
+@gray:                  #999;
+@grayLight:             #aaa;
+@grayLighter:           #ddd;
+@grayExtraLight:        #eee;
+@graySuperLight:        #f7f7f7;
+@whiteDark:             #fdfdfd;
+@white:                 #fff;
+
+// Accent colors
+@blueDark: 				#2c3747;
+@blueDarkUnsaturated:   #3b414e;
+@blueDarkSaturated:     #1f3043;
+@blue:                  #005a88;
+@blueLight:             #a9c0d1;
+@green:                 #76a005;
+@greenLight:            #c6d1ad;
+@greenDark:             #356700;
+@yellowGreen:           #9db63b;
+@okGreen:               #a7cf5b;
+@orange:                #bf4f04;
+@red:					#cf5044;
+
+// Other colors
+@coral:                 #ee6666;
+@grayBlue:              #9ab3b9;
+
+@lightPageBackground:   @whiteDark;
+
+// Exercise Colors
+@colorProficient:       @mathDomainColor;
+@colorPracticed:        lighten(@colorProficient, 44%);
+@colorMastery1:         lighten(@colorProficient, 28%);
+@colorMastery2:         lighten(@colorProficient, 15%);
+@colorMastery3:         @colorProficient;
+@colorSuggested:        #73982c;
+@colorReview:           #e35d04;
+@colorNotStarted:       #ccc;
+@colorStarted:          #c7e5f7;
+@colorStruggling:       #c30202;
+@colorCoachRec:			#4c7e99;
+@colorPersonal:			#00809c;
+@colorPractice:			#96d9ff;
+
+@colorEnergyPoints:     #005987;
+
+// Provider Colors
+@facebookColor:			#1A60A2;
+@blueGoogleColor:		#2cafe2;
+@redGoogleColor:		#bf4434;
+@homepageColor:			#2d585e;
+
+// Typography
+@baseFontSize:          14px;
+@baseFontFamily:        'Proxima Nova', sans-serif;
+@baseLineHeight:        20px;
+@textColor:             #444;
+@lightTextColor:        #898989;
+@fontSizeTiny:          11px;
+@fontSizeSmall:         12px;
+@fontSizeNormal:        14px;
+@fontSizeMedium:        16px;
+@fontSizeLarge:         18px;
+@fontSizeExtraLarge:    24px;
+@fontSizeHuge:          36px;
+// Let's get crazy: https://www.google.com/search?q=Bakana
+@fontSizeBakana:        48px;
+@fontSizeBananas:       60px;
+
+@headerFontFamily:      'Proxima Nova Semibold', sans-serif;
+@headerLightFontFamily: 'Proxima Nova', sans-serif;
+
+@fixedWidthFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@contentPadding:		20px;
+
+
+// Buttons
+@primaryButtonBackground:    #89b908;
+@primaryButtonBorder:        #76a005;
+@buttonTextColor:            lighten(@grayDark, 15%);
+@buttonBorderRadius:	     3px;
+
+
+// CONTAINERS
+// --------------------------------------------------
+@basicBorderColor:        #ccc;
+@minContainerWidth:       1000px;
+@maxContainerWidth:       1200px;
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Form states and alerts
+// -------------------------
+@formHintColor:           #999;
+@infoText:                #4a7c17;
+@infoBackground:          #edf2df;
+@infoBorder:              darken(spin(@infoBackground, -10), 7%);
+
+// Discussion guidelines
+// ---------------------
+@guidelineExampleText:    #606060;
+
+// User hovercards
+@hoverCardWidth:          450px;
+
+// DROPDOWN MENUS
+// --------------------------------------------------
+
+// Highlights
+@menuHighlightColor:          #96ab4f;
+@menuHighlightBorderColor:    @primaryButtonBorder;
+
+// Text
+@menuActiveTextColor:       @white;
+@menuInactiveTextColor:     @textColor;
+@menuSubheaderTextColor:    desaturate(lighten(@textColor, 20%), 50%);
+
+// Border
+@menuBorderColor:        #94a170;
+
+// Notifications dropdown menu
+@unreadBackgroundColor:     #ECEEF4;
+
+// Metrics
+@menuLineHeight:            18px;
+@menuSubheaderLineHeight:   17px;
+@menuSubheaderFontSize:      9px;
+
+// Notification bar
+@notificationBarColor:	#4858a4; // Same as purple domain
+
+// MODAL DIALOGS
+// --------------------------------------------------
+@modalBodyTopPadding:    20px;
+@modalDialogPadding:     15px;
+@modalSectionPadding:     9px;
+
+
+
+// DOMAIN COLORS
+// --------------------------------------------------
+
+/* Fall back colors? Eg coach-res, talks & interviews */
+@defaultDomainColor:    #314453;
+@defaultSubjectColor:   #4d6779;
+@defaultTopicColor:     #6a8da6;
+@defaultHoverColor:     @defaultDomainColor;
+@defaultLinkColor:      @defaultDomainColor;
+@defaultLinkHoverColor: @defaultTopicColor;
+
+// The domain prefix is usually the domain's slug/id. See .applyToDomains in
+// mixins.less for details.
+@scienceDomainColor:    #94424f;
+@scienceSubjectColor:   #9d4a5a;
+@scienceTopicColor:     #c55f73;
+@scienceHoverColor:     @scienceDomainColor;
+@scienceLinkColor:      @scienceDomainColor;
+@scienceLinkHoverColor: @scienceTopicColor;
+
+@humanitiesDomainColor:    #cf5044;
+@humanitiesSubjectColor:   #e65a4c;
+@humanitiesTopicColor:     #fc6255;
+@humanitiesHoverColor:     @humanitiesDomainColor;
+@humanitiesLinkColor:      @humanitiesDomainColor;
+@humanitiesLinkHoverColor: @humanitiesTopicColor;
+
+@economicsDomainColor:    #c78d46;
+@economicsSubjectColor:   #e1a158;
+@economicsTopicColor:     #f0ac5f;
+@economicsHoverColor:     @economicsDomainColor;
+@economicsLinkColor:      @economicsDomainColor;
+@economicsLinkHoverColor: @economicsTopicColor;
+
+@csDomainColor:    #699c52;
+@csSubjectColor:   #77b05d;
+@csTopicColor:     #83c167;
+@csHoverColor:     @csDomainColor;
+@csLinkColor:      @csDomainColor;
+@csLinkHoverColor: @csTopicColor;
+
+@partnerContentDomainColor:    #49a88f;
+@partnerContentSubjectColor:   #55c1a7;
+@partnerContentTopicColor:     #5cd0b3;
+@partnerContentHoverColor:     @partnerContentDomainColor;
+@partnerContentLinkColor:      @partnerContentDomainColor;
+@partnerContentLinkHoverColor: @partnerContentTopicColor;
+
+@mathDomainColor:    #1c758a;
+@mathSubjectColor:   #46a8bf;
+@mathTopicColor:     #4fbad4;
+@mathHoverColor:     @mathDomainColor;
+@mathLinkColor:      @mathDomainColor;
+@mathLinkHoverColor: @mathTopicColor;
+
+@testPrepDomainColor:    #644172;
+@testPrepSubjectColor:   #7e5f8e;
+@testPrepTopicColor:     #9a72ac;
+@testPrepHoverColor:     @testPrepDomainColor;
+@testPrepLinkColor:      @testPrepDomainColor;
+@testPrepLinkHoverColor: @testPrepTopicColor;

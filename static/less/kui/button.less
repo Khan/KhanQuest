@@ -1,0 +1,95 @@
+@import "variables.less";
+@import "mixins.less";
+
+.kui-button {
+    border: 1px solid;
+    border-radius: 19px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+    line-height: 18px;
+    margin: 5px 0;
+    padding: 10px 30px;
+    transition: all 0.2s ease;
+
+    &:focus {
+        outline: none;
+    }
+
+    .border-button(@color) {
+        background: #fff;
+        color: @color;
+
+        &:hover {
+            background-color: fade(@color, 15%);
+        }
+
+        &:focus {
+            box-shadow: 0px 0px 5px fade(@color, 15%);
+        }
+        &:active {
+            color: darken(@color, 20%);
+        }
+    }
+    .background-button(@color1, @color2) {
+        background: @color2;
+        background: linear-gradient(@color1, @color2);
+        color: #fff;
+
+        &:hover, &:focus {
+            background: darken(@color2, 5%);
+            background: linear-gradient(darken(@color1, 5%), darken(@color2, 5%));
+        }
+
+        &:active {
+            background: darken(@color2, 5%);
+            background: linear-gradient(darken(@color2, 5%), darken(@color1, 5%));
+        }
+
+    }
+
+    .buttonThemeForColor(@color1, @color2) {
+        &.kui-button-plain {
+            .border-button(@color2);
+        }
+        &.kui-button-submit {
+            .background-button(@color1, @color2);
+        }
+    }
+
+    &-primary {
+        .buttonThemeForColor(lighten(@kaGreen, 5%), darken(@kaGreen, 10%));
+    }
+    &-secondary {
+        .buttonThemeForColor(lighten(@kaBlue, 10%), darken(@kaBlue, 5%));
+    }
+
+    &-domain {
+        .coloringRule(@prefix) {
+            // TODO(alpert): I'm cargo culting this practice of defining the name
+            // and then dereferencing the variable with @@ in a separate step
+            // because it seems to work better than doing it in one line even
+            // though no one seems to understand why.
+            @subjectColorName: ~"@{prefix}SubjectColor";
+            @domainColorName: ~"@{prefix}DomainColor";
+            .buttonThemeForColor(@@subjectColorName, @@domainColorName);
+            &.kui-button-plain:not(.kui-button-complete) {
+                .border-button(#aaa);
+            }
+        }
+        .coloringRule(default);
+        .domainRuleToApply(@domain, @prefix) {
+            &-@{domain} {
+                .coloringRule(@prefix);
+            }
+        }
+        .applyToDomains;
+    }
+
+    a& {
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+    }
+}

@@ -5,7 +5,8 @@ var Perseus = require("perseus");
 var CombatAction = require("./combat/combat-actions.js");
 var Spell = require('./models/spell.js');
 var CombatAction = require("./combat/combat-actions.js");
-var EntityStore = require('./entity.jsx')
+var EntityStore = require('./entity.jsx');
+var KUIButton = require("./components/button.jsx");
 
 var PERSEUS_ITEM = {
     "question": {
@@ -73,16 +74,23 @@ var CombatExerciseRenderer = React.createClass({
         return <div className="exercise-view">
             {Perseus.Renderer(questionProps)}
             {Perseus.AnswerAreaRenderer(answerProps)}
-            <div>
-                <button className="retreat" onClick={this._retreat}>
-                    Retreat
-                </button>
-                <button className="attempt" onClick={this._attemptAttack}>
-                    Cast spell
-                </button>
+            <div style={{textAlign: "center"}}>
+                <div className="cast">
+                    <KUIButton type="submit"
+                        label="Cast"
+                        width="140px"
+                        onClick={this._attemptAttack} />
+                </div>
+                <div className="retreat">
+                    <KUIButton type="submit"
+                        label="Retreat"
+                        domainSlug={"humanities"}
+                        width="140px"
+                        onClick={this._retreat} />
+                </div>
             </div>
             <div>
-                Hacks:
+                <div>Hacks:</div>
                 <button className="correct" onClick={this._onSuccessfulAttack}>
                     Correct
                 </button>
