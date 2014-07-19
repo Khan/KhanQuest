@@ -95,8 +95,7 @@ var Game = React.createClass({
 
         return <div>
             <div className="fight-graphics" style={{float: "left"}}>
-                <img src="http://placekitten.com/400/400" />
-                {/* TODO(zach): bring this back <CombatView />*/}
+                <CombatView />
             </div>
             <div className="combat">
                 <CombatScreen exerciseName={activeExercise} />
