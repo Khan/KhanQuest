@@ -429,13 +429,11 @@ var ParticleCloudRenderer = React.createClass({
     },
 
     render: function() {
-        var absolute = {
-            position: "absolute",
-            zIndex: 2
-        };
-
         var canvasSize = this.props.particleCloud.scaledSize();
-        return <canvas width={canvasSize[0]} height={canvasSize[1]} style={absolute} />;
+        return <canvas
+            width={canvasSize[0]}
+            height={canvasSize[1]}
+            style={this.props.style} />;
     }
 });
 
@@ -443,5 +441,8 @@ timingEngine.start();
 
 module.exports = {
     ParticleCloud: ParticleCloud,
+    SnowFlakeCloud: SnowFlakeCloud,
+    FogParticleCloud: FogParticleCloud,
+    RainCloud: RainCloud,
     ParticleCloudRenderer: ParticleCloudRenderer
 };

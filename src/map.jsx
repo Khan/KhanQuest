@@ -7,6 +7,7 @@
 var React = require("react");
 var _ = require("underscore");
 var Shortcut = require("./shortcut.js");
+var Weather = require("./sprites/weather.jsx");
 
 var { Actions } = require("./actions.jsx");
 
@@ -83,9 +84,14 @@ var Map = React.createClass({
         var absolute = {
             position: "absolute"
         };
+        var above = _.extend({ zIndex: 2 }, absolute);
         return <div>
             <Shortcut actions={actions} />
-            <ParticleCloudRenderer />
+            <Weather.WeatherRenderer
+                width={1000}
+                height={1000}
+                style={above}
+                type={Weather.SNOW} />
             <canvas ref="canvas" width={1000} height={1000} style={absolute} />
         </div>;
     },
