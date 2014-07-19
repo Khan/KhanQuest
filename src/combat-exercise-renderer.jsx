@@ -75,7 +75,7 @@ var CombatExerciseRenderer = React.createClass({
             {Perseus.Renderer(questionProps)}
             {Perseus.AnswerAreaRenderer(answerProps)}
             <div style={{textAlign: "center"}}>
-                <div className="cast">
+                <div className="cast shake">
                     <KUIButton type="submit"
                         label="Cast"
                         width="140px"
