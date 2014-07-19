@@ -2,6 +2,7 @@
 
 var React = require("react");
 var Perseus = require("perseus");
+var CombatAction = require("./combat/combat-actions.js");
 
 var PERSEUS_ITEM = {
     "question": {
@@ -53,9 +54,8 @@ var CombatExerciseRenderer = React.createClass({
         }
     },
 
-    _retreat: function() {
-        console.log("seeya!");
-        // TODO: end battle
+    onRetreat: function() {
+        CombatAction.endCombat();
     },
 
     render: function() {
@@ -69,7 +69,7 @@ var CombatExerciseRenderer = React.createClass({
             {Perseus.Renderer(questionProps)}
             {Perseus.AnswerAreaRenderer(answerProps)}
             <div>
-                <button className="retreat" onClick={this._retreat}>
+                <button className="retreat" onClick={this.onRetreat}>
                     Retreat
                 </button>
                 <button className="attempt" onClick={this._attemptAttack}>

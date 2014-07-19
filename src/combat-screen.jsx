@@ -16,7 +16,6 @@ var CombatScreen = React.createClass({
 
     getInitialState: function() {
         return {
-            onAttack: this.successfulAttack,
             problemIndex: 0
         };
     },
