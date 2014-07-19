@@ -16,6 +16,15 @@ var CombatActions = {
             sourceId: sourceId,
             targetId: targetId
         });
+    },
+
+    castSpell: function(spell, success, target) {
+        AppDispatcher.handleViewAction({
+            actionType: CombatConstants.PLAYER_CAST_SPELL,
+            spell: spell,
+            success: success,
+            target: target
+        });
     }
 };
 

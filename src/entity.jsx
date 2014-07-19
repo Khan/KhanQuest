@@ -48,6 +48,10 @@ class Entity {
             this.spriteState = 'dead';
         }
     }
+
+    isPlayer() {
+        return this.id === 'player';
+    }
 }
 
 var testPlayer = new Entity({

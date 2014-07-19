@@ -5,12 +5,15 @@ var CombatConstants = require("./combat-constants.js");
 
 var CHANGE_EVENT = "change";
 
+var CombatEngineStates = {
+    AWAITING_PLAYER_INPUT: "AWAITING_PLAYER",
+    RUNNING: "RUNNING_TURN" 
+};
+
 var _entities = {};
 var _turnOrder = [];
 var _turnIndex = 0;
-var _state = "ATTACK"; // TODO: Replace this with however we manage whether or
-                       // not the user is attacking
-var _currentAbility = null;
+var _state = CombatEngineStates.RUNNING;
 
 var combatLog = function() {
     var consoleArgs = ["COMBAT LOG"];
@@ -33,6 +36,80 @@ var FluxDatastore = {
 }
 
 var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
+    CombatEngine: {
+        startTurns: function() {
+            window.setInterval(() => CombatStore._takeTurn(), 500);
+        },
+
+        damageEntity: function(entity, damage) {
+            combatLog(`Damage! ${damage} points of damage to `, entity);
+            entity.damage(damage);
+        },
+
+        handleAbility: function(ability, source, target) {
+            combatLog("Ability use: ", ability);
+
+            // Simple stuff. Just use the power as damage to the target.
+            var damage = ability.power || 0;
+            this.damageEntity(target, damage);
+            combatstore._emitChange();
+        },
+
+        fizzleSpell: function(spell) {
+            combatLog("Fizzled spell: ", spell);
+        },
+
+        playerCast: function(spell, success, target) {
+            if (success) {
+                this.handleAbility(spell, EntityStore.getPlayer(), target);
+            } else {
+                // show the fizzle animation
+                this.fizzleSpell(spell);
+            }
+
+            _state = CombatEngineStates.RUNNING;
+            _turnIndex += 1;
+            this.takeTurn();
+        },
+
+        takeTurn: function() {
+            var currentEntity = CombatStore.CombatEngine.getCurrentEntity();
+            if (currentEntity.isPlayer()) {
+                _state = CombatEngineStates.AWAITING_PLAYER_INPUT;
+                combatLog("Players turn, waiting...");
+            } else {
+                // Not the player, some ai monster
+                var abilityToUse = CombatStore._chooseAbility(currentEntity);
+                var player = EntityStore.getPlayer();
+                CombatStore._handleAbility(abilityToUse, currentEntity, player);
+
+                // Advance the turn
+                _turnIndex += 1;
+            }
+
+            if (_state === CombatEngineStates.RUNNING) {
+                this.takeTurn();
+            }
+            CombatStore._emitChange();
+        },
+
+        getCurrentEntityId: function() {
+            return _turnOrder[_turnIndex % _turnOrder.length];
+        },
+
+        getCurrentEntity: function() {
+            return _entities[CombatStore.CombatEngine.getCurrentEntityId];
+        },
+
+        /**
+        * Choose an ability from the entities abilities, using priority and
+        * cooldowns
+        */
+        chooseAbility: function(entity) {
+            return _.find(entity.abilities, () => true);
+        }
+    },
+
     getEntities: function() {
         return _entities;
     },
@@ -64,7 +141,12 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
                 CombatStore._emitChange();
 
-                CombatStore._startTurns();
+                CombatStore.CombatEngine.startTurns();
+                break;
+
+            case CombatConstants.PLAYER_CAST_SPELL:
+                var {spell, success, target} = action;
+                CombatStore.CombatEngine.playerCast(spell, success, target);
                 break;
 
             case CombatConstants.USE_ABILITY:
@@ -78,54 +160,6 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         return true;
     }),
 
-    _startTurns: function() {
-        window.setInterval(() => CombatStore._takeTurn(), 500);
-    },
-
-    _damageEntity: function(entity, damage) {
-        combatLog(`Damage! ${damage} points of damage to `, entity);
-        entity.damage(damage);
-    },
-
-    _handleAbility: function(ability, source, target) {
-        combatLog("Ability use: ", ability);
-
-        // Simple stuff. Just use the power as damage to the target.
-        var damage = ability.power || 0;
-        CombatStore._damageEntity(target, damage);
-        CombatStore._emitChange();
-    },
-
-    _takeTurn: function() {
-        // horrible type coercion
-        var currentEntityIndex = CombatStore._entityIdOwningCurrentTurn();
-        var currentEntity = _entities[currentEntityIndex];
-        if (currentEntityIndex != 0) {
-            // Not the player, some ai monster
-            var abilityToUse = CombatStore._chooseAbility(currentEntity);
-            var player = EntityStore.getPlayer();
-            CombatStore._handleAbility(abilityToUse, currentEntity, player);
-        } else {
-            combatLog("PLAYER'S TURN! NOOPING");
-        }
-
-        // Advance the turn
-        _turnIndex += 1;
-
-        CombatStore._emitChange();
-    },
-
-    _entityIdOwningCurrentTurn: function() {
-        return _turnOrder[_turnIndex % _turnOrder.length];
-    },
-
-    /**
-     * Choose an ability from the entities abilities, using priority and
-     * cooldowns
-     */
-    _chooseAbility: function(entity) {
-        return _.find(entity.abilities, () => true);
-    }
 });
 
 module.exports = CombatStore;
