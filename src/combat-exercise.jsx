@@ -50,11 +50,7 @@ var CombatExercise = React.createClass({
             return <div>
                 <CombatExerciseRenderer
                     content={this.state.content}
-                    onAttack={() => {
-                        var spell = new Spell(this.props.exerciseName);
-                        spell.cast();
-                        this.props.onAttack();
-                    }}
+                    onAttack={this.props.onAttack}
                     onFailedAttack={this.props.onFailedAttack} />
             </div>;
         } else {

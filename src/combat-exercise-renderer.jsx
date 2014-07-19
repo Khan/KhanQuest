@@ -59,16 +59,15 @@ var CombatExerciseRenderer = React.createClass({
     },
 
     render: function() {
-        this.questionRenderer = Perseus.Renderer(
-            this.props.content.question
-        );
-        this.answerAreaRenderer = Perseus.AnswerAreaRenderer(
-            this.props.content.answerArea
-        );
+        var questionProps = _.extend({}, this.props.content.question,
+            {ref: "questionRenderer"});
+
+        var answerProps = _.extend({}, this.props.content.answerArea,
+            {ref: "answerAreaRenderer"});
 
         return <div>
-            {this.questionRenderer}
-            {this.answerAreaRenderer}
+            {Perseus.Renderer(questionProps)}
+            {Perseus.AnswerAreaRenderer(answerProps)}
             <div>
                 <button className="retreat" onClick={this._retreat}>
                     Retreat
@@ -90,8 +89,8 @@ var CombatExerciseRenderer = React.createClass({
     },
 
     _scoreInput: function() {
-        var qGuessAndScore = this.questionRenderer.guessAndScore();
-        var aGuessAndScore = this.answerAreaRenderer.guessAndScore();
+        var qGuessAndScore = this.refs.questionRenderer.guessAndScore();
+        var aGuessAndScore = this.refs.answerAreaRenderer.guessAndScore();
 
         var qGuess = qGuessAndScore[0], qScore = qGuessAndScore[1];
         var aGuess = aGuessAndScore[0], aScore = aGuessAndScore[1];
