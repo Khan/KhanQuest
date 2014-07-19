@@ -11,6 +11,9 @@ var Mersenne = require("mersenne");
 
 /* Information about the user state. */
 
+// The dialog currently visible
+var _dialog = null;
+
 var _view = GameViews.MAP;
 
 var _inCombat = false;
@@ -56,7 +59,7 @@ var stepState = function(direction) {
             break;
 
         case OBJECT:
-            // dun-dun-dun-dunnnnn
+            Actions.mapInteraction();
             break;
 
         case DOOR:
@@ -114,6 +117,13 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             _view = GameViews.COMBAT;
             break;
 
+        case constants.SHOW_DIALOG:
+            _dialog = action.scene;
+            break;
+
+        case constants.HIDE_DIALOG:
+            _dialog = null;
+            break;
 
         default:
             return true;
@@ -132,6 +142,10 @@ var GameStore = _({}).extend(
 
         getLocation: function() {
             return _playerLocation;
+        },
+
+        getDialog: function() {
+            return _dialog;
         },
 
         addChangeListener: function(callback) {

@@ -13,12 +13,14 @@ var constants = {
     ADD_SPELL: "ADD_SPELL",
     SET_ACTIVE_SPELL: "SET_ACTIVE_SPELL",
     SHOW_DIALOG: "SHOW_DIALOG",
+    HIDE_DIALOG: "HIDE_DIALOG",
     SET_MAP: "SET_MAP",
     OPEN_SPELLBOOK: "OPEN_SPELLBOOK",
     CLOSE_SPELLBOOK: "CLOSE_SPELLBOOK",
     NEXT_PROBLEM: "NEXT_PROBLEM",
     NEXT_MAP: "NEXT_MAP",
-    SET_LOCATION: "SET_LOCATION"
+    SET_LOCATION: "SET_LOCATION",
+    MAP_OBJECT_INTERACTION: "MAP_OBJECT_INTERACTION"
 };
 
 var Actions = {
@@ -63,6 +65,12 @@ var Actions = {
         });
     },
 
+    hideDialog: function() {
+        AppDispatcher.handleViewAction({
+            actionType: constants.HIDE_DIALOG
+        });
+    },
+
     setCurrentMap: function(name) {
         AppDispatcher.handleViewAction({
             actionType: constants.SET_MAP,
@@ -91,6 +99,12 @@ var Actions = {
     nextMap: function() {
         AppDispatcher.handleViewAction({
             actionType: constants.NEXT_MAP
+        });
+    },
+
+    mapInteraction: function() {
+        AppDispatcher.handleViewAction({
+            actionType: constants.MAP_OBJECT_INTERACTION
         });
     }
 };

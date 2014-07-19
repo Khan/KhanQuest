@@ -23,5 +23,12 @@
             "speaker": "Narrator",
             "line": "You wonder why you are here."
         }]
+    },
+
+    "salinterior": {
+        "lines": [{
+            "speaker": "Narrator",
+            "line": "An orb! Dark tidings. Dark tidings, indeed."
+        }]
     }
 }

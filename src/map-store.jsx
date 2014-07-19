@@ -1,7 +1,7 @@
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("./flux/app-dispatcher.js");
 var { constants } = require("./actions.jsx");
-var { FETCH_MAP_DATA, MOVE, SET_MAP, NEXT_MAP } = constants;
+var { FETCH_MAP_DATA, MOVE, SET_MAP, NEXT_MAP, MAP_OBJECT_INTERACTION } = constants;
 var { MONSTER, WALL, OBJECT, DOOR, START, GRASS, EMPTY } = require("./constants.jsx");
 
 var MAPS = {
@@ -22,6 +22,12 @@ var NEXT_WORLD = {
 
     // TEMP: loop back around
     fortress: "overworld"
+};
+
+var MAP_OBJECT_INTERACTIONS = {
+    salinterior: () => {
+        Actions.showDialog("salinterior");
+    }
 };
 
 var _currentMap = "salinterior";
@@ -89,6 +95,9 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             // TODO clear previous map!
             _currentMap = action.name;
             break;
+
+        case MAP_OBJECT_INTERACTION:
+            MAP_OBJECT_INTERACTIONS[_currentMap]();
 
         default:
             return true;

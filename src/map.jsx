@@ -85,7 +85,7 @@ var Map = React.createClass({
             position: "absolute"
         };
         var above = _.extend({ zIndex: 2 }, absolute);
-        return <div>
+        return <div style={{width: 1000, height: 1000}}>
             <Shortcut actions={actions} />
             <Weather.WeatherRenderer
                 width={1000}
@@ -97,7 +97,6 @@ var Map = React.createClass({
     },
 
     draw: function() {
-        console.log(this.state.layers.length && this.state.layers[0].scene);
         var canvas = this.refs.canvas.getDOMNode();
         this.context = canvas.getContext('2d');
 

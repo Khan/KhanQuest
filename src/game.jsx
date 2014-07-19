@@ -33,6 +33,12 @@ var Game = React.createClass({
             combatState: {
                 store: CombatStore,
                 fetch: (store) => store.getState()
+            },
+            dialog: {
+                store: GameStore,
+                fetch: store => {
+                    return store.getDialog();
+                }
             }
         })
     ],
@@ -102,6 +108,7 @@ var Game = React.createClass({
                 cave
             </button>
             <Map />
+            {this.state.dialog && <Dialog scene={this.state.dialog} />}
         </div>;
     },
 

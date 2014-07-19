@@ -27,30 +27,26 @@ var Dialog = React.createClass({
 
     render: function() {
         var line = this._getLine();
+        var end = this.state.index === this._getScene().lines.length - 1;
+        var message = end ? "close" : "next";
         return <div>
             <div className="speaker">{line.speaker}</div>
             <div className="line">{line.line}</div>
-            <button className="back"
-                    type="button"
-                    onClick={this.onBack}>&lt;</button>
             <button className="forward"
                     type="button"
-                    onClick={this.onForward}>&gt;</button>
+                    onClick={this.onForward}>{message}</button>
         </div>;
     },
 
     onForward: function() {
         var scene = this._getScene();
-        var index = Math.min(scene.lines.length - 1,
-                             this.state.index + 1);
-        this.setState({index});
-    },
 
-    onBack: function() {
-        var index = Math.max(0, this.state.index - 1);
-        this.setState({index});
+        if (this.state.index === scene.lines.length - 1) {
+            Actions.hideDialog();
+        } else {
+            this.setState({ index: this.state.index + 1 });
+        }
     }
-
 });
 
 module.exports = Dialog;
