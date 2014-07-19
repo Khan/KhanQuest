@@ -16,7 +16,8 @@ var constants = {
     SET_MAP: "SET_MAP",
     OPEN_SPELLBOOK: "OPEN_SPELLBOOK",
     CLOSE_SPELLBOOK: "CLOSE_SPELLBOOK",
-    NEXT_PROBLEM: "NEXT_PROBLEM"
+    NEXT_PROBLEM: "NEXT_PROBLEM",
+    NEXT_MAP: "NEXT_MAP"
 };
 
 var Actions = {
@@ -76,6 +77,12 @@ var Actions = {
     nextProblem: function() {
         AppDispatcher.handleViewAction({
             actionType: constants.NEXT_PROBLEM
+        });
+    },
+
+    nextMap: function() {
+        AppDispatcher.handleViewAction({
+            actionType: constants.NEXT_MAP
         });
     }
 };

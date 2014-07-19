@@ -43,10 +43,6 @@ var stepState = function(direction) {
     // we triggered an action!
     var interaction = MapStore.getInteractionForLocation(candidateLocation);
 
-    if (interaction !== WALL) {
-        interaction = GRASS; // TODO(dmnd): unhardcode this
-    }
-
     switch (interaction) {
         case MONSTER:
             // you ran into a monster.
@@ -61,6 +57,7 @@ var stepState = function(direction) {
             break;
 
         case DOOR:
+            Actions.nextMap();
             // how does a door encode where it leads?
             break;
 
