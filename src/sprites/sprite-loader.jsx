@@ -25,14 +25,14 @@ var testJSON = JSON.stringify([
         scale: 2
     },
     {
-        id: 'red-mage',
+        id: 'red-mage-idle',
         url: 'resources/red-mage.png',
-        pos: [360, 0],
+        pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [0],
+        frameIndices: [0, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0],
         dir: 'horizontal',
-        once: true,
+        once: false,
         scale: 2
     },
     {
@@ -58,7 +58,7 @@ var testJSON = JSON.stringify([
         scale: 2
     },
     {
-        id: 'red-mage-defend',
+        id: 'red-mage-damaged',
         url: 'resources/red-mage.png',
         pos: [296, 0],
         size: [72, 72],
@@ -80,27 +80,27 @@ var testJSON = JSON.stringify([
         scale: 2
     },
     {
-        id: 'red-mage-attack-magic',
-        url: 'resources/red-mage.png',
+        id: 'troll-whelp-attack',
+        url: 'resources/troll-whelp.png',
         pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [0, 1, 0],
+        frameIndices: [0, 1, 2],
         dir: 'horizontal',
         once: true,
         scale: 2
     },
     {
-        id: 'red-mage-defend',
-        url: 'resources/red-mage.png',
-        pos: [296, 0],
+        id: 'troll-whelp-damaged',
+        url: 'resources/troll-whelp.png',
+        pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [0],
+        frameIndices: [3, 4, 3],
         dir: 'horizontal',
         once: true,
         scale: 2
-    }
+    },
 ]);
 
 var _spriteDict = {};

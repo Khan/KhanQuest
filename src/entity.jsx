@@ -57,7 +57,7 @@ class Entity {
 var testPlayer = new Entity({
     id: "player",
     sprites: {
-        idle: 'red-mage',
+        idle: 'red-mage-idle',
         attack: 'red-mage-attack-magic',
         dead: 'red-mage-attack-staff'
     },
