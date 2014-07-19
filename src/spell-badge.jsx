@@ -23,7 +23,7 @@ var SpellBadge = React.createClass({
     },
 
     _getIconClassName: function () {
-        var className = "spell-badge-icon";
+        var className = "icon";
         if (this.props.spell.type) {
             className += " " + this.props.spell.type;
         }
@@ -31,7 +31,8 @@ var SpellBadge = React.createClass({
     },
 
     _renderImage: function () {
-        var url = "/static/img/spells/" + this.props.spell.exerciseName + ".jpg";
+        var asset = this.props.spell.displayName.toLowerCase().replace(/ /, '-');
+        var url = "/static/img/spells/" + asset + ".png";
         return <img className={this._getIconClassName()} src={url} />;
     },
 
@@ -42,10 +43,9 @@ var SpellBadge = React.createClass({
 
         return <div className={this._getClassName()}>
             <div style={inlineBlock}>{this._renderImage()}</div>
-            <div style={inlineBlock}>
-                <div>{this.props.spell.displayName}</div>
-                <div>{this.props.spell.caption}</div>
-                <div>{this.props.spell.description}</div>
+            <div style={inlineBlock} className="content">
+                <div className="title">{this.props.spell.displayName}</div>
+                <div className="description">{this.props.spell.description}</div>
             </div>
         </div>;
     }

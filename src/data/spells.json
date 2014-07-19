@@ -7,9 +7,9 @@
     },
 
     "groups-of-tens": {
-        "displayName": "Frostbolt",
+        "displayName": "Magic Missile",
         "caption": "(greensquadron)",
         "description": "Included to appease Jack.",
-        "type": "ice"
+        "type": "arcane"
     }
 }

@@ -39,7 +39,7 @@ var Game = React.createClass({
 
     getDefaultProps: function() {
         return {
-            showSpellbook: false,
+            showSpellbook: true,
             showCombat: false,
         };
     },
@@ -98,7 +98,6 @@ var Game = React.createClass({
                                  spells={_.rest(spells)} />
                 {this.state.combatState === "ATTACK" && <CombatScreen />}
             </div>
-
             {this.props.showDialog && <Dialog scene="scene1"/>}
         </div>;
     }

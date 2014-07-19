@@ -20,9 +20,13 @@ var Spellbook = React.createClass({
 
     render: function () {
         return <div className="spellbook">
-            {_.map(this.props.spells, (spell, i) => {
-                return <SpellBadge spell={spell} key={i} />;
-            })}
+            <div id="border">
+                <h1 id="banner">SPELLBOOK</h1>
+                <div className="separator" />
+                {_.map(this.props.spells, (spell, i) => {
+                    return <SpellBadge spell={spell} key={i} />;
+                })}
+            </div>
         </div>;
     }
 });
