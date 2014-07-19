@@ -16,10 +16,7 @@ var ActiveSpell = React.createClass({
                         exerciseName={this.props.exerciseName}
                         onClick={this._openSpellbook} />;
         } else {
-            var style = {
-                backgroundColor: "green",
-            }
-            return <div onClick={this._openSpellbook} style={style}>
+            return <div onClick={this._openSpellbook} className="open-spellbook">
                 Click to open spellbook.
             </div>;
         }
