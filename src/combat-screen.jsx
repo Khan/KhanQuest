@@ -3,6 +3,9 @@
 var React = require("react");
 var CombatExercise = require("./combat-exercise.jsx");
 var ActiveSpell = require("./active-spell.jsx");
+var CombatAction = require("./combat/combat-actions.js");
+var Spell = require('./models/spell.js');
+var EntityStore = require('./entity.jsx')
 
 var CombatScreen = React.createClass({
     getDefaultProps: function() {
@@ -18,9 +21,18 @@ var CombatScreen = React.createClass({
         };
     },
 
+    componentDidMount: function() {
+        var forestTrollStats = MonsterStore.getById("forest_troll");
+        var forestTroll = EntityStore.createEntity(forestTrollStats);
+
+        CombatActions.startCombat([forestTroll]);
+    },
+
     onAttack: function() {
         console.log("onAttack");
         this.nextProblem();
+        var spell = new Spell(this.props.exerciseName);
+        CombatAction.castSpell(spell, true, EntityStore.getPlayer());
     },
 
     onFailedAttack: function() {

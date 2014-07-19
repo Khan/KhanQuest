@@ -88,8 +88,7 @@ var Game = React.createClass({
                      src="http://placekitten.com/400/400" />
             </div>
             <div className="combat">
-                {this.state.combatState === "ATTACK" &&
-                    <CombatScreen exerciseName={activeExercise} />}
+                <CombatScreen exerciseName={activeExercise} />
             </div>
             {this.props.showDialog && <Dialog scene="scene1" />}
         </div>;

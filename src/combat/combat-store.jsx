@@ -7,7 +7,7 @@ var CHANGE_EVENT = "change";
 
 var CombatEngineStates = {
     AWAITING_PLAYER_INPUT: "AWAITING_PLAYER",
-    RUNNING: "RUNNING_TURN" 
+    RUNNING: "RUNNING_TURN"
 };
 
 var _entities = {};
@@ -38,7 +38,7 @@ var FluxDatastore = {
 var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
     CombatEngine: {
         startTurns: function() {
-            window.setInterval(() => CombatStore._takeTurn(), 500);
+            this.takeTurn();
         },
 
         damageEntity: function(entity, damage) {
