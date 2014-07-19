@@ -78,9 +78,9 @@ var testJSON = JSON.stringify([
         id: "spider",
         sprites: {
             idle: "spider-idle",
-            attack: "default",
-            damaged: "default",
-            dead: "default"
+            attack: "spider-attack",
+            damaged: "spider-die",
+            dead: "spider-die"
         },
         hp: 50,
         fire_resist: 10,
@@ -91,10 +91,10 @@ var testJSON = JSON.stringify([
         physical: 42,
         abilities: [
             {
-                id: "bite",
+                id: "poison",
                 animation: {self: "", target: ""},
                 category: "attack",
-                type: "physical",
+                type: "arcane",
                 priority: 1,
                 power: 10,
                 cooldown: 0

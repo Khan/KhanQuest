@@ -1,0 +1,4482 @@
+Simple plain text exporter for demo purposes
+
+See http://www.grantlee.org/apidox/for_themers.html for more information
+
+Texture data:
+    texture.width  = 720
+    texture.height = 72
+
+    texture.trimmedName = red-mage-female
+    texture.fullName = red-mage-female.png
+    texture.absoluteFileName = /Users/aria/khan/KAQuest/resources/red-mage-female.png
+
+SmartUpdateHash: $TexturePacker:SmartUpdate:35529bd514b33fdd79442c501f8a117c:80f588f063b90e94ab6a59c359042078:c2edefd2fd7fbb06406ad74ae71b081a$
+
+Settings:
+
+Access to all values in the settings (.tps file):
+
+settings.tpsName                = unsaved ("unsaved" if used from command line without .tps file)
+settings.allowRotation          = false
+settings.autoAliasEnabled       = true
+settings.flipPVR                = false
+settings.forceIdenticalLayout   = false
+settings.multiPack              = false
+settings.premultiplyAlpha       = false
+settings.shapeDebug             = false
+settings.trimSpriteNames        = false
+settings.fixedTextureSize       = -1 x -1
+settings.dataFormat             = plain
+settings.textureSubPath         = 
+settings.ditherType             = NearestNeighbour
+settings.outputFormat           = RGBA8888
+settings.textureFormat          = png
+settings.backgroundColor        = 0
+settings.borderPadding          = 0
+settings.shapePadding           = 0
+settings.commonDivisorX         = 1
+settings.commonDivisorY         = 1
+settings.dpi                    = 72
+settings.reduceBorderArtifacts  = false
+
+settings.contentProtection.key  = 
+
+Variants:
+
+---
+variant.scale = 1
+variant.extension = 
+variant.spriteFilter = 
+variant.acceptFractionalValues = false
+variant.maxTextureSize = -1 x -1
+
+
+
+Not yet available:
+
+settings.dataFileNames          = 
+settings.textureFileName        = 
+settings.algorithmSettings      = 
+settings.globalSpriteSettings   = 
+
+Adjusted values for the current autosd variant:
+
+variantParams.scale             = 1
+variantParams.shapePadding      = 0
+variantParams.borderPadding     = 0
+variantParams.commonDivisorX    = 1
+variantParams.commonDivisorY    = 1
+variantParams.extrude           = 0
+variantParams.baseFactor        = 1
+variantParams.maxTextureSize    = 2048 x 72
+variantParams.fixedTextureSize  = -1 x -1
+
+Sprite data:
+
+There are 2 variants:
+- sprites - contains the sprites, aliases are available in the
+  aliasList property and are not added top level
+
+- allSprites - list of all sprites
+
+Load javascript filter plugin, must be located in the exporter's folder in a subfolder
+grantlee/0.2/makecssselector.qs
+
+
+// set width & height for calculations using the javascript filter
+
+
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage+female-attack-magic-1.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage+female-attack-magic-1
+
+    -- name with image extension
+    sprite.fullName         = red-mage+female-attack-magic-1.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 0
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 0.1
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 0
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-1.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-19T14:13:19
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-19T14:13:19
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1536
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage+female-attack-magic-2.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage+female-attack-magic-2
+
+    -- name with image extension
+    sprite.fullName         = red-mage+female-attack-magic-2.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 72
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.1
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.1
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 0.1
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 72
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-2.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-19T14:13:19
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-19T14:13:19
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1601
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage+female-attack-staff-1.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage+female-attack-staff-1
+
+    -- name with image extension
+    sprite.fullName         = red-mage+female-attack-staff-1.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 144
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.2
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.2
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 0.1
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 144
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-1.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-19T14:13:19
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-19T14:13:19
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1512
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage+female-attack-staff-2.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage+female-attack-staff-2
+
+    -- name with image extension
+    sprite.fullName         = red-mage+female-attack-staff-2.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 216
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.3
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.3
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 0.1
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 216
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-2.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-19T14:13:19
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-19T14:13:19
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1638
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage+female-defend.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage+female-defend
+
+    -- name with image extension
+    sprite.fullName         = red-mage+female-defend.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 288
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.4
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.4
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 0.1
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 288
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-defend.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-19T14:13:19
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-19T14:13:19
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1559
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage+female-die-1.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage+female-die-1
+
+    -- name with image extension
+    sprite.fullName         = red-mage+female-die-1.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 360
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.5
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.5
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 0.1
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 360
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-1.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-19T14:13:19
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-19T14:13:19
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 2002
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage+female-die-2.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage+female-die-2
+
+    -- name with image extension
+    sprite.fullName         = red-mage+female-die-2.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 432
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.6
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.6
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 0.1
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 432
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-2.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-19T14:13:19
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-19T14:13:19
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 2065
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage+female-die-3.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage+female-die-3
+
+    -- name with image extension
+    sprite.fullName         = red-mage+female-die-3.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 504
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.7
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.7
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 0.1
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 504
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-3.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-19T14:13:19
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-19T14:13:19
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1710
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage+female-die-4.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage+female-die-4
+
+    -- name with image extension
+    sprite.fullName         = red-mage+female-die-4.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 576
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.8
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.8
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 0.1
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 576
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-4.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-19T14:13:19
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-19T14:13:19
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1446
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage+female.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage+female
+
+    -- name with image extension
+    sprite.fullName         = red-mage+female.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 648
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.9
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.9
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.1
+    sprite.frameRectRel.height = 0.1
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 648
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-19T14:13:19
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-19T14:13:19
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1477
+
+
+
+#### Complete dump of all available objects
+
+### Values for the current texture
+The following values are available inside templates that are written for each
+variant or multipack. They are not available in a file that has the following values set:
+<hasSeparateAutoSDFiles>all</hasSeparateAutoSDFiles>
+<hasSeparateMultiPackFiles>last</hasSeparateMultiPackFiles>
+
+## sprites
+Contains the sprite of the current file, aliases are available through the aliasList property
+Shortcut into texture.sprites
+
+## allSprites
+Contains all sprites of the current file including aliases.
+Shortcut into texture.allSprites
+
+## texture
+Contains information about the current texture, size, and other information.
+Shortcut into allResults[variantIndex].textures[multiPackIndex]
+
+## variantParams
+The data the current file was created with
+
+### Values for all files
+The following values are available for all templates
+
+## settings
+The main settigns the file was created with
+
+## smartUpdateKey
+The key for this file used to check file consistency and avoid re-calculating
+data that is already available
+
+## multiPackIndex
+The multipack index number the current file was created with
+
+## variantIndex
+The AutoSD variant index the file was created with
+
+## allResults
+All texture and sprite information in a big array
+
+smartUpdateKey = $TexturePacker:SmartUpdate:35529bd514b33fdd79442c501f8a117c:80f588f063b90e94ab6a59c359042078:c2edefd2fd7fbb06406ad74ae71b081a$
+
+multiPackIndex = 0
+
+variantIndex = 0
+
+variantParams = {
+    scale = 1
+    shapePadding = 0
+    borderPadding = 0
+    commonDivisorX = 1
+    commonDivisorY = 1
+    extrude = 0
+    baseFactor = 1
+    maxTextureSize = {
+        width = 2048
+        height = 72
+    }
+    fixedTextureSize = {
+        width = -1
+        height = -1
+    }
+}
+
+settings = {
+    ditherType = NearestNeighbour
+    textureFormat = png
+    outputFormat = RGBA8888
+    contentProtection = {
+        key = 
+    }
+    autoSDSettings = {
+        0 = {
+            scale = 1
+            extension = 
+            spriteFilter = 
+            acceptFractionalValues = false
+            maxTextureSize = {
+                width = -1
+                height = -1
+            }
+        }
+    }
+    tpsName = unsaved
+    allowRotation = false
+    flipPVR = false
+    forceIdenticalLayout = false
+    multiPack = false
+    shapeDebug = false
+    trimSpriteNames = false
+    autoAliasEnabled = true
+    premultiplyAlpha = false
+    reduceBorderArtifacts = false
+    fixedTextureSize = {
+        width = -1
+        height = -1
+    }
+    dataFormat = plain
+    textureSubPath = 
+    borderPadding = 0
+    shapePadding = 0
+    commonDivisorX = 1
+    commonDivisorY = 1
+    dpi = 72
+    backgroundColor = 0
+}
+
+allResults = {
+    0 = {
+        textures = {
+            0 = {
+                size = {
+                    width = 720
+                    height = 72
+                }
+                area = 51840
+                sprites = {
+                    0 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-1.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1536
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-attack-magic-1
+                        fullName = red-mage+female-attack-magic-1.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    1 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 72
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 72
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.1
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-2.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1601
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-attack-magic-2
+                        fullName = red-mage+female-attack-magic-2.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    2 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 144
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 144
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.2
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-1.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1512
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-attack-staff-1
+                        fullName = red-mage+female-attack-staff-1.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    3 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 216
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 216
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.3
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-2.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1638
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-attack-staff-2
+                        fullName = red-mage+female-attack-staff-2.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    4 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 288
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 288
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.4
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-defend.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1559
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-defend
+                        fullName = red-mage+female-defend.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    5 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 360
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 360
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.5
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-1.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 2002
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-die-1
+                        fullName = red-mage+female-die-1.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    6 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 432
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 432
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.6
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-2.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 2065
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-die-2
+                        fullName = red-mage+female-die-2.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    7 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 504
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 504
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.7
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-3.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1710
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-die-3
+                        fullName = red-mage+female-die-3.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    8 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 576
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 576
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.8
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-4.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1446
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-die-4
+                        fullName = red-mage+female-die-4.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    9 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 648
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 648
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.9
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1477
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female
+                        fullName = red-mage+female.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                }
+                allSprites = {
+                    0 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-1.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1536
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-attack-magic-1
+                        fullName = red-mage+female-attack-magic-1.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    1 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 72
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 72
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.1
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-2.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1601
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-attack-magic-2
+                        fullName = red-mage+female-attack-magic-2.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    2 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 144
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 144
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.2
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-1.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1512
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-attack-staff-1
+                        fullName = red-mage+female-attack-staff-1.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    3 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 216
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 216
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.3
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-2.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1638
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-attack-staff-2
+                        fullName = red-mage+female-attack-staff-2.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    4 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 288
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 288
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.4
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-defend.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1559
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-defend
+                        fullName = red-mage+female-defend.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    5 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 360
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 360
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.5
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-1.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 2002
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-die-1
+                        fullName = red-mage+female-die-1.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    6 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 432
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 432
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.6
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-2.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 2065
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-die-2
+                        fullName = red-mage+female-die-2.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    7 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 504
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 504
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.7
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-3.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1710
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-die-3
+                        fullName = red-mage+female-die-3.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    8 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 576
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 576
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.8
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-4.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1446
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female-die-4
+                        fullName = red-mage+female-die-4.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    9 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 648
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 648
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.9
+                            y = 0
+                            width = 0.1
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female.png
+                            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                            fileSize = 1477
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage+female
+                        fullName = red-mage+female.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                }
+                absoluteFileName = /Users/aria/khan/KAQuest/resources/red-mage-female.png
+                trimmedName = red-mage-female
+                fullName = red-mage-female.png
+            }
+        }
+        nonFittingSprites = {}
+    }
+}
+
+texture = {
+    size = {
+        width = 720
+        height = 72
+    }
+    area = 51840
+    sprites = {
+        0 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-1.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1536
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-attack-magic-1
+            fullName = red-mage+female-attack-magic-1.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        1 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 72
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 72
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.1
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-2.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1601
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-attack-magic-2
+            fullName = red-mage+female-attack-magic-2.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        2 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 144
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 144
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.2
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-1.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1512
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-attack-staff-1
+            fullName = red-mage+female-attack-staff-1.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        3 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 216
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 216
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.3
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-2.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1638
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-attack-staff-2
+            fullName = red-mage+female-attack-staff-2.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        4 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 288
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 288
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.4
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-defend.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1559
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-defend
+            fullName = red-mage+female-defend.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        5 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 360
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 360
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.5
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-1.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 2002
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-die-1
+            fullName = red-mage+female-die-1.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        6 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 432
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 432
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.6
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-2.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 2065
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-die-2
+            fullName = red-mage+female-die-2.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        7 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 504
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 504
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.7
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-3.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1710
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-die-3
+            fullName = red-mage+female-die-3.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        8 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 576
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 576
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.8
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-4.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1446
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-die-4
+            fullName = red-mage+female-die-4.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        9 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 648
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 648
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.9
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1477
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female
+            fullName = red-mage+female.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+    }
+    allSprites = {
+        0 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-1.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1536
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-attack-magic-1
+            fullName = red-mage+female-attack-magic-1.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        1 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 72
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 72
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.1
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-2.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1601
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-attack-magic-2
+            fullName = red-mage+female-attack-magic-2.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        2 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 144
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 144
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.2
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-1.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1512
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-attack-staff-1
+            fullName = red-mage+female-attack-staff-1.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        3 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 216
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 216
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.3
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-2.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1638
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-attack-staff-2
+            fullName = red-mage+female-attack-staff-2.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        4 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 288
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 288
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.4
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-defend.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1559
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-defend
+            fullName = red-mage+female-defend.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        5 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 360
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 360
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.5
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-1.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 2002
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-die-1
+            fullName = red-mage+female-die-1.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        6 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 432
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 432
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.6
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-2.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 2065
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-die-2
+            fullName = red-mage+female-die-2.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        7 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 504
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 504
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.7
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-3.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1710
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-die-3
+            fullName = red-mage+female-die-3.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        8 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 576
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 576
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.8
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-4.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1446
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female-die-4
+            fullName = red-mage+female-die-4.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        9 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 648
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 648
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.9
+                y = 0
+                width = 0.1
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female.png
+                lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+                fileSize = 1477
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage+female
+            fullName = red-mage+female.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+    }
+    absoluteFileName = /Users/aria/khan/KAQuest/resources/red-mage-female.png
+    trimmedName = red-mage-female
+    fullName = red-mage-female.png
+}
+
+allSprites = {
+    0 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-1.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1536
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-attack-magic-1
+        fullName = red-mage+female-attack-magic-1.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    1 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 72
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 72
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.1
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-2.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1601
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-attack-magic-2
+        fullName = red-mage+female-attack-magic-2.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    2 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 144
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 144
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.2
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-1.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1512
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-attack-staff-1
+        fullName = red-mage+female-attack-staff-1.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    3 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 216
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 216
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.3
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-2.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1638
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-attack-staff-2
+        fullName = red-mage+female-attack-staff-2.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    4 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 288
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 288
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.4
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-defend.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1559
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-defend
+        fullName = red-mage+female-defend.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    5 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 360
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 360
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.5
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-1.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 2002
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-die-1
+        fullName = red-mage+female-die-1.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    6 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 432
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 432
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.6
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-2.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 2065
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-die-2
+        fullName = red-mage+female-die-2.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    7 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 504
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 504
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.7
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-3.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1710
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-die-3
+        fullName = red-mage+female-die-3.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    8 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 576
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 576
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.8
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-4.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1446
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-die-4
+        fullName = red-mage+female-die-4.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    9 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 648
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 648
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.9
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1477
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female
+        fullName = red-mage+female.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+}
+
+sprites = {
+    0 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-1.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1536
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-attack-magic-1
+        fullName = red-mage+female-attack-magic-1.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    1 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 72
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 72
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.1
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-magic-2.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1601
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-attack-magic-2
+        fullName = red-mage+female-attack-magic-2.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    2 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 144
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 144
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.2
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-1.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1512
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-attack-staff-1
+        fullName = red-mage+female-attack-staff-1.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    3 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 216
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 216
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.3
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-attack-staff-2.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1638
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-attack-staff-2
+        fullName = red-mage+female-attack-staff-2.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    4 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 288
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 288
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.4
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-defend.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1559
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-defend
+        fullName = red-mage+female-defend.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    5 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 360
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 360
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.5
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-1.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 2002
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-die-1
+        fullName = red-mage+female-die-1.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    6 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 432
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 432
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.6
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-2.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 2065
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-die-2
+        fullName = red-mage+female-die-2.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    7 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 504
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 504
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.7
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-3.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1710
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-die-3
+        fullName = red-mage+female-die-3.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    8 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 576
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 576
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.8
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female-die-4.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1446
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female-die-4
+        fullName = red-mage+female-die-4.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    9 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 648
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 648
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.9
+            y = 0
+            width = 0.1
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/aria/khan/wesnoth/data/core/images/units/human-magi/red-mage+female.png
+            lastModified = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            created = {Sat Jul 19 2014 14:13:19 GMT-0700 (PDT)}
+            fileSize = 1477
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage+female
+        fullName = red-mage+female.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+}

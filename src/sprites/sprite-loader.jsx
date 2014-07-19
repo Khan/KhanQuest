@@ -69,6 +69,61 @@ var testJSON = JSON.stringify([
         scale: 2
     },
     {
+        id: 'red-mage-die-female',
+        url: 'resources/red-mage-female.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [5, 6, 7, 8],
+        dir: 'horizontal',
+        once: true,
+        scale: 2
+    },
+    {
+        id: 'red-mage-idle-female',
+        url: 'resources/red-mage-female.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 4, 4, 4, 4, 0, 0, 0, 0, 0],
+        dir: 'horizontal',
+        once: false,
+        scale: 2
+    },
+    {
+        id: 'red-mage-attack-staff-female',
+        url: 'resources/red-mage-female.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [1, 2, 3, 2, 3],
+        dir: 'horizontal',
+        once: false,
+        scale: 2
+    },
+    {
+        id: 'red-mage-attack-magic-female',
+        url: 'resources/red-mage-female.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [1, 2, 3, 3],
+        dir: 'horizontal',
+        once: true,
+        scale: 2
+    },
+    {
+        id: 'red-mage-damaged-female',
+        url: 'resources/red-mage-female.png',
+        pos: [296, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0],
+        dir: 'horizontal',
+        once: true,
+        scale: 2
+    },
+    {
         id: 'troll-whelp-idle',
         url: 'resources/troll-whelp.png',
         pos: [360, 0],
@@ -118,9 +173,31 @@ var testJSON = JSON.stringify([
         pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        frameIndices: [1, 2, 3, 4],
         dir: 'horizontal',
         once: false,
+        scale: 2
+    },
+    {
+        id: 'spider-attack',
+        url: 'resources/spider.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [5, 6, 7, 8, 9],
+        dir: 'horizontal',
+        once: false,
+        scale: 2
+    },
+    {
+        id: 'spider-die',
+        url: 'resources/spider.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [10, 11, 12, 13],
+        dir: 'horizontal',
+        once: true,
         scale: 2
     }
 ]);
