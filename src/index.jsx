@@ -11,6 +11,7 @@ window.EntityStore = require("./entity.jsx");
 window.CombatStore = require("./combat/combat-store.jsx");
 window.CombatActions = require("./combat/combat-actions.js");
 window.CombatView = require("./combat/combat-view.jsx");
+window.ParticleCloudRenderer = require("./sprites/animation.jsx").ParticleCloudRenderer;
 
 window.MapShell = React.createClass({
     render: function() {

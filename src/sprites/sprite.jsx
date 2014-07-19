@@ -3,7 +3,7 @@
 var _ = require("underscore");
 var React = require("react");
 
-var AnimationTimingEngine = require("./animation-timing-engine.jsx")
+var AnimationTimingEngine = require("./animation-timing-engine.jsx");
 
 var Resources = (function() {
     var resources = {};
@@ -108,7 +108,6 @@ class Sprite {
     }
 }
 
-var _spriteIndex = 0;
 var SpriteRenderer = React.createClass({
     propTypes: {
         sprite: React.PropTypes.instanceOf(Sprite).isRequired
