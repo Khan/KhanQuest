@@ -144,7 +144,7 @@ var ParticleCloudRenderer = React.createClass({
         this.ctx = this.getDOMNode().getContext('2d');
         this.time = 0;
 
-        this._insertIntoParticleClouds(this.props.sprite);
+        this._insertIntoParticleClouds();
     },
 
     componentWillUnmount: function() {
