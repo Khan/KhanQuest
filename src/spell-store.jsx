@@ -25,7 +25,7 @@ var testJSON = JSON.stringify({
     },
 
     "decomposing-fractions": {
-        displayName: "Magic Missile",
+        displayName: "Ice Armor",
         caption: "(starmap)",
         description: "What what what what what what what what what what what what what what what what what what what what.",
         type: "arcane",

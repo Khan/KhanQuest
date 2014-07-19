@@ -69,9 +69,12 @@ var Game = React.createClass({
             </div>
             <div className="row">
                 <ReactCSSTransitionGroup transitionName="screen">
-                {this.state.currentView === GameViews.MAP && this._renderMap()}
-                {this.state.currentView === GameViews.COMBAT && this._renderCombat()}
-                {this.state.currentView === GameViews.SPELLBOOK && this._renderSpellbook()}
+                {this.state.currentView === GameViews.MAP &&
+                    this._renderMap()}
+                {this.state.currentView === GameViews.COMBAT &&
+                    this._renderCombat()}
+                {this.state.currentView === GameViews.SPELLBOOK &&
+                    this._renderSpellbook()}
                 </ReactCSSTransitionGroup>
             </div>
         </div>;
@@ -87,7 +90,6 @@ var Game = React.createClass({
                     type="button">
                 cave
             </button>
-
             <Map />
         </div>;
     },
