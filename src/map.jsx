@@ -43,22 +43,22 @@ var Map = React.createClass({
     render: function() {
 
         var up = {
-            handler: () => { Actions.move("UP"); },
+            handler: (e) => { Actions.move("UP"); e.preventDefault(); },
             description: ""
         };
 
         var left = {
-            handler: () => { Actions.move("LEFT"); },
+            handler: (e) => { Actions.move("LEFT"); e.preventDefault(); },
             description: ""
         };
 
         var down = {
-            handler: () => { Actions.move("DOWN"); },
+            handler: (e) => { Actions.move("DOWN"); e.preventDefault(); },
             description: ""
         };
 
         var right = {
-            handler: () => { Actions.move("RIGHT"); },
+            handler: (e) => { Actions.move("RIGHT"); e.preventDefault(); },
             description: ""
         };
 
