@@ -16,5 +16,14 @@
         "type": "arcane",
         "power": 20,
         "cooldown": 3
+    },
+
+    "decomposing-fractions": {
+        "displayName": "Magic Missile",
+        "caption": "(starmap)",
+        "description": "What what what what what what what what what what what what what what what what what what what what.",
+        "type": "arcane",
+        "power": 20,
+        "cooldown": 3
     }
 }
