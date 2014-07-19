@@ -3,8 +3,6 @@
 var _ = require("underscore");
 var React = require("react");
 
-var sprites = [];
-
 var Resources = (function() {
     var resources = {};
     var callbacks = [];
@@ -55,11 +53,12 @@ var Resources = (function() {
     };
 })();
 
-class Engine {
+class SpriteTimingEngine {
     constructor() {
         this.running = false;
         this.rafId = null;
         this.lastFrameTime = null;
+        this.sprites = [];
     }
 
     start() {
@@ -95,9 +94,12 @@ class Engine {
     }
 
     tick(dt) {
-        sprites.forEach((spriteInfo) => spriteInfo.spriteComponent.update(dt));
+        this.sprites.forEach(
+            (spriteInfo) => spriteInfo.spriteComponent.update(dt));
     }
 };
+
+var timingEngine = new SpriteTimingEngine();
 
 class Sprite {
     constructor(options) {
@@ -159,16 +161,17 @@ var SpriteRenderer = React.createClass({
     _insertIntoSprites: function(sprite) {
         this.spriteIndex = _spriteIndex++;
         // fine to put this at the end, it's just getting bigger
-        sprites.push({
+        timingEngine.sprites.push({
             spriteComponent: this,
             index: this.spriteIndex
         });
     },
 
     _removeFromSprites: function() {
-        var index = _.sortedIndex(sprites, this.spriteIndex, (s) => s.index);
-        if (sprites[index].index === this.spriteIndex) {
-            sprites.slice(index, 1);
+        var index = _.sortedIndex(timingEngine.sprites,
+                                  this.spriteIndex, (s) => s.index);
+        if (timingEngine.sprites[index].index === this.spriteIndex) {
+            timingEngine.sprites.slice(index, 1);
         }
     },
 
@@ -206,9 +209,12 @@ var SpriteRenderer = React.createClass({
     }
 });
 
+
+timingEngine.start();
+
 module.exports = {
-    Engine: Engine,
     Resources: Resources,
     Sprite: Sprite,
-    SpriteRenderer: SpriteRenderer
+    SpriteRenderer: SpriteRenderer,
+    timingEngine: timingEngine
 };

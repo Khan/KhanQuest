@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 window.Game = require("./game.jsx");
-window.Engine = require("./sprites/sprite.jsx").Engine;
 window.Sprite = require("./sprites/sprite.jsx").Sprite;
 window.SpriteRenderer = require("./sprites/sprite.jsx").SpriteRenderer;
 window.Resources = require("./sprites/sprite.jsx").Resources;

@@ -21,9 +21,6 @@
 
             CombatActions.startCombat([1]);
 
-            var engine = new Engine();
-            engine.start();
-
             React.renderComponent(CombatView(), document.body);
         });
         Resources.loadAll(["resources/redmagedie.png", "resources/default.png"]);
