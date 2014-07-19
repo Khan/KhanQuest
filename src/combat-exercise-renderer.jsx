@@ -28,20 +28,18 @@ var PERSEUS_ITEM = {
 var CombatExerciseRenderer = React.createClass({
     propTypes: {
         content: React.PropTypes.object.isRequired,
-        onAttack: React.PropTypes.func.isRequired
+        onAttack: React.PropTypes.func.isRequired,
+        onFailedAttack: React.PropTypes.func.isRequired
     },
 
     getDefaultProps: function() {
         return {
             content: PERSEUS_ITEM,
             onAttack: function() {
-                // TODO: render next problem
-                console.log('hit!');
-                // TODO: end turn
+                console.log('onAttack');
             },
-            onMissedAttack: function() {
-                console.log('missed');
-                // TODO: end turn
+            onFailedAttack: function() {
+                console.log('onFailedAttack');
             }
         };
     },
@@ -51,7 +49,7 @@ var CombatExerciseRenderer = React.createClass({
         if (gradedResult.correct) {
             this.props.onAttack();
         } else {
-            this.props.onMissedAttack();
+            this.props.onFailedAttack();
         }
     },
 
@@ -84,7 +82,7 @@ var CombatExerciseRenderer = React.createClass({
                 <button className="correct" onClick={this.props.onAttack}>
                     Correct
                 </button>
-                <button className="wrong" onClick={this.props.onMissedAttack}>
+                <button className="wrong" onClick={this.props.onFailedAttack}>
                     Wrong
                 </button>
             </div>

@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Khan/KAQuest",
   "dependencies": {
-    "json-loader": "^0.5.1"
+    "json-loader": "^0.5.1",
+    "mersenne": "0.0.3"
   }
 }

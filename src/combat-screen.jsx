@@ -14,11 +14,35 @@ var CombatScreen = React.createClass({
         };
     },
 
+    getInitialState: function() {
+        return {
+            spellName: "groups-of-tens",
+            onAttack: this.successfulAttack,
+            problemIndex: 0
+        };
+    },
+
+    onAttack: function() {
+        console.log("onAttack");
+        this.nextProblem();
+    },
+
+    onFailedAttack: function() {
+        console.log("onFailedAttack");
+        this.nextProblem();
+    },
+
+    nextProblem: function() {
+        var problemIndex = this.state.problemIndex;
+        problemIndex++;
+        this.setState({problemIndex});
+    },
+
     render: function() {
         return <div>
-            <CombatExercise onAttack={() => {
-                console.log("Exercise completed");
-            }} />
+            <CombatExercise onAttack={this.onAttack}
+                            onFailedAttack={this.onFailedAttack}
+                            problemIndex={this.state.problemIndex} />
         </div>;
     }
 });

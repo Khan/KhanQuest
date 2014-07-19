@@ -4,18 +4,25 @@ var React = require("react");
 var Perseus = require("perseus");
 var CombatExerciseRenderer = require("./combat-exercise-renderer.jsx");
 var Spell = require("./models/spell.js");
+var Mersenne = require('mersenne');
 
 var CombatExercise = React.createClass({
     propTypes: {
         spellName: React.PropTypes.string.isRequired,
-        onAttack: React.PropTypes.func.isRequired
+        onAttack: React.PropTypes.func.isRequired,
+        onFailedAttack: React.PropTypes.func.isRequired
     },
 
     getDefaultProps: function() {
-        console.log(this);
         return {
             spellName: "groups-of-tens",
-            onAttack: function () { }
+            onAttack: function () {
+                console.log("onAttack");
+            },
+            onFailedAttack: function () {
+                console.log("onFailedAttack");
+            },
+            problemIndex: 0
         };
     },
 
@@ -30,7 +37,10 @@ var CombatExercise = React.createClass({
     },
 
     componentWillReceiveProps: function(nextProps) {
-        if (nextProps.spellName !== this.props.spellName) {
+        var problemChanging = (
+            nextProps.spellName !== this.props.spellName ||
+            nextProps.problemIndex !== this.props.problemIndex);
+        if (problemChanging) {
             this._loadSpell();
         }
     },
@@ -44,13 +54,31 @@ var CombatExercise = React.createClass({
                         var spell = new Spell(this.props.spellName);
                         spell.cast();
                         this.props.onAttack();
-                    }} />
+                    }}
+                    onFailedAttack={this.props.onFailedAttack} />
             </div>;
         } else {
             return <div>
                 Summoning spell...
             </div>;
         }
+    },
+
+    shuffle: function(items, seed) {
+        // mersenne wants a numeric seed
+        var seed = _.map(this.props.spellName, c => c.charCodeAt())
+        Mersenne.seed_array(seed);
+
+        // _.shuffle with seeded mersenne
+        var rand;
+        var index = 0;
+        var shuffled = [];
+        _.each(items, function(item) {
+            rand = Mersenne.rand(index++);
+            shuffled[index - 1] = shuffled[rand];
+            shuffled[rand] = item;
+        });
+        return shuffled;
     },
 
     _loadSpell: function() {
@@ -60,8 +88,9 @@ var CombatExercise = React.createClass({
             cache: false
         }).then((exercise) => {
             var items = exercise.all_assessment_items;
-            var index = _.random(0, items.length - 1);
-            var item = items[index];
+            var shuffledItems = this.shuffle(items);
+            var index = this.props.problemIndex % items.length;
+            var item = shuffledItems[index];
             return $.ajax({
                 url: "http://www.khanacademy.org/api/v1/assessment_items/" +
                     item.id +
