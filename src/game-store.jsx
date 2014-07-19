@@ -83,7 +83,6 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             break;
 
         case CombatConstants.END_COMBAT:
-            debugger;
             assert(_inCombat, "should be in combat");
             _inCombat = false;
             _view = GameViews.MAP;

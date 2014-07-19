@@ -1,6 +1,6 @@
 var assert = function(cond, msg) {
     if (!cond) {
-        throw `assert failed: $msg`;
+        throw `assert failed: ${msg}`;
     }
 };
 
