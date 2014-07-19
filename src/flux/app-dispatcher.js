@@ -7,6 +7,7 @@ var AppDispatcher = _.extend({}, Dispatcher.prototype, {
     * @param  {Object} action The data coming from the view.
     */
     handleViewAction: function(action) {
+        console.log(action);
         this.dispatch({
             source: 'VIEW_ACTION',
             action: action

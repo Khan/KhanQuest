@@ -10,10 +10,10 @@ var CombatEngineStates = {
     RUNNING: "RUNNING_TURN"
 };
 
-var _entities = {};
-var _turnOrder = [];
-var _turnIndex = 0;
-var _state = CombatEngineStates.RUNNING;
+var _entities;
+var _turnOrder;
+var _turnIndex;
+var _state;
 
 var combatLog = function() {
     var consoleArgs = ["COMBAT LOG"];
@@ -38,6 +38,7 @@ var FluxDatastore = {
 var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
     CombatEngine: {
         startTurns: function() {
+            this.reset();
             this.takeTurn();
         },
 
@@ -107,6 +108,13 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         */
         chooseAbility: function(entity) {
             return _.find(entity.abilities, () => true);
+        },
+
+        reset: function() {
+            _entities = {};
+            _turnIndex = 0;
+            _turnOrder = [];
+            _state = CombatEngineStates.RUNNING;
         }
     },
 
@@ -142,6 +150,10 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 CombatStore._emitChange();
 
                 CombatStore.CombatEngine.startTurns();
+                break;
+
+            case CombatConstants.END_COMBAT:
+                CombatStore.CombatEngine.reset();
                 break;
 
             case CombatConstants.PLAYER_CAST_SPELL:

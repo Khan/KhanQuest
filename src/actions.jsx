@@ -1,13 +1,21 @@
 var AppDispatcher = require("./flux/app-dispatcher.js");
 
+var GameViews = {
+    MAP: "MAP",
+    COMBAT: "COMBAT",
+    SPELLBOOK: "SPELLBOOK",
+    INVENTORY: "INVENTORY"
+};
+
 var constants = {
     FETCH_MAP_DATA: "FETCH_MAP_DATA",
     MOVE: "MOVE",
     ADD_SPELL: "ADD_SPELL",
     SET_ACTIVE_SPELL: "SET_ACTIVE_SPELL",
-    CHANGE_STATE: "CHANGE_STATE",
     SHOW_DIALOG: "SHOW_DIALOG",
-    SET_MAP: "SET_MAP"
+    SET_MAP: "SET_MAP",
+    OPEN_SPELLBOOK: "OPEN_SPELLBOOK",
+    CLOSE_SPELLBOOK: "CLOSE_SPELLBOOK"
 };
 
 var Actions = {
@@ -38,12 +46,6 @@ var Actions = {
         });
     },
 
-    changeGameState: function(data) {
-        AppDispatcher.handleViewAction(_.extend({
-            actionType: constants.CHANGE_STATE
-        }, data));
-    },
-
     showDialog: function(scene) {
         AppDispatcher.handleViewAction({
             actionType: constants.SHOW_DIALOG,
@@ -56,7 +58,20 @@ var Actions = {
             actionType: constants.SET_MAP,
             name
         });
+    },
+
+    closeSpellbook: function() {
+        AppDispatcher.handleViewAction({
+            actionType: constants.CLOSE_SPELLBOOK
+        });
+    },
+
+    openSpellbook: function() {
+        AppDispatcher.handleViewAction({
+            actionType: constants.OPEN_SPELLBOOK
+        });
     }
+
 };
 
-module.exports = { constants, Actions };
+module.exports = { constants, Actions, GameViews };

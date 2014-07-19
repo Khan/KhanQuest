@@ -1,16 +1,18 @@
 var _ = require("underscore");
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("./flux/app-dispatcher.js");
-var { constants } = require("./actions.jsx");
+var { constants, GameViews } = require("./actions.jsx");
 var MapStore = require("./map-store.jsx");
 var { CHANGE_STATE, START_COMBAT, MOVE } = constants;
 var { MONSTER, WALL, OBJECT, DOOR, GRASS } = require("./constants.jsx");
+var CombatConstants = require("./combat/combat-constants.js");
+var {assert} = require("./utils.jsx");
 
 /* Information about the user state. */
 
-var _game = {
-    state: "MAP"
-};
+var _view = GameViews.MAP;
+
+var _inCombat = false;
 
 var _playerLocation = {x: 10, y: 10};
 
@@ -65,17 +67,38 @@ var stepState = function(direction) {
     }
 }
 
+
 var dispatcherIndex = AppDispatcher.register(function(payload) {
     var action = payload.action;
 
     switch (action.actionType) {
-        case CHANGE_STATE:
-            _game.state = action.state;
-            break;
-
         case MOVE:
             stepState(action.direction);
             break;
+
+        case CombatConstants.START_COMBAT:
+            assert(!_inCombat, "shouldn't be in combat");
+            _inCombat = true;
+            _view = GameViews.COMBAT;
+            break;
+
+        case CombatConstants.END_COMBAT:
+            debugger;
+            assert(_inCombat, "should be in combat");
+            _inCombat = false;
+            _view = GameViews.MAP;
+            break;
+
+        case constants.OPEN_SPELLBOOK:
+            assert(_inCombat, "should be in combat");
+            _view = GameViews.SPELLBOOK;
+            break;
+
+        case constants.CLOSE_SPELLBOOK:
+            assert(_inCombat, "should be in combat");
+            _view = GameViews.COMBAT;
+            break;
+
 
         default:
             return true;
@@ -88,8 +111,8 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 var GameStore = _({}).extend(
     EventEmitter.prototype,
     {
-        getGame: function() {
-            return _.clone(_game);
+        getCurrentView: function() {
+            return _view;
         },
 
         getLocation: function() {

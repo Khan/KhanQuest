@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require("react");
-var { Actions } = require("./actions.jsx");
+var { Actions, GameViews } = require("./actions.jsx");
 var Spellbook = require("./spellbook.jsx");
 var Dialog = require("./dialog.jsx");
 var CombatScreen = require("./combat-screen.jsx");
@@ -24,9 +24,9 @@ var Game = React.createClass({
                 store: UserStore,
                 fetch: (store) => store.getUser()
             },
-            game: {
+            currentView: {
                 store: GameStore,
-                fetch: (store) => store.getGame()
+                fetch: (store) => store.getCurrentView()
             },
             combatState: {
                 store: CombatStore,
@@ -42,14 +42,25 @@ var Game = React.createClass({
         };
     },
 
+    startCombat: function() {
+        var forestTrollStats = MonsterStore.getById("forest_troll");
+        var forestTroll = EntityStore.createEntity(forestTrollStats);
+
+        CombatActions.startCombat([forestTroll]);
+    },
+
+    endCombat: function() {
+        CombatActions.endCombat();
+    },
+
     render: function () {
         return <div>
             <div className="debug-bar">
-                <button onClick={() => Actions.changeGameState({state: "MAP"})}>
+                <button onClick={this.endCombat}>
                     Show Map
                 </button>
-                <button onClick={() => Actions.changeGameState({state: "COMBAT"})}>
-                    Show Combat
+                <button onClick={this.startCombat}>
+                    Start Combat
                 </button>
                 <PropCheckBox
                     showDialog={this.props.showDialog}
@@ -57,9 +68,9 @@ var Game = React.createClass({
                     onChange={this.props.onChange} />
             </div>
             <div className="row">
-                {this.state.game.state === "MAP" && this._renderMap()}
-                {this.state.game.state === "COMBAT" && this._renderCombat()}
-                {this.state.game.state === "SPELLBOOK" && this._renderSpellbook()}
+                {this.state.currentView === GameViews.MAP && this._renderMap()}
+                {this.state.currentView === GameViews.COMBAT && this._renderCombat()}
+                {this.state.currentView === GameViews.SPELLBOOK && this._renderSpellbook()}
             </div>
         </div>;
     },
@@ -98,7 +109,7 @@ var Game = React.createClass({
         var exerciseNames = this.state.user.unlockedExercises;
         var onChooseSpell = function(exerciseName) {
             Actions.setActiveSpell(exerciseName);
-            Actions.changeGameState({state: "COMBAT"});
+            Actions.closeSpellbook();
         };
 
         return <Spellbook

@@ -7,7 +7,7 @@ var SpellBadge = require("./spell-badge.jsx");
 var ActiveSpell = React.createClass({
 
     _openSpellbook: function() {
-        Actions.changeGameState({state: "SPELLBOOK"});
+        Actions.openSpellbook();
     },
 
     render: function () {

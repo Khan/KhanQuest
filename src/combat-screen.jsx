@@ -21,13 +21,6 @@ var CombatScreen = React.createClass({
         };
     },
 
-    componentDidMount: function() {
-        var forestTrollStats = MonsterStore.getById("forest_troll");
-        var forestTroll = EntityStore.createEntity(forestTrollStats);
-
-        CombatActions.startCombat([forestTroll]);
-    },
-
     onAttack: function() {
         console.log("onAttack");
         this.nextProblem();

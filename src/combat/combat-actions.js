@@ -9,6 +9,12 @@ var CombatActions = {
         });
     },
 
+    endCombat: function() {
+        AppDispatcher.handleViewAction({
+            actionType: CombatConstants.END_COMBAT,
+        });
+    },
+
     useAbility: function(ability, sourceId, targetId) {
         AppDispatcher.handleViewAction({
             actionType: CombatConstants.USE_ABILITY,
