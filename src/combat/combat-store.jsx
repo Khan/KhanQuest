@@ -16,6 +16,7 @@ var _entities;
 var _turnOrder;
 var _turnIndex;
 var _state;
+var _resourcesLoaded;
 
 var combatLog = function() {
     var consoleArgs = ["COMBAT LOG"];
