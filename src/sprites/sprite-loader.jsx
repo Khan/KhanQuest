@@ -85,7 +85,7 @@ var testJSON = JSON.stringify([
         pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [0, 4, 4, 4, 4, 0, 0, 0, 0, 0],
+        frameIndices: [0, 9, 9, 9, 9, 0, 0, 0, 0, 0],
         dir: 'horizontal',
         once: false,
         scale: 2
