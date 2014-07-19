@@ -47,6 +47,59 @@ var testJSON = JSON.stringify([
                 cooldown: 4
             }
         ]
+    },
+    {
+        id: "direwolf",
+        sprites: {
+            idle: "direwolf-idle",
+            attack: "default",
+            dead: "default"
+        },
+        hp: 50,
+        fire_resist: 10,
+        frost_resist: 50,
+        arcane_resist: 0,
+        magic_resist: 0,
+        armor: 20,
+        physical: 42,
+        abilities: [
+            {
+                id: "bite",
+                animation: {self: "", target: ""},
+                category: "attack",
+                type: "physical",
+                priority: 1,
+                power: 10,
+                cooldown: 0
+            }
+        ]
+    },
+    {
+        id: "spider",
+        sprites: {
+            idle: "spider-idle",
+            attack: "default",
+            damaged: "default",
+            dead: "default"
+        },
+        hp: 50,
+        fire_resist: 10,
+        frost_resist: 50,
+        arcane_resist: 0,
+        magic_resist: 0,
+        armor: 20,
+        physical: 42,
+        abilities: [
+            {
+                id: "bite",
+                animation: {self: "", target: ""},
+                category: "attack",
+                type: "physical",
+                priority: 1,
+                power: 10,
+                cooldown: 0
+            }
+        ]
     }
 ]);
 

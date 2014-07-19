@@ -101,6 +101,28 @@ var testJSON = JSON.stringify([
         once: true,
         scale: 2
     },
+    {
+        id: 'direwolf-idle',
+        url: 'resources/direwolf.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [3, 4, 5, 6, 5, 4],
+        dir: 'horizontal',
+        once: false,
+        scale: 2
+    },
+    {
+        id: 'spider-idle',
+        url: 'resources/spider.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        dir: 'horizontal',
+        once: false,
+        scale: 2
+    }
 ]);
 
 var _spriteDict = {};
