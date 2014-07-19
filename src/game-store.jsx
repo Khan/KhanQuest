@@ -7,6 +7,7 @@ var { CHANGE_STATE, START_COMBAT, MOVE } = constants;
 var { MONSTER, WALL, OBJECT, DOOR, GRASS } = require("./constants.jsx");
 var CombatConstants = require("./combat/combat-constants.js");
 var {assert} = require("./utils.jsx");
+var Mersenne = require("mersenne");
 
 /* Information about the user state. */
 
@@ -42,6 +43,10 @@ var stepState = function(direction) {
     // we triggered an action!
     var interaction = MapStore.getInteractionForLocation(candidateLocation);
 
+    if (interaction !== WALL) {
+        interaction = GRASS; // TODO(dmnd): unhardcode this
+    }
+
     switch (interaction) {
         case MONSTER:
             // you ran into a monster.
@@ -60,7 +65,13 @@ var stepState = function(direction) {
             break;
 
         case GRASS:
-            // unused
+            // TODO: make this driven by the map
+            // 5% chance of an encounter
+            if (Mersenne.rand(20) < 1) {
+                var forestTrollStats = MonsterStore.getById("forest_troll");
+                var forestTroll = EntityStore.createEntity(forestTrollStats);
+                CombatActions.startCombat([forestTroll]);
+            }
 
         default:
             _playerLocation = candidateLocation;
