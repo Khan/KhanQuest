@@ -99,11 +99,13 @@ var CombatExercise = React.createClass({
                 cache: false
             });
         }).then((item) => {
+            if (!this.isMounted()) {
+                // avoid errors when clicking quickly
+                return;
+            }
             // TODO(aria): Make this not break everything if we've received new
             // props
-            this.setState({
-                content: JSON.parse(item.item_data)
-            });
+            this.setState({content: JSON.parse(item.item_data)});
         }, (err) => {
             console.error("ERROR LOADING ITEM: ", err);
         });
