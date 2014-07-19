@@ -3,6 +3,9 @@
 var React = require("react");
 var Perseus = require("perseus");
 var CombatAction = require("./combat/combat-actions.js");
+var Spell = require('./models/spell.js');
+var CombatAction = require("./combat/combat-actions.js");
+var EntityStore = require('./entity.jsx')
 
 var PERSEUS_ITEM = {
     "question": {
@@ -28,34 +31,36 @@ var PERSEUS_ITEM = {
 
 var CombatExerciseRenderer = React.createClass({
     propTypes: {
-        content: React.PropTypes.object.isRequired,
-        onAttack: React.PropTypes.func.isRequired,
-        onFailedAttack: React.PropTypes.func.isRequired
+        content: React.PropTypes.object.isRequired
     },
 
     getDefaultProps: function() {
         return {
-            content: PERSEUS_ITEM,
-            onAttack: function() {
-                console.log('onAttack');
-            },
-            onFailedAttack: function() {
-                console.log('onFailedAttack');
-            }
+            content: PERSEUS_ITEM
         };
+    },
+
+    _retreat: function() {
+        CombatAction.endCombat();
     },
 
     _attemptAttack: function() {
         var gradedResult = this._scoreInput();
         if (gradedResult.correct) {
-            this.props.onAttack();
+            this._onSuccessfulAttack();
         } else {
-            this.props.onFailedAttack();
+            this._onFailedAttack();
         }
     },
 
-    onRetreat: function() {
-        CombatAction.endCombat();
+    _onSuccessfulAttack: function() {
+        var spell = new Spell(this.props.exerciseName);
+        CombatAction.castSpell(spell, true, EntityStore.getPlayer());
+        Actions.nextProblem();
+    },
+
+    _onFailedAttack: function() {
+        Actions.nextProblem();
     },
 
     render: function() {
@@ -69,7 +74,7 @@ var CombatExerciseRenderer = React.createClass({
             {Perseus.Renderer(questionProps)}
             {Perseus.AnswerAreaRenderer(answerProps)}
             <div>
-                <button className="retreat" onClick={this.onRetreat}>
+                <button className="retreat" onClick={this._retreat}>
                     Retreat
                 </button>
                 <button className="attempt" onClick={this._attemptAttack}>
@@ -78,10 +83,10 @@ var CombatExerciseRenderer = React.createClass({
             </div>
             <div>
                 Hacks:
-                <button className="correct" onClick={this.props.onAttack}>
+                <button className="correct" onClick={this._onSuccessfulAttack}>
                     Correct
                 </button>
-                <button className="wrong" onClick={this.props.onFailedAttack}>
+                <button className="wrong" onClick={this._onFailedAttack}>
                     Wrong
                 </button>
             </div>

@@ -12,22 +12,7 @@ var Mersenne = require('mersenne');
 var CombatExercise = React.createClass({
     propTypes: {
         exerciseName: RP.string.isRequired,
-        onAttack: RP.func.isRequired,
-        onFailedAttack: RP.func.isRequired,
         problemIndex: RP.number.isRequired
-    },
-
-    getDefaultProps: function() {
-        return {
-            exerciseName: "groups-of-tens",
-            onAttack: function () {
-                console.log("onAttack");
-            },
-            onFailedAttack: function () {
-                console.log("onFailedAttack");
-            },
-            problemIndex: 0
-        };
     },
 
     getInitialState: function() {
