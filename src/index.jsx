@@ -1,16 +1,17 @@
 /** @jsx React.DOM */
 
 window.Game = require("./game.jsx");
-window.Engine = require("./sprite.jsx").Engine;
-window.Sprite = require("./sprite.jsx").Sprite;
-window.SpriteRenderer = require("./sprite.jsx").SpriteRenderer;
-window.Resources = require("./sprite.jsx").Resources;
+window.Engine = require("./sprites/sprite.jsx").Engine;
+window.Sprite = require("./sprites/sprite.jsx").Sprite;
+window.SpriteRenderer = require("./sprites/sprite.jsx").SpriteRenderer;
+window.Resources = require("./sprites/sprite.jsx").Resources;
 window.Map = require("./map.jsx");
 window.Actions = require("./actions.jsx").Actions;
 window.MonsterStore = require("./monster-store.jsx");
 window.EntityStore = require("./entity.jsx");
 window.CombatStore = require("./combat/combat-store.jsx");
 window.CombatActions = require("./combat/combat-actions.js");
+window.CombatView = require("./combat/combat-view.jsx");
 
 window.MapShell = React.createClass({
     render: function() {

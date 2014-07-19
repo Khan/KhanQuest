@@ -7,27 +7,27 @@
 <body>
     <script>
         Resources.onReady(function() {
-            var redMageDie = new Sprite({
-                url: 'resources/redmagedie.png',
-                speed: 0.005,
-                size: [72, 72],
-                frameIndices: [0, 1, 2, 3],
-                once: true
-            });
+            // var redMageDie = new Sprite({
+            //     url: 'resources/redmagedie.png',
+            //     speed: 0.005,
+            //     size: [72, 72],
+            //     frameIndices: [0, 1, 2, 3],
+            //     once: true
+            // });
 
-            React.renderComponent(SpriteRenderer({sprite:redMageDie}), document.body);
+            // React.renderComponent(SpriteRenderer({sprite:redMageDie}), document.body);
+            var forestTrollStats = MonsterStore.getById("forest_troll");
+            var forestTroll = EntityStore.createEntity(forestTrollStats);
+
+            CombatActions.startCombat([1]);
+
             var engine = new Engine();
             engine.start();
+
+            React.renderComponent(CombatView(), document.body);
         });
-        Resources.load("resources/redmagedie.png");
+        Resources.loadAll(["resources/redmagedie.png", "resources/default.png"]);
 
-        console.log(MonsterStore.debug);
-        var forestTrollStats = MonsterStore.getById("forest_troll");
-        var forestTroll = EntityStore.createEntity(forestTrollStats);
-        console.log(forestTroll);
-        console.log("EntityStore", EntityStore.debug);
-
-        CombatActions.startCombat([1]);
     </script>
 </body>
 </html>

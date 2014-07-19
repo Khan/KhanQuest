@@ -6,7 +6,11 @@
 var testJSON = JSON.stringify([
     {
         id: "forest_troll",
-        sprite: "resources/default.png",
+        sprites: {
+            idle: "default",
+            attack: "default",
+            dead: "default"
+        },
         hp: 100,
         fire_resist: 0,
         frost_resist: 0,
@@ -46,22 +50,22 @@ var testJSON = JSON.stringify([
     }
 ]);
 
-var monsterDict = {};
+var _monsterDict = {};
 
 var load = function(json) {
     var rawMonsterObjects = JSON.parse(json);
     rawMonsterObjects.forEach((monsterObject) =>
-        monsterDict[monsterObject.id] = monsterObject);
-}
+        _monsterDict[monsterObject.id] = monsterObject);
+};
 
 load(testJSON);
 
 var MonsterStore = {
     getById: function(monsterId) {
-        return monsterDict[monsterId];
+        return _monsterDict[monsterId];
     },
 
-    debug: monsterDict
-}
+    debug: _monsterDict
+};
 
 module.exports = MonsterStore;

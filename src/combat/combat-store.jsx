@@ -83,8 +83,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
     _damageEntity: function(entity, damage) {
         combatLog(`Damage! ${damage} points of damage to `, entity);
-        entity.health -= damage;
-
+        entity.damage(damage);
     },
 
     _handleAbility: function(ability, source, target) {

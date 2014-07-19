@@ -34,12 +34,29 @@ class Entity {
         });
 
         this.status = [];
+
+        // What animation should we be showing?
+        this.spriteState = 'idle';
+
+        this.state = 'alive';
+    }
+
+    damage(damageAmount) {
+        this.health -= damageAmount;
+        if (this.health <= 0) {
+            this.state = 'dead';
+            this.spriteState = 'dead';
+        }
     }
 }
 
 var testPlayer = new Entity({
     id: "player",
-    sprite: "resources/redwizarddie.png",
+    sprites: {
+        idle: 'default',
+        attack: 'red-mage-die',
+        dead: 'red-mage-die'
+    },
     hp: 100,
     fire_resist: 0,
     frost_resist: 0,
