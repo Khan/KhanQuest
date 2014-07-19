@@ -8,7 +8,8 @@ var MAPS = {
     overworld: "overworld.json",
     cave: "cave.json",
     salinterior: "salinterior.json",
-    cottage: "cottage.json"
+    cottage: "cottage.json",
+    fortress: "fortress.json"
 };
 
 var _currentMap = "cave";

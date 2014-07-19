@@ -28,6 +28,10 @@ window.MapShell = React.createClass({
                     type="button">
                 salinterior
             </button>
+            <button onClick={() => Actions.setCurrentMap("fortress")}
+                    type="button">
+                fortress
+            </button>
             <button onClick={() => Actions.setCurrentMap("cottage")}
                     type="button">
                 cottage
