@@ -3,19 +3,8 @@
 var React = require("react");
 var CombatExercise = require("./combat-exercise.jsx");
 var ActiveSpell = require("./active-spell.jsx");
-var UserStore = require("./user-store.jsx");
-var StateFromStore = require("./flux/state-from-store-mixin.js");
 
 var CombatScreen = React.createClass({
-    mixins: [
-        StateFromStore({
-            user: {
-                store: UserStore,
-                fetch: (store) => store.getUser()
-            }
-        })
-    ],
-
     getDefaultProps: function() {
         return {
             exerciseName: "groups-of-tens",
@@ -46,7 +35,7 @@ var CombatScreen = React.createClass({
     },
 
     render: function() {
-        var exerciseName = this.state.user.activeExercise;
+        var exerciseName = this.props.exerciseName;
 
         return <div>
             <ActiveSpell exerciseName={exerciseName} />

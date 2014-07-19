@@ -3,7 +3,6 @@
 var React = require("react");
 var { Actions } = require("./actions.jsx");
 var Spellbook = require("./spellbook.jsx");
-var ActiveSpell = require("./active-spell.jsx");
 var Dialog = require("./dialog.jsx");
 var CombatScreen = require("./combat-screen.jsx");
 var Map = require("./map.jsx");
@@ -89,7 +88,8 @@ var Game = React.createClass({
                      src="http://placekitten.com/400/400" />
             </div>
             <div className="combat">
-                {this.state.combatState === "ATTACK" && <CombatScreen />}
+                {this.state.combatState === "ATTACK" &&
+                    <CombatScreen exerciseName={activeExercise} />}
             </div>
             {this.props.showDialog && <Dialog scene="scene1" />}
         </div>;
