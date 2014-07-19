@@ -95,7 +95,7 @@ class Engine {
     }
 
     tick(dt) {
-        sprites.forEach((sprite) => sprite.update(dt));
+        sprites.forEach((spriteInfo) => spriteInfo.spriteComponent.update(dt));
     }
 };
 
@@ -150,25 +150,54 @@ class Sprite {
     }
 }
 
+var _spriteIndex = 0;
 var SpriteRenderer = React.createClass({
     propTypes: {
         sprite: React.PropTypes.instanceOf(Sprite).isRequired
     },
 
+    _insertIntoSprites: function(sprite) {
+        this.spriteIndex = _spriteIndex++;
+        // fine to put this at the end, it's just getting bigger
+        sprites.push({
+            spriteComponent: this,
+            index: this.spriteIndex
+        });
+    },
+
+    _removeFromSprites: function() {
+        var index = _.sortedIndex(sprites, this.spriteIndex, (s) => s.index);
+        if (sprites[index].index === this.spriteIndex) {
+            sprites.slice(index, 1);
+        }
+    },
+
     update: function(dt) {
         if (this.ctx) {
-            this.ctx.clearRect(
-                0, 0, this.props.sprite.options.size[0],
-                this.props.sprite.options.size[1]);
+            var scaledSize = this.props.sprite.scaledSize();
+            this.ctx.clearRect(0, 0, scaledSize[0], scaledSize[1]);
             this.props.sprite.render(this.ctx, this.time);
             this.time += dt;
         }
     },
 
-    componentDidMount() {
+    componentDidMount: function() {
         this.ctx = this.getDOMNode().getContext('2d');
         this.time = 0;
-        sprites.push(this);
+
+        this._insertIntoSprites(this.props.sprite);
+    },
+
+    componentWillUnmount: function() {
+        this._removeFromSprites();
+    },
+
+    componentWillReceiveProps: function(nextProps) {
+        if (nextProps.sprite !== this.props.sprite) {
+            this._removeFromSprites();
+            this._insertIntoSprites(nextProps.sprite);
+            this.time = 0;
+        }
     },
 
     render: function() {

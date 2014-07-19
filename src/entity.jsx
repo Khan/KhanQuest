@@ -57,7 +57,7 @@ var testPlayer = new Entity({
         attack: 'red-mage-die',
         dead: 'red-mage-die'
     },
-    hp: 100,
+    hp: 20,
     fire_resist: 0,
     frost_resist: 0,
     arcane_resist: 0,

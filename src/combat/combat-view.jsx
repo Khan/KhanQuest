@@ -24,16 +24,16 @@ var CombatEntity = React.createClass({
         if (!(state in this.sprites)) {
             // need to create sprite
             var spriteId = this.props.entity.sprites[state];
-            this.sprites[spriteId] = SpriteStore.getNewSpriteById(spriteId);
+            this.sprites[state] = SpriteStore.getNewSpriteById(spriteId);
         }
-        return this.sprites[spriteId];
+        return this.sprites[state];
     },
 
     render: function() {
         //need to render sprite, healthbar
-        var entityState = this.props.entity.spriteState;
+        var spriteState = this.props.entity.spriteState;
 
-        var sprite = this._getOrCreateSpriteForState(entityState);
+        var sprite = this._getOrCreateSpriteForState(spriteState);
         return <SpriteRenderer sprite={sprite} />;
     }
 });
