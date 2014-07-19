@@ -62,10 +62,17 @@ var Map = React.createClass({
         };
 
         var actions = {
+            // qwerty keybinds
             "w": up,
             "a": left,
             "s": down,
             "d": right,
+
+            // colemak binds too
+            "f": up,
+            "r": left,
+            // "s": down,  // same as qwerty
+            "t": right,
 
             up,
             down,
