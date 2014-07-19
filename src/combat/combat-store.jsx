@@ -38,7 +38,6 @@ var FluxDatastore = {
 var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
     CombatEngine: {
         startTurns: function() {
-            this.reset();
             this.takeTurn();
         },
 
@@ -53,7 +52,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             // Simple stuff. Just use the power as damage to the target.
             var damage = ability.power || 0;
             this.damageEntity(target, damage);
-            combatstore._emitChange();
+            CombatStore._emitChange();
         },
 
         fizzleSpell: function(spell) {
@@ -80,9 +79,9 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 combatLog("Players turn, waiting...");
             } else {
                 // Not the player, some ai monster
-                var abilityToUse = CombatStore._chooseAbility(currentEntity);
+                var abilityToUse = this.chooseAbility(currentEntity);
                 var player = EntityStore.getPlayer();
-                CombatStore._handleAbility(abilityToUse, currentEntity, player);
+                this.handleAbility(abilityToUse, currentEntity, player);
 
                 // Advance the turn
                 _turnIndex += 1;
@@ -135,6 +134,8 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
         switch (action.actionType) {
             case CombatConstants.START_COMBAT:
+                CombatStore.CombatEngine.reset();
+
                 _entities = _.extend({}, {"0": EntityStore.getPlayer()});
                 action.monsterIds.forEach((id) => {
                     _entities[id] = EntityStore.getById(id);
