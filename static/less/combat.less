@@ -1,7 +1,16 @@
 @import "base.less";
 @import "colors.less";
 
+@screenwidth: 900px;
+@screenheight: 700px;
+
+@combatwidth: 400px;
+
 .fight-graphics {
+    .swatch;
+    width: @combatwidth;
+    height: @screenheight;
+
     display: inline-block;
     vertical-align: top;
 }
@@ -12,7 +21,8 @@
 
 .exercise-view {
     .swatch;
-    width: 100%;
+    width: @screenwidth - @combatwidth;
+    height: @screenheight;
 }
 
 .retreat, .cast {
