@@ -1,4 +1,5 @@
 @import "colors.less";
+@import "base.less";
 
 @iconSize: 72px;
 
@@ -35,12 +36,9 @@
 }
 
 .spell-badge {
-    margin: 10px;
+    .swatch;
+
     width: 370px;
-    box-shadow: 0 0 3px 1px rgba(100, 100, 100, 0.6);
-    border-radius: 2px;
-    padding: 10px;
-    background-color: @opaque;
     display: inline-block;
 
     .icon {

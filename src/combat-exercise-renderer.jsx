@@ -70,7 +70,7 @@ var CombatExerciseRenderer = React.createClass({
         var answerProps = _.extend({}, this.props.content.answerArea,
             {ref: "answerAreaRenderer"});
 
-        return <div>
+        return <div className="exercise-view">
             {Perseus.Renderer(questionProps)}
             {Perseus.AnswerAreaRenderer(answerProps)}
             <div>

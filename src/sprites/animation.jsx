@@ -8,7 +8,7 @@ var AnimationTimingEngine = require("./animation-timing-engine.jsx");
 var timingEngine = new AnimationTimingEngine();
 
 
-function generateRandom(min, max){
+function generateRandom(min, max) {
     return Math.random() * (max - min) + min;
 }
 
