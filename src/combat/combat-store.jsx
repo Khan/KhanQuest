@@ -98,7 +98,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         },
 
         getCurrentEntity: function() {
-            return _entities[CombatStore.CombatEngine.getCurrentEntityId];
+            return _entities[CombatStore.CombatEngine.getCurrentEntityId()];
         },
 
         /**

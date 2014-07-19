@@ -3,6 +3,8 @@
 var _ = require("underscore");
 var React = require("react");
 
+var AnimationTimingEngine = require("./animation-timing-engine.jsx")
+
 var Resources = (function() {
     var resources = {};
     var callbacks = [];
@@ -53,53 +55,7 @@ var Resources = (function() {
     };
 })();
 
-class SpriteTimingEngine {
-    constructor() {
-        this.running = false;
-        this.rafId = null;
-        this.lastFrameTime = null;
-        this.sprites = [];
-    }
-
-    start() {
-        this.running = true;
-        this.lastFrameTime = null;
-        this.gameLoop();
-    }
-
-    stop() {
-        this.running = false;
-    }
-
-    reset() {
-        if (this.rafId) {
-            window.cancelAnimationFrame(this.rafId);
-        }
-        this.start();
-    }
-
-    gameLoop(paintTime) {
-        if (!this.lastFrameTime) {
-            this.lastFrameTime = paintTime;
-        } else {
-            var dt = paintTime - this.lastFrameTime; // dt in ms
-            this.lastFrameTime = paintTime;
-
-            this.tick(dt);
-        }
-
-        if (this.running) {
-            this.rafId = window.requestAnimationFrame(this.gameLoop.bind(this));
-        }
-    }
-
-    tick(dt) {
-        this.sprites.forEach(
-            (spriteInfo) => spriteInfo.spriteComponent.update(dt));
-    }
-};
-
-var timingEngine = new SpriteTimingEngine();
+var timingEngine = new AnimationTimingEngine();
 
 class Sprite {
     constructor(options) {
@@ -159,20 +115,11 @@ var SpriteRenderer = React.createClass({
     },
 
     _insertIntoSprites: function(sprite) {
-        this.spriteIndex = _spriteIndex++;
-        // fine to put this at the end, it's just getting bigger
-        timingEngine.sprites.push({
-            spriteComponent: this,
-            index: this.spriteIndex
-        });
+        this.index = timingEngine.addUpdatable(this);
     },
 
     _removeFromSprites: function() {
-        var index = _.sortedIndex(timingEngine.sprites,
-                                  this.spriteIndex, (s) => s.index);
-        if (timingEngine.sprites[index].index === this.spriteIndex) {
-            timingEngine.sprites.slice(index, 1);
-        }
+        timingEngine.removeUpdatable(this.index);
     },
 
     update: function(dt) {
