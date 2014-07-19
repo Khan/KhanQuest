@@ -97,6 +97,7 @@ var Map = React.createClass({
     },
 
     draw: function() {
+        console.log(this.state.layers.length && this.state.layers[0].scene);
         var canvas = this.refs.canvas.getDOMNode();
         this.context = canvas.getContext('2d');
 

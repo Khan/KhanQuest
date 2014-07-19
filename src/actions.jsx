@@ -17,7 +17,8 @@ var constants = {
     OPEN_SPELLBOOK: "OPEN_SPELLBOOK",
     CLOSE_SPELLBOOK: "CLOSE_SPELLBOOK",
     NEXT_PROBLEM: "NEXT_PROBLEM",
-    NEXT_MAP: "NEXT_MAP"
+    NEXT_MAP: "NEXT_MAP",
+    SET_LOCATION: "SET_LOCATION"
 };
 
 var Actions = {
@@ -31,6 +32,13 @@ var Actions = {
         AppDispatcher.handleViewAction({
             actionType: constants.MOVE,
             direction
+        });
+    },
+
+    setLocation: function(location) {
+        AppDispatcher.handleViewAction({
+            actionType: constants.SET_LOCATION,
+            location
         });
     },
 

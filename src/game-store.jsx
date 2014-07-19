@@ -3,7 +3,7 @@ var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("./flux/app-dispatcher.js");
 var { constants, GameViews } = require("./actions.jsx");
 var MapStore = require("./map-store.jsx");
-var { CHANGE_STATE, START_COMBAT, MOVE } = constants;
+var { CHANGE_STATE, START_COMBAT, MOVE, SET_LOCATION } = constants;
 var { MONSTER, WALL, OBJECT, DOOR, GRASS } = require("./constants.jsx");
 var CombatConstants = require("./combat/combat-constants.js");
 var {assert} = require("./utils.jsx");
@@ -82,6 +82,10 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
     switch (action.actionType) {
         case MOVE:
             stepState(action.direction);
+            break;
+
+        case SET_LOCATION:
+            _playerLocation = action.location;
             break;
 
         case CombatConstants.START_COMBAT:

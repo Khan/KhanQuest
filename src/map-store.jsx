@@ -1,7 +1,7 @@
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("./flux/app-dispatcher.js");
 var { constants } = require("./actions.jsx");
-var { FETCH_MAP_DATA, MOVE, SET_MAP } = constants;
+var { FETCH_MAP_DATA, MOVE, SET_MAP, NEXT_MAP } = constants;
 var { MONSTER, WALL, OBJECT, DOOR, START, GRASS, EMPTY } = require("./constants.jsx");
 
 var MAPS = {
@@ -18,10 +18,13 @@ var NEXT_WORLD = {
     desert: "cave",
     cave: "cottage",
     cottage: "salinterior",
-    salinterior: "fortress"
+    salinterior: "fortress",
+
+    // TEMP: loop back around
+    fortress: "overworld"
 };
 
-var _currentMap = "cave";
+var _currentMap = "cottage";
 
 // metadata about each map:
 // { overworld: object, cave: object }
@@ -35,20 +38,23 @@ var findStart = function() {
         return { x: 10, y: 10 };
     }
 
+    var interactionTileset = _(_manifests[_currentMap].tilesets)
+        .findWhere({ name: "interaction" });
+    var firstgid = interactionTileset.firstgid;
+
     var interactionLayer = _(_manifests[_currentMap].layers)
         .findWhere({ name: "interaction layer" });
 
-    var firstgid = interactionLayer.firstgid;
     var ix = 0;
     _(interactionLayer.data).find((item, i) => {
-        if (item - firstgid === START) {
+        if (item - firstgid + 1 === START) {
             ix = i;
             return true;
         }
     });
 
     var x = ix % interactionLayer.width;
-    var y = ~~(ix / layer.width);
+    var y = ~~(ix / interactionLayer.width);
     return { x, y };
 };
 
@@ -76,6 +82,8 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 
         case NEXT_MAP:
             _currentMap = NEXT_WORLD[_currentMap];
+            Actions.setLocation(findStart());
+            break;
 
         case SET_MAP:
             // TODO clear previous map!
