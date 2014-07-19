@@ -35,7 +35,7 @@ var load = function(json) {
 load(testJSON);
 
 var SpriteStore = {
-    getById: function(spriteId) {
+    getNewSpriteById: function(spriteId) {
         return new Sprite(_spriteDict[spriteId]);
     },
 

@@ -24,7 +24,7 @@ var CombatEntity = React.createClass({
         if (!(state in this.sprites)) {
             // need to create sprite
             var spriteId = this.props.entity.sprites[state];
-            this.sprites[spriteId] = SpriteStore.getById(spriteId);
+            this.sprites[spriteId] = SpriteStore.getNewSpriteById(spriteId);
         }
         return this.sprites[spriteId];
     },
