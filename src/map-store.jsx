@@ -30,7 +30,7 @@ var MAP_OBJECT_INTERACTIONS = {
     }
 };
 
-var _currentMap = "salinterior";
+var _currentMap = "desert";
 
 // metadata about each map:
 // { overworld: object, cave: object }

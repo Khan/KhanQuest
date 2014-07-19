@@ -45,7 +45,7 @@ Dispatcher.prototype = _.extend(Dispatcher.prototype, {
         _callbacks.forEach(function(callback) {
             _addPromise(callback, payload);
         });
-        Promise.all(_promises).then(_clearPromises);
+        Promise.all(_promises).then(_clearPromises).done();
     },
 
     /**
@@ -59,7 +59,7 @@ Dispatcher.prototype = _.extend(Dispatcher.prototype, {
         var selectedPromises = _promises.filter(function(/*object*/ _, /*number*/ j) {
             return promiseIndexes.indexOf(j) !== -1;
         });
-        Promise.all(selectedPromises).then(callback);
+        Promise.all(selectedPromises).then(callback).done();
     }
 });
 
