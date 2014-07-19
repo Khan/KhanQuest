@@ -51,3 +51,37 @@
         }
     }
 }
+
+@monstersize: 144px;
+@centerline: 80px;
+@monstervangaurd: 60px;
+
+.combat-background {
+    height: 100%;
+    position: relative;
+    background-image: url(/static/img/forest.jpg);
+    background-position-x: -476px;
+    background-position-y: -140px;
+
+    canvas:nth-child(1) {
+        position: absolute;
+        bottom: @centerline;
+        right: @monstervangaurd;
+    }
+    canvas:nth-child(2) {
+        position: absolute;
+        bottom: @centerline;
+        left: @monstervangaurd;
+    }
+    canvas:nth-child(3) {
+        position: absolute;
+        bottom: @centerline - 30px;
+        left: @monstervangaurd + 30px;
+    }
+    canvas:nth-child(4) {
+        position: absolute;
+        bottom: @centerline + 30px;
+        left: @monstervangaurd + 30px;
+    }
+
+}

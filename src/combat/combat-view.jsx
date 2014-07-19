@@ -64,17 +64,16 @@ var CombatView = React.createClass({
     },
 
     render: function() {
+        var children = [];
         if (this.state.loading) {
-            return <span>Loading</span>;
+            children.push(<span>Loading</span>);
         } else {
-            var player = this.renderPlayer();
-            var enemies = this.renderEnemies();
-
-            return <div classNam="combat-background">
-                {player}
-                {enemies}
-            </div>;
+            children.push(this.renderPlayer())
+            children.push(this.renderEnemies())
         }
+        return <div className="combat-background">
+            {children}
+        </div>;
     }
 });
 
