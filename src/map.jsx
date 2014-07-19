@@ -10,6 +10,7 @@ var Shortcut = require("./shortcut.js");
 
 var { Actions } = require("./actions.jsx");
 
+var GameStore = require("./game-store.jsx");
 var MapStore = require("./map-store.jsx");
 
 var StateFromStore = require("./flux/state-from-store-mixin.js");
@@ -28,7 +29,7 @@ var Map = React.createClass({
                 fetch: (store) => store.getLayers()
             },
             location: {
-                store: MapStore,
+                store: GameStore,
                 fetch: (store) => store.getLocation()
             }
         })

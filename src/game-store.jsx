@@ -2,7 +2,9 @@ var _ = require("underscore");
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("./flux/app-dispatcher.js");
 var { constants } = require("./actions.jsx");
-var { CHANGE_STATE } = constants;
+var MapStore = require("./map-store.jsx");
+var { CHANGE_STATE, START_COMBAT, MOVE } = constants;
+var { MONSTER, WALL, OBJECT, DOOR, GRASS } = require("./constants.jsx");
 
 /* Information about the user state. */
 
@@ -10,6 +12,58 @@ var _game = {
     state: "MAP"
 };
 
+var _playerLocation = {x: 10, y: 10};
+
+var stepState = function(direction) {
+
+    // move one block in that direction
+    var candidateLocation = _.clone(_playerLocation);
+    switch (direction) {
+        case "UP":
+            candidateLocation.y--;
+            break;
+
+        case "DOWN":
+            candidateLocation.y++;
+            break;
+
+        case "LEFT":
+            candidateLocation.x--;
+            break;
+
+        case "RIGHT":
+            candidateLocation.x++;
+            break;
+    }
+
+    // consult the interaction layer to see if we can go that direction or if
+    // we triggered an action!
+    var interaction = MapStore.getInteractionForLocation(candidateLocation);
+
+    switch (interaction) {
+        case MONSTER:
+            // you ran into a monster.
+            break;
+
+        case WALL:
+            // can't go that way. just don't update the state.
+            break;
+
+        case OBJECT:
+            // dun-dun-dun-dunnnnn
+            break;
+
+        case DOOR:
+            // how does a door encode where it leads?
+            break;
+
+        case GRASS:
+            // unused
+
+        default:
+            _playerLocation = candidateLocation;
+    }
+}
 
 var dispatcherIndex = AppDispatcher.register(function(payload) {
     var action = payload.action;
@@ -17,6 +71,10 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
     switch (action.actionType) {
         case CHANGE_STATE:
             _game.state = action.state;
+            break;
+
+        case MOVE:
+            stepState(action.direction);
             break;
 
         default:
@@ -32,6 +90,10 @@ var GameStore = _({}).extend(
     {
         getGame: function() {
             return _.clone(_game);
+        },
+
+        getLocation: function() {
+            return _playerLocation;
         },
 
         addChangeListener: function(callback) {
