@@ -109,8 +109,14 @@ class Sprite {
             speed: 1,
             once: false,
             frameIndices: [0],
-            dir: 'horizontal'
+            dir: 'horizontal',
+            scale: 1
         });
+    }
+
+    scaledSize() {
+        return [this.options.size[0] * this.options.scale,
+                this.options.size[1] * this.options.scale];
     }
 
     // we expect time in ms to start at 0, this will always correspond to the
@@ -133,12 +139,14 @@ class Sprite {
         var xySwitch = this.options.dir === 'horizontal' ? 0 : 1;
         spritePosition[xySwitch] += frameIndex * this.options.size[xySwitch];
 
+        var scaledSize = this.scaledSize();
+
         ctx.drawImage(
             /*image*/ Resources.get(this.options.url),
             /*sourcex*/ spritePosition[0], /*sourcey*/ spritePosition[1],
             /*sourcew*/ this.options.size[0], /*sourceh*/ this.options.size[1],
             /*canvasx*/ 0, /*canvasy*/ 0,
-            /*canvasw*/ this.options.size[0], /*canvash*/this.options.size[1]);
+            /*canvasw*/ scaledSize[0], /*canvash*/ scaledSize[1]);
     }
 }
 
@@ -164,8 +172,8 @@ var SpriteRenderer = React.createClass({
     },
 
     render: function() {
-        return <canvas width={this.props.sprite.options.size[0]}
-                       height={this.props.sprite.options.size[1]}></canvas>;
+        var canvasSize = this.props.sprite.scaledSize();
+        return <canvas width={canvasSize[0]} height={canvasSize[1]}></canvas>;
     }
 });
 
