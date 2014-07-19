@@ -2,21 +2,28 @@
 
 var React = require("react");
 var CombatExercise = require("./combat-exercise.jsx");
+var ActiveSpell = require("./active-spell.jsx");
+var UserStore = require("./user-store.jsx");
+var StateFromStore = require("./flux/state-from-store-mixin.js");
 
 var CombatScreen = React.createClass({
-    propTypes: {
-        user: React.PropTypes.object,
-        enemy: React.PropTypes.object,
-    },
+    mixins: [
+        StateFromStore({
+            user: {
+                store: UserStore,
+                fetch: (store) => store.getUser()
+            }
+        })
+    ],
 
     getDefaultProps: function() {
         return {
+            exerciseName: "groups-of-tens",
         };
     },
 
     getInitialState: function() {
         return {
-            spellName: "groups-of-tens",
             onAttack: this.successfulAttack,
             problemIndex: 0
         };
@@ -39,10 +46,15 @@ var CombatScreen = React.createClass({
     },
 
     render: function() {
+        var exerciseName = this.state.user.activeExercise;
+
         return <div>
-            <CombatExercise onAttack={this.onAttack}
-                            onFailedAttack={this.onFailedAttack}
-                            problemIndex={this.state.problemIndex} />
+            <ActiveSpell exerciseName={exerciseName} />
+            {exerciseName && <CombatExercise
+                                exerciseName={exerciseName}
+                                onAttack={this.onAttack}
+                                onFailedAttack={this.onFailedAttack}
+                                problemIndex={this.state.problemIndex} />}
         </div>;
     }
 });

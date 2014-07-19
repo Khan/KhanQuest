@@ -8,14 +8,14 @@ var Mersenne = require('mersenne');
 
 var CombatExercise = React.createClass({
     propTypes: {
-        spellName: React.PropTypes.string.isRequired,
+        exerciseName: React.PropTypes.string.isRequired,
         onAttack: React.PropTypes.func.isRequired,
         onFailedAttack: React.PropTypes.func.isRequired
     },
 
     getDefaultProps: function() {
         return {
-            spellName: "groups-of-tens",
+            exerciseName: "groups-of-tens",
             onAttack: function () {
                 console.log("onAttack");
             },
@@ -38,7 +38,7 @@ var CombatExercise = React.createClass({
 
     componentWillReceiveProps: function(nextProps) {
         var problemChanging = (
-            nextProps.spellName !== this.props.spellName ||
+            nextProps.exerciseName !== this.props.exerciseName ||
             nextProps.problemIndex !== this.props.problemIndex);
         if (problemChanging) {
             this._loadSpell();
@@ -51,7 +51,7 @@ var CombatExercise = React.createClass({
                 <CombatExerciseRenderer
                     content={this.state.content}
                     onAttack={() => {
-                        var spell = new Spell(this.props.spellName);
+                        var spell = new Spell(this.props.exerciseName);
                         spell.cast();
                         this.props.onAttack();
                     }}
@@ -66,7 +66,7 @@ var CombatExercise = React.createClass({
 
     shuffle: function(items, seed) {
         // mersenne wants a numeric seed
-        var seed = _.map(this.props.spellName, c => c.charCodeAt())
+        var seed = _.map(this.props.exerciseName, c => c.charCodeAt())
         Mersenne.seed_array(seed);
 
         // _.shuffle with seeded mersenne
@@ -84,7 +84,7 @@ var CombatExercise = React.createClass({
     _loadSpell: function() {
         $.ajax({
             url: "http://www.khanacademy.org/api/v1/exercises/" +
-                this.props.spellName,
+                this.props.exerciseName,
             cache: false
         }).then((exercise) => {
             var items = exercise.all_assessment_items;
