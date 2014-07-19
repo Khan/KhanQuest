@@ -1,4 +1,5 @@
 var Sprite = require('./sprite.jsx').Sprite;
+var Resources = require('./sprite.jsx').Resources;
 
 var testJSON = JSON.stringify([
     {
@@ -35,12 +36,19 @@ var load = function(json) {
 
 load(testJSON);
 
-var SpriteStore = {
+var SpriteLoader = {
     getNewSpriteById: function(spriteId) {
         return new Sprite(_spriteDict[spriteId]);
+    },
+
+    // returns a promise
+    loadSprites: function(spriteIds) {
+        var urls = spriteIds.map(
+            (spriteId) => _spriteDict[spriteId].url);
+        return Resources.loadAll(urls);
     },
 
     debug: _spriteDict
 };
 
-module.exports = SpriteStore;
+module.exports = SpriteLoader;

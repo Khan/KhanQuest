@@ -3,6 +3,8 @@ var AppDispatcher = require("../flux/app-dispatcher.js");
 
 var CombatConstants = require("./combat-constants.js");
 
+var SpriteLoader = require('../sprites/sprite-loader.jsx');
+
 var CHANGE_EVENT = "change";
 
 var CombatEngineStates = {
@@ -129,6 +131,10 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         return _entityIdOwningCurrentTurn;
     },
 
+    getIsLoading: function() {
+        return !_resourcesLoaded;
+    },
+
     dispatcherIndex: AppDispatcher.register(function(payload) {
         var action = payload.action;
 
@@ -150,7 +156,17 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
                 CombatStore._emitChange();
 
-                CombatStore.CombatEngine.startTurns();
+                _resourcesLoaded = false;
+
+                var spriteIds = _.flatten(_.map(_entities, (entity, id) =>
+                    _.uniq(_.values(entity.sprites))));
+
+                SpriteLoader.loadSprites(spriteIds).then(() => {
+                    _resourcesLoaded = true;
+                    CombatStore.CombatEngine.startTurns();
+                    CombatStore._emitChange();
+                });
+
                 break;
 
             case CombatConstants.END_COMBAT:

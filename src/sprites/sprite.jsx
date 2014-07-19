@@ -6,51 +6,44 @@ var React = require("react");
 var AnimationTimingEngine = require("./animation-timing-engine.jsx");
 
 var Resources = (function() {
+    var promises = {};
     var resources = {};
-    var callbacks = [];
-    var images = [];
 
-    var ready = function() {
-        return _.all(_.values(resources));
-    };
-
-    var load = function(url) {
-        if (resources[url]) {
-            return resources[url];
-        } else {
-            // Create an image
+    var _load = function(url) {
+        if (!promises[url]) {
+            // Create an image and store a promise
             var image = new Image();
-            images.push(image);
-            image.onload = () => {
-                resources[url] = image;
-                if (ready()) {
-                    callbacks.forEach((cb) => cb());
-                }
-            };
-            resources[url] = false;
-            _.defer(() => image.src = url);
+            promises[url] = new Promise(function(resolve, reject) {
+                image.onload = () => resolve({url, image});
+                image.onerror = () => reject({url, image});
+                image.src = url;
+            });
         }
+        return promises[url];
     };
 
-    var loadAll = function(arrayOfUrls) {
-        arrayOfUrls.forEach((url) => load(url));
+    // returns a promise
+    var loadAll = function(arrayOfUrls, cb) {
+        var loadPromises = arrayOfUrls.map((url) => _load(url));
+        return Promise.all(loadPromises).then((urlImageTuples) => {
+            urlImageTuples.forEach((urlImageTuple) => {
+                var {url, image} = urlImageTuple;
+                resources[url] = image;
+                return image;
+            });
+        });
     };
 
     var get = function(url) {
-        return resources[url];
-    };
-
-    var onReady = function(callback) {
-        callbacks.push(callback);
-        if (ready() && !_.isEmpty(resources)) {
-            callback();
+        if (url in resources) {
+            return resources[url];
+        } else {
+            throw `Missing sprite for url ${url}. Did you forget to load it?`;
         }
     };
 
     return {
-        load: load,
         loadAll: loadAll,
-        onReady: onReady,
         get: get
     };
 })();
@@ -154,7 +147,6 @@ var SpriteRenderer = React.createClass({
         return <canvas width={canvasSize[0]} height={canvasSize[1]}></canvas>;
     }
 });
-
 
 timingEngine.start();
 

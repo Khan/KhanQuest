@@ -6,24 +6,12 @@
 </head>
 <body>
     <script>
-        Resources.onReady(function() {
-            // var redMageDie = new Sprite({
-            //     url: 'resources/redmagedie.png',
-            //     speed: 0.005,
-            //     size: [72, 72],
-            //     frameIndices: [0, 1, 2, 3],
-            //     once: true
-            // });
+        var forestTrollStats = MonsterStore.getById("forest_troll");
+        var forestTroll = EntityStore.createEntity(forestTrollStats);
 
-            // React.renderComponent(SpriteRenderer({sprite:redMageDie}), document.body);
-            var forestTrollStats = MonsterStore.getById("forest_troll");
-            var forestTroll = EntityStore.createEntity(forestTrollStats);
+        CombatActions.startCombat([1]);
 
-            CombatActions.startCombat([1]);
-
-            React.renderComponent(CombatView(), document.body);
-        });
-        Resources.loadAll(["resources/redmagedie.png", "resources/default.png"]);
+        React.renderComponent(CombatView(), document.body);
 
     </script>
 </body>

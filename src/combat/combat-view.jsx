@@ -7,7 +7,7 @@ var StateFromStore = require('../flux/state-from-store-mixin.js');
 var CombatActions = require('./combat-actions.js');
 var CombatStore = require('./combat-store.jsx');
 
-var SpriteStore = require('../sprites/sprite-store.jsx');
+var SpriteLoader = require('../sprites/sprite-loader.jsx');
 var SpriteRenderer = require('../sprites/sprite.jsx').SpriteRenderer;
 
 var CombatEntity = React.createClass({
@@ -24,7 +24,7 @@ var CombatEntity = React.createClass({
         if (!(state in this.sprites)) {
             // need to create sprite
             var spriteId = this.props.entity.sprites[state];
-            this.sprites[state] = SpriteStore.getNewSpriteById(spriteId);
+            this.sprites[state] = SpriteLoader.getNewSpriteById(spriteId);
         }
         return this.sprites[state];
     },
@@ -43,6 +43,10 @@ var CombatView = React.createClass({
         entities: {
             store: CombatStore,
             fetch: (store) => store.getEntities()
+        },
+        loading: {
+            store: CombatStore,
+            fetch: (store) => store.getIsLoading()
         }
     })],
 
@@ -55,13 +59,17 @@ var CombatView = React.createClass({
     },
 
     render: function() {
-        var player = this.renderPlayer();
-        var enemies = this.renderEnemies();
+        if (this.state.loading) {
+            return <span>Loading</span>;
+        } else {
+            var player = this.renderPlayer();
+            var enemies = this.renderEnemies();
 
-        return <div classNam="combat-background">
-            {player}
-            {enemies}
-        </div>;
+            return <div classNam="combat-background">
+                {player}
+                {enemies}
+            </div>;
+        }
     }
 });
 
