@@ -7,6 +7,96 @@ var AnimationTimingEngine = require("./animation-timing-engine.jsx");
 
 var timingEngine = new AnimationTimingEngine();
 
+
+function generateRandom(min, max){
+    return Math.random() * (max - min) + min;
+}
+
+class FogParticle {
+    constructor(options) {
+        options = options || {};
+        this.options = _.defaults({}, options, {
+            initialVelocity: [generateRandom(-2, 2), generateRandom(-2, 2)],
+            radius: 5,
+            pos: [0, 0]
+        });
+        this.velocity = this.options.initialVelocity.slice();
+        this.location = this.options.pos.slice();
+    }
+
+    render(ctx, time) {
+        // Draw fog image
+        if (this.image) {
+            ctx.drawImage(this.image, this.location[0] - 128,
+                this.location[1] - 128);
+            this.location[0] += this.velocity[0];
+            this.location[1] += this.velocity[1];
+        }
+    }
+}
+
+class FogParticleCloud {
+    constructor(options) {
+        var defaultSize = 500;
+        options = options || {};
+        this.options = _.defaults({}, options, {
+            size: [defaultSize, defaultSize],
+            scale: 1,
+            numParticles: 1000,
+        });
+        this.particles = _(this.options.numParticles).times(() => {
+            return new FogParticle(_.extend({
+                pos: [
+                    generateRandom(0, this.options.size[0]),
+                    generateRandom(0, this.options.size[1])
+                ],
+            }, this.options));
+        });
+        var imageObj = new Image();
+        imageObj.onload = () => {
+            this.particles.forEach(function(particle) {
+                particle.image = imageObj;
+            });
+        };
+        imageObj.src = "http://www.blog.jonnycornwell.com/wp-content/uploads/2012/07/Smoke10.png";
+    }
+
+    scaledSize() {
+        return [this.options.size[0] * this.options.scale,
+                this.options.size[1] * this.options.scale];
+    }
+
+    render(ctx, time) {
+        _.each(this.particles, (particle) => {
+            particle.render(ctx, time);
+
+            // Check if has crossed the right edge
+            if (particle.location[0] >= this.options.size[0]) {
+                particle.velocity[0] = -particle.velocity[0];
+                particle.location[0] = this.options.size[0];
+            }
+            // Check if has crossed the left edge
+            else if (particle.x <= 0) {
+                particle.velocity[0] = -particle.velocity[0];
+                particle.location[0] = 0;
+            }
+
+            // Check if has crossed the bottom edge
+            if (particle.location[1] >= this.options.size[1]) {
+                particle.velocity[1] = -particle.velocity[1];
+                particle.location[1] = this.options.size[1];
+            }
+
+            // Check if has crossed the top edge
+            else if (particle.location[1] <= 0) {
+                particle.velocity[1] = -particle.velocity[1];
+                particle.location[1] = 0;
+            }
+        });
+    }
+}
+
+
 class RainDrop {
     constructor(options) {
         options = options || {};
@@ -25,8 +115,6 @@ class RainDrop {
             Math.random() * this.options.widthVariance;
     }
 
-    // we expect time in ms to start at 0, this will always correspond to the
-    // first frame
     render(ctx, time, options) {
         var centerX = this.location[0] + this.width / 2;
         var centerY = this.location[1] + this.height / 2;
@@ -68,8 +156,8 @@ class RainCloud {
         this.particles = _(this.options.numParticles).times(() => {
             return new RainDrop(_.extend({
                 pos: [
-                    Math.random() * this.options.size[0],
-                    Math.random() * this.options.size[1]
+                    generateRandom(0, this.options.size[0]),
+                    generateRandom(0, this.options.size[1])
                 ],
             }, this.options));
         });
@@ -114,8 +202,6 @@ class SnowFlake {
             Math.random() * this.options.radiusVariance;
     }
 
-    // we expect time in ms to start at 0, this will always correspond to the
-    // first frame
     render(ctx, time, options) {
         ctx.beginPath();
         ctx.moveTo(this.location[0], this.location[1]);
@@ -148,8 +234,8 @@ class SnowFlakeCloud {
             // Snowflakes spawn at random locations
             return new SnowFlake(_.extend({
                 pos: [
-                    Math.random() * this.options.size[0],
-                    Math.random() * this.options.size[1]
+                    generateRandom(0, this.options.size[0]),
+                    generateRandom(0, this.options.size[1])
                 ]
             }, this.options));
         });
@@ -220,8 +306,6 @@ class Particle {
             Math.random() * this.options.radiusVariance;
     }
 
-    // we expect time in ms to start at 0, this will always correspond to the
-    // first frame
     render(ctx, time) {
         ctx.beginPath();
         this.opacity = Math.round(this.remaining_life / this.life * 100) / 100;
@@ -304,7 +388,7 @@ var ParticleCloudRenderer = React.createClass({
         };
 
         return {
-            particleCloud: new RainCloud({})
+            particleCloud: new FogParticleCloud({})
         };
     },
 
