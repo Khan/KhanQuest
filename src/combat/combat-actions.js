@@ -1,5 +1,7 @@
 var AppDispatcher = require("../flux/app-dispatcher.js");
 var CombatConstants = require("./combat-constants.js");
+var Spell = require("../models/spell.js");
+var UserStore = require("../user-store.jsx");
 
 var CombatActions = {
     startCombat: function(monsterEntityIds) {
@@ -31,6 +33,20 @@ var CombatActions = {
             success: success,
             target: target
         });
+    },
+
+    successfulAttack: function() {
+        // casts spell so that enemies take damage etc
+        var exerciseName = UserStore.getUser().activeExercise;
+        var spell = new Spell(exerciseName);
+        CombatActions.castSpell(spell, true, EntityStore.getPlayer());
+
+        Actions.nextProblem();
+    },
+
+    failedAttack: function() {
+        // TODO: consequences
+        Actions.nextProblem();
     }
 };
 

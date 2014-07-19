@@ -2,9 +2,7 @@
 
 var React = require("react");
 var Perseus = require("perseus");
-var CombatAction = require("./combat/combat-actions.js");
-var Spell = require('./models/spell.js');
-var CombatAction = require("./combat/combat-actions.js");
+var CombatActions = require('./combat/combat-actions.js');
 var EntityStore = require('./entity.jsx');
 var KUIButton = require("./components/button.jsx");
 
@@ -42,26 +40,17 @@ var CombatExerciseRenderer = React.createClass({
     },
 
     _retreat: function() {
-        CombatAction.endCombat();
+        // TODO(dmnd): consequences?
+        CombatActions.endCombat();
     },
 
     _attemptAttack: function() {
         var gradedResult = this._scoreInput();
         if (gradedResult.correct) {
-            this._onSuccessfulAttack();
+            CombatActions.successfulAttack();
         } else {
-            this._onFailedAttack();
+            CombatActions.failedAttack();
         }
-    },
-
-    _onSuccessfulAttack: function() {
-        var spell = new Spell(this.props.exerciseName);
-        CombatAction.castSpell(spell, true, EntityStore.getPlayer());
-        Actions.nextProblem();
-    },
-
-    _onFailedAttack: function() {
-        Actions.nextProblem();
     },
 
     render: function() {
@@ -88,15 +77,6 @@ var CombatExerciseRenderer = React.createClass({
                         width="140px"
                         onClick={this._retreat} />
                 </div>
-            </div>
-            <div>
-                <div>Hacks:</div>
-                <button className="correct" onClick={this._onSuccessfulAttack}>
-                    Correct
-                </button>
-                <button className="wrong" onClick={this._onFailedAttack}>
-                    Wrong
-                </button>
             </div>
         </div>;
     },

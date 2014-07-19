@@ -15,6 +15,7 @@ var UserStore = require("./user-store.jsx");
 var GameStore = require("./game-store.jsx");
 var CombatStore = require("./combat/combat-store.jsx");
 var StateFromStore = require("./flux/state-from-store-mixin.js");
+var CombatActions = require('./combat/combat-actions.js');
 
 var Game = React.createClass({
     mixins: [Changeable],
@@ -75,6 +76,12 @@ var Game = React.createClass({
                     showDialog={this.props.showDialog}
                     label="Show Dialog"
                     onChange={this.props.onChange} />
+                <button className="correct" onClick={CombatActions.successfulAttack}>
+                    Correct
+                </button>
+                <button className="wrong" onClick={CombatActions.failedAttack}>
+                    Wrong
+                </button>
             </div>
             <div className="row">
                 <ReactCSSTransitionGroup transitionName="screen">
