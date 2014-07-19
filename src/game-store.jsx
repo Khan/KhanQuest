@@ -70,7 +70,8 @@ var stepState = function(direction) {
             if (Mersenne.rand(20) < 1) {
                 var forestTrollStats = MonsterStore.getById("forest_troll");
                 var forestTroll = EntityStore.createEntity(forestTrollStats);
-                CombatActions.startCombat([forestTroll]);
+                var forestTrolls = _.times(3, () => EntityStore.createEntity(forestTrollStats));
+                CombatActions.startCombat(forestTrolls);
             }
 
         default:
