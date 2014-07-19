@@ -52,7 +52,7 @@ class AnimationTimingEngine {
     }
 
     removeUpdatable(index) {
-        var arrayIndex = _.sortedIndex(this.updatables, index, (u) => u.index);
+        var arrayIndex = _.sortedIndex(this.updatables, {index:index}, (u) => u.index);
         if (this.updatables[arrayIndex].index === index) {
             this.updatables.splice(arrayIndex, 1);
         }

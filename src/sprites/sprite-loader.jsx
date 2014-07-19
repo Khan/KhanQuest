@@ -118,6 +118,12 @@ var SpriteLoader = {
         return new Sprite(_spriteDict[spriteId]);
     },
 
+    // return the time it takes for the sprite to run once
+    getSpriteTime: function(spriteId) {
+        var spriteInfo = _spriteDict[spriteId];
+        return spriteInfo.frameIndices.length / spriteInfo.speed;
+    },
+
     // returns a promise
     loadSprites: function(spriteIds) {
         var urls = spriteIds.map(

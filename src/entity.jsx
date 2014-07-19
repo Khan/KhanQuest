@@ -1,3 +1,5 @@
+var SpriteLoader = require('./sprites/sprite-loader.jsx');
+
 /**
  * An Entity is the instantiation of a monster. It can have slightly tweaked
  * values for its stats from the base monster, to keep things interesting.
@@ -52,14 +54,19 @@ class Entity {
     isPlayer() {
         return this.id === 'player';
     }
+
+    setSpriteState(spriteState) {
+        this.spriteState = spriteState;
+    }
 }
 
 var testPlayer = new Entity({
     id: "player",
     sprites: {
         idle: 'red-mage-idle',
-        attack: 'red-mage-attack-magic',
-        dead: 'red-mage-attack-staff'
+        attack: 'red-mage-attack-staff',
+        damaged: 'red-mage-damaged',
+        dead: 'red-mage-damaged'
     },
     hp: 20,
     fire_resist: 0,

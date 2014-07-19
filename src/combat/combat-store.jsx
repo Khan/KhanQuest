@@ -1,4 +1,5 @@
 var EventEmitter = require("events").EventEmitter;
+var Promise = require('bluebird');
 var AppDispatcher = require("../flux/app-dispatcher.js");
 
 var CombatConstants = require("./combat-constants.js");
@@ -63,16 +64,21 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         },
 
         playerCast: function(spell, success, target) {
+            var nextTurn = () => {
+                _state = CombatEngineStates.RUNNING;
+                _turnIndex += 1;
+                this.takeTurn();
+            };
+
             if (success) {
-                this.handleAbility(spell, EntityStore.getPlayer(), target);
+                var player = EntityStore.getPlayer();
+                this.handleAbility(spell, player, target);
+                this.runAnimationForEntity('attack', player).then(nextTurn);
             } else {
                 // show the fizzle animation
                 this.fizzleSpell(spell);
+                this.runAnimationForEntity('attack', player).then(nextTurn);
             }
-
-            _state = CombatEngineStates.RUNNING;
-            _turnIndex += 1;
-            this.takeTurn();
         },
 
         takeTurn: function() {
@@ -117,6 +123,22 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             _turnIndex = 0;
             _turnOrder = [];
             _state = CombatEngineStates.RUNNING;
+        },
+
+        runAnimationForEntity: function(spriteState, entity) {
+            var spriteId = entity.sprites[spriteState];
+            var spriteTime = SpriteLoader.getSpriteTime(spriteId);
+
+            return new Promise((resolve, reject) => {
+                var oldSpriteState = entity.spriteState;
+                _.delay(() => {
+                    entity.setSpriteState(oldSpriteState);
+                    CombatStore._emitChange();
+                    resolve();
+                }, spriteTime);
+                entity.setSpriteState(spriteState);
+                CombatStore._emitChange();
+            });
         }
     },
 
