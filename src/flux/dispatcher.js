@@ -1,20 +1,7 @@
+var Promise = require("bluebird");
+
 var _callbacks = [];
 var _promises = [];
-
-// HACK(zach): For the love of God, please import a real promises library.
-var Promise;
-if (window.Promise) {
-    Promise = window.Promise;
-} else {
-    Promise = function(then) {
-        var myDeferred = $.Deferred();
-        then(myDeferred.resolve, myDeferred.reject);
-        return myDeferred;
-    };
-    Promise.all = function(promises) {
-        return $.when(promises);
-    };
-}
 
 /**
  * Add a promise to the queue of callback invocation promises.
