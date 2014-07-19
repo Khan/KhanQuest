@@ -6,7 +6,9 @@ var { MONSTER, WALL, OBJECT, DOOR, GRASS, EMPTY } = require("./constants.jsx");
 
 var MAPS = {
     overworld: "overworld.json",
-    cave: "cave.json"
+    cave: "cave.json",
+    salinterior: "salinterior.json",
+    cottage: "cottage.json"
 };
 
 var _currentMap = "cave";
