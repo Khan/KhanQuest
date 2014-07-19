@@ -10,6 +10,7 @@ var _turnOrder = [];
 var _turnIndex = 0;
 var _state = "ATTACK"; // TODO: Replace this with however we manage whether or
                        // not the user is attacking
+var _currentAbility = null;
 
 var combatLog = function() {
     var consoleArgs = ["COMBAT LOG"];

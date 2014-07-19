@@ -2,14 +2,15 @@ var _ = require("underscore");
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("./flux/app-dispatcher.js");
 var { constants } = require("./actions.jsx");
-var { ADD_SPELL } = constants;
+var { ADD_SPELL, SET_ACTIVE_SPELL } = constants;
 
 /* Information about the user state. */
 var _user = null;
 
 var defaultUser = () => {
     return {
-        unlockedExercises: []
+        unlockedExercises: [],
+        activeExercise: null
     };
 };
 
@@ -22,6 +23,13 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
                 _user = defaultUser();
             }
             _user.unlockedExercises.push(action.exerciseName);
+            break;
+
+        case SET_ACTIVE_SPELL:
+            if (_user == null) {
+                _user = defaultUser();
+            }
+            _user.activeExercise = action.exerciseName;
             break;
 
         default:

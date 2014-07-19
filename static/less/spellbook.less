@@ -10,39 +10,6 @@
     font-family: Proxima;
     color: @greyish;
 
-    .spell-badge {
-        margin: 10px;
-        width: 370px;
-        box-shadow: 0 0 3px 1px rgba(100, 100, 100, 0.6);
-        border-radius: 2px;
-        padding: 10px;
-        background-color: @opaque;
-        display: inline-block;
-
-        .icon {
-            padding: 5px;
-            display: inline-block;
-            width: @iconSize;
-            height: @iconSize;
-        }
-
-        .content {
-            vertical-align: top;
-            padding-left: 10px;
-            width: 268px;
-
-            .title {
-                font-weight: bold;
-                font-size: 18px;
-            }
-
-            .description {
-                line-height: 16px;
-                margin-top: 5px;
-            }
-        }
-    }
-
     .separator {
         margin: 30px 0;
         height: 3px;
@@ -67,11 +34,45 @@
     }
 }
 
-/* Only for active-mode. */
-.active-spellbook {
-    .spell-badge {
+.spell-badge {
+    margin: 10px;
+    width: 370px;
+    box-shadow: 0 0 3px 1px rgba(100, 100, 100, 0.6);
+    border-radius: 2px;
+    padding: 10px;
+    background-color: @opaque;
+    display: inline-block;
+
+    .icon {
+        padding: 5px;
+        display: inline-block;
+        width: @iconSize;
+        height: @iconSize;
+    }
+
+    .content {
+        vertical-align: top;
+        padding-left: 10px;
+        width: 268px;
+
+        .title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .description {
+            line-height: 16px;
+            margin-top: 5px;
+        }
+    }
+
+    &:hover {
+        background-color: white;
+    }
+
+    &.selected {
         &:hover {
-            background-color: white;
+            background-color: @darkOpaque;
         }
     }
 }

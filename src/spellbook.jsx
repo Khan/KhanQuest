@@ -7,14 +7,14 @@ var Spell = require("./models/spell");
 
 var Spellbook = React.createClass({
     propTypes: {
-        spells: React.PropTypes.arrayOf(
-            React.PropTypes.instanceOf(Spell)
-        )
+        exerciseName: React.PropTypes.arrayOf(React.PropTypes.string),
+        onClick: React.PropTypes.func
     },
 
     getDefaultProps: function () {
         return {
-            spells: []
+            exerciseName: [],
+            onClick: function () { }
         };
     },
 
@@ -23,8 +23,10 @@ var Spellbook = React.createClass({
             <div id="border">
                 <h1 id="banner">SPELLBOOK</h1>
                 <div className="separator" />
-                {_.map(this.props.spells, (spell, i) => {
-                    return <SpellBadge spell={spell} key={i} />;
+                {_.map(this.props.exerciseNames, (exerciseName, i) => {
+                    return <SpellBadge exerciseName={exerciseName}
+                        key={i}
+                        onClick={this.props.onClick} />;
                 })}
             </div>
         </div>;

@@ -3,8 +3,7 @@
 var React = require("react");
 var { Actions } = require("./actions.jsx");
 var Spellbook = require("./spellbook.jsx");
-var ActiveSpellbook = require("./active-spellbook.jsx");
-var Spell = require("./models/spell.js");
+var ActiveSpell = require("./active-spell.jsx");
 var Dialog = require("./dialog.jsx");
 var CombatScreen = require("./combat-screen.jsx");
 var Map = require("./map.jsx");
@@ -45,7 +44,6 @@ var Game = React.createClass({
     },
 
     render: function () {
-        console.log(this.state.user);
         return <div>
             <div className="debug-bar">
                 <button onClick={() => Actions.changeGameState({state: "MAP"})}>
@@ -62,6 +60,7 @@ var Game = React.createClass({
             <div className="row">
                 {this.state.game.state === "MAP" && this._renderMap()}
                 {this.state.game.state === "COMBAT" && this._renderCombat()}
+                {this.state.game.state === "SPELLBOOK" && this._renderSpellbook()}
             </div>
         </div>;
     },
@@ -82,9 +81,7 @@ var Game = React.createClass({
     },
 
     _renderCombat: function() {
-        var spells = _.map(this.state.user.unlockedExercises, (exercise) => {
-            return new Spell(exercise);
-        });
+        var activeExercise = this.state.user.activeExercise;
 
         return <div>
             <div className="fight-graphics" style={{float: "left"}}>
@@ -94,12 +91,23 @@ var Game = React.createClass({
             <div className="combat">
                 {/*TODO: make this collapse to show only active spell when
                          not clicked */}
-                <ActiveSpellbook currentSpell={_.head(spells)}
-                                 spells={_.rest(spells)} />
+                <ActiveSpell exerciseName={activeExercise} />
                 {this.state.combatState === "ATTACK" && <CombatScreen />}
             </div>
-            {this.props.showDialog && <Dialog scene="scene1"/>}
+            {this.props.showDialog && <Dialog scene="scene1" />}
         </div>;
+    },
+
+    _renderSpellbook: function() {
+        var exerciseNames = this.state.user.unlockedExercises;
+        var onChooseSpell = function(exerciseName) {
+            Actions.setActiveSpell(exerciseName);
+            Actions.changeGameState({state: "COMBAT"});
+        };
+
+        return <Spellbook
+            exerciseNames={exerciseNames}
+            onClick={onChooseSpell} />;
     }
 });
 
