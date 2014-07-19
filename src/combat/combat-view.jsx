@@ -13,7 +13,8 @@ var SpriteRenderer = require('../sprites/sprite.jsx').SpriteRenderer;
 var CombatEntity = React.createClass({
     propTypes: {
         // should be entity
-        entity: React.PropTypes.object
+        entity: React.PropTypes.object.isRequired,
+        isPlayer: React.PropTypes.bool.isRequired
     },
 
     componentWillMount: function() {
@@ -34,7 +35,7 @@ var CombatEntity = React.createClass({
         var spriteState = this.props.entity.spriteState;
 
         var sprite = this._getOrCreateSpriteForState(spriteState);
-        return <SpriteRenderer sprite={sprite} />;
+        return <SpriteRenderer sprite={sprite} flipX={this.props.isPlayer} />;
     }
 });
 
@@ -51,14 +52,15 @@ var CombatView = React.createClass({
     })],
 
     renderPlayer: function() {
-        return <CombatEntity entity={this.state.entities[0]} />;
+        return <CombatEntity isPlayer={true} entity={this.state.entities[0]} />;
     },
 
     renderEnemies: function() {
         var enemies = _.filter(this.state.entities,
                                (entity) => !entity.isPlayer());
         return enemies.map((enemyEntity, i) =>
-                           <CombatEntity entity={enemyEntity} key={i} />);
+                           <CombatEntity entity={enemyEntity}
+                                         key={i} isPlayer={false} />);
     },
 
     render: function() {

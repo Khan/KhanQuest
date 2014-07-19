@@ -7,7 +7,7 @@ var testJSON = JSON.stringify([
     {
         id: "forest_troll",
         sprites: {
-            idle: "default",
+            idle: "troll-whelp-idle",
             attack: "default",
             dead: "default"
         },

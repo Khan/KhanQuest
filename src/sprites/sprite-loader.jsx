@@ -23,6 +23,83 @@ var testJSON = JSON.stringify([
         dir: 'horizontal',
         once: true,
         scale: 2
+    },
+    {
+        id: 'red-mage',
+        url: 'resources/red-mage.png',
+        pos: [360, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0],
+        dir: 'horizontal',
+        once: true,
+        scale: 2
+    },
+    {
+        id: 'red-mage-attack-staff',
+        url: 'resources/red-mage.png',
+        pos: [144, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 1, 0],
+        dir: 'horizontal',
+        once: false,
+        scale: 2
+    },
+    {
+        id: 'red-mage-attack-magic',
+        url: 'resources/red-mage.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 1, 0],
+        dir: 'horizontal',
+        once: true,
+        scale: 2
+    },
+    {
+        id: 'red-mage-defend',
+        url: 'resources/red-mage.png',
+        pos: [296, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0],
+        dir: 'horizontal',
+        once: true,
+        scale: 2
+    },
+    {
+        id: 'troll-whelp-idle',
+        url: 'resources/troll-whelp.png',
+        pos: [360, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2 , 1],
+        dir: 'horizontal',
+        once: false,
+        scale: 2
+    },
+    {
+        id: 'red-mage-attack-magic',
+        url: 'resources/red-mage.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 1, 0],
+        dir: 'horizontal',
+        once: true,
+        scale: 2
+    },
+    {
+        id: 'red-mage-defend',
+        url: 'resources/red-mage.png',
+        pos: [296, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0],
+        dir: 'horizontal',
+        once: true,
+        scale: 2
     }
 ]);
 

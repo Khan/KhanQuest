@@ -1,0 +1,2786 @@
+Simple plain text exporter for demo purposes
+
+See http://www.grantlee.org/apidox/for_themers.html for more information
+
+Texture data:
+    texture.width  = 432
+    texture.height = 72
+
+    texture.trimmedName = red-mage
+    texture.fullName = red-mage.png
+    texture.absoluteFileName = /Users/zach/Projects/KAQuest/resources/red-mage.png
+
+SmartUpdateHash: $TexturePacker:SmartUpdate:4d99d08accc4bc409f4e73d07b0a399e:69a9b50a52283ec569423cc25bb20980:91f4ec65529d304504b233af728d47f5$
+
+Settings:
+
+Access to all values in the settings (.tps file):
+
+settings.tpsName                = foo ("unsaved" if used from command line without .tps file)
+settings.allowRotation          = false
+settings.autoAliasEnabled       = true
+settings.flipPVR                = false
+settings.forceIdenticalLayout   = false
+settings.multiPack              = false
+settings.premultiplyAlpha       = false
+settings.shapeDebug             = false
+settings.trimSpriteNames        = false
+settings.fixedTextureSize       = -1 x -1
+settings.dataFormat             = plain
+settings.textureSubPath         = 
+settings.ditherType             = NearestNeighbour
+settings.outputFormat           = RGBA8888
+settings.textureFormat          = png
+settings.backgroundColor        = 0
+settings.borderPadding          = 0
+settings.shapePadding           = 0
+settings.commonDivisorX         = 1
+settings.commonDivisorY         = 1
+settings.dpi                    = 72
+settings.reduceBorderArtifacts  = false
+
+settings.contentProtection.key  = 
+
+Variants:
+
+---
+variant.scale = 1
+variant.extension = 
+variant.spriteFilter = 
+variant.acceptFractionalValues = false
+variant.maxTextureSize = -1 x -1
+
+
+
+Not yet available:
+
+settings.dataFileNames          = 
+settings.textureFileName        = 
+settings.algorithmSettings      = 
+settings.globalSpriteSettings   = 
+
+Adjusted values for the current autosd variant:
+
+variantParams.scale             = 1
+variantParams.shapePadding      = 0
+variantParams.borderPadding     = 0
+variantParams.commonDivisorX    = 1
+variantParams.commonDivisorY    = 1
+variantParams.extrude           = 0
+variantParams.baseFactor        = 1
+variantParams.maxTextureSize    = 2048 x 2048
+variantParams.fixedTextureSize  = -1 x -1
+
+Sprite data:
+
+There are 2 variants:
+- sprites - contains the sprites, aliases are available in the
+  aliasList property and are not added top level
+
+- allSprites - list of all sprites
+
+Load javascript filter plugin, must be located in the exporter's folder in a subfolder
+grantlee/0.2/makecssselector.qs
+
+
+// set width & height for calculations using the javascript filter
+
+
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage-attack-magic-1.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage-attack-magic-1
+
+    -- name with image extension
+    sprite.fullName         = red-mage-attack-magic-1.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 0
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.166666666666667
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.16666666666666666
+    sprite.frameRectRel.height = 0.16666666666666666
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 0
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-1.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-17T23:25:40
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-17T23:25:40
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1445
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage-attack-magic-2.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage-attack-magic-2
+
+    -- name with image extension
+    sprite.fullName         = red-mage-attack-magic-2.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 72
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.166666666666667
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.166666666666667
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.16666666666666666
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.16666666666666666
+    sprite.frameRectRel.height = 0.16666666666666666
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 72
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-2.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-17T23:25:40
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-17T23:25:40
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1526
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage-attack-staff-1.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage-attack-staff-1
+
+    -- name with image extension
+    sprite.fullName         = red-mage-attack-staff-1.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 144
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.333333333333333
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.166666666666667
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.3333333333333333
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.16666666666666666
+    sprite.frameRectRel.height = 0.16666666666666666
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 144
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-1.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-17T23:25:40
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-17T23:25:40
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1439
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage-attack-staff-2.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage-attack-staff-2
+
+    -- name with image extension
+    sprite.fullName         = red-mage-attack-staff-2.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 216
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.5
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.166666666666667
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.5
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.16666666666666666
+    sprite.frameRectRel.height = 0.16666666666666666
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 216
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-2.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-17T23:25:40
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-17T23:25:40
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1545
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage-defend.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage-defend
+
+    -- name with image extension
+    sprite.fullName         = red-mage-defend.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 288
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.666666666666667
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.166666666666667
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.6666666666666666
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.16666666666666666
+    sprite.frameRectRel.height = 0.16666666666666666
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 288
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-defend.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-17T23:25:40
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-17T23:25:40
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1455
+
+
+    =========================================================================
+
+    Use the javascript filter plugin to replace -hover with :hover
+    red-mage.png
+
+    -- name without image type extension
+    sprite.trimmedName      = red-mage
+
+    -- name with image extension
+    sprite.fullName         = red-mage.png
+
+    -- offset of the center of the trimmed sprite from the
+    -- center of the original sprite (used by cocos2d)
+    sprite.centerOffset.x = 0
+    sprite.centerOffset.y = 0
+
+    -- list of alias sprites for this one
+    sprite.aliasList = 
+
+    --- frame rectangle with pixel coordinates
+    sprite.frameRect.x = 360
+    sprite.frameRect.y = 0
+    sprite.frameRect.width = 72
+    sprite.frameRect.height = 72
+
+    --- frame rectangle with uv coordinates (0..1)
+    sprite.frameRectRel.x = 0.833333333333333
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.166666666666667
+    sprite.frameRectRel.height = 1
+
+    --- frame rectangle with uv coordinates (0..1) calculated through JS
+    sprite.frameRectRel.x = 0.8333333333333334
+    sprite.frameRectRel.y = 0
+    sprite.frameRectRel.width = 0.16666666666666666
+    sprite.frameRectRel.height = 0.16666666666666666
+
+    --- version of the frame rect with "original" width and height
+    sprite.frameRectWithoutRotation.x = 360
+    sprite.frameRectWithoutRotation.y = 0
+    sprite.frameRectWithoutRotation.width = 72
+    sprite.frameRectWithoutRotation.height = 72
+
+    -- true if the sprite was rotated
+    sprite.rotated        = false
+
+    -- true if the sprite does not contain any transparent pixels
+    sprite.isSolid        = false
+
+    -- true if the sprite was trimmed
+    sprite.trimmed        = false
+
+    sprite.sourceRect.x = 0
+    sprite.sourceRect.y = 0
+    sprite.sourceRect.width = 72
+    sprite.sourceRect.height = 72
+
+    sprite.cornerOffset.x = 0
+    sprite.cornerOffset.y = 0
+
+    sprite.untrimmedSize.width = 72
+    sprite.untrimmedSize.height = 72
+
+    -- the file absolute file name of the sprite
+    sprite.fileData.absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage.png
+
+    -- the modification date of the sprite
+    sprite.fileData.lastModified = 2014-07-17T23:25:40
+
+    -- the creation date of the sprite
+    sprite.fileData.created = 2014-07-17T23:25:40
+
+    -- the file size of the sprite
+    sprite.fileData.fileSize = 1395
+
+
+
+#### Complete dump of all available objects
+
+### Values for the current texture
+The following values are available inside templates that are written for each
+variant or multipack. They are not available in a file that has the following values set:
+<hasSeparateAutoSDFiles>all</hasSeparateAutoSDFiles>
+<hasSeparateMultiPackFiles>last</hasSeparateMultiPackFiles>
+
+## sprites
+Contains the sprite of the current file, aliases are available through the aliasList property
+Shortcut into texture.sprites
+
+## allSprites
+Contains all sprites of the current file including aliases.
+Shortcut into texture.allSprites
+
+## texture
+Contains information about the current texture, size, and other information.
+Shortcut into allResults[variantIndex].textures[multiPackIndex]
+
+## variantParams
+The data the current file was created with
+
+### Values for all files
+The following values are available for all templates
+
+## settings
+The main settigns the file was created with
+
+## smartUpdateKey
+The key for this file used to check file consistency and avoid re-calculating
+data that is already available
+
+## multiPackIndex
+The multipack index number the current file was created with
+
+## variantIndex
+The AutoSD variant index the file was created with
+
+## allResults
+All texture and sprite information in a big array
+
+smartUpdateKey = $TexturePacker:SmartUpdate:4d99d08accc4bc409f4e73d07b0a399e:69a9b50a52283ec569423cc25bb20980:91f4ec65529d304504b233af728d47f5$
+
+multiPackIndex = 0
+
+variantIndex = 0
+
+variantParams = {
+    scale = 1
+    shapePadding = 0
+    borderPadding = 0
+    commonDivisorX = 1
+    commonDivisorY = 1
+    extrude = 0
+    baseFactor = 1
+    maxTextureSize = {
+        width = 2048
+        height = 2048
+    }
+    fixedTextureSize = {
+        width = -1
+        height = -1
+    }
+}
+
+settings = {
+    ditherType = NearestNeighbour
+    textureFormat = png
+    outputFormat = RGBA8888
+    contentProtection = {
+        key = 
+    }
+    autoSDSettings = {
+        0 = {
+            scale = 1
+            extension = 
+            spriteFilter = 
+            acceptFractionalValues = false
+            maxTextureSize = {
+                width = -1
+                height = -1
+            }
+        }
+    }
+    tpsName = foo
+    allowRotation = false
+    flipPVR = false
+    forceIdenticalLayout = false
+    multiPack = false
+    shapeDebug = false
+    trimSpriteNames = false
+    autoAliasEnabled = true
+    premultiplyAlpha = false
+    reduceBorderArtifacts = false
+    fixedTextureSize = {
+        width = -1
+        height = -1
+    }
+    dataFormat = plain
+    textureSubPath = 
+    borderPadding = 0
+    shapePadding = 0
+    commonDivisorX = 1
+    commonDivisorY = 1
+    dpi = 72
+    backgroundColor = 0
+}
+
+allResults = {
+    0 = {
+        textures = {
+            0 = {
+                size = {
+                    width = 432
+                    height = 72
+                }
+                area = 31104
+                sprites = {
+                    0 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-1.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1445
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage-attack-magic-1
+                        fullName = red-mage-attack-magic-1.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    1 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 72
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 72
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.16666666666666666
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-2.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1526
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage-attack-magic-2
+                        fullName = red-mage-attack-magic-2.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    2 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 144
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 144
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.3333333333333333
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-1.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1439
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage-attack-staff-1
+                        fullName = red-mage-attack-staff-1.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    3 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 216
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 216
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.5
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-2.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1545
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage-attack-staff-2
+                        fullName = red-mage-attack-staff-2.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    4 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 288
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 288
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.6666666666666666
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-defend.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1455
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage-defend
+                        fullName = red-mage-defend.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    5 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 360
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 360
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.8333333333333334
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1395
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage
+                        fullName = red-mage.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                }
+                allSprites = {
+                    0 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-1.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1445
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage-attack-magic-1
+                        fullName = red-mage-attack-magic-1.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    1 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 72
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 72
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.16666666666666666
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-2.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1526
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage-attack-magic-2
+                        fullName = red-mage-attack-magic-2.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    2 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 144
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 144
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.3333333333333333
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-1.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1439
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage-attack-staff-1
+                        fullName = red-mage-attack-staff-1.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    3 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 216
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 216
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.5
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-2.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1545
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage-attack-staff-2
+                        fullName = red-mage-attack-staff-2.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    4 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 288
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 288
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.6666666666666666
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-defend.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1455
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage-defend
+                        fullName = red-mage-defend.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                    5 = {
+                        size = {
+                            width = 72
+                            height = 72
+                        }
+                        frameRectWithoutRotation = {
+                            x = 360
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRect = {
+                            x = 360
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        frameRectRel = {
+                            x = 0.8333333333333334
+                            y = 0
+                            width = 0.16666666666666666
+                            height = 1
+                        }
+                        sourceRect = {
+                            x = 0
+                            y = 0
+                            width = 72
+                            height = 72
+                        }
+                        cornerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        untrimmedSize = {
+                            width = 72
+                            height = 72
+                        }
+                        fileData = {
+                            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage.png
+                            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                            fileSize = 1395
+                        }
+                        trimmed = false
+                        rotated = false
+                        isSolid = false
+                        trimmedName = red-mage
+                        fullName = red-mage.png
+                        aliasList = {}
+                        centerOffset = {
+                            x = 0
+                            y = 0
+                        }
+                        pivotPoint = {
+                            x = 36
+                            y = 36
+                        }
+                    }
+                }
+                absoluteFileName = /Users/zach/Projects/KAQuest/resources/red-mage.png
+                trimmedName = red-mage
+                fullName = red-mage.png
+            }
+        }
+        nonFittingSprites = {}
+    }
+}
+
+texture = {
+    size = {
+        width = 432
+        height = 72
+    }
+    area = 31104
+    sprites = {
+        0 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-1.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1445
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage-attack-magic-1
+            fullName = red-mage-attack-magic-1.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        1 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 72
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 72
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.16666666666666666
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-2.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1526
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage-attack-magic-2
+            fullName = red-mage-attack-magic-2.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        2 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 144
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 144
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.3333333333333333
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-1.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1439
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage-attack-staff-1
+            fullName = red-mage-attack-staff-1.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        3 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 216
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 216
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.5
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-2.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1545
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage-attack-staff-2
+            fullName = red-mage-attack-staff-2.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        4 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 288
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 288
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.6666666666666666
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-defend.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1455
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage-defend
+            fullName = red-mage-defend.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        5 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 360
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 360
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.8333333333333334
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1395
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage
+            fullName = red-mage.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+    }
+    allSprites = {
+        0 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-1.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1445
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage-attack-magic-1
+            fullName = red-mage-attack-magic-1.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        1 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 72
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 72
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.16666666666666666
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-2.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1526
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage-attack-magic-2
+            fullName = red-mage-attack-magic-2.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        2 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 144
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 144
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.3333333333333333
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-1.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1439
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage-attack-staff-1
+            fullName = red-mage-attack-staff-1.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        3 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 216
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 216
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.5
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-2.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1545
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage-attack-staff-2
+            fullName = red-mage-attack-staff-2.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        4 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 288
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 288
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.6666666666666666
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-defend.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1455
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage-defend
+            fullName = red-mage-defend.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+        5 = {
+            size = {
+                width = 72
+                height = 72
+            }
+            frameRectWithoutRotation = {
+                x = 360
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRect = {
+                x = 360
+                y = 0
+                width = 72
+                height = 72
+            }
+            frameRectRel = {
+                x = 0.8333333333333334
+                y = 0
+                width = 0.16666666666666666
+                height = 1
+            }
+            sourceRect = {
+                x = 0
+                y = 0
+                width = 72
+                height = 72
+            }
+            cornerOffset = {
+                x = 0
+                y = 0
+            }
+            untrimmedSize = {
+                width = 72
+                height = 72
+            }
+            fileData = {
+                absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage.png
+                lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+                fileSize = 1395
+            }
+            trimmed = false
+            rotated = false
+            isSolid = false
+            trimmedName = red-mage
+            fullName = red-mage.png
+            aliasList = {}
+            centerOffset = {
+                x = 0
+                y = 0
+            }
+            pivotPoint = {
+                x = 36
+                y = 36
+            }
+        }
+    }
+    absoluteFileName = /Users/zach/Projects/KAQuest/resources/red-mage.png
+    trimmedName = red-mage
+    fullName = red-mage.png
+}
+
+allSprites = {
+    0 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-1.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1445
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage-attack-magic-1
+        fullName = red-mage-attack-magic-1.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    1 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 72
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 72
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.16666666666666666
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-2.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1526
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage-attack-magic-2
+        fullName = red-mage-attack-magic-2.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    2 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 144
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 144
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.3333333333333333
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-1.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1439
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage-attack-staff-1
+        fullName = red-mage-attack-staff-1.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    3 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 216
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 216
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.5
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-2.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1545
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage-attack-staff-2
+        fullName = red-mage-attack-staff-2.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    4 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 288
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 288
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.6666666666666666
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-defend.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1455
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage-defend
+        fullName = red-mage-defend.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    5 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 360
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 360
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.8333333333333334
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1395
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage
+        fullName = red-mage.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+}
+
+sprites = {
+    0 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-1.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1445
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage-attack-magic-1
+        fullName = red-mage-attack-magic-1.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    1 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 72
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 72
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.16666666666666666
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-magic-2.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1526
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage-attack-magic-2
+        fullName = red-mage-attack-magic-2.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    2 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 144
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 144
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.3333333333333333
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-1.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1439
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage-attack-staff-1
+        fullName = red-mage-attack-staff-1.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    3 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 216
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 216
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.5
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-attack-staff-2.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1545
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage-attack-staff-2
+        fullName = red-mage-attack-staff-2.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    4 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 288
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 288
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.6666666666666666
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage-defend.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1455
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage-defend
+        fullName = red-mage-defend.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+    5 = {
+        size = {
+            width = 72
+            height = 72
+        }
+        frameRectWithoutRotation = {
+            x = 360
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRect = {
+            x = 360
+            y = 0
+            width = 72
+            height = 72
+        }
+        frameRectRel = {
+            x = 0.8333333333333334
+            y = 0
+            width = 0.16666666666666666
+            height = 1
+        }
+        sourceRect = {
+            x = 0
+            y = 0
+            width = 72
+            height = 72
+        }
+        cornerOffset = {
+            x = 0
+            y = 0
+        }
+        untrimmedSize = {
+            width = 72
+            height = 72
+        }
+        fileData = {
+            absoluteFileName = /Users/zach/github/wesnoth/data/core/images/units/human-magi/red-mage.png
+            lastModified = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            created = {Thu Jul 17 2014 23:25:40 GMT-0700 (PDT)}
+            fileSize = 1395
+        }
+        trimmed = false
+        rotated = false
+        isSolid = false
+        trimmedName = red-mage
+        fullName = red-mage.png
+        aliasList = {}
+        centerOffset = {
+            x = 0
+            y = 0
+        }
+        pivotPoint = {
+            x = 36
+            y = 36
+        }
+    }
+}

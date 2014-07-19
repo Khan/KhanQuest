@@ -61,7 +61,7 @@ class Sprite {
             once: false,
             frameIndices: [0],
             dir: 'horizontal',
-            scale: 1
+            scale: 1,
         });
     }
 
@@ -103,7 +103,14 @@ class Sprite {
 
 var SpriteRenderer = React.createClass({
     propTypes: {
-        sprite: React.PropTypes.instanceOf(Sprite).isRequired
+        sprite: React.PropTypes.instanceOf(Sprite).isRequired,
+        flipX: React.PropTypes.bool
+    },
+
+    getDefaultProps: function() {
+        return {
+            flipX: false
+        };
     },
 
     _insertIntoSprites: function(sprite) {
@@ -125,6 +132,11 @@ var SpriteRenderer = React.createClass({
 
     componentDidMount: function() {
         this.ctx = this.getDOMNode().getContext('2d');
+        var canvasSize = this.props.sprite.scaledSize();
+        if (this.props.flipX) {
+            this.ctx.scale(-1, 1);
+            this.ctx.translate(-canvasSize[0], 0);
+        }
         this.time = 0;
 
         this._insertIntoSprites(this.props.sprite);
