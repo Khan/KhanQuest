@@ -38,8 +38,9 @@
 .spell-badge {
     .swatch;
 
-    width: 370px;
     display: inline-block;
+    height: @spellheight;
+    width: 370px;
 
     .icon {
         padding: 5px;
@@ -69,6 +70,8 @@
     }
 
     &.selected {
+        width: 500px;
+
         &:hover {
             background-color: @darkOpaque;
         }
@@ -81,5 +84,6 @@
     text-align: center;
     font-weight: bold;
     font-size: 22px;
-}
 
+    height: @spellheight;
+}
