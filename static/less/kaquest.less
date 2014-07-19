@@ -9,6 +9,11 @@
 
 div.row {
     margin: 0;
+    position: relative;
+
+    .row-item {
+        position: absolute;
+    }
 }
 
 @font-face {
@@ -20,4 +25,22 @@ div.row {
     font-family: Proxima;
     src: url(../fonts/proxima/Proxima-Nova-Semibold.woff);
     font-weight: bold;
+}
+
+.screen-enter {
+  opacity: 0.00;
+  transition: opacity .5s ease-in 0.5s;
+}
+
+.screen-enter.screen-enter-active {
+  opacity: 1;
+}
+
+.screen-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.screen-leave.screen-leave-active {
+  opacity: 0.01;
 }

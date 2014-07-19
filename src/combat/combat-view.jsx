@@ -57,8 +57,8 @@ var CombatView = React.createClass({
     renderEnemies: function() {
         var enemies = _.filter(this.state.entities,
                                (entity) => !entity.isPlayer());
-        return enemies.map((enemyEntity) =>
-                           <CombatEntity entity={enemyEntity} />);
+        return enemies.map((enemyEntity, i) =>
+                           <CombatEntity entity={enemyEntity} key={i} />);
     },
 
     render: function() {

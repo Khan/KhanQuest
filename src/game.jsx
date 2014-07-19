@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require("react");
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 var { Actions, GameViews } = require("./actions.jsx");
 var Spellbook = require("./spellbook.jsx");
 var Dialog = require("./dialog.jsx");
@@ -45,7 +46,6 @@ var Game = React.createClass({
     startCombat: function() {
         var forestTrollStats = MonsterStore.getById("forest_troll");
         var forestTroll = EntityStore.createEntity(forestTrollStats);
-
         CombatActions.startCombat([forestTroll]);
     },
 
@@ -68,15 +68,17 @@ var Game = React.createClass({
                     onChange={this.props.onChange} />
             </div>
             <div className="row">
+                <ReactCSSTransitionGroup transitionName="screen">
                 {this.state.currentView === GameViews.MAP && this._renderMap()}
                 {this.state.currentView === GameViews.COMBAT && this._renderCombat()}
                 {this.state.currentView === GameViews.SPELLBOOK && this._renderSpellbook()}
+                </ReactCSSTransitionGroup>
             </div>
         </div>;
     },
 
     _renderMap: function() {
-        return <div>
+        return <div key="map" className="row-item">
             <button onClick={() => Actions.setCurrentMap("overworld")}
                     type="button">
                 overworld
@@ -94,8 +96,8 @@ var Game = React.createClass({
         var activeExercise = this.state.user.activeExercise;
         var problemIndex = this.state.user.problemIndex;
 
-        return <div>
-            <div className="fight-graphics" style={{float: "left"}}>
+        return <div key="combat" className="row-item">
+            <div className="fight-graphics">
                 <CombatView />
             </div>
             <div className="combat">
@@ -113,9 +115,11 @@ var Game = React.createClass({
             Actions.closeSpellbook();
         };
 
-        return <Spellbook
-            exerciseNames={exerciseNames}
-            onClick={onChooseSpell} />;
+        return <div key="spellbook" className="row-item">
+            <Spellbook
+                exerciseNames={exerciseNames}
+                onClick={onChooseSpell} />
+        </div>;
     }
 });
 

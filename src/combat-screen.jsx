@@ -9,8 +9,8 @@ var ActiveSpell = require("./active-spell.jsx");
 
 var CombatScreen = React.createClass({
     propTypes: {
-        exerciseName: RP.string.isRequired,
-        problemIndex: RP.number.isRequired
+        exerciseName: RP.string,
+        problemIndex: RP.number
     },
 
     render: function() {

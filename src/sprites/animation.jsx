@@ -365,7 +365,7 @@ class ParticleCloud {
             {
                 //a brand new particle replacing the dead one
                 return new Particle(this.options);
-            } else {
+        } else {
                 return particle;
             }
         });
@@ -388,7 +388,7 @@ var ParticleCloudRenderer = React.createClass({
         };
 
         return {
-            particleCloud: new FogParticleCloud({})
+            particleCloud: new ParticleCloud(fire)
         };
     },
 
