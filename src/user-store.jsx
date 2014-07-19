@@ -2,7 +2,7 @@ var _ = require("underscore");
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("./flux/app-dispatcher.js");
 var { constants } = require("./actions.jsx");
-var { ADD_SPELL, SET_ACTIVE_SPELL } = constants;
+var { ADD_SPELL, SET_ACTIVE_SPELL, NEXT_PROBLEM } = constants;
 
 /* Information about the user state. */
 var _user = null;
@@ -10,8 +10,16 @@ var _user = null;
 var defaultUser = () => {
     return {
         unlockedExercises: [],
-        activeExercise: null
+        activeExercise: null,
+        problemIndex: 0
     };
+};
+
+var getOrCreateUser = () => {
+    if (_user == null) {
+        _user = defaultUser();
+    }
+    return _user;
 };
 
 var dispatcherIndex = AppDispatcher.register(function(payload) {
@@ -19,17 +27,15 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 
     switch (action.actionType) {
         case ADD_SPELL:
-            if (_user == null) {
-                _user = defaultUser();
-            }
-            _user.unlockedExercises.push(action.exerciseName);
+            getOrCreateUser().unlockedExercises.push(action.exerciseName);
             break;
 
         case SET_ACTIVE_SPELL:
-            if (_user == null) {
-                _user = defaultUser();
-            }
-            _user.activeExercise = action.exerciseName;
+            getOrCreateUser().activeExercise = action.exerciseName;
+            break;
+
+        case NEXT_PROBLEM:
+            getOrCreateUser().problemIndex += 1;
             break;
 
         default:
@@ -44,11 +50,7 @@ var UserStore = _({}).extend(
     EventEmitter.prototype,
     {
         getUser: function() {
-            if (_user == null) {
-                return defaultUser();
-            }
-
-            return _.clone(_user);
+            return _.clone(getOrCreateUser());
         },
 
         addChangeListener: function(callback) {

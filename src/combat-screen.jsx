@@ -1,41 +1,29 @@
 /** @jsx React.DOM */
 
 var React = require("react");
+var RP = React.PropTypes;
+
 var CombatExercise = require("./combat-exercise.jsx");
 var ActiveSpell = require("./active-spell.jsx");
 var CombatAction = require("./combat/combat-actions.js");
 var Spell = require('./models/spell.js');
 var EntityStore = require('./entity.jsx')
 
-var CombatScreen = React.createClass({
-    getDefaultProps: function() {
-        return {
-            exerciseName: "groups-of-tens",
-        };
-    },
 
-    getInitialState: function() {
-        return {
-            problemIndex: 0
-        };
+var CombatScreen = React.createClass({
+    propTypes: {
+        exerciseName: RP.string.isRequired,
+        problemIndex: RP.number.isRequired
     },
 
     onAttack: function() {
-        console.log("onAttack");
-        this.nextProblem();
         var spell = new Spell(this.props.exerciseName);
         CombatAction.castSpell(spell, true, EntityStore.getPlayer());
+        Actions.nextProblem();
     },
 
     onFailedAttack: function() {
-        console.log("onFailedAttack");
-        this.nextProblem();
-    },
-
-    nextProblem: function() {
-        var problemIndex = this.state.problemIndex;
-        problemIndex++;
-        this.setState({problemIndex});
+        Actions.nextProblem();
     },
 
     render: function() {
@@ -47,7 +35,7 @@ var CombatScreen = React.createClass({
                                 exerciseName={exerciseName}
                                 onAttack={this.onAttack}
                                 onFailedAttack={this.onFailedAttack}
-                                problemIndex={this.state.problemIndex} />}
+                                problemIndex={this.props.problemIndex} />}
         </div>;
     }
 });

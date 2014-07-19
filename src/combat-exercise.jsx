@@ -1,16 +1,20 @@
 /** @jsx React.DOM */
 
 var React = require("react");
+var RP = React.PropTypes
+
 var Perseus = require("perseus");
 var CombatExerciseRenderer = require("./combat-exercise-renderer.jsx");
 var Spell = require("./models/spell.js");
 var Mersenne = require('mersenne');
 
+
 var CombatExercise = React.createClass({
     propTypes: {
-        exerciseName: React.PropTypes.string.isRequired,
-        onAttack: React.PropTypes.func.isRequired,
-        onFailedAttack: React.PropTypes.func.isRequired
+        exerciseName: RP.string.isRequired,
+        onAttack: RP.func.isRequired,
+        onFailedAttack: RP.func.isRequired,
+        problemIndex: RP.number.isRequired
     },
 
     getDefaultProps: function() {

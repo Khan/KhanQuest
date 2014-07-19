@@ -15,7 +15,8 @@ var constants = {
     SHOW_DIALOG: "SHOW_DIALOG",
     SET_MAP: "SET_MAP",
     OPEN_SPELLBOOK: "OPEN_SPELLBOOK",
-    CLOSE_SPELLBOOK: "CLOSE_SPELLBOOK"
+    CLOSE_SPELLBOOK: "CLOSE_SPELLBOOK",
+    NEXT_PROBLEM: "NEXT_PROBLEM"
 };
 
 var Actions = {
@@ -70,8 +71,13 @@ var Actions = {
         AppDispatcher.handleViewAction({
             actionType: constants.OPEN_SPELLBOOK
         });
-    }
+    },
 
+    nextProblem: function() {
+        AppDispatcher.handleViewAction({
+            actionType: constants.NEXT_PROBLEM
+        });
+    }
 };
 
 module.exports = { constants, Actions, GameViews };

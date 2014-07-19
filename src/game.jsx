@@ -92,13 +92,15 @@ var Game = React.createClass({
 
     _renderCombat: function() {
         var activeExercise = this.state.user.activeExercise;
+        var problemIndex = this.state.user.problemIndex;
 
         return <div>
             <div className="fight-graphics" style={{float: "left"}}>
                 <CombatView />
             </div>
             <div className="combat">
-                <CombatScreen exerciseName={activeExercise} />
+                <CombatScreen exerciseName={activeExercise}
+                              problemIndex={problemIndex} />
             </div>
             {this.props.showDialog && <Dialog scene="scene1" />}
         </div>;
