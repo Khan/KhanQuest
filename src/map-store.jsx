@@ -24,7 +24,7 @@ var NEXT_WORLD = {
     fortress: "overworld"
 };
 
-var _currentMap = "cottage";
+var _currentMap = "salinterior";
 
 // metadata about each map:
 // { overworld: object, cave: object }

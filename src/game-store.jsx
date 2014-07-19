@@ -4,7 +4,7 @@ var AppDispatcher = require("./flux/app-dispatcher.js");
 var { constants, GameViews } = require("./actions.jsx");
 var MapStore = require("./map-store.jsx");
 var { CHANGE_STATE, START_COMBAT, MOVE, SET_LOCATION } = constants;
-var { MONSTER, WALL, OBJECT, DOOR, GRASS } = require("./constants.jsx");
+var { BOSS, WALL, OBJECT, DOOR, GRASS } = require("./constants.jsx");
 var CombatConstants = require("./combat/combat-constants.js");
 var {assert} = require("./utils.jsx");
 var Mersenne = require("mersenne");
@@ -44,8 +44,11 @@ var stepState = function(direction) {
     var interaction = MapStore.getInteractionForLocation(candidateLocation);
 
     switch (interaction) {
-        case MONSTER:
-            // you ran into a monster.
+        case BOSS:
+            // TODO real boss
+            var forestTrollStats = MonsterStore.getById("forest_troll");
+            var forestTroll = EntityStore.createEntity(forestTrollStats);
+            CombatActions.startCombat([forestTroll]);
             break;
 
         case WALL:
