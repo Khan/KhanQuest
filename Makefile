@@ -23,7 +23,7 @@ build: install create_build_dir
 
 server:
 	(sleep 1; echo; echo http://localhost:$(PORT)/game.html) &
-	./node_modules/.bin/webpack-dev-server --port $(PORT) --output-public-path live-build/ --devtool eval src/index.jsx
+	./node_modules/.bin/webpack-dev-server --port $(PORT) --output-public-path live-build/ src/index.jsx
 
 create_build_dir:
 	mkdir -p build
