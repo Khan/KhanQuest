@@ -46,7 +46,6 @@ class AnimationTimingEngine {
 
     addUpdatable(component) {
         var index = this.currentIndex++;
-        console.log(index);
         // fine to put this at the end, it's just getting bigger
         this.updatables.push({component: component, index: index});
         return index;
