@@ -80,7 +80,7 @@ class Sprite {
             frameIndex = this.options.frameIndices[index % max];
 
             if (this.options.once && index >= max) {
-                frameIndex = max - 1;
+                frameIndex = this.options.frameIndices[max - 1];
             }
         } else {
             frameIndex = 0;
