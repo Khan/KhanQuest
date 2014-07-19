@@ -80,9 +80,13 @@ var Map = React.createClass({
             right
         };
 
+        var absolute = {
+            position: "absolute"
+        };
         return <div>
             <Shortcut actions={actions} />
-            <canvas ref="canvas" width={1000} height={1000} />
+            <ParticleCloudRenderer />
+            <canvas ref="canvas" width={1000} height={1000} style={absolute} />
         </div>;
     },
 

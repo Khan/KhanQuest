@@ -37,12 +37,12 @@ class FogParticle {
 
 class FogParticleCloud {
     constructor(options) {
-        var defaultSize = 500;
+        var defaultSize = 1000;
         options = options || {};
         this.options = _.defaults({}, options, {
             size: [defaultSize, defaultSize],
             scale: 1,
-            numParticles: 1000,
+            numParticles: 50,
         });
         this.particles = _(this.options.numParticles).times(() => {
             return new FogParticle(_.extend({
@@ -146,7 +146,7 @@ class RainDrop {
 
 class RainCloud {
     constructor(options) {
-        var defaultSize = 500;
+        var defaultSize = 1000;
         options = options || {};
         this.options = _.defaults({}, options, {
             size: [defaultSize, defaultSize],
@@ -221,7 +221,7 @@ class SnowFlake {
 
 class SnowFlakeCloud {
     constructor(options) {
-        var defaultSize = 500;
+        var defaultSize = 1000;
         options = options || {};
         this.options = _.defaults({}, options, {
             size: [defaultSize, defaultSize],
@@ -338,7 +338,7 @@ class Particle {
 
 class ParticleCloud {
     constructor(options) {
-        var defaultSize = 500;
+        var defaultSize = 1000;
         options = options || {};
         this.options = _.defaults({}, options, {
             size: [defaultSize, defaultSize],
@@ -429,8 +429,13 @@ var ParticleCloudRenderer = React.createClass({
     },
 
     render: function() {
+        var absolute = {
+            position: "absolute",
+            zIndex: 2
+        };
+
         var canvasSize = this.props.particleCloud.scaledSize();
-        return <canvas width={canvasSize[0]} height={canvasSize[1]}></canvas>;
+        return <canvas width={canvasSize[0]} height={canvasSize[1]} style={absolute} />;
     }
 });
 
