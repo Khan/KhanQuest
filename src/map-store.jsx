@@ -33,7 +33,7 @@ var MAPS = {
         name: "cottage",
         manifestName: "cottage.json",
         nextWorld: "salinterior",
-        weather: Weather.DARKRAIN
+        weather: Weather.RAIN
     },
 
     darkforest: {
