@@ -131,18 +131,18 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                     Actions.adjustCounters(spell.exerciseName);
 
                     return this.runAnimationForEntity('attack', player).then(() => {
-                        this.handleAbility(spell, player, targets);
+                        return this.handleAbility(spell, player, targets);
                     });
                 } else {
                     // show the fizzle animation
                     return this.runAnimationForEntity('fizzle', player).then(() => {
-                        this.fizzleSpell(spell);
+                        return this.fizzleSpell(spell);
                     });
                 }
             }
 
             return this.getPlayerTarget(spell).then((targets) => {
-                castSpell(targets);
+                return castSpell(targets);
             });
         },
 
@@ -169,10 +169,12 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                     if (abilityToUse.category === 'attack') {
                         this.runAnimationForEntity('attack', currentEntity)
                         .then(() => {
-                            this.handleAbility(
+                            return this.handleAbility(
                                 abilityToUse, currentEntity, [player])
                         })
-                        .then(() => this.advanceTurn());
+                        .then(() => {
+                            return this.advanceTurn();
+                        });
                     } else {
                         this.handleAbility(abilityToUse, currentEntity, [player]);
 
@@ -298,7 +300,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                     var livingEnemies = CombatStore.CombatEngine.getLivingEnemies();
                     if (_.isEmpty(livingEnemies)) {
                         _message = "You have KHANquered!";
-                        _emitChange();
+                        CombatStore._emitChange();
                         utils.wait(5000).then(() => {
                             combatLog("No enemies left! player wins");
                             _message = null;
