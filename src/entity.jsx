@@ -65,6 +65,7 @@ var testPlayer = new Entity({
     sprites: {
         idle: 'red-mage-idle-female',
         attack: 'red-mage-attack-staff-female',
+        fizzle: 'default',
         damaged: 'red-mage-damaged-female',
         dead: 'red-mage-die-female',
         up: 'red-mage-up-female',

@@ -115,6 +115,15 @@ var SpriteRenderer = React.createClass({
         };
     },
 
+    getTransform: function() {
+        var canvasSize = this.props.sprite.scaledSize();
+        if (this.props.flipX) {
+            return [-1, 0, 0, 1, canvasSize[0], 0];
+        } else {
+            return [1, 0, 0, 1, 0, 0];
+        }
+    },
+
     _insertIntoSprites: function(sprite) {
         this.index = timingEngine.addUpdatable(this);
     },
@@ -126,6 +135,7 @@ var SpriteRenderer = React.createClass({
     update: function(dt) {
         if (this.ctx) {
             var scaledSize = this.props.sprite.scaledSize();
+            this.ctx.setTransform.apply(this.ctx, this.getTransform());
             this.ctx.clearRect(0, 0, scaledSize[0], scaledSize[1]);
             this.props.sprite.render(this.ctx, this.time);
             this.time += dt;
@@ -134,11 +144,6 @@ var SpriteRenderer = React.createClass({
 
     componentDidMount: function() {
         this.ctx = this.getDOMNode().getContext('2d');
-        var canvasSize = this.props.sprite.scaledSize();
-        if (this.props.flipX) {
-            this.ctx.scale(-1, 1);
-            this.ctx.translate(-canvasSize[0], 0);
-        }
         this.time = 0;
 
         this._insertIntoSprites(this.props.sprite);
@@ -154,16 +159,6 @@ var SpriteRenderer = React.createClass({
             this._removeFromSprites();
             this._insertIntoSprites(nextProps.sprite);
             this.time = 0;
-        }
-    },
-
-    componentDidUpdate: function(prevProps) {
-        this.ctx = this.getDOMNode().getContext('2d');
-        if (this.props.flipX !== prevProps.flipX) {
-            console.log("updating direction");
-            var canvasSize = this.props.sprite.scaledSize();
-            this.ctx.scale(-1, 1);
-            this.ctx.translate(-canvasSize[0], 0);
         }
     },
 

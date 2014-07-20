@@ -7,7 +7,7 @@ var testJSON = JSON.stringify([
         url: 'resources/default.png',
         pos: [0, 0],
         size: [128, 128],
-        speed: 1,
+        speed: 0.005,
         frameIndices: [0],
         dir: 'horizontal',
         once: false,

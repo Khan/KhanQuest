@@ -113,8 +113,8 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
         handlePlayerCast: function(spell, success) {
             var castSpell = (targets) => {
+                var player = EntityStore.getPlayer();
                 if (success) {
-                    var player = EntityStore.getPlayer();
                     return this.runAnimationForEntity('attack', player).then(() => {
                         this.handleAbility(spell, player, targets);
                     });
