@@ -71,7 +71,6 @@ var testJSON = JSON.stringify([
     {
         id: 'red-mage-up-female',
         url: 'resources/red-mage-female.png',
-        flip: true,
         pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
@@ -116,7 +115,6 @@ var testJSON = JSON.stringify([
     {
         id: 'red-mage-walk-up-female',
         url: 'resources/red-mage-female.png',
-        flip: true,
         pos: [0, 0],
         size: [72, 72],
         speed: 0.005,

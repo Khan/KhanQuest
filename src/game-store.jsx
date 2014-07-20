@@ -35,18 +35,10 @@ var stepState = function(direction) {
     switch (direction) {
         case "UP":
             candidateLocation.y--;
-            // switch directions while moving upwards
-            if (_playerDirection === direction) {
-                _lastLeftRight = flipLeftRight(_lastLeftRight);
-            }
             break;
 
         case "DOWN":
             candidateLocation.y++;
-            // switch directions while moving upwards
-            if (_playerDirection === direction) {
-                _lastLeftRight = flipLeftRight(_lastLeftRight);
-            }
             break;
 
         case "LEFT":
