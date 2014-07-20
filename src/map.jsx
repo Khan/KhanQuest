@@ -44,6 +44,14 @@ var Map = React.createClass({
             location: {
                 store: GameStore,
                 fetch: (store) => store.getLocation()
+            },
+            direction: {
+                store: GameStore,
+                fetch: (store) => store.getDirection()
+            },
+            lastLeftRight: {
+                store: GameStore,
+                fetch: (store) => store.getLastLeftRight()
             }
         })
     ],
@@ -65,6 +73,8 @@ var Map = React.createClass({
             this.loadSprites();
         }
         if (this.state.layers !== nextState.layers) {
+            var canvas = this.refs.canvas.getDOMNode();
+            this.context = canvas.getContext('2d');
             this.context.clearRect(0, 0, 1000, 1000);
         }
     },
@@ -77,6 +87,15 @@ var Map = React.createClass({
             LEFT: SpriteLoader.getNewSpriteById(playerSpriteIds.left),
             RIGHT: SpriteLoader.getNewSpriteById(playerSpriteIds.right),
         };
+    },
+
+    shouldComponentUpdate: function(nextProps, nextState) {
+        if (!this.context) {
+            return true;
+        }
+        var stateChanged = !_.isEqual(this.state, nextState);
+        var propsChanged = !_.isEqual(this.props, nextProps);
+        return propsChanged || stateChanged;
     },
 
     render: function() {
@@ -162,10 +181,14 @@ var Map = React.createClass({
         var location = this.state.location;
         var x = location.x * size - 8;
         var y = location.y * size - 16;
-        var sprite = this.playerSprites.UP;
+        var direction = this.state.direction;
+        var sprite = this.playerSprites[direction];
+        var flip = (this.state.lastLeftRight === "LEFT") !== !!sprite.options.flip;
+        console.log(flip);
+        console.log(this.state.lastLeftRight, sprite.options.flip);
         return <SpriteRenderer
             sprite={sprite}
-            flipX={false}
+            flipX={flip}
             style={{
                 position: 'absolute',
                 top: y,

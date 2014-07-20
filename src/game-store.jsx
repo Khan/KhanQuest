@@ -19,6 +19,15 @@ var _view = GameViews.MAP;
 var _inCombat = false;
 
 var _playerLocation = {x: 10, y: 10};
+var _playerDirection = "RIGHT";
+var _lastLeftRight = "RIGHT";
+var _lastStepStateTime = 0;
+
+var flipLeftRight = function(leftRight) {
+    if (leftRight === "LEFT") { return "RIGHT"; }
+    if (leftRight === "RIGHT") { return "LEFT"; }
+    return leftRight;
+}
 
 var stepState = function(direction) {
 
@@ -27,20 +36,31 @@ var stepState = function(direction) {
     switch (direction) {
         case "UP":
             candidateLocation.y--;
+            // switch directions while moving upwards
+            if (_playerDirection === direction) {
+                _lastLeftRight = flipLeftRight(_lastLeftRight);
+            }
             break;
 
         case "DOWN":
             candidateLocation.y++;
+            // switch directions while moving upwards
+            if (_playerDirection === direction) {
+                _lastLeftRight = flipLeftRight(_lastLeftRight);
+            }
             break;
 
         case "LEFT":
             candidateLocation.x--;
+            _lastLeftRight = direction;
             break;
 
         case "RIGHT":
             candidateLocation.x++;
+            _lastLeftRight = direction;
             break;
     }
+    _playerDirection = direction;
 
     // consult the interaction layer to see if we can go that direction or if
     // we triggered an action!
@@ -88,7 +108,14 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 
     switch (action.actionType) {
         case MOVE:
-            stepState(action.direction);
+            var currentTime = new Date().getTime();
+            if (currentTime - _lastStepStateTime > 100) {
+                stepState(action.direction);
+                _lastStepStateTime = new Date().getTime();
+                setTimeout(() => {_lastStepStateTime = new Date().getTime();}, 100);
+            } else {
+                return true;
+            }
             break;
 
         case SET_LOCATION:
@@ -146,6 +173,14 @@ var GameStore = _({}).extend(
 
         getLocation: function() {
             return _playerLocation;
+        },
+
+        getDirection: function() {
+            return _playerDirection;
+        },
+
+        getLastLeftRight: function() {
+            return _lastLeftRight;
         },
 
         getDialog: function() {

@@ -70,6 +70,40 @@ var testJSON = JSON.stringify([
     },
     {
         id: 'red-mage-up-female',
+        url: 'static/img/red-mage+female-back.png',
+        flip: true,
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0],
+        dir: 'horizontal',
+        once: false,
+        scale: 0.75
+    },
+    {
+        id: 'red-mage-down-female',
+        url: 'resources/red-mage-female.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 9, 9, 9, 9, 0, 0, 0, 0, 0],
+        dir: 'horizontal',
+        once: false,
+        scale: 0.75
+    },
+    {
+        id: 'red-mage-right-female',
+        url: 'resources/red-mage-female.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 9, 9, 9, 9, 0, 0, 0, 0, 0],
+        dir: 'horizontal',
+        once: false,
+        scale: 0.75
+    },
+    {
+        id: 'red-mage-left-female',
         url: 'resources/red-mage-female.png',
         pos: [0, 0],
         size: [72, 72],

@@ -68,9 +68,9 @@ var testPlayer = new Entity({
         damaged: 'red-mage-damaged-female',
         dead: 'red-mage-die-female',
         up: 'red-mage-up-female',
-        down: 'red-mage-attack-staff-female',
-        left: 'red-mage-damaged-female',
-        right: 'red-mage-die-female'
+        down: 'red-mage-down-female',
+        left: 'red-mage-left-female',
+        right: 'red-mage-right-female'
     },
     hp: 20,
     fire_resist: 0,

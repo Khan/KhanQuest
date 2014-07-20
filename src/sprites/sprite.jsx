@@ -149,9 +149,20 @@ var SpriteRenderer = React.createClass({
 
     componentWillReceiveProps: function(nextProps) {
         if (nextProps.sprite !== this.props.sprite) {
+            console.log("updating sprite");
             this._removeFromSprites();
             this._insertIntoSprites(nextProps.sprite);
             this.time = 0;
+        }
+    },
+
+    componentDidUpdate: function(prevProps) {
+        this.ctx = this.getDOMNode().getContext('2d');
+        if (this.props.flipX !== prevProps.flipX) {
+            console.log("updating direction");
+            var canvasSize = this.props.sprite.scaledSize();
+            this.ctx.scale(-1, 1);
+            this.ctx.translate(-canvasSize[0], 0);
         }
     },
 
