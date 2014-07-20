@@ -115,6 +115,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                     this.waitForSelectionFromPlayer()
                     .done((targets) => {
                         _message = null;
+                        _state = CombatConstants.CombatEngineStates.RUNNING;
                         resolve(targets);
                     }, reject);
                 } else {
@@ -126,24 +127,24 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         handlePlayerCast: function(spell, success) {
             var castSpell = (targets) => {
                 var player = EntityStore.getPlayer();
-                if (success) {
-                    // adjust timing counters
-                    Actions.adjustCounters(spell.exerciseName);
+                // adjust timing counters
+                Actions.adjustCounters(spell.exerciseName);
 
-                    return this.runAnimationForEntity('attack', player).then(() => {
-                        return this.handleAbility(spell, player, targets);
-                    });
-                } else {
-                    // show the fizzle animation
-                    return this.runAnimationForEntity('fizzle', player).then(() => {
-                        return this.fizzleSpell(spell);
-                    });
-                }
+                return this.runAnimationForEntity('attack', player).then(() => {
+                    return this.handleAbility(spell, player, targets);
+                });
             }
 
-            return this.getPlayerTarget(spell).then((targets) => {
-                return castSpell(targets);
-            });
+            if (success) {
+                return this.getPlayerTarget(spell).then((targets) => {
+                    return castSpell(targets);
+                });
+            } else {
+                var player = EntityStore.getPlayer();
+                return this.runAnimationForEntity('fizzle', player).then(() => {
+                    return this.fizzleSpell(spell);
+                });
+            }
         },
 
         advanceTurn: function() {
