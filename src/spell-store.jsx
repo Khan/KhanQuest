@@ -8,9 +8,8 @@ var testJSON = JSON.stringify({
     /* Fire spells. */
     "area-of-triangles": {
         displayName: "Fire Bolt",
-        caption: "(starmap)",
-        category: "buff",
-        description: "What what what what what what what what what what what what what what what what what what what what.",
+        category: "attack",
+        description: "Flame. A force as old as time, rendered into a tool of man, and a friend to the novice spellcaster.",
         type: "fire",
         targetType: "single",
         power: 20,
@@ -19,9 +18,8 @@ var testJSON = JSON.stringify({
 
     "area-of-triangles-2": {
         displayName: "Fireball",
-        caption: "(starmap)",
-        category: "buff",
-        description: "What what what what what what what what what what what what what what what what what what what what.",
+        category: "attack",
+        description: "Hurl a ball of molten flame (i.e., a fireball) at your enemy.",
         type: "fire",
         targetType: "single",
         power: 20,
@@ -30,9 +28,8 @@ var testJSON = JSON.stringify({
 
     "composing-and-decomposing-shapes": {
         displayName: "Fire Shield",
-        caption: "(starmap)",
         category: "buff",
-        description: "What what what what what what what what what what what what what what what what what what what what.",
+        description: "Encase yourself in a whirlwind of flame, dealing damage to your opponents and protecting you from harm.",
         type: "fire",
         targetType: "single",
         power: 20,
@@ -42,9 +39,8 @@ var testJSON = JSON.stringify({
     /* Frost spells. */
     "identifying-parts-of-expressions": {
         displayName: "Ice Armor",
-        caption: "(starmap)",
         category: "buff",
-        description: "What what what what what what what what what what what what what what what what what what what what.",
+        description: "Surround yourself in a hulking shell of icy permafrost.",
         type: "frost",
         targetType: "single",
         power: 20,
@@ -53,9 +49,8 @@ var testJSON = JSON.stringify({
 
     "manipulating-linear-expressions-with-rational-coefficients": {
         displayName: "Ice Lance",
-        caption: "(starmap)",
-        category: "buff",
-        description: "What what what what what what what what what what what what what what what what what what what what.",
+        category: "attack",
+        description: "'Water defies the rules of chemistry and law of physics.' -- Bill Bryson",
         type: "frost",
         targetType: "single",
         power: 20,
@@ -64,7 +59,6 @@ var testJSON = JSON.stringify({
 
     "interpreting-expressions": {
         displayName: "Blizzard",
-        caption: "Interesting caption!",
         category: "attack",
         description: "This is an epic spell, with tons of good powers, like damage.",
         type: "frost",
@@ -76,9 +70,8 @@ var testJSON = JSON.stringify({
     /* Arcane spells. */
     "making-totals-in-different-ways-within-10": {
         displayName: "Magic Missile",
-        caption: "(starmap)",
-        category: "buff",
-        description: "What what what what what what what what what what what what what what what what what what what what.",
+        category: "attack",
+        description: "Harness the powers of wizardry and mathematics to fire a compact energy missile at your opponent.",
         type: "arcane",
         targetType: "single",
         power: 20,
@@ -87,9 +80,8 @@ var testJSON = JSON.stringify({
 
     "meaning-of-equal-sign-1": {
         displayName: "Charged Bolt",
-        caption: "(greensquadron)",
         category: "attack",
-        description: "Included to appease Jack.",
+        description: "Energy, emblamed.",
         type: "arcane",
         targetType: "single",
         power: 20,
@@ -98,9 +90,8 @@ var testJSON = JSON.stringify({
 
     "solving-basic-multiplication-and-division-equations": {
         displayName: "Heal",
-        caption: "(starmap)",
-        category: "buff",
-        description: "What what what what what what what what what what what what what what what what what what what what.",
+        category: "attack",
+        description: "Restore your health points.",
         type: "arcane",
         targetType: "single",
         power: 20,
@@ -109,9 +100,8 @@ var testJSON = JSON.stringify({
 
     "comparing-with-multiplication": {
         displayName: "Life Steal",
-        caption: "(starmap)",
-        category: "buff",
-        description: "What what what what what what what what what what what what what what what what what what what what.",
+        category: "attack",
+        description: "'Alas, poor Yorick! I knew him, Horatio; a fellow of infinite jest, of most excellent fancy.'",
         type: "arcane",
         targetType: "single",
         power: 20,
@@ -120,9 +110,8 @@ var testJSON = JSON.stringify({
 
     "arithmetic_word_problems": {
         displayName: "Time Stop",
-        caption: "(starmap)",
         category: "buff",
-        description: "What what what what what what what what what what what what what what what what what what what what.",
+        description: "They say 'Time is money'. Luckily for you, magic is more powerful than money. Stop time and take two turns instead of one on successful cast.",
         type: "arcane",
         targetType: "single",
         power: 20,
