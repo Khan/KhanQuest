@@ -60,6 +60,10 @@ var Map = React.createClass({
                 store: MapStore,
                 fetch: (store) => store.getCurrentMap()
             },
+            currentWeather: {
+                store: MapStore,
+                fetch: (store) => store.getCurrentWeather()
+            },
             mapTilesLoadedCount: {
                 store: MapStore,
                 fetch: (store) => store.getTilesLoadedCount()
@@ -183,12 +187,12 @@ var Map = React.createClass({
         var above = _.extend({ zIndex: 2 }, absolute);
         return <div style={mapStyle}>
             <Shortcut actions={actions} />
-            {this.state.currentMap.weather &&
+            {this.state.currentWeather &&
                 <Weather.WeatherRenderer
                     width={MAP_WIDTH_PX}
                     height={MAP_HEIGHT_PX}
                     style={above}
-                    type={this.state.currentMap.weather} />}
+                    type={this.state.currentWeather} />}
             <canvas ref="canvas" width={MAP_WIDTH_PX} height={MAP_HEIGHT_PX} style={absolute} />
             {this.renderPlayer()};
         </div>;

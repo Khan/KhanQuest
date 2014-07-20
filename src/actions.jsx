@@ -23,7 +23,8 @@ var constants = {
     NEXT_PROBLEM: "NEXT_PROBLEM",
     NEXT_MAP: "NEXT_MAP",
     SET_LOCATION: "SET_LOCATION",
-    MAP_OBJECT_INTERACTION: "MAP_OBJECT_INTERACTION"
+    MAP_OBJECT_INTERACTION: "MAP_OBJECT_INTERACTION",
+    SET_WEATHER: "SET_WEATHER"
 };
 
 var Actions = {
@@ -131,7 +132,14 @@ var Actions = {
         AppDispatcher.handleViewAction({
             actionType: constants.MAP_OBJECT_INTERACTION
         });
+    },
+
+    setWeather: function() {
+        AppDispatcher.handleViewAction({
+            actionType: constants.SET_WEATHER
+        });
     }
+
 };
 
 module.exports = { constants, Actions, GameViews };

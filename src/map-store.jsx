@@ -66,10 +66,12 @@ var MAP_OBJECT_INTERACTIONS = {
     }),
     cottage: _.once(() => {
         Actions.showDialog("approach-house");
+        Actions.setWeather();
     })
 };
 
 var _currentMap = "cottage";
+var _currentWeather = Weather.RAIN;
 var _resourcesLoaded = false;
 var _tilesLoadedCount = 0;
 
@@ -213,11 +215,17 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 
         case NEXT_MAP:
             _currentMap = MAPS[_currentMap].nextWorld;
+            _currentWeather = MAPS[_currentMap].weather;
             Actions.setLocation(findStart());
             break;
 
         case SET_MAP:
             _currentMap = MAPS[action.name].name;
+            break;
+
+        case constants.SET_WEATHER:
+            _currentWeather = Weather.DARKRAIN // TODO(dmnd): parameterize
+            MapStore.emitChange();
             break;
 
         case MAP_OBJECT_INTERACTION:
@@ -259,6 +267,10 @@ var MapStore = _({}).extend(
 
         getCurrentMap: function() {
             return MAPS[_currentMap];
+        },
+
+        getCurrentWeather: function() {
+            return _currentWeather;
         },
 
         getMapOffset: function() {
