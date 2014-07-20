@@ -96,24 +96,24 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             break;
 
         case CombatConstants.START_COMBAT:
-            assert(!_inCombat, "shouldn't be in combat");
+            assert(!_inCombat, "Can't start combat while you're in combat!");
             _inCombat = true;
             _view = GameViews.COMBAT;
             break;
 
         case CombatConstants.END_COMBAT:
-            assert(_inCombat, "should be in combat");
+            assert(_inCombat, "Can't end combat when you're not in combat.");
             _inCombat = false;
             _view = GameViews.MAP;
             break;
 
         case constants.OPEN_SPELLBOOK:
-            assert(_inCombat, "should be in combat");
+            assert(_inCombat, "Can't open the spellbook outside of combat");
             _view = GameViews.SPELLBOOK;
             break;
 
         case constants.CLOSE_SPELLBOOK:
-            assert(_inCombat, "should be in combat");
+            assert(_inCombat, "Can't close the spellbook outside of combat");
             _view = GameViews.COMBAT;
             break;
 
