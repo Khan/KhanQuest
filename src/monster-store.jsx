@@ -26,7 +26,7 @@ var testJSON = JSON.stringify([
                 category: "attack",
                 type: "physical",
                 priority: 1,
-                power: 30,
+                power: 20,
                 cooldown: 0
             },
             {
