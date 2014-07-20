@@ -87,8 +87,10 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
         // returns a promise
         waitForSelectionFromPlayer: function() {
-            this.playerSelectionPromise = new Promise();
-            this._state = CombatConstants.CombatEngineStates.PLAYER_SELECTING_TARGET;
+            this.playerSelectionPromise = new Promise((resolve, reject) => {
+                this._state = CombatConstants.CombatEngineStates.PLAYER_SELECTING_TARGET;
+            });
+            return this.playerSelectionPromise;
         },
 
         // returns a promise
