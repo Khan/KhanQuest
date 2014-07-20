@@ -151,9 +151,11 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
                     if (abilityToUse.category === 'attack') {
                         this.runAnimationForEntity('attack', currentEntity)
-                        .then(() => this.handleAbility(
-                            abilityToUse, currentEntity, [player]))
-                        .then(this.advanceTurn());
+                        .then(() => {
+                            this.handleAbility(
+                                abilityToUse, currentEntity, [player])
+                        })
+                        .then(() => this.advanceTurn());
                     } else {
                         this.handleAbility(abilityToUse, currentEntity, [player]);
 
