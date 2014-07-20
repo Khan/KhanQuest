@@ -163,7 +163,7 @@ var testJSON = JSON.stringify([
         pos: [296, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [0],
+        frameIndices: [0, 0, 0],
         dir: 'horizontal',
         once: true,
         scale: 2
@@ -196,7 +196,7 @@ var testJSON = JSON.stringify([
         pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [3, 4, 3],
+        frameIndices: [3, 4, 4, 3],
         dir: 'horizontal',
         once: true,
         scale: 2

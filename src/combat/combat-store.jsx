@@ -50,6 +50,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         damageEntity: function(entity, damage) {
             combatLog(`Damage! ${damage} points of damage to `, entity);
             entity.damage(damage);
+            return this.runAnimationForEntity('damaged', entity);
         },
 
         handleAbility: function(ability, source, targets) {
@@ -57,8 +58,11 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
             // Simple stuff. Just use the power as damage to the target.
             var damage = ability.power || 0;
-            targets.forEach((target) => this.damageEntity(target, damage));
+            var animationPromises = targets.map((target) => {
+                return this.damageEntity(target, damage);
+            });
             CombatStore._emitChange();
+            return Promise.all(animationPromises);
         },
 
         fizzleSpell: function(spell) {
