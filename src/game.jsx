@@ -57,9 +57,9 @@ var Game = React.createClass({
 
     startCombat: function() {
         var forestTrollStats = MonsterStore.getById("forest_troll");
-        var forestTroll = EntityStore.createEntity(forestTrollStats);
+        var forestTroll = [EntityStore.createEntity(forestTrollStats)];
         var forestTrolls = _.times(3, () => EntityStore.createEntity(forestTrollStats));
-        CombatActions.startCombat(forestTrolls);
+        CombatActions.startCombat(forestTroll);
     },
 
     endCombat: function() {

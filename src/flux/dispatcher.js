@@ -11,11 +11,13 @@ var _promises = [];
  */
 var _addPromise = function(callback, payload) {
     _promises.push(new Promise(function(resolve, reject) {
-        if (callback(payload)) {
-            resolve(payload);
-        } else {
-            reject(new Error("Dispatcher callback unsuccessful"));
-        }
+        _.defer(function() {
+            if (callback(payload)) {
+                resolve(payload);
+            } else {
+                reject(new Error("Dispatcher callback unsuccessful"));
+            }
+        });
     }));
 };
 

@@ -123,9 +123,12 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             break;
 
         case CombatConstants.START_COMBAT:
-            assert(!_inCombat, "Can't start combat while you're in combat!");
-            _inCombat = true;
-            _view = GameViews.COMBAT;
+            AppDispatcher.waitFor([CombatStore.dispatcherIndex], () => {
+                assert(!_inCombat, "Can't start combat while you're in combat!");
+                _inCombat = true;
+                _view = GameViews.COMBAT;
+                GameStore.emitChange();
+            });
             break;
 
         case CombatConstants.END_COMBAT:
