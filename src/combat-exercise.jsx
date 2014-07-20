@@ -67,6 +67,10 @@ var CombatExercise = React.createClass({
     },
 
     _loadSpell: function() {
+        if (!this.props.exerciseName) {
+            this.setState({content: null});
+        }
+
         $.ajax({
             url: "http://www.khanacademy.org/api/v1/exercises/" +
                 this.props.exerciseName,

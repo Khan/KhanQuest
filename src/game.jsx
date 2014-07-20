@@ -20,8 +20,6 @@ var CombatActions = require('./combat/combat-actions.js');
 var CombatConstants = require('./combat/combat-constants.js');
 
 var Game = React.createClass({
-    mixins: [Changeable],
-
     mixins: [
         StateFromStore({
             user: {
