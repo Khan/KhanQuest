@@ -25,7 +25,7 @@ var MAPS = {
     salinterior: {
         name: "salinterior",
         manifestName: "salinterior.json",
-        nextWorld: "desert",
+        nextWorld: "darkforest",
         weather: null
     },
 
