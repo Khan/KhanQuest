@@ -64,7 +64,7 @@ var Game = React.createClass({
     render: function () {
         var currentView;
         if (this.state.currentView === GameViews.MAP) {
-            currentView = this._renderMap();
+            currentView = <window.MapShell />;
         } else if (this.state.currentView === GameViews.COMBAT) {
             currentView = this._renderCombat();
         } else if (this.state.currentView === GameViews.SPELLBOOK) {
@@ -95,20 +95,6 @@ var Game = React.createClass({
                     {currentView}
                 </ReactCSSTransitionGroup>
             </div>
-        </div>;
-    },
-
-    _renderMap: function() {
-        return <div key="map" className="row-item">
-            <button onClick={() => Actions.setCurrentMap("overworld")}
-                    type="button">
-                overworld
-            </button>
-            <button onClick={() => Actions.setCurrentMap("cave")}
-                    type="button">
-                cave
-            </button>
-            <Map />
             {this.state.dialog && <Dialog scene={this.state.dialog} />}
         </div>;
     },
