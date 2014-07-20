@@ -60,6 +60,9 @@ var Map = React.createClass({
         if (this.state.isLoading && !nextState.isLoading) {
             this.loadSprites();
         }
+        if (this.state.layers !== nextState.layers) {
+            this.context.clearRect(0, 0, 1000, 1000);
+        }
     },
 
     loadSprites: function() {
@@ -210,12 +213,6 @@ var Map = React.createClass({
 
     componentDidUpdate: function(newProps, newState) {
         this.draw();
-    },
-
-    componentWillUpdate: function(newProps, newState) {
-        if (this.state.layers !== newState.layers) {
-            this.context.clearRect(0, 0, 1000, 1000);
-        }
     },
 
     componentDidMount: function() {
