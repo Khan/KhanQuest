@@ -26,7 +26,7 @@ class Entity {
             }
         });
 
-        this.health = this.hp;
+        this.heal();
 
         // cooldowns is a dictionary of ability id -> turns til usable
         this.cooldowns = {};
@@ -57,6 +57,10 @@ class Entity {
 
     setSpriteState(spriteState) {
         this.spriteState = spriteState;
+    }
+
+    heal() {
+        this.health = this.hp;
     }
 }
 

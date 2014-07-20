@@ -211,6 +211,8 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             _turnOrder = [];
             _state = CombatConstants.CombatEngineStates.RUNNING;
             _message = null;
+            var player = EntityStore.getPlayer();
+            player.heal();
         },
 
         runAnimationForEntity: function(spriteState, entity) {
