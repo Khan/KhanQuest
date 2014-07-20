@@ -9,6 +9,7 @@ var CombatStore = require('./combat-store.jsx');
 
 var SpriteLoader = require('../sprites/sprite-loader.jsx');
 var SpriteRenderer = require('../sprites/sprite.jsx').SpriteRenderer;
+var HealthBar = require('./health-bar.jsx');
 
 var CombatEntity = React.createClass({
     propTypes: {
@@ -36,7 +37,10 @@ var CombatEntity = React.createClass({
         var spriteState = this.props.entity.spriteState;
 
         var sprite = this._getOrCreateSpriteForState(spriteState);
-        return <SpriteRenderer sprite={sprite} flipX={this.props.isPlayer} />;
+        return <div className="entity">
+            <SpriteRenderer sprite={sprite} flipX={this.props.isPlayer} />
+            <HealthBar entity={this.props.entity} />
+        </div>;
     }
 });
 
@@ -76,8 +80,8 @@ var CombatView = React.createClass({
         if (this.state.loading) {
             children.push(<span>Loading</span>);
         } else {
-            children.push(this.renderPlayer())
-            children.push(this.renderEnemies())
+            children.push(this.renderPlayer());
+            children.push(this.renderEnemies());
         }
         return <div className="combat-background">
             {children}
