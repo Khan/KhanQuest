@@ -39,7 +39,7 @@ var MAPS = {
     darkforest: {
         name: "darkforest",
         manifestName: "darkforest.json",
-        nextWorld: "fortress",
+        nextWorld: "cave",
         weather: Weather.DARKSNOW
     },
 
