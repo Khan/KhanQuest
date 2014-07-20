@@ -20,7 +20,7 @@ var _view = GameViews.MAP;
 
 var _inCombat = false;
 
-var _playerLocation = {x: 2, y: 13}; // coords to start at during cottage
+var _playerLocation = {x: 1, y: 9}; // coords to start at during cottage
 var _playerDirection = "RIGHT";
 var _lastLeftRight = "RIGHT";
 
