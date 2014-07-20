@@ -92,7 +92,7 @@ var Game = React.createClass({
     render: function () {
         var currentView;
         if (this.state.currentView === GameViews.MAP) {
-            currentView = <window.MapShell />;
+            currentView = <window.Map />;
         } else if (this.state.currentView === GameViews.COMBAT) {
             currentView = this._renderCombat();
         } else if (this.state.currentView === GameViews.SPELLBOOK) {
