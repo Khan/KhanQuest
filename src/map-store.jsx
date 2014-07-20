@@ -33,14 +33,14 @@ var MAPS = {
         name: "cottage",
         manifestName: "cottage.json",
         nextWorld: "salinterior",
-        weather: Weather.DARK
+        weather: Weather.DARKRAIN
     },
 
     darkforest: {
         name: "darkforest",
         manifestName: "darkforest.json",
         nextWorld: "fortress",
-        weather: Weather.DARK
+        weather: Weather.DARKSNOW
     },
 
     fortress: {
@@ -49,7 +49,7 @@ var MAPS = {
 
         // TEMP: loop back around
         nextWorld: "desert",
-        weather: Weather.DARK
+        weather: Weather.DARKRAIN
     }
 };
 

@@ -8,7 +8,8 @@ var Animation = require("./animation.jsx");
 var SNOW = "SNOW";
 var FOG = "FOG";
 var RAIN = "RAIN";
-var DARK = "DARK";
+var DARKRAIN = "DARKRAIN";
+var DARKSNOW = "DARKSNOW";
 
 var WeatherRenderer = React.createClass({
 
@@ -17,7 +18,8 @@ var WeatherRenderer = React.createClass({
             SNOW,
             FOG,
             RAIN,
-            DARK
+            DARKRAIN,
+            DARKSNOW
         ])
     },
 
@@ -29,13 +31,14 @@ var WeatherRenderer = React.createClass({
 
         switch (props.type) {
             case SNOW:
+            case DARKSNOW:
                 return new Animation.SnowFlakeCloud(animProps);
 
             case FOG:
                 return new Animation.FogParticleCloud(animProps);
 
             case RAIN:
-            case DARK:
+            case DARKRAIN:
                 return new Animation.RainCloud(animProps);
 
             default:
@@ -59,7 +62,7 @@ var WeatherRenderer = React.createClass({
             zIndex: 2
         };
 
-        if (this.props.type === DARK) {
+        if (this.props.type === DARKRAIN || this.props.type === DARKSNOW) {
             return <div>
                 <Animation.DarkRenderer
                     width={this.props.width}
@@ -81,5 +84,6 @@ module.exports = {
     SNOW,
     RAIN,
     FOG,
-    DARK
+    DARKRAIN,
+    DARKSNOW
 };
