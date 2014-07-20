@@ -5,19 +5,88 @@
  */
 
 var testJSON = JSON.stringify({
-    "measuring-lengths-1": {
+    /* Fire spells. */
+    "area-of-triangles": {
+        displayName: "Fire Bolt",
+        caption: "(starmap)",
+        category: "buff",
+        description: "What what what what what what what what what what what what what what what what what what what what.",
+        type: "fire",
+        targetType: "single",
+        power: 20,
+        cooldown: 3
+    },
+
+    "area-of-triangles-2": {
         displayName: "Fireball",
+        caption: "(starmap)",
+        category: "buff",
+        description: "What what what what what what what what what what what what what what what what what what what what.",
+        type: "fire",
+        targetType: "single",
+        power: 20,
+        cooldown: 3
+    },
+
+    "composing-and-decomposing-shapes": {
+        displayName: "Fire Shield",
+        caption: "(starmap)",
+        category: "buff",
+        description: "What what what what what what what what what what what what what what what what what what what what.",
+        type: "fire",
+        targetType: "single",
+        power: 20,
+        cooldown: 3
+    },
+
+    /* Frost spells. */
+    "identifying-parts-of-expressions": {
+        displayName: "Ice Armor",
+        caption: "(starmap)",
+        category: "buff",
+        description: "What what what what what what what what what what what what what what what what what what what what.",
+        type: "frost",
+        targetType: "single",
+        power: 20,
+        cooldown: 3
+    },
+
+    "manipulating-linear-expressions-with-rational-coefficients": {
+        displayName: "Ice Lance",
+        caption: "(starmap)",
+        category: "buff",
+        description: "What what what what what what what what what what what what what what what what what what what what.",
+        type: "frost",
+        targetType: "single",
+        power: 20,
+        cooldown: 3
+    },
+
+    "interpreting-expressions": {
+        displayName: "Blizzard",
         caption: "Interesting caption!",
         category: "attack",
         description: "This is an epic spell, with tons of good powers, like damage.",
-        type: "fire",
+        type: "frost",
         targetType: "all",
         power: 20,
         cooldown: 3
     },
 
-    "groups-of-tens": {
+    /* Arcane spells. */
+    "making-totals-in-different-ways-within-10": {
         displayName: "Magic Missile",
+        caption: "(starmap)",
+        category: "buff",
+        description: "What what what what what what what what what what what what what what what what what what what what.",
+        type: "arcane",
+        targetType: "single",
+        power: 20,
+        cooldown: 3
+    },
+
+    "meaning-of-equal-sign-1": {
+        displayName: "Charged Bolt",
         caption: "(greensquadron)",
         category: "attack",
         description: "Included to appease Jack.",
@@ -27,8 +96,30 @@ var testJSON = JSON.stringify({
         cooldown: 3
     },
 
-    "decomposing-fractions": {
-        displayName: "Ice Armor",
+    "solving-basic-multiplication-and-division-equations": {
+        displayName: "Heal",
+        caption: "(starmap)",
+        category: "buff",
+        description: "What what what what what what what what what what what what what what what what what what what what.",
+        type: "arcane",
+        targetType: "single",
+        power: 20,
+        cooldown: 3
+    },
+
+    "comparing-with-multiplication": {
+        displayName: "Life Steal",
+        caption: "(starmap)",
+        category: "buff",
+        description: "What what what what what what what what what what what what what what what what what what what what.",
+        type: "arcane",
+        targetType: "single",
+        power: 20,
+        cooldown: 3
+    },
+
+    "arithmetic_word_problems": {
+        displayName: "Time Stop",
         caption: "(starmap)",
         category: "buff",
         description: "What what what what what what what what what what what what what what what what what what what what.",

@@ -130,9 +130,21 @@ Perseus.init({skipMathJax: false}).then(function() {
         window.Game({}, null),
         document.getElementById("kaquest")
     );
-    Actions.addSpell("groups-of-tens");
-    Actions.addSpell("measuring-lengths-1");
-    Actions.addSpell("decomposing-fractions");
+
+    // A few arcane spells...
+    Actions.addSpell("making-totals-in-different-ways-within-10");
+    Actions.addSpell("meaning-of-equal-sign-1");
+
+    // A few fire spells...
+    Actions.addSpell("area-of-triangles");
+    Actions.addSpell("area-of-triangles-2");
+    Actions.addSpell("composing-and-decomposing-shapes");
+
+    // A few frost spells...
+    Actions.addSpell("identifying-parts-of-expressions");
+    Actions.addSpell("manipulating-linear-expressions-with-rational-coefficients");
+
+    // Yay, map!
     Actions.fetchMapData();
 }).then(function() {
 }, function(err) {
