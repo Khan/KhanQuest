@@ -71,7 +71,7 @@ var MAP_OBJECT_INTERACTIONS = {
 };
 
 var _currentMap = "cottage";
-var _currentWeather = Weather.RAIN;
+var _currentWeather = null;
 var _resourcesLoaded = false;
 var _tilesLoadedCount = 0;
 
