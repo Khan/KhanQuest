@@ -33,6 +33,13 @@ var CombatExerciseRenderer = React.createClass({
         content: React.PropTypes.object.isRequired
     },
 
+    getInitialState: function() {
+        return {
+            didFailAttack: false,
+            didCast: false
+        };
+    },
+
     getDefaultProps: function() {
         return {
             content: PERSEUS_ITEM
@@ -48,9 +55,39 @@ var CombatExerciseRenderer = React.createClass({
         var gradedResult = this._scoreInput();
         if (gradedResult.correct) {
             CombatActions.successfulAttack();
+            this.setState({
+                didCast: true,
+                didFailAttack: false
+            });
         } else {
             CombatActions.failedAttack();
+            this.setState({
+                didCast: false,
+                didFailAttack: true
+            });
         }
+    },
+
+    _resetAttackState: function() {
+        if (this.state.didFailAttack || this.state.didCast) {
+            this.setState({
+                didFailAttack: false,
+                didCast: false
+            });
+        }
+    },
+
+    _castButtonClassName: function() {
+        // Apply appropriate visual effects to cast button
+        var castButtonClassName = "cast";
+        if (this.state.didFailAttack) {
+            castButtonClassName += " stutter";
+        } else if (this.state.didCast) {
+            castButtonClassName += " glow";
+        } else {
+            castButtonClassName += " shake";
+        }
+        return castButtonClassName;
     },
 
     render: function() {
@@ -66,7 +103,9 @@ var CombatExerciseRenderer = React.createClass({
                 {Perseus.AnswerAreaRenderer(answerProps)}
             </div>
             <div className="buttons-area">
-                <div className="cast shake">
+                <div
+                        className={this._castButtonClassName()}
+                        onMouseOut={this._resetAttackState}>
                     <KUIButton type="submit"
                         label="Cast"
                         width="140px"

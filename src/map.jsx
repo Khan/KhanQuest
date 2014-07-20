@@ -184,8 +184,6 @@ var Map = React.createClass({
         var direction = this.state.direction;
         var sprite = this.playerSprites[direction];
         var flip = (this.state.lastLeftRight === "LEFT") !== !!sprite.options.flip;
-        console.log(flip);
-        console.log(this.state.lastLeftRight, sprite.options.flip);
         return <SpriteRenderer
             sprite={sprite}
             flipX={flip}
