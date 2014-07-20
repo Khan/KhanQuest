@@ -113,7 +113,6 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
         handlePlayerCast: function(spell, success) {
             var castSpell = (targets) => {
-                _state = CombatConstants.CombatEngineStates.RUNNING;
                 if (success) {
                     var player = EntityStore.getPlayer();
                     return this.runAnimationForEntity('attack', player).then(() => {
@@ -261,11 +260,14 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 utils.assert(CombatStore.CombatEngine.getCurrentEntity().isPlayer(), "Casting a spell when it isn't your turn!");
 
                 var {spell, success} = action;
+                _state = CombatConstants.CombatEngineStates.RUNNING;
+                CombatStore._emitChange();
                 CombatStore.CombatEngine.handlePlayerCast(spell, success).done(() => {
                     var livingEnemies = CombatStore.CombatEngine.getLivingEnemies();
                     if (_.isEmpty(livingEnemies)) {
                         utils.wait(2000).then(() => {
                             combatLog("No enemies left! player wins");
+                            // Show message
                             CombatStore._emitChange();
                             CombatActions.endCombat();
                         });
