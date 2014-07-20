@@ -26,12 +26,11 @@ var CombatActions = {
         });
     },
 
-    castSpell: function(spell, success, target) {
+    castSpell: function(spell, success) {
         AppDispatcher.handleViewAction({
             actionType: CombatConstants.PLAYER_CAST_SPELL,
             spell: spell,
-            success: success,
-            target: target
+            success: success
         });
     },
 
@@ -47,6 +46,13 @@ var CombatActions = {
     failedAttack: function() {
         // TODO: consequences
         Actions.nextProblem();
+    },
+
+    chooseTarget: function(targetEntity) {
+        AppDispatcher.handleViewAction({
+            actionType: CombatConstants.PLAYER_CHOOSE_TARGET,
+            target: targetEntity
+        });
     }
 };
 

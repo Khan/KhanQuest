@@ -14,7 +14,8 @@ var CombatEntity = React.createClass({
     propTypes: {
         // should be entity
         entity: React.PropTypes.object.isRequired,
-        isPlayer: React.PropTypes.bool.isRequired
+        isPlayer: React.PropTypes.bool.isRequired,
+        isSelectable: React.PropTypes.bool.isRequired
     },
 
     componentWillMount: function() {
@@ -48,19 +49,26 @@ var CombatView = React.createClass({
         loading: {
             store: CombatStore,
             fetch: (store) => store.getIsLoading()
+        },
+        selectingTarget: {
+            store: CombatStore,
+            fetch: (store) => store.getIsPlayerSelecting()
         }
     })],
 
     renderPlayer: function() {
-        return <CombatEntity isPlayer={true} entity={this.state.entities[0]} />;
+        return <CombatEntity isPlayer={true}
+                             entity={this.state.entities[0]}
+                             isSelectable={false} />;
     },
 
     renderEnemies: function() {
         var enemies = _.filter(this.state.entities,
                                (entity) => !entity.isPlayer());
-        return enemies.map((enemyEntity, i) =>
-                           <CombatEntity entity={enemyEntity}
-                                         key={i} isPlayer={false} />);
+        return enemies.map(
+            (enemyEntity, i) => <CombatEntity
+                entity={enemyEntity} key={i} isPlayer={false}
+                isSelectable={this.state.selectingTarget} />);
     },
 
     render: function() {

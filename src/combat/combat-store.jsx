@@ -1,17 +1,13 @@
 var EventEmitter = require("events").EventEmitter;
 var Promise = require('bluebird');
 var AppDispatcher = require("../flux/app-dispatcher.js");
+var utils = require("../utils.jsx");
 
 var CombatConstants = require("./combat-constants.js");
 
 var SpriteLoader = require('../sprites/sprite-loader.jsx');
 
 var CHANGE_EVENT = "change";
-
-var CombatEngineStates = {
-    AWAITING_PLAYER_INPUT: "AWAITING_PLAYER",
-    RUNNING: "RUNNING_TURN"
-};
 
 var _entities;
 var _turnOrder;
@@ -50,12 +46,12 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             entity.damage(damage);
         },
 
-        handleAbility: function(ability, source, target) {
+        handleAbility: function(ability, source, targets) {
             combatLog("Ability use: ", ability);
 
             // Simple stuff. Just use the power as damage to the target.
             var damage = ability.power || 0;
-            this.damageEntity(target, damage);
+            targets.forEach((target) => this.damageEntity(target, damage));
             CombatStore._emitChange();
         },
 
@@ -63,40 +59,88 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             combatLog("Fizzled spell: ", spell);
         },
 
-        playerCast: function(spell, success, target) {
+        getImplicitTargets(spell) {
+            var livingEntities = _.where(_entities, {state: 'alive'});
+            var livingEnemies = _.filter(livingEntities, (e) => !e.isPlayer());
+
+            // if our spell targets all, return errybody
+            if (spell.targetType === "all") {
+                return livingEnemies;
+            }
+
+            // if we are casting a buff, we don't need a target
+            if (spell.category !== "attack") {
+                return [EntityStore.getPlayer()];
+            }
+
+            // no need to target if there is only one enemy
+            if (livingEnemies.length == 1) {
+                return livingEnemies;
+            }
+
+            if (livingEnemies.length < 1) {
+                throw "Trying to get an implicit target when there are no living enemies";
+            }
+
+            return null;
+        },
+
+        // returns a promise
+        waitForSelectionFromPlayer: function() {
+            this.playerSelectionPromise = new Promise();
+            this._state = CombatConstants.CombatEngineStates.PLAYER_SELECTING_TARGET;
+        },
+
+        // returns a promise
+        getPlayerTarget: function(spell) {
+            return new Promise((resolve, reject) => {
+                var implicitTargets = this.getImplicitTargets(spell);
+                if (!implicitTargets) {
+                    this.waitForSelectionFromPlayer().done(resolve, reject);
+                } else {
+                    resolve(implicitTargets);
+                }
+            });
+        },
+
+        handlePlayerCast: function(spell, success) {
             var nextTurn = () => {
-                _state = CombatEngineStates.RUNNING;
+                _state = CombatConstants.CombatEngineStates.RUNNING;
                 _turnIndex += 1;
                 this.takeTurn();
             };
 
-            if (success) {
-                var player = EntityStore.getPlayer();
-                this.handleAbility(spell, player, target);
-                this.runAnimationForEntity('attack', player).then(nextTurn);
-            } else {
-                // show the fizzle animation
-                this.fizzleSpell(spell);
-                this.runAnimationForEntity('attack', player).then(nextTurn);
+            var castSpell = (targets) => {
+                if (success) {
+                    var player = EntityStore.getPlayer();
+                    this.runAnimationForEntity('attack', player).then(nextTurn);
+                    this.handleAbility(spell, player, targets);
+                } else {
+                    // show the fizzle animation
+                    this.runAnimationForEntity('attack', player).then(nextTurn);
+                    this.fizzleSpell(spell);
+                }
             }
+
+            this.getPlayerTarget(spell).done((target) => castSpell(target));
         },
 
         takeTurn: function() {
             var currentEntity = CombatStore.CombatEngine.getCurrentEntity();
             if (currentEntity.isPlayer()) {
-                _state = CombatEngineStates.AWAITING_PLAYER_INPUT;
+                _state = CombatConstants.CombatEngineStates.AWAITING_PLAYER_INPUT;
                 combatLog("Players turn, waiting...");
             } else {
                 // Not the player, some ai monster
                 var abilityToUse = this.chooseAbility(currentEntity);
                 var player = EntityStore.getPlayer();
-                this.handleAbility(abilityToUse, currentEntity, player);
+                this.handleAbility(abilityToUse, currentEntity, [player]);
 
                 // Advance the turn
                 _turnIndex += 1;
             }
 
-            if (_state === CombatEngineStates.RUNNING) {
+            if (_state === CombatConstants.CombatEngineStates.RUNNING) {
                 this.takeTurn();
             }
             CombatStore._emitChange();
@@ -122,7 +166,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             _entities = {};
             _turnIndex = 0;
             _turnOrder = [];
-            _state = CombatEngineStates.RUNNING;
+            _state = CombatConstants.CombatEngineStates.RUNNING;
         },
 
         runAnimationForEntity: function(spriteState, entity) {
@@ -156,6 +200,10 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
     getIsLoading: function() {
         return !_resourcesLoaded;
+    },
+
+    getIsPlayerSelecting: function() {
+        return _state === CombatConstants.CombatEngineStates.AWAITING_PLAYER_INPUT;
     },
 
     dispatcherIndex: AppDispatcher.register(function(payload) {
@@ -197,8 +245,15 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 break;
 
             case CombatConstants.PLAYER_CAST_SPELL:
-                var {spell, success, target} = action;
-                CombatStore.CombatEngine.playerCast(spell, success, target);
+                var {spell, success} = action;
+                CombatStore.CombatEngine.handlePlayerCast(spell, success);
+                break;
+
+            case CombatConstants.PLAYER_CHOOSE_TARGET:
+                assert(_state == CombatConstants.CombatEngineStates.AWAITING_PLAYER_INPUT,
+                       "Got a target choice when we weren't waiting for one");
+                var target = action.target;
+                CombatStore.CombatEngine.playerSelectionPromise.resolve(target);
                 break;
 
             case CombatConstants.USE_ABILITY:

@@ -8,18 +8,21 @@ var testJSON = JSON.stringify({
     "measuring-lengths-1": {
         displayName: "Fireball",
         caption: "Interesting caption!",
+        category: "attack",
         description: "This is an epic spell, with tons of good powers, like damage.",
         type: "fire",
+        targetType: "all",
         power: 20,
         cooldown: 3
-
     },
 
     "groups-of-tens": {
         displayName: "Magic Missile",
         caption: "(greensquadron)",
+        category: "attack",
         description: "Included to appease Jack.",
         type: "arcane",
+        targetType: "single",
         power: 20,
         cooldown: 3
     },
@@ -27,8 +30,10 @@ var testJSON = JSON.stringify({
     "decomposing-fractions": {
         displayName: "Ice Armor",
         caption: "(starmap)",
+        category: "buff",
         description: "What what what what what what what what what what what what what what what what what what what what.",
         type: "arcane",
+        targetType: "single",
         power: 20,
         cooldown: 3
     }
