@@ -221,6 +221,23 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
         case NEXT_MAP:
             _currentMap = MAPS[_currentMap].nextWorld;
             _currentWeather = MAPS[_currentMap].weather;
+
+            if (_currentMap == "cave") {
+                // add rest of spells
+                // A few arcane spells...
+                Actions.addSpell("meaning-of-equal-sign-1");
+                Actions.addSpell("comparing-with-multiplication");
+
+                // A few fire spells...
+                Actions.addSpell("area_of_triangles_1");
+                Actions.addSpell("area-of-triangles-2");
+                Actions.addSpell("composing-and-decomposing-shapes");
+
+                // A few frost spells...
+                Actions.addSpell("identifying-parts-of-expressions");
+                Actions.addSpell("manipulating-linear-expressions-with-rational-coefficients");
+            }
+
             Actions.setLocation(findStart());
             break;
 
