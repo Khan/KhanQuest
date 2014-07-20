@@ -45,6 +45,13 @@
         }]
     },
 
+    "darkforest": {
+        "lines": [{
+            "speaker": "Narrator",
+            "line": "joel was here"
+        }]
+    },
+
     "salinterior": {
         "lines": [{
             "speaker": "Narrator",

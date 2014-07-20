@@ -61,6 +61,9 @@ var MAP_OBJECT_INTERACTIONS = {
             "https://www.khanacademy.org/embed_video?v=AuX7nPBqDts"
         );
     },
+    darkforest: _.once(() => {
+        Actions.showDialog("darkforest");
+    }),
     cottage: _.once(() => {
         Actions.showDialog("approach-house");
     })
