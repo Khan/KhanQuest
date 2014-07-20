@@ -81,7 +81,7 @@ var testJSON = JSON.stringify({
     "meaning-of-equal-sign-1": {
         displayName: "Charged Bolt",
         category: "attack",
-        description: "Energy, emblamed.",
+        description: "Energy incarnate.",
         type: "arcane",
         targetType: "single",
         power: 20,
