@@ -12,6 +12,7 @@ var MAPS = {
         name: "desert",
         manifestName: "desert.json",
         nextWorld: "cave",
+        safe: false,
         weather: null
     },
 
@@ -19,6 +20,7 @@ var MAPS = {
         name: "cave",
         manifestName: "cave.json",
         nextWorld: "cottage",
+        safe: false,
         weather: Weather.FOG
     },
 
@@ -26,6 +28,7 @@ var MAPS = {
         name: "salinterior",
         manifestName: "salinterior.json",
         nextWorld: "darkforest",
+        safe: true,
         weather: null
     },
 
@@ -33,6 +36,7 @@ var MAPS = {
         name: "cottage",
         manifestName: "cottage.json",
         nextWorld: "salinterior",
+        safe: true,
         weather: Weather.RAIN
     },
 
@@ -46,6 +50,7 @@ var MAPS = {
     fortress: {
         name: "fortress",
         manifestName: "fortress.json",
+        safe: false,
 
         // TEMP: loop back around
         nextWorld: "desert",
@@ -263,6 +268,10 @@ var MapStore = _({}).extend(
 
         getTilesLoadedCount: function() {
             return _tilesLoadedCount;
+        },
+
+        currentMapIsSafe: function() {
+            return MAPS[_currentMap].safe;
         },
 
         getCurrentMap: function() {

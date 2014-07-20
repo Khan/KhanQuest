@@ -82,16 +82,28 @@ var stepState = function(direction) {
             break;
 
         case GRASS:
-            // TODO: make this driven by the map
-            // 5% chance of an encounter
-            if (Mersenne.rand(20) < 1) {
-                var forestTrollStats = MonsterStore.getById("forest_troll");
-                var forestTroll = EntityStore.createEntity(forestTrollStats);
-                var forestTrolls = _.times(3, () => EntityStore.createEntity(forestTrollStats));
-                CombatActions.startCombat(forestTrolls);
+        default:
+            if (!MapStore.currentMapIsSafe()) {
+                // 1-3 enemies
+                // wolves or spiders
+
+                // TODO: make this driven by the map
+                // 5% chance of an encounter
+                if (Mersenne.rand(20) < 1) {
+                    var monsterStats;
+                    if (Mersenne.rand(2) < 1) {
+                        monsterStats = MonsterStore.getById("direwolf");
+                    } else {
+                        monsterStats = MonsterStore.getById("spider");
+                    }
+
+                    var num = Math.floor(Mersenne.rand(3)) + 1;
+                    var monsters = _.times(num,
+                        () => EntityStore.createEntity(monsterStats));
+                    CombatActions.startCombat(monsters);
+                }
             }
 
-        default:
             _playerLocation = candidateLocation;
     }
 }

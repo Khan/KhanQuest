@@ -271,7 +271,9 @@ var Map = React.createClass({
 
             this.state.doneWalking = setTimeout(function () {
                 self.state.walking = false;
-                self.forceUpdate();
+                if (self.isMounted()) {
+                    self.forceUpdate();
+                }
             }, walkDuration * 2);
         }
 
