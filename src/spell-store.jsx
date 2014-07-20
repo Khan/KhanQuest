@@ -21,8 +21,8 @@ var testJSON = JSON.stringify({
         category: "attack",
         description: "Hurl a ball of molten flame (i.e., a fireball) at your enemy.",
         type: "fire",
-        targetType: "single",
-        power: 20,
+        targetType: "all",
+        power: 100,
         cooldown: 3
     },
 
