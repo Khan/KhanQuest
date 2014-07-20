@@ -17,7 +17,8 @@ var CombatExercise = React.createClass({
 
     getInitialState: function() {
         return {
-            content: null
+            content: null,
+            loadedIndex: null,
         };
     },
 
@@ -37,10 +38,11 @@ var CombatExercise = React.createClass({
     render: function() {
         if (this.state.content) {
             return <div>
+                {
                 <CombatExerciseRenderer
                     content={this.state.content}
                     onAttack={this.props.onAttack}
-                    onFailedAttack={this.props.onFailedAttack} />
+                    onFailedAttack={this.props.onFailedAttack} />}
             </div>;
         } else {
             return <div>
@@ -67,10 +69,9 @@ var CombatExercise = React.createClass({
     },
 
     _loadSpell: function() {
-        if (!this.props.exerciseName) {
-            this.setState({content: null});
-        }
+        this.setState({content: null});
 
+        var problemIndex;
         $.ajax({
             url: "http://www.khanacademy.org/api/v1/exercises/" +
                 this.props.exerciseName,
@@ -78,7 +79,8 @@ var CombatExercise = React.createClass({
         }).then((exercise) => {
             var items = exercise.all_assessment_items;
             var shuffledItems = this.shuffle(items);
-            var index = this.props.problemIndex % items.length;
+            var problemIndex = this.props.problemIndex;
+            var index = problemIndex % items.length;
             var item = shuffledItems[index];
             return $.ajax({
                 url: "http://www.khanacademy.org/api/v1/assessment_items/" +
@@ -94,7 +96,7 @@ var CombatExercise = React.createClass({
             }
             // TODO(aria): Make this not break everything if we've received new
             // props
-            this.setState({content: JSON.parse(item.item_data)});
+            this.setState({content: JSON.parse(item.item_data), loadedIndex: problemIndex});
         }, (err) => {
             console.error("ERROR LOADING ITEM: ", err);
         });
