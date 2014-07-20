@@ -17,7 +17,7 @@ var MapStore = require("./map-store.jsx");
 var StateFromStore = require("./flux/state-from-store-mixin.js");
 
 var Avatar = new Image();
-Avatar.src = "/static/img/avatar.png";
+Avatar.src = "/static/img/red-mage+female.png";
 
 var Map = React.createClass({
     propTypes: {
@@ -114,7 +114,7 @@ var Map = React.createClass({
         var location = this.state.location;
         var x = location.x * size;
         var y = location.y * size;
-        this.context.drawImage(Avatar, x, y, 32, 32);
+        this.context.drawImage(Avatar, x, y, 72, 72);
     },
 
     renderLayer: function({ layer, scene, images }) {
