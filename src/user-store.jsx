@@ -28,9 +28,13 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 
     switch (action.actionType) {
         case ADD_SPELL:
-            getOrCreateUser().unlockedExercises.push(action.exerciseName);
-            getOrCreateUser().exerciseCounters[action.exerciseName] = 0;
-            break;
+            if (!_.contains(getOrCreateUser().unlockedExercises, action.exerciseName)) {
+                getOrCreateUser().unlockedExercises.push(action.exerciseName);
+                getOrCreateUser().exerciseCounters[action.exerciseName] = 0;
+                break;
+            } else {
+                console.log("I ALREADY HAVE IT!");
+            }
 
         case SET_ACTIVE_SPELL:
             getOrCreateUser().activeExercise = action.exerciseName;
