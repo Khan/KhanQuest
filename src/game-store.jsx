@@ -131,9 +131,12 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             break;
 
         case CombatConstants.END_COMBAT:
-            assert(_inCombat, "Can't end combat when you're not in combat.");
-            _inCombat = false;
-            _view = GameViews.MAP;
+            AppDispatcher.waitFor([CombatStore.dispatcherIndex], () => {
+                assert(_inCombat, "Can't end combat when you're not in combat.");
+                _inCombat = false;
+                _view = GameViews.MAP;
+                GameStore.emitChange();
+            });
             break;
 
         case constants.OPEN_SPELLBOOK:
