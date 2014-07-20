@@ -64,6 +64,7 @@ var MAP_OBJECT_INTERACTIONS = {
 
 var _currentMap = "cottage";
 var _resourcesLoaded = false;
+var _tilesLoadedCount = 0;
 
 // the offset of the map and character in the viewport, in *blocks*
 var _mapOffset = { x: 0, y: 0 };
@@ -183,6 +184,7 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
                             var img = new Image();
                             img.src = `/art/${set.image}`;
                             img.onload = () => {
+                                _tilesLoadedCount++;
                                 MapStore.emitChange();
                             };
                             _tileImages[mapName].push(img);
@@ -242,6 +244,10 @@ var MapStore = _({}).extend(
 
         getManifest: function() {
             return _manifests[_currentMap];
+        },
+
+        getTilesLoadedCount: function() {
+            return _tilesLoadedCount;
         },
 
         getCurrentMap: function() {

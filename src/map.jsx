@@ -60,6 +60,10 @@ var Map = React.createClass({
                 store: MapStore,
                 fetch: (store) => store.getCurrentMap()
             },
+            mapTilesLoadedCount: {
+                store: MapStore,
+                fetch: (store) => store.getTilesLoadedCount()
+            },
             isLoading: {
                 // TODO: put this in the map store too?
                 store: MapStore,
@@ -326,7 +330,8 @@ var Map = React.createClass({
     componentDidUpdate: function(newProps, newState) {
         // draw an entirely new map
         if (!this.mapcontext ||
-            newState.currentMap !== this.state.currentMap) {
+            newState.currentMap !== this.state.currentMap ||
+            newState.mapTilesLoadedCount !== this.state.mapTilesLoadedCount) {
 
             this.renderNewMap();
         }
