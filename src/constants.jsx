@@ -1,5 +1,5 @@
 var MAP_WIDTH_BLOCKS = 30;
-var MAP_HEIGHT_BLOCKS = 22;
+var MAP_HEIGHT_BLOCKS = 16;
 var BLOCK = 32;
 
 module.exports = {
