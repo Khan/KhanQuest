@@ -437,6 +437,20 @@ var ParticleCloudRenderer = React.createClass({
     }
 });
 
+var DarkRenderer = React.createClass({
+    render: function() {
+        return <canvas style={{position: 'absolute', zIndex: 100}}
+                       width={this.props.width}
+                       height={this.props.height} />;
+    },
+
+    componentDidMount: function() {
+        var ctx = this.getDOMNode().getContext('2d');
+        ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
+        ctx.fillRect(0, 0, this.props.width, this.props.height);
+    }
+});
+
 timingEngine.start();
 
 module.exports = {
@@ -444,5 +458,6 @@ module.exports = {
     SnowFlakeCloud: SnowFlakeCloud,
     FogParticleCloud: FogParticleCloud,
     RainCloud: RainCloud,
-    ParticleCloudRenderer: ParticleCloudRenderer
+    ParticleCloudRenderer: ParticleCloudRenderer,
+    DarkRenderer
 };

@@ -8,6 +8,7 @@ var Animation = require("./animation.jsx");
 var SNOW = "SNOW";
 var FOG = "FOG";
 var RAIN = "RAIN";
+var DARK = "DARK";
 
 var WeatherRenderer = React.createClass({
 
@@ -15,25 +16,27 @@ var WeatherRenderer = React.createClass({
         type: React.PropTypes.oneOf([
             SNOW,
             FOG,
-            RAIN
+            RAIN,
+            DARK
         ])
     },
 
     getParticleCloudForType: function (props) {
         props = props || this.props;
-        var cloudProps = {
+        var animProps = {
             size: [props.width, props.height]
         };
 
         switch (props.type) {
             case SNOW:
-                return new Animation.SnowFlakeCloud(cloudProps);
+                return new Animation.SnowFlakeCloud(animProps);
 
             case FOG:
-                return new Animation.FogParticleCloud(cloudProps);
+                return new Animation.FogParticleCloud(animProps);
 
             case RAIN:
-                return new Animation.RainCloud(cloudProps);
+            case DARK:
+                return new Animation.RainCloud(animProps);
 
             default:
                 return null;
@@ -56,6 +59,17 @@ var WeatherRenderer = React.createClass({
             zIndex: 2
         };
 
+        if (this.props.type === DARK) {
+            return <div>
+                <Animation.DarkRenderer
+                    width={this.props.width}
+                    height={this.props.height} />;
+                <Animation.ParticleCloudRenderer
+                    particleCloud={this.getParticleCloudForType()}
+                    style={canvasStyle} />;
+            </div>;
+        }
+
         return <Animation.ParticleCloudRenderer
                     particleCloud={this.getParticleCloudForType()}
                     style={canvasStyle} />;
@@ -66,5 +80,6 @@ module.exports = {
     WeatherRenderer,
     SNOW,
     RAIN,
-    FOG
+    FOG,
+    DARK
 };

@@ -8,13 +8,6 @@ var { MONSTER, WALL, OBJECT, DOOR, START, GRASS, EMPTY, MAP_WIDTH_BLOCKS, MAP_HE
 var Weather = require("./sprites/weather.jsx");
 
 var MAPS = {
-    overworld: {
-        name: "overworld",
-        manifestName: "overworld.json",
-        nextWorld: "desert",
-        weather: Weather.SNOW
-    },
-
     desert: {
         name: "desert",
         manifestName: "desert.json",
@@ -40,7 +33,14 @@ var MAPS = {
         name: "cottage",
         manifestName: "cottage.json",
         nextWorld: "salinterior",
-        weather: Weather.RAIN
+        weather: Weather.DARK
+    },
+
+    darkforest: {
+        name: "darkforest",
+        manifestName: "darkforest.json",
+        nextWorld: "fortress",
+        weather: Weather.DARK
     },
 
     fortress: {
@@ -48,8 +48,8 @@ var MAPS = {
         manifestName: "fortress.json",
 
         // TEMP: loop back around
-        nextWorld: "overworld",
-        weather: null
+        nextWorld: "desert",
+        weather: Weather.DARK
     }
 };
 
@@ -213,7 +213,7 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             break;
 
         case SET_MAP:
-            _currentMap = MAPS[action.name];
+            _currentMap = MAPS[action.name].name;
             break;
 
         case MAP_OBJECT_INTERACTION:
