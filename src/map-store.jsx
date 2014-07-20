@@ -3,7 +3,7 @@ var AppDispatcher = require("./flux/app-dispatcher.js");
 var SpriteLoader = require("./sprites/sprite-loader.jsx");
 var EntityStore = require("./entity.jsx");
 var { constants } = require("./actions.jsx");
-var { FETCH_MAP_DATA, MOVE, SET_MAP, NEXT_MAP, MAP_OBJECT_INTERACTION } = constants;
+var { SET_LOCATION, FETCH_MAP_DATA, MOVE, SET_MAP, NEXT_MAP, MAP_OBJECT_INTERACTION } = constants;
 var { MONSTER, WALL, OBJECT, DOOR, START, GRASS, EMPTY, MAP_WIDTH_BLOCKS, MAP_HEIGHT_BLOCKS } = require("./constants.jsx");
 var Weather = require("./sprites/weather.jsx");
 
@@ -85,7 +85,8 @@ var movePositions = function(direction, { width, height }) {
         var diff = direction === "LEFT" ? -1 : 1;
 
         // try to move the character
-        _characterOffset.x = clamp(_characterOffset.x + diff, 0, MAP_WIDTH_BLOCKS);
+        _characterOffset.x = clamp(_characterOffset.x + diff,
+            0, MAP_WIDTH_BLOCKS);
 
         var mapX = _mapOffset.x;
         // close to the edge! try to move the map instead of the character
@@ -106,7 +107,8 @@ var movePositions = function(direction, { width, height }) {
         var diff = direction === "UP" ? -1 : 1;
 
         // try to move the character
-        _characterOffset.y = clamp(_characterOffset.y + diff, 0, MAP_HEIGHT_BLOCKS);
+        _characterOffset.y = clamp(_characterOffset.y + diff,
+            0, MAP_HEIGHT_BLOCKS);
 
         var mapY = _mapOffset.y;
         // close to the edge! try to move the map instead of the character
@@ -121,31 +123,6 @@ var movePositions = function(direction, { width, height }) {
         if (mapY !== _mapOffset.y) {
             _characterOffset.y -= diff;
         }
-    }
-
-    return;
-
-    if (direction === "LEFT" || direction === "RIGHT") {
-        var maxOffX = clamp(width - MAP_WIDTH_BLOCKS, 0, 100000);
-        var diff = direction === "LEFT" ? -1 : 1;
-        var mapX = clamp(_mapOffset.x + diff, 0, maxOffX);
-
-        if (mapX === _mapOffset.x) {
-            _characterOffset.x = clamp(_characterOffset.x + diff, 0, MAP_WIDTH_BLOCKS);
-        }
-
-        _mapOffset.x = mapX;
-
-    } else if (direction === "UP" || direction === "DOWN") {
-        var maxOffY = clamp(height - MAP_HEIGHT_BLOCKS, 0, 100000);
-        var diff = direction === "UP" ? -1 : 1;
-        var mapY = clamp(_mapOffset.y + diff, 0, maxOffY);
-
-        if (mapY === _mapOffset.y) {
-            _characterOffset.y = clamp(_characterOffset.y + diff, 0, MAP_HEIGHT_BLOCKS);
-        }
-
-        _mapOffset.y = mapY;
     }
 };
 
@@ -216,6 +193,11 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             var dimensions = { width: man.width, height: man.height };
 
             movePositions(action.direction, dimensions);
+            break;
+
+        case SET_LOCATION:
+            _characterOffset = action.location;
+            break;
 
         case NEXT_MAP:
             _currentMap = MAPS[_currentMap].nextWorld;

@@ -48,9 +48,6 @@ var characterPosOnScreen = function({ x, y }, { width, height }) {
     return { x: finalX, y: finalY };
 };
 
-var mapOffset = function({ x, y }, { width, height }) {
-};
-
 var Map = React.createClass({
     propTypes: {
     },
@@ -190,6 +187,7 @@ var Map = React.createClass({
         this.context = canvas.getContext('2d');
 
         var { x, y } = MapStore.getMapOffset();
+        this.context.clearRect(0, 0, MAP_WIDTH_PX, MAP_HEIGHT_PX);
         this.context.drawImage(
             this.mapcanvas,
 
