@@ -1,4 +1,5 @@
 var Promise = require("bluebird");
+Promise.longStackTraces();
 
 var _callbacks = [];
 var _promises = [];

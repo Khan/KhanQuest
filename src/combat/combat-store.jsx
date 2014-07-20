@@ -87,10 +87,11 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
         // returns a promise
         waitForSelectionFromPlayer: function() {
-            this.playerSelectionPromise = new Promise((resolve, reject) => {
-                this._state = CombatConstants.CombatEngineStates.PLAYER_SELECTING_TARGET;
+            return new Promise((resolve, reject) => {
+                this.resolvePlayerTargets = resolve;
+                _state = CombatConstants.CombatEngineStates.PLAYER_SELECTING_TARGET;
+                CombatStore._emitChange();
             });
-            return this.playerSelectionPromise;
         },
 
         // returns a promise
@@ -120,7 +121,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 }
             }
 
-            return this.getPlayerTarget(spell).then((target) => castSpell(target));
+            return this.getPlayerTarget(spell).then((targets) => castSpell(targets));
         },
 
         advanceTurn: function() {
@@ -204,7 +205,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
     },
 
     getIsPlayerSelecting: function() {
-        return _state === CombatConstants.CombatEngineStates.AWAITING_PLAYER_INPUT;
+        return _state === CombatConstants.CombatEngineStates.PLAYER_SELECTING_TARGET;
     },
 
     dispatcherIndex: AppDispatcher.register(function(payload) {
@@ -256,10 +257,9 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 break;
 
             case CombatConstants.PLAYER_CHOOSE_TARGET:
-                utils.assert(_state == CombatConstants.CombatEngineStates.AWAITING_PLAYER_INPUT,
-                       "Got a target choice when we weren't waiting for one");
+                utils.assert(_state == CombatConstants.CombatEngineStates.PLAYER_SELECTING_TARGET, "Got a target choice when we weren't waiting for one");
                 var target = action.target;
-                CombatStore.CombatEngine.playerSelectionPromise.resolve(target);
+                CombatStore.CombatEngine.resolvePlayerTargets([target]);
                 break;
 
             case CombatConstants.USE_ABILITY:

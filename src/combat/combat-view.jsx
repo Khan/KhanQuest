@@ -32,12 +32,23 @@ var CombatEntity = React.createClass({
         return this.sprites[state];
     },
 
+    handleClick: function() {
+        if (this.props.isSelectable) {
+            CombatActions.chooseTarget(this.props.entity);
+        }
+    },
+
     render: function() {
         //need to render sprite, healthbar
         var spriteState = this.props.entity.spriteState;
 
         var sprite = this._getOrCreateSpriteForState(spriteState);
-        return <div className="entity">
+
+        var className = React.addons.classSet({
+            entity: true,
+            selectable: this.props.isSelectable
+        });
+        return <div className={className} onClick={this.handleClick}>
             <SpriteRenderer sprite={sprite} flipX={this.props.isPlayer} />
             <HealthBar entity={this.props.entity} />
         </div>;
