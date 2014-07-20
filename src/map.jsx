@@ -245,7 +245,7 @@ var Map = React.createClass({
         var size = 32;
         var location = this.state.location;
         var x = location.x * size - 8;
-        var y = location.y * size - 16;
+        var y = location.y * size - 32;
         var direction = this.state.direction;
         var sprite = this.state.walking ? this.playerWalkSprites[direction] :
             this.playerSprites[direction];
@@ -260,12 +260,12 @@ var Map = React.createClass({
             this.state.walking = true;
             if (this.state.doneWalking)
                 clearTimeout(this.state.doneWalking);
+
             this.state.doneWalking = setTimeout(function () {
                 self.state.walking = false;
                 self.forceUpdate();
             }, walkDuration * 2);
         }
-
 
         var flip = (this.state.lastLeftRight === "LEFT") !== !!sprite.options.flip;
         return <SpriteRenderer
