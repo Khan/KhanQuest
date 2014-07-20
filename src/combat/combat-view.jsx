@@ -81,6 +81,10 @@ var CombatView = React.createClass({
         activeEntity: {
             store: CombatStore,
             fetch: (store) => store.CombatEngine.getCurrentEntity()
+        },
+        message: {
+            store: CombatStore,
+            fetch: (store) => store.getCombatMessage()
         }
     })],
 
@@ -99,8 +103,17 @@ var CombatView = React.createClass({
         } else {
             inner = _.map(this.state.entities, this.renderEntity);
         }
+
+        var message = null;
+        if (this.state.message) {
+            message = <div className="combat-message">
+                {this.state.message}
+            </div>;
+        }
+
         return <div className="combat-background">
             {inner}
+            {message}
         </div>;
     }
 });

@@ -15,6 +15,7 @@ var _turnOrder;
 var _turnIndex;
 var _state;
 var _resourcesLoaded;
+var _message;
 
 var combatLog = function() {
     var consoleArgs = ["COMBAT LOG"];
@@ -99,6 +100,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             return new Promise((resolve, reject) => {
                 this.resolvePlayerTargets = resolve;
                 _state = CombatConstants.CombatEngineStates.PLAYER_SELECTING_TARGET;
+                _message = "Choose a target";
                 CombatStore._emitChange();
             });
         },
@@ -108,7 +110,11 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             return new Promise((resolve, reject) => {
                 var implicitTargets = this.getImplicitTargets(spell);
                 if (!implicitTargets) {
-                    this.waitForSelectionFromPlayer().done(resolve, reject);
+                    this.waitForSelectionFromPlayer()
+                    .done((targets) => {
+                        _message = null;
+                        resolve(targets);
+                    }, reject);
                 } else {
                     resolve(implicitTargets);
                 }
@@ -130,7 +136,9 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 }
             }
 
-            return this.getPlayerTarget(spell).then((targets) => castSpell(targets));
+            return this.getPlayerTarget(spell).then((targets) => {
+                castSpell(targets);
+            });
         },
 
         advanceTurn: function() {
@@ -191,6 +199,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             _turnIndex = 0;
             _turnOrder = [];
             _state = CombatConstants.CombatEngineStates.RUNNING;
+            _message = null;
         },
 
         runAnimationForEntity: function(spriteState, entity) {
@@ -228,6 +237,10 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
     getIsPlayerSelecting: function() {
         return _state === CombatConstants.CombatEngineStates.PLAYER_SELECTING_TARGET;
+    },
+
+    getCombatMessage: function() {
+        return _message;
     },
 
     dispatcherIndex: AppDispatcher.register(function(payload) {
@@ -279,9 +292,12 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 CombatStore.CombatEngine.handlePlayerCast(spell, success).done(() => {
                     var livingEnemies = CombatStore.CombatEngine.getLivingEnemies();
                     if (_.isEmpty(livingEnemies)) {
-                        utils.wait(2000).then(() => {
+                        _message = "You have KHANquered!";
+                        _emitChange();
+                        utils.wait(5000).then(() => {
                             combatLog("No enemies left! player wins");
-                            // Show message
+                            _message = null;
+
                             CombatStore._emitChange();
                             CombatActions.endCombat();
                         });
