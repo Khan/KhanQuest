@@ -212,6 +212,12 @@ var Map = React.createClass({
         this.draw();
     },
 
+    componentWillUpdate: function(newProps, newState) {
+        if (this.state.layers !== newState.layers) {
+            this.context.clearRect(0, 0, 1000, 1000);
+        }
+    },
+
     componentDidMount: function() {
         this.draw();
     }

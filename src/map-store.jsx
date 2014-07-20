@@ -95,7 +95,6 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             break;
 
         case SET_MAP:
-            // TODO clear previous map!
             _currentMap = action.name;
             break;
 

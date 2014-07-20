@@ -15,7 +15,7 @@ window.ParticleCloudRenderer = require("./sprites/animation.jsx").ParticleCloudR
 
 window.MapShell = React.createClass({
     render: function() {
-        return <div>
+        return <div className="map-shell">
             <button onClick={() => Actions.setCurrentMap("overworld")}
                     type="button">
                 overworld
