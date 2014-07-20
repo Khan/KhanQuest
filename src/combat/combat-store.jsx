@@ -321,8 +321,8 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                         CombatStore.CombatEngine.advanceTurn();
                         // TODO(dmnd): display a waiting message instead, then display next problem
                         // at beginning of next turn
-                        Actions.nextProblem();
                     }
+                    Actions.nextProblem();
                 });
                 break;
 
