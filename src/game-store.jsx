@@ -21,7 +21,6 @@ var _inCombat = false;
 var _playerLocation = {x: 10, y: 10};
 var _playerDirection = "RIGHT";
 var _lastLeftRight = "RIGHT";
-var _lastStepStateTime = 0;
 
 var flipLeftRight = function(leftRight) {
     if (leftRight === "LEFT") { return "RIGHT"; }
@@ -108,14 +107,7 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 
     switch (action.actionType) {
         case MOVE:
-            var currentTime = new Date().getTime();
-            if (currentTime - _lastStepStateTime > 100) {
-                stepState(action.direction);
-                _lastStepStateTime = new Date().getTime();
-                setTimeout(() => {_lastStepStateTime = new Date().getTime();}, 100);
-            } else {
-                return true;
-            }
+            stepState(action.direction);
             break;
 
         case SET_LOCATION:
