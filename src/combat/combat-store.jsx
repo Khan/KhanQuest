@@ -60,7 +60,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             combatLog("Ability use: ", ability);
 
             // Simple stuff. Just use the power as damage to the target.
-            var damage = ability.power || 0;
+            var damage = ability.power + ability.boost || 0;
             var animationPromises = targets.map((target) => {
                 return this.damageEntity(target, damage);
             });
@@ -127,7 +127,9 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         handlePlayerCast: function(spell, success) {
             var castSpell = (targets) => {
                 var player = EntityStore.getPlayer();
-                // adjust timing counters
+
+                // Add power-up to spell and reset counters
+                spell.boost = UserStore.getCounter(spell.exerciseName);
                 Actions.adjustCounters(spell.exerciseName);
 
                 return this.runAnimationForEntity('attack', player).then(() => {
