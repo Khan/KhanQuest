@@ -148,10 +148,18 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 utils.wait(3000).then(() => {
                     var abilityToUse = this.chooseAbility(currentEntity);
                     var player = EntityStore.getPlayer();
-                    this.handleAbility(abilityToUse, currentEntity, [player]);
 
-                    // TODO(dmnd): check for player death
-                    this.advanceTurn();
+                    if (abilityToUse.category === 'attack') {
+                        this.runAnimationForEntity('attack', currentEntity)
+                        .then(() => this.handleAbility(
+                            abilityToUse, currentEntity, [player]))
+                        .then(this.advanceTurn());
+                    } else {
+                        this.handleAbility(abilityToUse, currentEntity, [player]);
+
+                        // TODO(dmnd): check for player death
+                        this.advanceTurn();
+                    }
                 });
             }
         },
