@@ -62,6 +62,10 @@ var Game = React.createClass({
         CombatActions.startCombat(forestTroll);
     },
 
+    showDialog: function() {
+        Actions.showDialog("scene1");
+    },
+
     endCombat: function() {
         CombatActions.endCombat();
     },
@@ -85,10 +89,9 @@ var Game = React.createClass({
                 <button disabled={this.state.inCombat} onClick={this.startCombat}>
                     Start Combat
                 </button>
-                <PropCheckBox
-                    showDialog={this.props.showDialog}
-                    label="Show Dialog"
-                    onChange={this.props.onChange} />
+                <button onClick={this.showDialog}>
+                    Show Dialog
+                </button>
                 <button className="correct"
                         disabled={this.state.combatState !==
                             CombatConstants.CombatEngineStates.AWAITING_PLAYER_TURN}
@@ -123,7 +126,6 @@ var Game = React.createClass({
                 <CombatScreen exerciseName={activeExercise}
                               problemIndex={problemIndex} />
             </div>
-            {this.props.showDialog && <Dialog scene="scene1" />}
         </div>;
     },
 

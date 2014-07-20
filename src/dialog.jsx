@@ -29,7 +29,7 @@ var Dialog = React.createClass({
         var line = this._getLine();
         var end = this.state.index === this._getScene().lines.length - 1;
         var message = end ? "close" : "next";
-        return <div>
+        return <div className="dialog-view">
             <div className="speaker">{line.speaker}</div>
             <div className="line">{line.line}</div>
             <button className="forward"
