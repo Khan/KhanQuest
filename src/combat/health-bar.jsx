@@ -15,14 +15,16 @@ var HealthBar = React.createClass({
         var pc = 100 * currentHealth / maxHealth;
         var width = `${pc}%`;
 
-        var classes = "health-bar";
-        if (pc >= 100) {
-            classes += " full-health"
-        }
+        var className = React.addons.classSet({
+            'health-bar-container': true,
+            'full-health': pc >= 100
+        })
 
-        return <div className={classes}>
-            <div className="filled" style={{width: width}} />
-            {currentHealth}
+        return <div className={className}>
+            <span>{currentHealth}</span>
+            <div className="health-bar">
+                <div className="filled" style={{width: width}} />
+            </div>
         </div>;
     }
 });
