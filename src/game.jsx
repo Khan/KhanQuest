@@ -64,6 +64,7 @@ var Game = React.createClass({
         // A few arcane spells...
         Actions.addSpell("making-totals-in-different-ways-within-10");
         Actions.addSpell("meaning-of-equal-sign-1");
+        Actions.addSpell("comparing-with-multiplication");
 
         // A few fire spells...
         Actions.addSpell("area-of-triangles");
