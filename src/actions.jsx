@@ -12,6 +12,7 @@ var constants = {
     MOVE: "MOVE",
     ADD_SPELL: "ADD_SPELL",
     SET_ACTIVE_SPELL: "SET_ACTIVE_SPELL",
+    ADJUST_COUNTERS: "ADJUST_COUNTERS",
     SHOW_DIALOG: "SHOW_DIALOG",
     HIDE_DIALOG: "HIDE_DIALOG",
     SET_MAP: "SET_MAP",
@@ -54,6 +55,13 @@ var Actions = {
     setActiveSpell: function(exerciseName) {
         AppDispatcher.handleViewAction({
             actionType: constants.SET_ACTIVE_SPELL,
+            exerciseName: exerciseName
+        });
+    },
+
+    adjustCounters: function(exerciseName) {
+        AppDispatcher.handleViewAction({
+            actionType: constants.ADJUST_COUNTERS,
             exerciseName: exerciseName
         });
     },

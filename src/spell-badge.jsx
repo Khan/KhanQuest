@@ -2,6 +2,7 @@
 
 var React = require("react");
 var Spell = require("./models/spell");
+var UserStore = require("./user-store.jsx");
 
 var SpellBadge = React.createClass({
     propTypes: {
@@ -34,6 +35,7 @@ var SpellBadge = React.createClass({
 
     render: function () {
         var spell = new Spell(this.props.exerciseName);
+        var powerUp = UserStore.getCounter(this.props.exerciseName);
 
         var inlineBlock = {
             display: "inline-block"
@@ -44,6 +46,8 @@ var SpellBadge = React.createClass({
                 onClick={this.handleClick}>
             <div style={inlineBlock}>{this._renderImage()}</div>
             <div style={inlineBlock} className="content">
+                {/* Only display powerup icon if it's relevant. */}
+                {powerUp > 0 && <div className="powerup">+{powerUp}</div>}
                 <div className="title">{spell.displayName}</div>
                 <div className="description">{spell.description}</div>
             </div>

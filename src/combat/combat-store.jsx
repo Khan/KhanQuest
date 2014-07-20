@@ -5,6 +5,8 @@ var utils = require("../utils.jsx");
 
 var CombatConstants = require("./combat-constants.js");
 var CombatActions = require("./combat-actions.js");
+var { Actions } = require("../actions.jsx");
+var UserStore = require("../user-store.jsx");
 
 var SpriteLoader = require('../sprites/sprite-loader.jsx');
 
@@ -125,6 +127,9 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             var castSpell = (targets) => {
                 var player = EntityStore.getPlayer();
                 if (success) {
+                    // adjust timing counters
+                    Actions.adjustCounters(spell.exerciseName);
+
                     return this.runAnimationForEntity('attack', player).then(() => {
                         this.handleAbility(spell, player, targets);
                     });
