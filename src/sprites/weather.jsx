@@ -63,10 +63,10 @@ var WeatherRenderer = React.createClass({
             return <div>
                 <Animation.DarkRenderer
                     width={this.props.width}
-                    height={this.props.height} />;
+                    height={this.props.height} />
                 <Animation.ParticleCloudRenderer
                     particleCloud={this.getParticleCloudForType()}
-                    style={canvasStyle} />;
+                    style={canvasStyle} />
             </div>;
         }
 
