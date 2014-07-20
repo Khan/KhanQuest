@@ -5,6 +5,7 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 var { Actions, GameViews } = require("./actions.jsx");
 var Spellbook = require("./spellbook.jsx");
 var Dialog = require("./dialog.jsx");
+var SpellSplash = require("./spell-splash.jsx");
 var CombatScreen = require("./combat-screen.jsx");
 var Map = require("./map.jsx");
 
@@ -44,6 +45,12 @@ var Game = React.createClass({
                 fetch: store => {
                     return store.getDialog();
                 }
+            },
+            spellSplash: {
+                store: GameStore,
+                fetch: store => {
+                    return store.getSpellSplash();
+                }
             }
         })
     ],
@@ -56,6 +63,19 @@ var Game = React.createClass({
     },
 
     startCombat: function() {
+        // A few arcane spells...
+        Actions.addSpell("making-totals-in-different-ways-within-10");
+        Actions.addSpell("meaning-of-equal-sign-1");
+
+        // A few fire spells...
+        Actions.addSpell("area-of-triangles");
+        Actions.addSpell("area-of-triangles-2");
+        Actions.addSpell("composing-and-decomposing-shapes");
+
+        // A few frost spells...
+        Actions.addSpell("identifying-parts-of-expressions");
+        Actions.addSpell("manipulating-linear-expressions-with-rational-coefficients");
+
         var forestTrollStats = MonsterStore.getById("forest_troll");
         var forestTroll = [EntityStore.createEntity(forestTrollStats)];
         var forestTrolls = _.times(3, () => EntityStore.createEntity(forestTrollStats));
@@ -110,6 +130,10 @@ var Game = React.createClass({
                     {currentView}
                 </ReactCSSTransitionGroup>
             </div>
+            {this.state.spellSplash && <SpellSplash
+                    exerciseName={this.state.spellSplash.exerciseName}
+                    description={this.state.spellSplash.description}
+                    onClick={Actions.hideSpellSplash} />}
             {this.state.dialog && <Dialog scene={this.state.dialog} />}
         </div>;
     },

@@ -15,6 +15,8 @@ var constants = {
     ADJUST_COUNTERS: "ADJUST_COUNTERS",
     SHOW_DIALOG: "SHOW_DIALOG",
     HIDE_DIALOG: "HIDE_DIALOG",
+    SHOW_SPELL_SPLASH: "SHOW_SPELL_SPLASH",
+    HIDE_SPELL_SPLASH: "HIDE_SPELL_SPLASH",
     SET_MAP: "SET_MAP",
     OPEN_SPELLBOOK: "OPEN_SPELLBOOK",
     CLOSE_SPELLBOOK: "CLOSE_SPELLBOOK",
@@ -76,6 +78,20 @@ var Actions = {
     hideDialog: function() {
         AppDispatcher.handleViewAction({
             actionType: constants.HIDE_DIALOG
+        });
+    },
+
+    showSpellSplash: function(exerciseName, description) {
+        AppDispatcher.handleViewAction({
+            actionType: constants.SHOW_SPELL_SPLASH,
+            exerciseName: exerciseName,
+            description: description
+        });
+    },
+
+    hideSpellSplash: function() {
+        AppDispatcher.handleViewAction({
+            actionType: constants.HIDE_SPELL_SPLASH
         });
     },
 

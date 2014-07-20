@@ -33,19 +33,42 @@ div.row {
 }
 
 .screen-enter {
-  opacity: 0.00;
-  transition: opacity .2s ease-in 0.2s;
+    opacity: 0.00;
+    transition: opacity .2s ease-in 0.2s;
 }
 
 .screen-enter.screen-enter-active {
-  opacity: 1;
+    opacity: 1;
 }
 
 .screen-leave {
-  opacity: 1;
-  transition: opacity .2s ease-in;
+    opacity: 1;
+    transition: opacity .2s ease-in;
 }
 
 .screen-leave.screen-leave-active {
-  opacity: 0.01;
+    opacity: 0.01;
+}
+
+.new-spell {
+    .swatch;
+    .stretch(@top: auto; @bottom: 200px);
+    z-index: 10;
+    padding: 20px;
+    width: 450px;
+    margin: 0 auto;
+
+    .splash-title {
+        font-family: Arvo;
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .splash-description {
+    }
+
+    .spell-badge {
+        margin: 20px;
+    }
 }

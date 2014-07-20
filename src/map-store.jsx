@@ -55,7 +55,10 @@ var MAPS = {
 
 var MAP_OBJECT_INTERACTIONS = {
     salinterior: () => {
-        Actions.showDialog("salinterior");
+        Actions.showSpellSplash(
+            "making-totals-in-different-ways-within-10",
+            "This is your first spell, and it's a good one! In order to cast it, you'll need to exercise your mathematical mind. Watching this video might help you out."
+        );
     },
     cottage: _.once(() => {
         Actions.showDialog("approach-house");

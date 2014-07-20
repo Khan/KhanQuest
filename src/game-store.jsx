@@ -14,6 +14,8 @@ var Mersenne = require("mersenne");
 // The dialog currently visible
 var _dialog = "intro";
 
+var _spellSplash = null;
+
 var _view = GameViews.MAP;
 
 var _inCombat = false;
@@ -140,6 +142,15 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             _dialog = null;
             break;
 
+        case constants.SHOW_SPELL_SPLASH:
+            _spellSplash = _.pick(action, "exerciseName", "description");
+            Actions.addSpell(action.exerciseName);
+            break;
+
+        case constants.HIDE_SPELL_SPLASH:
+            _spellSplash = null;
+            break;
+
         default:
             return true;
     }
@@ -173,6 +184,10 @@ var GameStore = _({}).extend(
 
         getDialog: function() {
             return _dialog;
+        },
+
+        getSpellSplash: function() {
+            return _.clone(_spellSplash);
         },
 
         addChangeListener: function(callback) {
