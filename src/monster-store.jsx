@@ -26,7 +26,7 @@ var testJSON = JSON.stringify([
                 category: "attack",
                 type: "physical",
                 priority: 1,
-                power: 10,
+                power: 30,
                 cooldown: 0
             },
             {
@@ -34,7 +34,7 @@ var testJSON = JSON.stringify([
                 animation: {self: "", target: ""},
                 category: "attack",
                 type: "physical",
-                power: 20,
+                power: 50,
                 priority: 0,
                 cooldown: 3
             },
