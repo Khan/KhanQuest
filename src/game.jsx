@@ -30,6 +30,10 @@ var Game = React.createClass({
                 store: GameStore,
                 fetch: (store) => store.getCurrentView()
             },
+            inCombat: {
+                store: GameStore,
+                fetch: (store) => store.getInCombat()
+            },
             combatState: {
                 store: CombatStore,
                 fetch: (store) => store.getState()
@@ -73,10 +77,11 @@ var Game = React.createClass({
 
         return <div>
             <div className="debug-bar">
-                <button onClick={this.endCombat}>
+                <button disabled={this.state.currentView === GameViews.MAP}
+                        onClick={this.endCombat}>
                     Show Map
                 </button>
-                <button onClick={this.startCombat}>
+                <button disabled={this.state.inCombat} onClick={this.startCombat}>
                     Start Combat
                 </button>
                 <PropCheckBox

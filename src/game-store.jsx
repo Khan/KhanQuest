@@ -140,6 +140,10 @@ var GameStore = _({}).extend(
             return _view;
         },
 
+        getInCombat: function() {
+            return _inCombat;
+        },
+
         getLocation: function() {
             return _playerLocation;
         },
