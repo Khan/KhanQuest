@@ -77,9 +77,10 @@ var Game = React.createClass({
         Actions.addSpell("manipulating-linear-expressions-with-rational-coefficients");
 
         var forestTrollStats = MonsterStore.getById("forest_troll");
-        var forestTroll = [EntityStore.createEntity(forestTrollStats)];
-        var forestTrolls = _.times(3, () => EntityStore.createEntity(forestTrollStats));
-        CombatActions.startCombat(forestTrolls);
+        var monsters = ["direwolf", "spider", "forest_troll"].map(
+            (id) => MonsterStore.getById(id)).map(
+                (stats) => EntityStore.createEntity(stats));
+        CombatActions.startCombat(monsters);
     },
 
     showDialog: function() {

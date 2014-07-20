@@ -53,7 +53,8 @@ var testJSON = JSON.stringify([
         id: "direwolf",
         sprites: {
             idle: "direwolf-idle",
-            attack: "default",
+            attack: "direwolf-attack",
+            damaged: "direwolf-damaged",
             dead: "default"
         },
         hp: 50,

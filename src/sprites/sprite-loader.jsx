@@ -256,6 +256,28 @@ var testJSON = JSON.stringify([
         scale: 2
     },
     {
+        id: 'direwolf-attack',
+        url: 'resources/direwolf.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 7, 0],
+        dir: 'horizontal',
+        once: false,
+        scale: 2
+    },
+    {
+        id: 'direwolf-damaged',
+        url: 'resources/direwolf.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [1, 2, 1],
+        dir: 'horizontal',
+        once: false,
+        scale: 2
+    },
+    {
         id: 'spider-idle',
         url: 'resources/spider.png',
         pos: [0, 0],
