@@ -134,7 +134,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         takeTurn: function() {
             var currentEntity = CombatStore.CombatEngine.getCurrentEntity();
             if (currentEntity.isPlayer()) {
-                _state = CombatConstants.CombatEngineStates.AWAITING_PLAYER_INPUT;
+                _state = CombatConstants.CombatEngineStates.AWAITING_PLAYER_TURN;
                 combatLog("Players turn, waiting...");
             } else {
                 // Not the player, some ai monster.
@@ -247,7 +247,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 break;
 
             case CombatConstants.PLAYER_CAST_SPELL:
-                utils.assert(_state == CombatConstants.CombatEngineStates.AWAITING_PLAYER_INPUT, "Got a spell cast when we weren't waiting for one");
+                utils.assert(_state == CombatConstants.CombatEngineStates.AWAITING_PLAYER_TURN, "Got a spell cast when we weren't waiting for one");
                 utils.assert(CombatStore.CombatEngine.getCurrentEntity().isPlayer(), "Casting a spell when it isn't your turn!");
 
                 var {spell, success} = action;

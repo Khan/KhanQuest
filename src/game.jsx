@@ -16,6 +16,7 @@ var GameStore = require("./game-store.jsx");
 var CombatStore = require("./combat/combat-store.jsx");
 var StateFromStore = require("./flux/state-from-store-mixin.js");
 var CombatActions = require('./combat/combat-actions.js');
+var CombatConstants = require('./combat/combat-constants.js');
 
 var Game = React.createClass({
     mixins: [Changeable],
@@ -88,10 +89,16 @@ var Game = React.createClass({
                     showDialog={this.props.showDialog}
                     label="Show Dialog"
                     onChange={this.props.onChange} />
-                <button className="correct" onClick={CombatActions.successfulAttack}>
+                <button className="correct"
+                        disabled={this.state.combatState !==
+                            CombatConstants.CombatEngineStates.AWAITING_PLAYER_TURN}
+                        onClick={CombatActions.successfulAttack}>
                     Correct
                 </button>
-                <button className="wrong" onClick={CombatActions.failedAttack}>
+                <button className="wrong"
+                        disabled={this.state.combatState !==
+                            CombatConstants.CombatEngineStates.AWAITING_PLAYER_TURN}
+                        onClick={CombatActions.failedAttack}>
                     Wrong
                 </button>
             </div>
