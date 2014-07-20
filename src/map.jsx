@@ -10,6 +10,7 @@ var Shortcut = require("./shortcut.js");
 var Weather = require("./sprites/weather.jsx");
 
 var { Actions } = require("./actions.jsx");
+var { MAP_WIDTH_PX, MAP_HEIGHT_PX, BLOCK } = require("./constants.jsx");
 
 var GameStore = require("./game-store.jsx");
 var MapStore = require("./map-store.jsx");
@@ -22,6 +23,34 @@ var StateFromStore = require("./flux/state-from-store-mixin.js");
 var Avatar = new Image();
 Avatar.src = "/static/img/red-mage+female.png";
 
+// given the player's x, y coordinates and the dimensions of the map, return
+// the { x: [0..940], y: [0..720] } coordinates of the player on the screen
+var characterPosOnScreen = function({ x, y }, { width, height }) {
+    // if we're within 50 px of the edge move away from the center
+    var finalX;
+    if (x < 50) {
+        finalX = x;
+    } else if (x > width - 50) {
+        finalX = width - x;
+    } else {
+        finalX = 50;
+    }
+
+    var finalY;
+    if (y < 50) {
+        finalY = y;
+    } else if (y > width - 50) {
+        finalY = width - y;
+    } else {
+        finalY = 50;
+    }
+
+    return { x: finalX, y: finalY };
+};
+
+var mapOffset = function({ x, y }, { width, height }) {
+};
+
 var Map = React.createClass({
     propTypes: {
     },
@@ -31,10 +60,6 @@ var Map = React.createClass({
             currentMap: {
                 store: MapStore,
                 fetch: (store) => store.getCurrentMap()
-            },
-            layers: {
-                store: MapStore,
-                fetch: (store) => store.getLayers()
             },
             isLoading: {
                 // TODO: put this in the map store too?
@@ -71,11 +96,6 @@ var Map = React.createClass({
     componentWillUpdate: function(nextProps, nextState) {
         if (this.state.isLoading && !nextState.isLoading) {
             this.loadSprites();
-        }
-        if (this.state.layers !== nextState.layers) {
-            var canvas = this.refs.canvas.getDOMNode();
-            this.context = canvas.getContext('2d');
-            this.context.clearRect(0, 0, 1000, 1000);
         }
     },
 
@@ -141,8 +161,8 @@ var Map = React.createClass({
 
         var mapStyle = {
             position: "relative",
-            width: 1000,
-            height: 1000
+            width: MAP_WIDTH_PX,
+            height: MAP_HEIGHT_PX
         };
         var absolute = {
             position: "absolute"
@@ -152,21 +172,56 @@ var Map = React.createClass({
             <Shortcut actions={actions} />
             {this.state.currentMap.weather &&
                 <Weather.WeatherRenderer
-                    width={1000}
-                    height={1000}
+                    width={MAP_WIDTH_PX}
+                    height={MAP_HEIGHT_PX}
                     style={above}
                     type={this.state.currentMap.weather} />}
-            <canvas ref="canvas" width={1000} height={1000} style={absolute} />
+            <canvas ref="canvas" width={MAP_WIDTH_PX} height={MAP_HEIGHT_PX} style={absolute} />
             {this.renderPlayer()};
         </div>;
     },
 
-    draw: function() {
+    showMap: function() {
+        if (!this.mapcontext) {
+            return;
+        }
+
         var canvas = this.refs.canvas.getDOMNode();
         this.context = canvas.getContext('2d');
 
+        var { x, y } = MapStore.getMapOffset();
+        this.context.drawImage(
+            this.mapcanvas,
+
+            // position and dimensions to sample from
+            x, y,
+            MAP_WIDTH_PX, MAP_HEIGHT_PX,
+
+            // position and dimensions to render to
+            0, 0,
+            MAP_WIDTH_PX, MAP_HEIGHT_PX
+        );
+    },
+
+    // render this map to mapcanvas / mapcontext
+    // double buffering!
+    renderNewMap: function() {
+        var manifest = MapStore.getManifest();
+
+        // no manifest yet, just bail
+        if (!manifest) {
+            return;
+        }
+
+        var layers = MapStore.getLayers();
+
+        this.mapcanvas = document.createElement("canvas");
+        this.mapcanvas.width = manifest.width * BLOCK;
+        this.mapcanvas.height = manifest.height * BLOCK;
+        this.mapcontext = this.mapcanvas.getContext('2d');
+
         // layers are stored bottom to top, so we can render in order
-        var renderableLayers = _(this.state.layers)
+        var renderableLayers = _(layers)
             .filter(layer => layer.layer.name !== "interaction layer");
 
         _(renderableLayers).each(this.renderLayer);
@@ -232,17 +287,25 @@ var Map = React.createClass({
             var s_x = (i % layer.width) * size;
             var s_y = ~~(i / layer.width) * size;
 
-            this.context.drawImage(images[tilesetIx], img_x, img_y, size, size,
+            this.mapcontext.drawImage(images[tilesetIx], img_x, img_y, size, size,
                 s_x, s_y, size, size);
       });
     },
 
     componentDidUpdate: function(newProps, newState) {
-        this.draw();
+        // draw an entirely new map
+        if (!this.mapcontext ||
+            newState.currentMap !== this.state.currentMap) {
+
+            this.renderNewMap();
+        }
+
+        this.showMap();
     },
 
     componentDidMount: function() {
-        this.draw();
+        this.renderNewMap();
+        this.showMap();
     }
 });
 
