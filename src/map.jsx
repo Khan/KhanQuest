@@ -241,17 +241,19 @@ var Map = React.createClass({
         var x = location.x * size - 8;
         var y = location.y * size - 16;
         var direction = this.state.direction;
-        var sprite = this.state.walking ? this.playerWalkSprites[direction] : 
+        var sprite = this.state.walking ? this.playerWalkSprites[direction] :
             this.playerSprites[direction];
 
         // TODO(michelle): There's probably a way to make this less hacky!
         var self = this;
-        if (!this.state.walking && (this.state.lastx != x || this.state.lasty != y))
+        if (this.state.lastx != x || this.state.lasty != y)
         {
             this.state.lastx = x;
             this.state.lasty = y;
             this.state.walking = true;
-            setTimeout(function () {
+            if (this.state.doneWalking)
+                clearTimeout(this.state.doneWalking);
+            this.state.doneWalking = setTimeout(function () {
                 self.state.walking = false;
                 self.forceUpdate();
             }, 1000);
