@@ -18,6 +18,11 @@ var MAPS = {
         manifestName: "desert.json",
         weather: null
     },
+    desert: {
+        name: "desert",
+        manifestName: "desert.json",
+        weather: null
+    },
     cave: {
         name: "cave",
         manifestName: "cave.json",
@@ -31,12 +36,12 @@ var MAPS = {
     cottage: {
         name: "cottage",
         manifestName: "cottage.json",
-        weather: Weather.RAIN
+        weather: Weather.FOG
     },
     fortress: {
         name: "fortress",
         manifestName: "fortress.json",
-        weather: null
+        weather: Weather.SNOW
     }
 };
 

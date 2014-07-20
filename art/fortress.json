@@ -119,7 +119,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/KhanQuest\/art\/tilesets\/mountain_landscape.png",
+         "image":"tilesets\/mountain_landscape.png",
          "imageheight":512,
          "imagewidth":512,
          "margin":0,
@@ -526,7 +526,7 @@
         },
         {
          "firstgid":257,
-         "image":"..\/..\/KhanQuest\/art\/tilesets\/mountain_house_exterior.png",
+         "image":"tilesets\/mountain_house_exterior.png",
          "imageheight":512,
          "imagewidth":512,
          "margin":0,
@@ -541,7 +541,7 @@
         },
         {
          "firstgid":513,
-         "image":"..\/..\/KhanQuest\/art\/tilesets\/mountain_house_exterior2.png",
+         "image":"tilesets\/mountain_house_exterior2.png",
          "imageheight":512,
          "imagewidth":512,
          "margin":0,
@@ -556,7 +556,7 @@
         },
         {
          "firstgid":769,
-         "image":"..\/..\/KhanQuest\/art\/tilesets\/special.png",
+         "image":"tilesets\/special.png",
          "imageheight":64,
          "imagewidth":96,
          "margin":0,
