@@ -137,6 +137,8 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             break;
 
         case constants.OPEN_SPELLBOOK:
+            // give magic missile just in case we don't have it
+            Actions.addSpell("making-totals-in-different-ways-within-10");
             assert(_inCombat, "Can't open the spellbook outside of combat");
             _view = GameViews.SPELLBOOK;
             break;
