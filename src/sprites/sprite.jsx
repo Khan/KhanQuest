@@ -72,7 +72,8 @@ class Sprite {
 
     // we expect time in ms to start at 0, this will always correspond to the
     // first frame
-    render(ctx, time) {
+    render(ctx, time, offset) {
+        var offset = offset || [0, 0];
         var frameIndex = null;
         if (this.options.speed > 0) {
             var index = Math.floor(this.options.speed * time);
@@ -96,7 +97,7 @@ class Sprite {
             /*image*/ Resources.get(this.options.url),
             /*sourcex*/ spritePosition[0], /*sourcey*/ spritePosition[1],
             /*sourcew*/ this.options.size[0], /*sourceh*/ this.options.size[1],
-            /*canvasx*/ 0, /*canvasy*/ 0,
+            /*canvasx*/ offset[0], /*canvasy*/ offset[1],
             /*canvasw*/ scaledSize[0], /*canvash*/ scaledSize[1]);
     }
 }
@@ -156,7 +157,11 @@ var SpriteRenderer = React.createClass({
 
     render: function() {
         var canvasSize = this.props.sprite.scaledSize();
-        return <canvas width={canvasSize[0]} height={canvasSize[1]}></canvas>;
+        return <canvas
+            width={canvasSize[0]}
+            height={canvasSize[1]}
+            style={this.props.style}
+            />;
     }
 });
 

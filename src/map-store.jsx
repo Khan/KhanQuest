@@ -1,5 +1,7 @@
 var EventEmitter = require("events").EventEmitter;
 var AppDispatcher = require("./flux/app-dispatcher.js");
+var SpriteLoader = require("./sprites/sprite-loader.jsx");
+var EntityStore = require("./entity.jsx");
 var { constants } = require("./actions.jsx");
 var { FETCH_MAP_DATA, MOVE, SET_MAP, NEXT_MAP, MAP_OBJECT_INTERACTION } = constants;
 var { MONSTER, WALL, OBJECT, DOOR, START, GRASS, EMPTY } = require("./constants.jsx");
@@ -31,6 +33,7 @@ var MAP_OBJECT_INTERACTIONS = {
 };
 
 var _currentMap = "desert";
+var _resourcesLoaded = false;
 
 // metadata about each map:
 // { overworld: object, cave: object }
@@ -129,6 +132,10 @@ var MapStore = _({}).extend(
             return _currentMap;
         },
 
+        getIsLoading: function() {
+            return !_resourcesLoaded;
+        },
+
         getInteractionForLocation: function({ x, y }) {
             var manifest = _manifests[_currentMap];
             var layer = _(manifest.layers)
@@ -161,5 +168,11 @@ var MapStore = _({}).extend(
         }
     }
 );
+
+var playerSprites = EntityStore.getPlayer().sprites;
+SpriteLoader.loadSprites(_.values(playerSprites)).then(() => {
+    _resourcesLoaded = true;
+    MapStore.emitChange();
+});
 
 module.exports = MapStore;

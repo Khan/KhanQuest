@@ -13,6 +13,9 @@ var { Actions } = require("./actions.jsx");
 
 var GameStore = require("./game-store.jsx");
 var MapStore = require("./map-store.jsx");
+var EntityStore = require("./entity.jsx");
+var SpriteLoader = require("./sprites/sprite-loader.jsx");
+var { SpriteRenderer } = require("./sprites/sprite.jsx");
 
 var StateFromStore = require("./flux/state-from-store-mixin.js");
 
@@ -29,6 +32,11 @@ var Map = React.createClass({
                 store: MapStore,
                 fetch: (store) => store.getLayers()
             },
+            isLoading: {
+                // TODO: put this in the map store too?
+                store: MapStore,
+                fetch: (store) => store.getIsLoading()
+            },
             location: {
                 store: GameStore,
                 fetch: (store) => store.getLocation()
@@ -37,7 +45,31 @@ var Map = React.createClass({
     ],
 
     getInitialState: function() {
-        return { images: [] };
+        return {
+            images: [],
+        };
+    },
+
+    componentWillMount: function() {
+        if (!this.state.isLoading) {
+            this.loadSprites();
+        }
+    },
+
+    componentWillUpdate: function(nextProps, nextState) {
+        if (this.state.isLoading && !nextState.isLoading) {
+            this.loadSprites();
+        }
+    },
+
+    loadSprites: function() {
+        var playerSpriteIds = EntityStore.getPlayer().sprites;
+        this.playerSprites = {
+            UP: SpriteLoader.getNewSpriteById(playerSpriteIds.up),
+            DOWN: SpriteLoader.getNewSpriteById(playerSpriteIds.down),
+            LEFT: SpriteLoader.getNewSpriteById(playerSpriteIds.left),
+            RIGHT: SpriteLoader.getNewSpriteById(playerSpriteIds.right),
+        };
     },
 
     render: function() {
@@ -81,11 +113,17 @@ var Map = React.createClass({
             right
         };
 
+        var mapStyle = {
+            position: "relative",
+            width: 1000,
+            height: 1000
+        };
         var absolute = {
             position: "absolute"
         };
         var above = _.extend({ zIndex: 2 }, absolute);
-        return <div style={{width: 1000, height: 1000}}>
+<<<<<<< HEAD
+        return <div style={mapStyle}>
             <Shortcut actions={actions} />
             <Weather.WeatherRenderer
                 width={1000}
@@ -93,6 +131,7 @@ var Map = React.createClass({
                 style={above}
                 type={Weather.SNOW} />
             <canvas ref="canvas" width={1000} height={1000} style={absolute} />
+            {this.renderPlayer()};
         </div>;
     },
 
@@ -105,16 +144,26 @@ var Map = React.createClass({
             .filter(layer => layer.layer.name !== "interaction layer");
 
         _(renderableLayers).each(this.renderLayer);
-
-        this.renderPlayer();
     },
 
     renderPlayer: function() {
+        if (this.state.isLoading) {
+            console.log("still loading...");
+            return null;
+        }
         var size = 32;
         var location = this.state.location;
-        var x = location.x * size;
-        var y = location.y * size;
-        this.context.drawImage(Avatar, x, y, 72, 72);
+        var x = location.x * size - 8;
+        var y = location.y * size - 16;
+        var sprite = this.playerSprites.UP;
+        return <SpriteRenderer
+            sprite={sprite}
+            flipX={false}
+            style={{
+                position: 'absolute',
+                top: y,
+                left: x
+            }}/>;
     },
 
     renderLayer: function({ layer, scene, images }) {
@@ -160,7 +209,7 @@ var Map = React.createClass({
       });
     },
 
-    componentDidUpdate: function() {
+    componentDidUpdate: function(newProps, newState) {
         this.draw();
     },
 

@@ -69,6 +69,17 @@ var testJSON = JSON.stringify([
         scale: 2
     },
     {
+        id: 'red-mage-up-female',
+        url: 'resources/red-mage-female.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 9, 9, 9, 9, 0, 0, 0, 0, 0],
+        dir: 'horizontal',
+        once: false,
+        scale: 0.75
+    },
+    {
         id: 'red-mage-die-female',
         url: 'resources/red-mage-female.png',
         pos: [0, 0],
