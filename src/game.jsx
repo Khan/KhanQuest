@@ -142,11 +142,15 @@ var Game = React.createClass({
         var activeExercise = this.state.user.activeExercise;
         var problemIndex = this.state.user.problemIndex;
 
+        var className = React.addons.classSet({
+            combat: true,
+            invisible: this.state.combatState !== CombatConstants.CombatEngineStates.AWAITING_PLAYER_TURN
+        });
         return <div key="combat" className="row-item">
             <div className="fight-graphics">
                 <CombatView />
             </div>
-            <div className="combat">
+            <div className={className}>
                 <CombatScreen exerciseName={activeExercise}
                               problemIndex={problemIndex} />
             </div>
