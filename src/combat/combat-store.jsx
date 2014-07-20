@@ -128,6 +128,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             _state = CombatConstants.CombatEngineStates.RUNNING;
             _turnIndex += 1;
             combatLog("Turn advanced. ", this.getCurrentEntity(), "'s turn'");
+            CombatStore._emitChange();
             this.takeTurn();
         },
 
@@ -140,7 +141,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             } else {
                 // Not the player, some ai monster.
                 // Wait a short time then do the action.
-                utils.wait(2000).then(() => {
+                utils.wait(3000).then(() => {
                     var abilityToUse = this.chooseAbility(currentEntity);
                     var player = EntityStore.getPlayer();
                     this.handleAbility(abilityToUse, currentEntity, [player]);
