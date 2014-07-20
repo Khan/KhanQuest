@@ -61,7 +61,7 @@ var CombatExercise = React.createClass({
         var index = 0;
         var shuffled = [];
         _.each(items, function(item) {
-            rand = Mersenne.rand(index++);
+            rand = Mersenne.rand(++index);
             shuffled[index - 1] = shuffled[rand];
             shuffled[rand] = item;
         });
