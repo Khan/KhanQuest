@@ -23,6 +23,8 @@ var StateFromStore = require("./flux/state-from-store-mixin.js");
 var Avatar = new Image();
 Avatar.src = "/static/img/red-mage+female.png";
 
+var walkDuration = 100;
+
 // given the player's x, y coordinates and the dimensions of the map, return
 // the { x: [0..940], y: [0..720] } coordinates of the player on the screen
 var characterPosOnScreen = function({ x, y }, { width, height }) {
@@ -121,25 +123,29 @@ var Map = React.createClass({
         return propsChanged || stateChanged;
     },
 
+    moveFunction: _.throttle((dir) => {
+        Actions.move(dir);
+    }, walkDuration),
+
     render: function() {
 
         var up = {
-            handler: (e) => { Actions.move("UP"); e.preventDefault(); },
+            handler: (e) => { this.moveFunction("UP"); e.preventDefault(); },
             description: ""
         };
 
         var left = {
-            handler: (e) => { Actions.move("LEFT"); e.preventDefault(); },
+            handler: (e) => { this.moveFunction("LEFT"); e.preventDefault(); },
             description: ""
         };
 
         var down = {
-            handler: (e) => { Actions.move("DOWN"); e.preventDefault(); },
+            handler: (e) => { this.moveFunction("DOWN"); e.preventDefault(); },
             description: ""
         };
 
         var right = {
-            handler: (e) => { Actions.move("RIGHT"); e.preventDefault(); },
+            handler: (e) => { this.moveFunction("RIGHT"); e.preventDefault(); },
             description: ""
         };
 
@@ -244,6 +250,7 @@ var Map = React.createClass({
         var sprite = this.state.walking ? this.playerWalkSprites[direction] :
             this.playerSprites[direction];
 
+
         // TODO(michelle): There's probably a way to make this less hacky!
         var self = this;
         if (this.state.lastx != x || this.state.lasty != y)
@@ -256,7 +263,7 @@ var Map = React.createClass({
             this.state.doneWalking = setTimeout(function () {
                 self.state.walking = false;
                 self.forceUpdate();
-            }, 1000);
+            }, walkDuration * 2);
         }
 
 
@@ -268,8 +275,9 @@ var Map = React.createClass({
                 position: 'absolute',
                 top: y,
                 left: x,
-                transition: 'top 1s linear, left 1s linear'
-            }}/>;
+                transition: `top ${walkDuration}ms linear, left ${walkDuration}ms linear`
+            }}
+            key="player" />;
     },
 
     renderLayer: function({ layer, scene, images }) {
