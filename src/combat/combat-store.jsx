@@ -162,26 +162,30 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             } else {
                 // Not the player, some ai monster.
                 // Wait a short time then do the action.
-                utils.wait(3000).then(() => {
-                    var abilityToUse = this.chooseAbility(currentEntity);
-                    var player = EntityStore.getPlayer();
+                if (currentEntity.state === 'dead') {
+                    this.advanceTurn();
+                } else {
+                    utils.wait(3000).then(() => {
+                        var abilityToUse = this.chooseAbility(currentEntity);
+                        var player = EntityStore.getPlayer();
 
-                    if (abilityToUse.category === 'attack') {
-                        this.runAnimationForEntity('attack', currentEntity)
-                        .then(() => {
-                            return this.handleAbility(
-                                abilityToUse, currentEntity, [player])
-                        })
-                        .then(() => {
-                            return this.advanceTurn();
-                        });
-                    } else {
-                        this.handleAbility(abilityToUse, currentEntity, [player]);
+                        if (abilityToUse.category === 'attack') {
+                            this.runAnimationForEntity('attack', currentEntity)
+                            .then(() => {
+                                return this.handleAbility(
+                                    abilityToUse, currentEntity, [player])
+                            })
+                            .then(() => {
+                                return this.advanceTurn();
+                            });
+                        } else {
+                            this.handleAbility(
+                                abilityToUse, currentEntity, [player]);
 
-                        // TODO(dmnd): check for player death
-                        this.advanceTurn();
-                    }
-                });
+                            this.advanceTurn();
+                        }
+                    });
+                }
             }
         },
 
