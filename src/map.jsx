@@ -122,7 +122,6 @@ var Map = React.createClass({
             position: "absolute"
         };
         var above = _.extend({ zIndex: 2 }, absolute);
-<<<<<<< HEAD
         return <div style={mapStyle}>
             <Shortcut actions={actions} />
             <Weather.WeatherRenderer
