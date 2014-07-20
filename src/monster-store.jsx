@@ -12,7 +12,7 @@ var testJSON = JSON.stringify([
             damaged: "troll-whelp-damaged",
             dead: "default"
         },
-        hp: 100,
+        hp: 200,
         fire_resist: 0,
         frost_resist: 0,
         arcane_resist: 0,
@@ -71,7 +71,7 @@ var testJSON = JSON.stringify([
                 category: "attack",
                 type: "physical",
                 priority: 1,
-                power: 10,
+                power: 20,
                 cooldown: 0
             }
         ]
@@ -84,7 +84,7 @@ var testJSON = JSON.stringify([
             damaged: "spider-die",
             dead: "spider-die"
         },
-        hp: 50,
+        hp: 30,
         fire_resist: 10,
         frost_resist: 50,
         arcane_resist: 0,
