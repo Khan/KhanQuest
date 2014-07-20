@@ -5,14 +5,39 @@ var EntityStore = require("./entity.jsx");
 var { constants } = require("./actions.jsx");
 var { FETCH_MAP_DATA, MOVE, SET_MAP, NEXT_MAP, MAP_OBJECT_INTERACTION } = constants;
 var { MONSTER, WALL, OBJECT, DOOR, START, GRASS, EMPTY } = require("./constants.jsx");
+var Weather = require("./sprites/weather.jsx");
 
 var MAPS = {
-    overworld: "overworld.json",
-    desert: "desert.json",
-    cave: "cave.json",
-    salinterior: "salinterior.json",
-    cottage: "cottage.json",
-    fortress: "fortress.json"
+    overworld: {
+        name: "overworld",
+        manifestName: "overworld.json",
+        weather: Weather.SNOW
+    },
+    desert: {
+        name: "desert",
+        manifestName: "desert.json",
+        weather: null
+    },
+    cave: {
+        name: "cave",
+        manifestName: "cave.json",
+        weather: Weather.FOG
+    },
+    salinterior: {
+        name: "salinterior",
+        manifestName: "salinterior.json",
+        weather: null
+    },
+    cottage: {
+        name: "cottage",
+        manifestName: "cottage.json",
+        weather: Weather.RAIN
+    },
+    fortress: {
+        name: "fortress",
+        manifestName: "fortress.json",
+        weather: null
+    }
 };
 
 var NEXT_WORLD = {
@@ -32,7 +57,7 @@ var MAP_OBJECT_INTERACTIONS = {
     }
 };
 
-var _currentMap = "desert";
+var _currentMap = MAPS.cottage;
 var _resourcesLoaded = false;
 
 // metadata about each map:
@@ -43,15 +68,15 @@ var _manifests = {};
 var _tileImages = {};
 
 var findStart = function() {
-    if (_manifests[_currentMap] == null) {
+    if (_manifests[_currentMap.name] == null) {
         return { x: 10, y: 10 };
     }
 
-    var interactionTileset = _(_manifests[_currentMap].tilesets)
+    var interactionTileset = _(_manifests[_currentMap.name].tilesets)
         .findWhere({ name: "interaction" });
     var firstgid = interactionTileset.firstgid;
 
-    var interactionLayer = _(_manifests[_currentMap].layers)
+    var interactionLayer = _(_manifests[_currentMap.name].layers)
         .findWhere({ name: "interaction layer" });
 
     var ix = 0;
@@ -72,8 +97,10 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
 
     switch (action.actionType) {
         case FETCH_MAP_DATA:
-            _(MAPS).each((manifestName, mapName) => {
+            _(MAPS).each((map, mapName) => {
+                var manifestName = map.manifestName;
                 $.getJSON(`/art/${manifestName}`).done(obj => {
+                    obj.weather = map.weather;
                     _manifests[mapName] = obj;
                     _tileImages[mapName] = [];
                     _(obj.tilesets)
@@ -90,16 +117,16 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             break;
 
         case NEXT_MAP:
-            _currentMap = NEXT_WORLD[_currentMap];
+            _currentMap = MAPS[NEXT_WORLD[_currentMap.name]];
             Actions.setLocation(findStart());
             break;
 
         case SET_MAP:
-            _currentMap = action.name;
+            _currentMap = MAPS[action.name];
             break;
 
         case MAP_OBJECT_INTERACTION:
-            MAP_OBJECT_INTERACTIONS[_currentMap]();
+            MAP_OBJECT_INTERACTIONS[_currentMap.name]();
 
         default:
             return true;
@@ -113,16 +140,16 @@ var MapStore = _({}).extend(
     EventEmitter.prototype,
     {
         getLayers: function() {
-            if (_manifests[_currentMap] == null) {
+            if (_manifests[_currentMap.name] == null) {
                 return [];
             }
 
-            return _(_manifests[_currentMap].layers)
+            return _(_manifests[_currentMap.name].layers)
                 .map((layer, i) => {
                     return {
                         layer,
-                        scene: _manifests[_currentMap],
-                        images: _tileImages[_currentMap]
+                        scene: _manifests[_currentMap.name],
+                        images: _tileImages[_currentMap.name]
                     };
                 });
         },
@@ -136,7 +163,7 @@ var MapStore = _({}).extend(
         },
 
         getInteractionForLocation: function({ x, y }) {
-            var manifest = _manifests[_currentMap];
+            var manifest = _manifests[_currentMap.name];
             var layer = _(manifest.layers)
                 .findWhere({ name: "interaction layer" });
             var tileset = _(manifest.tilesets)

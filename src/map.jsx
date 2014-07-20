@@ -28,6 +28,10 @@ var Map = React.createClass({
 
     mixins: [
         StateFromStore({
+            currentMap: {
+                store: MapStore,
+                fetch: (store) => store.getCurrentMap()
+            },
             layers: {
                 store: MapStore,
                 fetch: (store) => store.getLayers()
@@ -127,11 +131,12 @@ var Map = React.createClass({
         var above = _.extend({ zIndex: 2 }, absolute);
         return <div style={mapStyle}>
             <Shortcut actions={actions} />
-            <Weather.WeatherRenderer
-                width={1000}
-                height={1000}
-                style={above}
-                type={Weather.SNOW} />
+            {this.state.currentMap.weather &&
+                <Weather.WeatherRenderer
+                    width={1000}
+                    height={1000}
+                    style={above}
+                    type={this.state.currentMap.weather} />}
             <canvas ref="canvas" width={1000} height={1000} style={absolute} />
             {this.renderPlayer()};
         </div>;
