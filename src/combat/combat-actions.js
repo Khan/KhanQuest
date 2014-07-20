@@ -38,13 +38,17 @@ var CombatActions = {
         // casts spell so that enemies take damage etc
         var exerciseName = UserStore.getUser().activeExercise;
         var spell = new Spell(exerciseName);
-        CombatActions.castSpell(spell, true, EntityStore.getPlayer());
+        CombatActions.castSpell(spell, true);
 
         Actions.nextProblem();
     },
 
     failedAttack: function() {
-        // TODO: consequences
+        // fizzles spell
+        var exerciseName = UserStore.getUser().activeExercise;
+        var spell = new Spell(exerciseName);
+        CombatActions.castSpell(spell, false);
+
         Actions.nextProblem();
     },
 
