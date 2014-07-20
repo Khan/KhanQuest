@@ -70,12 +70,12 @@ var testJSON = JSON.stringify([
     },
     {
         id: 'red-mage-up-female',
-        url: 'static/img/red-mage+female-back.png',
+        url: 'resources/red-mage-female.png',
         flip: true,
         pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [0],
+        frameIndices: [12],
         dir: 'horizontal',
         once: false,
         scale: 0.75
@@ -86,7 +86,7 @@ var testJSON = JSON.stringify([
         pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [0, 9, 9, 9, 9, 0, 0, 0, 0, 0],
+        frameIndices: [9, 9, 9, 9, 9, 9, 9, 0, 0, 0, 0, 0],
         dir: 'horizontal',
         once: false,
         scale: 0.75
@@ -97,7 +97,7 @@ var testJSON = JSON.stringify([
         pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [0, 9, 9, 9, 9, 0, 0, 0, 0, 0],
+        frameIndices: [9, 9, 9, 9, 9, 9, 9, 0, 0, 0, 0, 0],
         dir: 'horizontal',
         once: false,
         scale: 0.75
@@ -108,7 +108,52 @@ var testJSON = JSON.stringify([
         pos: [0, 0],
         size: [72, 72],
         speed: 0.005,
-        frameIndices: [0, 9, 9, 9, 9, 0, 0, 0, 0, 0],
+        frameIndices: [9, 9, 9, 9, 9, 9, 9, 0, 0, 0, 0, 0],
+        dir: 'horizontal',
+        once: false,
+        scale: 0.75
+    },
+    {
+        id: 'red-mage-walk-up-female',
+        url: 'resources/red-mage-female.png',
+        flip: true,
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [13, 13, 14, 14],
+        dir: 'horizontal',
+        once: false,
+        scale: 0.75
+    },
+    {
+        id: 'red-mage-walk-down-female',
+        url: 'resources/red-mage-female.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [10, 10, 11, 11],
+        dir: 'horizontal',
+        once: false,
+        scale: 0.75
+    },
+    {
+        id: 'red-mage-walk-right-female',
+        url: 'resources/red-mage-female.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [10, 10, 11, 11],
+        dir: 'horizontal',
+        once: false,
+        scale: 0.75
+    },
+    {
+        id: 'red-mage-walk-left-female',
+        url: 'resources/red-mage-female.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [10, 10, 11, 11],
         dir: 'horizontal',
         once: false,
         scale: 0.75

@@ -71,7 +71,11 @@ var testPlayer = new Entity({
         up: 'red-mage-up-female',
         down: 'red-mage-down-female',
         left: 'red-mage-left-female',
-        right: 'red-mage-right-female'
+        right: 'red-mage-right-female',
+        walkup: 'red-mage-walk-up-female',
+        walkdown: 'red-mage-walk-down-female',
+        walkleft: 'red-mage-walk-left-female',
+        walkright: 'red-mage-walk-right-female'
     },
     hp: 200,
     fire_resist: 0,

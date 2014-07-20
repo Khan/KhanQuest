@@ -104,6 +104,12 @@ var Map = React.createClass({
             LEFT: SpriteLoader.getNewSpriteById(playerSpriteIds.left),
             RIGHT: SpriteLoader.getNewSpriteById(playerSpriteIds.right),
         };
+        this.playerWalkSprites = {
+            UP: SpriteLoader.getNewSpriteById(playerSpriteIds.walkup),
+            DOWN: SpriteLoader.getNewSpriteById(playerSpriteIds.walkdown),
+            LEFT: SpriteLoader.getNewSpriteById(playerSpriteIds.walkleft),
+            RIGHT: SpriteLoader.getNewSpriteById(playerSpriteIds.walkright),
+        };
     },
 
     shouldComponentUpdate: function(nextProps, nextState) {
@@ -235,7 +241,23 @@ var Map = React.createClass({
         var x = location.x * size - 8;
         var y = location.y * size - 16;
         var direction = this.state.direction;
-        var sprite = this.playerSprites[direction];
+        var sprite = this.state.walking ? this.playerWalkSprites[direction] : 
+            this.playerSprites[direction];
+
+        // TODO(michelle): There's probably a way to make this less hacky!
+        var self = this;
+        if (!this.state.walking && (this.state.lastx != x || this.state.lasty != y))
+        {
+            this.state.lastx = x;
+            this.state.lasty = y;
+            this.state.walking = true;
+            setTimeout(function () {
+                self.state.walking = false;
+                self.forceUpdate();
+            }, 1000);
+        }
+
+
         var flip = (this.state.lastLeftRight === "LEFT") !== !!sprite.options.flip;
         return <SpriteRenderer
             sprite={sprite}
@@ -243,7 +265,8 @@ var Map = React.createClass({
             style={{
                 position: 'absolute',
                 top: y,
-                left: x
+                left: x,
+                transition: 'top 1s linear, left 1s linear'
             }}/>;
     },
 
