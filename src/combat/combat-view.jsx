@@ -16,7 +16,8 @@ var CombatEntity = React.createClass({
         // should be entity
         entity: React.PropTypes.object.isRequired,
         isPlayer: React.PropTypes.bool.isRequired,
-        isSelectable: React.PropTypes.bool.isRequired
+        isSelectable: React.PropTypes.bool.isRequired,
+        active: React.PropTypes.bool.isRequired
     },
 
     componentWillMount: function() {
@@ -44,12 +45,20 @@ var CombatEntity = React.createClass({
 
         var sprite = this._getOrCreateSpriteForState(spriteState);
 
+        if (!('active' in this.sprites)) {
+            this.sprites['active'] = SpriteLoader.getNewSpriteById(
+                'current-turn-halo');
+        }
+
         var className = React.addons.classSet({
             entity: true,
             selectable: this.props.isSelectable
         });
         return <div className={className} onClick={this.handleClick}>
             <SpriteRenderer sprite={sprite} flipX={this.props.isPlayer} />
+            {this.props.active ?
+                <SpriteRenderer className="active-halo"
+                                sprite={this.sprites['active']} />: null}
             <HealthBar entity={this.props.entity} />
         </div>;
     }
@@ -68,34 +77,30 @@ var CombatView = React.createClass({
         selectingTarget: {
             store: CombatStore,
             fetch: (store) => store.getIsPlayerSelecting()
+        },
+        activeEntity: {
+            store: CombatStore,
+            fetch: (store) => store.CombatEngine.getCurrentEntity()
         }
     })],
 
-    renderPlayer: function() {
-        return <CombatEntity isPlayer={true}
-                             entity={this.state.entities[0]}
-                             isSelectable={false} />;
-    },
-
-    renderEnemies: function() {
-        var enemies = _.filter(this.state.entities,
-                               (entity) => !entity.isPlayer());
-        return enemies.map(
-            (enemyEntity, i) => <CombatEntity
-                entity={enemyEntity} key={i} isPlayer={false}
-                isSelectable={this.state.selectingTarget} />);
+    renderEntity: function(entity) {
+        var isSelectable = !entity.isPlayer() && this.state.selectingTarget;
+        return <CombatEntity isPlayer={entity.isPlayer()}
+                             entity={entity}
+                             isSelectable={isSelectable}
+                             active={entity === this.state.activeEntity}/>;
     },
 
     render: function() {
-        var children = [];
+        var inner;
         if (this.state.loading) {
-            children.push(<span>Loading</span>);
+            inner = <span>Loading</span>;
         } else {
-            children.push(this.renderPlayer());
-            children.push(this.renderEnemies());
+            inner = _.map(this.state.entities, this.renderEntity);
         }
         return <div className="combat-background">
-            {children}
+            {inner}
         </div>;
     }
 });

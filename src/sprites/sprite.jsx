@@ -105,7 +105,8 @@ class Sprite {
 var SpriteRenderer = React.createClass({
     propTypes: {
         sprite: React.PropTypes.instanceOf(Sprite).isRequired,
-        flipX: React.PropTypes.bool
+        flipX: React.PropTypes.bool,
+        className: React.PropTypes.string
     },
 
     getDefaultProps: function() {
@@ -169,6 +170,7 @@ var SpriteRenderer = React.createClass({
     render: function() {
         var canvasSize = this.props.sprite.scaledSize();
         return <canvas
+            className={this.props.className}
             width={canvasSize[0]}
             height={canvasSize[1]}
             style={this.props.style}

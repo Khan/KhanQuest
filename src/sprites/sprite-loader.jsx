@@ -244,7 +244,18 @@ var testJSON = JSON.stringify([
         dir: 'horizontal',
         once: true,
         scale: 2
-    }
+    },
+    {
+        id: 'current-turn-halo',
+        url: 'resources/halo.png',
+        pos: [0, 0],
+        size: [72, 72],
+        speed: 0.005,
+        frameIndices: [0, 1, 2, 3, 4, 5, 6],
+        dir: 'horizontal',
+        once: false,
+        scale: 2
+    },
 ]);
 
 var _spriteDict = {};

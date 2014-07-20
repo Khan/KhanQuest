@@ -234,6 +234,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
                 var spriteIds = _.flatten(_.map(_entities, (entity, id) =>
                     _.uniq(_.values(entity.sprites))));
+                spriteIds.push('current-turn-halo');
 
                 SpriteLoader.loadSprites(spriteIds).then(() => {
                     _resourcesLoaded = true;
