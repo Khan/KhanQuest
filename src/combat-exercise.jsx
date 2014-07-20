@@ -78,7 +78,7 @@ var CombatExercise = React.createClass({
             cache: false
         }).then((exercise) => {
             var items = exercise.all_assessment_items;
-            var shuffledItems = this.shuffle(items);
+            var shuffledItems = _.shuffle(items);
             var problemIndex = this.props.problemIndex;
             var index = problemIndex % items.length;
             var item = shuffledItems[index];
