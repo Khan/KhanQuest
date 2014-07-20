@@ -1,5 +1,5 @@
 {
-    "scene1": {
+    "intro": {
         "lines": [{
             "speaker": "Narrator",
             "line": "The sun is setting and you're on the home stretch of your shift delivering groceries."
@@ -9,7 +9,11 @@
         }, {
             "speaker": "Narrator",
             "line": "Every day he has some new piece of wisdom for you."
-        }, {
+        }]
+    },
+
+    "scene1": {
+        "lines": [{
             "speaker": "Narrator",
             "line": "He's gone though! Oh no!"
         }, {

@@ -63,7 +63,7 @@ var Game = React.createClass({
     },
 
     showDialog: function() {
-        Actions.showDialog("scene1");
+        Actions.showDialog("intro");
     },
 
     endCombat: function() {
