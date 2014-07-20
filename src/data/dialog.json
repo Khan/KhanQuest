@@ -2,13 +2,29 @@
     "intro": {
         "lines": [{
             "speaker": "Narrator",
-            "line": "The sun is setting and you're on the home stretch of your shift delivering groceries."
+            "line": "You're on the home stretch of your shift delivering groceries."
         }, {
             "speaker": "Narrator",
-            "line": "The final house is your favourite: Sal's house."
+            "line": "It's starting to drizzle but you like the rain."
+        },{
+            "speaker": "Narrator",
+            "line": "The final house is your favourite: your mentor Sal's house."
         }, {
             "speaker": "Narrator",
             "line": "Every day he has some new piece of wisdom for you."
+        }, {
+            "speaker": "Narrator",
+            "line": "Today is the day he promised to teach you the secrets of the magic missile."
+        }]
+    },
+
+    "approach-house": {
+        "lines": [{
+            "speaker": "Narrator",
+            "line": "As you approach the house, something seems strange."
+        }, {
+            "speaker": "Narrator",
+            "line": "You have a bad feeling about this."
         }]
     },
 

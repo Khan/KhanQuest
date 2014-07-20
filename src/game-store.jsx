@@ -71,6 +71,7 @@ var stepState = function(direction) {
 
         case OBJECT:
             Actions.mapInteraction();
+            _playerLocation = candidateLocation;
             break;
 
         case DOOR:

@@ -56,7 +56,10 @@ var MAPS = {
 var MAP_OBJECT_INTERACTIONS = {
     salinterior: () => {
         Actions.showDialog("salinterior");
-    }
+    },
+    cottage: _.once(() => {
+        Actions.showDialog("approach-house");
+    })
 };
 
 var _currentMap = "cottage";
