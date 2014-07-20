@@ -10,14 +10,12 @@ var _promises = [];
  * @param {Object} payload The data from the Action.
  */
 var _addPromise = function(callback, payload) {
-    _promises.push(new Promise(function(resolve, reject) {
-        _.defer(function() {
-            if (callback(payload)) {
-                resolve(payload);
-            } else {
-                reject(new Error("Dispatcher callback unsuccessful"));
-            }
-        });
+    _promises.push(Promise.resolve().then(function() {
+        if (callback(payload)) {
+            return payload;
+        } else {
+            throw new Error("Dispatcher callback unsuccessful");
+        }
     }));
 };
 
