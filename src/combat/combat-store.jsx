@@ -4,6 +4,7 @@ var AppDispatcher = require("../flux/app-dispatcher.js");
 var utils = require("../utils.jsx");
 
 var CombatConstants = require("./combat-constants.js");
+var CombatActions = require("./combat-actions.js");
 
 var SpriteLoader = require('../sprites/sprite-loader.jsx');
 
@@ -37,6 +38,11 @@ var FluxDatastore = {
 
 var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
     CombatEngine: {
+        getLivingEnemies: function() {
+            var livingEntities = _.where(_entities, {state: 'alive'});
+            return _.filter(livingEntities, (e) => !e.isPlayer());
+        },
+
         startTurns: function() {
             this.takeTurn();
         },
@@ -60,8 +66,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         },
 
         getImplicitTargets(spell) {
-            var livingEntities = _.where(_entities, {state: 'alive'});
-            var livingEnemies = _.filter(livingEntities, (e) => !e.isPlayer());
+            var livingEnemies = this.getLivingEnemies();
 
             // if our spell targets all, return errybody
             if (spell.targetType === "all") {
@@ -108,14 +113,15 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
 
         handlePlayerCast: function(spell, success) {
             var castSpell = (targets) => {
+                _state = CombatConstants.CombatEngineStates.RUNNING;
                 if (success) {
                     var player = EntityStore.getPlayer();
-                    this.runAnimationForEntity('attack', player).then(() => {
+                    return this.runAnimationForEntity('attack', player).then(() => {
                         this.handleAbility(spell, player, targets);
                     });
                 } else {
                     // show the fizzle animation
-                    this.runAnimationForEntity('fizzle', player).then(() => {
+                    return this.runAnimationForEntity('fizzle', player).then(() => {
                         this.fizzleSpell(spell);
                     });
                 }
@@ -125,7 +131,6 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         },
 
         advanceTurn: function() {
-            _state = CombatConstants.CombatEngineStates.RUNNING;
             _turnIndex += 1;
             combatLog("Turn advanced. ", this.getCurrentEntity(), "'s turn'");
             CombatStore._emitChange();
@@ -145,6 +150,8 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                     var abilityToUse = this.chooseAbility(currentEntity);
                     var player = EntityStore.getPlayer();
                     this.handleAbility(abilityToUse, currentEntity, [player]);
+
+                    // TODO(dmnd): check for player death
                     this.advanceTurn();
                 });
             }
@@ -254,9 +261,18 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 utils.assert(CombatStore.CombatEngine.getCurrentEntity().isPlayer(), "Casting a spell when it isn't your turn!");
 
                 var {spell, success} = action;
-                CombatStore.CombatEngine.handlePlayerCast(spell, success).done(
-                    CombatStore.CombatEngine.advanceTurn.bind(
-                        CombatStore.CombatEngine));
+                CombatStore.CombatEngine.handlePlayerCast(spell, success).done(() => {
+                    var livingEnemies = CombatStore.CombatEngine.getLivingEnemies();
+                    if (_.isEmpty(livingEnemies)) {
+                        utils.wait(2000).then(() => {
+                            combatLog("No enemies left! player wins");
+                            CombatStore._emitChange();
+                            CombatActions.endCombat();
+                        });
+                    } else {
+                        CombatStore.CombatEngine.advanceTurn();
+                    }
+                });
                 break;
 
             case CombatConstants.PLAYER_CHOOSE_TARGET:

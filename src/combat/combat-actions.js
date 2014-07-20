@@ -40,6 +40,8 @@ var CombatActions = {
         var spell = new Spell(exerciseName);
         CombatActions.castSpell(spell, true);
 
+        // TODO(dmnd): display a waiting message instead, then display next problem
+        // at beginning of next turn
         Actions.nextProblem();
     },
 
@@ -49,6 +51,8 @@ var CombatActions = {
         var spell = new Spell(exerciseName);
         CombatActions.castSpell(spell, false);
 
+        // TODO(dmnd): display a waiting message instead, then display next problem
+        // at beginning of next turn
         Actions.nextProblem();
     },
 

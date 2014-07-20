@@ -72,7 +72,7 @@ var testPlayer = new Entity({
         left: 'red-mage-left-female',
         right: 'red-mage-right-female'
     },
-    hp: 20,
+    hp: 200,
     fire_resist: 0,
     frost_resist: 0,
     arcane_resist: 0,
@@ -103,5 +103,3 @@ var EntityStore = {
 EntityStore.debug = entities;
 
 module.exports = EntityStore;
-
-
