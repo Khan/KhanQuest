@@ -25,17 +25,19 @@ var HealthBar = React.createClass({
     },
 
     render: function() {
-        var pc = 100 * this.props.entity.health / this.props.entity.hp;
+        var currentHealth = Math.max(this.props.entity.health, 0);
+        var maxHealth = this.props.entity.hp
+        var pc = 100 * currentHealth / maxHealth;
         var width = `${pc}%`;
-        var classes = "health-bar"
 
-        var children = [
-            <div className="filled" style={{width: width}} />,
-            this.props.entity.health
-        ];
+        var classes = "health-bar";
+        if (pc >= 100) {
+            classes += " full-health"
+        }
 
         return <div className={classes}>
-            {children}
+            <div className="filled" style={{width: width}} />
+            {currentHealth}
         </div>;
     }
 });
