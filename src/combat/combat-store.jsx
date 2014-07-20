@@ -136,6 +136,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             if (currentEntity.isPlayer()) {
                 _state = CombatConstants.CombatEngineStates.AWAITING_PLAYER_TURN;
                 combatLog("Players turn, waiting...");
+                CombatStore._emitChange();
             } else {
                 // Not the player, some ai monster.
                 // Wait a short time then do the action.
