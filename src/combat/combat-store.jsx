@@ -124,6 +124,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
         advanceTurn: function() {
             _state = CombatConstants.CombatEngineStates.RUNNING;
             _turnIndex += 1;
+            combatLog("Turn advanced. ", this.getCurrentEntity(), "'s turn'");
             this.takeTurn();
         },
 
@@ -135,7 +136,7 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
             } else {
                 // Not the player, some ai monster.
                 // Wait a short time then do the action.
-                utils.wait(2000).done(() => {
+                utils.wait(2000).then(() => {
                     var abilityToUse = this.chooseAbility(currentEntity);
                     var player = EntityStore.getPlayer();
                     this.handleAbility(abilityToUse, currentEntity, [player]);
@@ -243,11 +244,13 @@ var CombatStore = _({}).extend(EventEmitter.prototype, FluxDatastore, {
                 break;
 
             case CombatConstants.PLAYER_CAST_SPELL:
-                utils.assert(_state == CombatConstants.CombatEngineStates.AWAITING_PLAYER_INPUT,
-                       "Got a spell cast when we weren't waiting for one");
+                utils.assert(_state == CombatConstants.CombatEngineStates.AWAITING_PLAYER_INPUT, "Got a spell cast when we weren't waiting for one");
+                utils.assert(CombatStore.CombatEngine.getCurrentEntity().isPlayer(), "Casting a spell when it isn't your turn!");
+
                 var {spell, success} = action;
                 CombatStore.CombatEngine.handlePlayerCast(spell, success).done(
-                    CombatStore.advanceTurn);
+                    CombatStore.CombatEngine.advanceTurn.bind(
+                        CombatStore.CombatEngine));
                 break;
 
             case CombatConstants.PLAYER_CHOOSE_TARGET:
