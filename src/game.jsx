@@ -67,7 +67,7 @@ var Game = React.createClass({
         Actions.addSpell("comparing-with-multiplication");
 
         // A few fire spells...
-        Actions.addSpell("area-of-triangles");
+        Actions.addSpell("area_of_triangles_1");
         Actions.addSpell("area-of-triangles-2");
         Actions.addSpell("composing-and-decomposing-shapes");
 

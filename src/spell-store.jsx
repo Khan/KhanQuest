@@ -6,7 +6,7 @@
 
 var testJSON = JSON.stringify({
     /* Fire spells. */
-    "area-of-triangles": {
+    "area_of_triangles_1": {
         displayName: "Fire Bolt",
         category: "attack",
         description: "Flame. A force as old as time, rendered into a tool of man, and a friend to the novice spellcaster.",
