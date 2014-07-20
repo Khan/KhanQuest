@@ -133,6 +133,7 @@ var Game = React.createClass({
             {this.state.spellSplash && <SpellSplash
                     exerciseName={this.state.spellSplash.exerciseName}
                     description={this.state.spellSplash.description}
+                    videoURL={this.state.spellSplash.videoURL}
                     onClick={Actions.hideSpellSplash} />}
             {this.state.dialog && <Dialog scene={this.state.dialog} />}
         </div>;

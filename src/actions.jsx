@@ -81,11 +81,12 @@ var Actions = {
         });
     },
 
-    showSpellSplash: function(exerciseName, description) {
+    showSpellSplash: function(exerciseName, description, videoURL) {
         AppDispatcher.handleViewAction({
             actionType: constants.SHOW_SPELL_SPLASH,
             exerciseName: exerciseName,
-            description: description
+            description: description,
+            videoURL: videoURL
         });
     },
 

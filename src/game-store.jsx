@@ -143,7 +143,7 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
             break;
 
         case constants.SHOW_SPELL_SPLASH:
-            _spellSplash = _.pick(action, "exerciseName", "description");
+            _spellSplash = _.pick(action, "exerciseName", "description", "videoURL");
             Actions.addSpell(action.exerciseName);
             break;
 
