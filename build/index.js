@@ -118,13 +118,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var CombatScreen = __webpack_require__(14);
 	var Map = __webpack_require__(2);
 
-	var Changeable = __webpack_require__(24);
+	var Changeable = __webpack_require__(26);
 	var PropCheckBox = __webpack_require__(15);
 
 	var UserStore = __webpack_require__(16);
 	var GameStore = __webpack_require__(17);
 	var CombatStore = __webpack_require__(8);
-	var StateFromStore = __webpack_require__(25);
+	var StateFromStore = __webpack_require__(27);
 	var CombatActions = __webpack_require__(9);
 	var CombatConstants = __webpack_require__(18);
 
@@ -321,10 +321,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var SpriteLoader = __webpack_require__(23);
 	var $__2=    __webpack_require__(6),SpriteRenderer=$__2.SpriteRenderer;
 
-	var StateFromStore = __webpack_require__(25);
+	var StateFromStore = __webpack_require__(27);
 
 	var Avatar = new Image();
-	Avatar.src = "/static/img/red-mage+female.png";
+	Avatar.src = "static/img/red-mage+female.png";
 
 	var walkDuration = 100;
 
@@ -661,7 +661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var AppDispatcher = __webpack_require__(26);
+	var AppDispatcher = __webpack_require__(28);
 
 	var GameViews = {
 	    MAP: "MAP",
@@ -1069,7 +1069,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(32);
 	var React = __webpack_require__(31);
 
-	var AnimationTimingEngine = __webpack_require__(28);
+	var AnimationTimingEngine = __webpack_require__(29);
 
 	var Resources = (function() {
 	    var promises = {};
@@ -1258,7 +1258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(32);
 	var React = __webpack_require__(31);
 
-	var AnimationTimingEngine = __webpack_require__(28);
+	var AnimationTimingEngine = __webpack_require__(29);
 
 	var timingEngine = new AnimationTimingEngine();
 
@@ -1722,10 +1722,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var EventEmitter = __webpack_require__(37).EventEmitter;
-	var Promise = __webpack_require__(43);
-	var AppDispatcher = __webpack_require__(26);
-	var utils = __webpack_require__(27);
+	var EventEmitter = __webpack_require__(33).EventEmitter;
+	var Promise = __webpack_require__(42);
+	var AppDispatcher = __webpack_require__(28);
+	var utils = __webpack_require__(24);
 
 	var CombatConstants = __webpack_require__(18);
 	var CombatActions = __webpack_require__(9);
@@ -2076,7 +2076,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var AppDispatcher = __webpack_require__(26);
+	var AppDispatcher = __webpack_require__(28);
 	var CombatConstants = __webpack_require__(18);
 	var Spell = __webpack_require__(30);
 	var UserStore = __webpack_require__(16);
@@ -2145,14 +2145,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var React = __webpack_require__(31);
 
-	var StateFromStore = __webpack_require__(25);
+	var StateFromStore = __webpack_require__(27);
 
 	var CombatActions = __webpack_require__(9);
 	var CombatStore = __webpack_require__(8);
 
 	var SpriteLoader = __webpack_require__(23);
 	var SpriteRenderer = __webpack_require__(6).SpriteRenderer;
-	var HealthBar = __webpack_require__(29);
+	var HealthBar = __webpack_require__(25);
 
 	var CombatEntity = React.createClass({displayName: 'CombatEntity',
 	    propTypes: {
@@ -2272,7 +2272,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var React = __webpack_require__(31);
 	var _ = __webpack_require__(32);
-	var SpellBadge = __webpack_require__(33);
+	var SpellBadge = __webpack_require__(34);
 	var Spell = __webpack_require__(30);
 
 	var Spellbook = React.createClass({displayName: 'Spellbook',
@@ -2314,7 +2314,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var React = __webpack_require__(31);
 	var RP = React.PropTypes;
-	var KUIButton = __webpack_require__(36);
+	var KUIButton = __webpack_require__(37);
 
 	var DialogData = __webpack_require__(45);
 
@@ -2379,7 +2379,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/** @jsx React.DOM */
 
 	var React = __webpack_require__(31);
-	var SpellBadge = __webpack_require__(33);
+	var SpellBadge = __webpack_require__(34);
 
 	var SpellSplash = React.createClass({displayName: 'SpellSplash',
 	    getDefaultProps: function() {
@@ -2414,11 +2414,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var React = __webpack_require__(31);
 	var RP = React.PropTypes;
 
-	var CombatExercise = __webpack_require__(34);
-	var ActiveSpell = __webpack_require__(35);
+	var CombatExercise = __webpack_require__(35);
+	var ActiveSpell = __webpack_require__(36);
 
 	var CombatStore = __webpack_require__(8);
-	var StateFromStore = __webpack_require__(25);
+	var StateFromStore = __webpack_require__(27);
 
 	var CombatScreen = React.createClass({displayName: 'CombatScreen',
 	    propTypes: {
@@ -2525,8 +2525,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(32);
-	var EventEmitter = __webpack_require__(37).EventEmitter;
-	var AppDispatcher = __webpack_require__(26);
+	var EventEmitter = __webpack_require__(33).EventEmitter;
+	var AppDispatcher = __webpack_require__(28);
 	var $__0=    __webpack_require__(3),constants=$__0.constants;
 	var $__1=       constants,ADD_SPELL=$__1.ADD_SPELL,SET_ACTIVE_SPELL=$__1.SET_ACTIVE_SPELL,NEXT_PROBLEM=$__1.NEXT_PROBLEM,ADJUST_COUNTERS=$__1.ADJUST_COUNTERS;
 
@@ -2622,14 +2622,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(32);
-	var EventEmitter = __webpack_require__(37).EventEmitter;
-	var AppDispatcher = __webpack_require__(26);
+	var EventEmitter = __webpack_require__(33).EventEmitter;
+	var AppDispatcher = __webpack_require__(28);
 	var $__0=     __webpack_require__(3),constants=$__0.constants,GameViews=$__0.GameViews;
 	var MapStore = __webpack_require__(22);
 	var $__1=       constants,CHANGE_STATE=$__1.CHANGE_STATE,START_COMBAT=$__1.START_COMBAT,MOVE=$__1.MOVE,SET_LOCATION=$__1.SET_LOCATION;
 	var $__2=        __webpack_require__(21),BOSS=$__2.BOSS,WALL=$__2.WALL,OBJECT=$__2.OBJECT,DOOR=$__2.DOOR,GRASS=$__2.GRASS;
 	var CombatConstants = __webpack_require__(18);
-	var $__3=  __webpack_require__(27),assert=$__3.assert;
+	var $__3=  __webpack_require__(24),assert=$__3.assert;
 	var Mersenne = __webpack_require__(46);
 
 	/* Information about the user state. */
@@ -3135,8 +3135,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var EventEmitter = __webpack_require__(37).EventEmitter;
-	var AppDispatcher = __webpack_require__(26);
+	var EventEmitter = __webpack_require__(33).EventEmitter;
+	var AppDispatcher = __webpack_require__(28);
 	var SpriteLoader = __webpack_require__(23);
 	var EntityStore = __webpack_require__(5);
 	var $__0=    __webpack_require__(3),constants=$__0.constants;
@@ -3326,7 +3326,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        case FETCH_MAP_DATA:
 	            _(MAPS).each(function(map, mapName)  {
 	                var manifestName = map.manifestName;
-	                $.getJSON(("/art/" + manifestName)).done(function(obj)  {
+	                $.getJSON(("art/" + manifestName)).done(function(obj)  {
 	                    obj.weather = map.weather;
 	                    _manifests[mapName] = obj;
 	                    _tileImages[mapName] = [];
@@ -3857,6 +3857,65 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var Promise = __webpack_require__(42);
+
+	var assert = function(cond, msg) {
+	    if (!cond) {
+	        throw ("assert failed: " + msg);
+	    }
+	};
+
+	var wait = function(ms) {
+	    return new Promise(function(resolve, reject)  {
+	        window.setTimeout(resolve.bind(null, ms), ms);
+	    });
+	};
+
+	module.exports = {assert:assert, wait:wait};
+
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */
+
+	var React = __webpack_require__(31);
+	var RP = React.PropTypes;
+
+
+	var HealthBar = React.createClass({displayName: 'HealthBar',
+	    propTypes: {
+	        entity: RP.object.isRequired
+	    },
+
+	    render: function() {
+	        var currentHealth = Math.max(this.props.entity.health, 0);
+	        var maxHealth = this.props.entity.hp
+	        var pc = 100 * currentHealth / maxHealth;
+	        var width = (pc + "%");
+
+	        var className = React.addons.classSet({
+	            'health-bar-container': true,
+	            'full-health': pc >= 100
+	        })
+
+	        return React.DOM.div({className: className}, 
+	            React.DOM.span(null, currentHealth), 
+	            React.DOM.div({className: "health-bar"}, 
+	                React.DOM.div({className: "filled", style: {width: width}})
+	            )
+	        );
+	    }
+	});
+
+	module.exports = HealthBar;
+
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/** @jsx React.DOM */
 	/**
 	 * Changeable
@@ -3959,7 +4018,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 25 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -4133,7 +4192,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 26 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Dispatcher = __webpack_require__(38);
@@ -4169,28 +4228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Promise = __webpack_require__(43);
-
-	var assert = function(cond, msg) {
-	    if (!cond) {
-	        throw ("assert failed: " + msg);
-	    }
-	};
-
-	var wait = function(ms) {
-	    return new Promise(function(resolve, reject)  {
-	        window.setTimeout(resolve.bind(null, ms), ms);
-	    });
-	};
-
-	module.exports = {assert:assert, wait:wait};
-
-
-/***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -4258,48 +4296,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */
-
-	var React = __webpack_require__(31);
-	var RP = React.PropTypes;
-
-
-	var HealthBar = React.createClass({displayName: 'HealthBar',
-	    propTypes: {
-	        entity: RP.object.isRequired
-	    },
-
-	    render: function() {
-	        var currentHealth = Math.max(this.props.entity.health, 0);
-	        var maxHealth = this.props.entity.hp
-	        var pc = 100 * currentHealth / maxHealth;
-	        var width = (pc + "%");
-
-	        var className = React.addons.classSet({
-	            'health-bar-container': true,
-	            'full-health': pc >= 100
-	        })
-
-	        return React.DOM.div({className: className}, 
-	            React.DOM.span(null, currentHealth), 
-	            React.DOM.div({className: "health-bar"}, 
-	                React.DOM.div({className: "filled", style: {width: width}})
-	            )
-	        );
-	    }
-	});
-
-	module.exports = HealthBar;
-
-
-/***/ },
 /* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var SpellStore = __webpack_require__(42);
+	var SpellStore = __webpack_require__(43);
 	var _ = __webpack_require__(32);
 
 	/* Grab data from spell.json datastore. */
@@ -4327,311 +4327,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 33 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */
-
-	var React = __webpack_require__(31);
-	var Spell = __webpack_require__(30);
-	var UserStore = __webpack_require__(16);
-
-	var SpellBadge = React.createClass({displayName: 'SpellBadge',
-	    propTypes: {
-	        exerciseName: React.PropTypes.string,
-	        onClick: React.PropTypes.func
-	    },
-
-	    getDefaultProps: function () {
-	        return {
-	            exerciseName: null,
-	            onClick: function() { }
-	        };
-	    },
-
-	    _getClassName: function () {
-	        var className = "spell-badge";
-	        if (this.props.className) {
-	            className += " " + this.props.className;
-	        }
-	        return className;
-	    },
-
-	    _renderImage: function () {
-	        var spell = new Spell(this.props.exerciseName);
-
-	        var asset = spell.displayName.toLowerCase().replace(/ /, '-');
-	        var url = "/static/img/spells/" + asset + ".png";
-	        return React.DOM.img({className: "icon", src: url});
-	    },
-
-	    render: function () {
-	        var spell = new Spell(this.props.exerciseName);
-	        var powerUp = UserStore.getCounter(this.props.exerciseName);
-
-	        var inlineBlock = {
-	            display: "inline-block"
-	        };
-
-	        return React.DOM.div({
-	                className: this._getClassName(), 
-	                onClick: this.handleClick}, 
-	            React.DOM.div({style: inlineBlock}, this._renderImage()), 
-	            React.DOM.div({style: inlineBlock, className: "content"}, 
-	                /* Only display powerup icon if it's relevant. */
-	                powerUp > 0 && React.DOM.div({className: "powerup"}, "+", powerUp), 
-	                React.DOM.div({className: "title"}, spell.displayName), 
-	                React.DOM.div({className: "description"}, spell.description)
-	            )
-	        );
-	    },
-
-	    handleClick: function() {
-	        this.props.onClick(this.props.exerciseName);
-	    }
-	});
-
-	module.exports = SpellBadge;
-
-
-/***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */
-
-	var React = __webpack_require__(31);
-	var RP = React.PropTypes
-
-	var Perseus = __webpack_require__(48);
-	var CombatExerciseRenderer = __webpack_require__(44);
-	var Spell = __webpack_require__(30);
-	var Mersenne = __webpack_require__(46);
-
-
-	var CombatExercise = React.createClass({displayName: 'CombatExercise',
-	    propTypes: {
-	        exerciseName: RP.string.isRequired,
-	        problemIndex: RP.number.isRequired
-	    },
-
-	    getInitialState: function() {
-	        return {
-	            content: null,
-	            loadedIndex: null,
-	        };
-	    },
-
-	    componentWillMount: function() {
-	        this._loadSpell();
-	    },
-
-	    componentWillReceiveProps: function(nextProps) {
-	        var problemChanging = (
-	            nextProps.exerciseName !== this.props.exerciseName ||
-	            nextProps.problemIndex !== this.props.problemIndex);
-	        if (problemChanging) {
-	            this._loadSpell();
-	        }
-	    },
-
-	    render: function() {
-	        if (this.state.content) {
-	            return React.DOM.div(null, 
-	                
-	                CombatExerciseRenderer({
-	                    content: this.state.content, 
-	                    onAttack: this.props.onAttack, 
-	                    onFailedAttack: this.props.onFailedAttack})
-	            );
-	        } else {
-	            return React.DOM.div(null, 
-	                "Summoning spell..."
-	            );
-	        }
-	    },
-
-	    shuffle: function(items, seed) {
-	        // mersenne wants a numeric seed
-	        var seed = _.map(this.props.exerciseName, function(c)  {return c.charCodeAt();})
-	        Mersenne.seed_array(seed);
-
-	        // _.shuffle with seeded mersenne
-	        var rand;
-	        var index = 0;
-	        var shuffled = [];
-	        _.each(items, function(item) {
-	            rand = Mersenne.rand(++index);
-	            shuffled[index - 1] = shuffled[rand];
-	            shuffled[rand] = item;
-	        });
-	        return shuffled;
-	    },
-
-	    _loadSpell: function() {
-	        this.setState({content: null});
-
-	        var problemIndex;
-	        $.ajax({
-	            url: "http://www.khanacademy.org/api/v1/exercises/" +
-	                this.props.exerciseName,
-	            cache: false
-	        }).then(function(exercise)  {
-	            var items = exercise.all_assessment_items;
-	            var shuffledItems = _.shuffle(items);
-	            var problemIndex = this.props.problemIndex;
-	            var index = problemIndex % items.length;
-	            var item = shuffledItems[index];
-	            return $.ajax({
-	                url: "http://www.khanacademy.org/api/v1/assessment_items/" +
-	                    item.id +
-	                    "?version=" +
-	                    item.sha,
-	                cache: false
-	            });
-	        }.bind(this)).then(function(item)  {
-	            if (!this.isMounted()) {
-	                // avoid errors when clicking quickly
-	                return;
-	            }
-	            // TODO(aria): Make this not break everything if we've received new
-	            // props
-	            this.setState({content: JSON.parse(item.item_data), loadedIndex: problemIndex});
-	        }.bind(this), function(err)  {
-	            console.error("ERROR LOADING ITEM: ", err);
-	        });
-	    }
-	});
-
-	module.exports = CombatExercise;
-
-
-/***/ },
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */
-
-	var React = __webpack_require__(31);
-	var $__0=    __webpack_require__(3),Actions=$__0.Actions;
-	var SpellBadge = __webpack_require__(33);
-
-	var ActiveSpell = React.createClass({displayName: 'ActiveSpell',
-
-	    _openSpellbook: function() {
-	        Actions.openSpellbook();
-	    },
-
-	    render: function () {
-	        if (this.props.exerciseName) {
-	            return SpellBadge({className: "selected", 
-	                        exerciseName: this.props.exerciseName, 
-	                        onClick: this._openSpellbook});
-	        } else {
-	            return React.DOM.div({onClick: this._openSpellbook, className: "open-spellbook"}, 
-	                "Click to open spellbook."
-	            );
-	        }
-	    }
-	});
-
-	module.exports = ActiveSpell;
-
-
-/***/ },
-/* 36 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */
-
-	var React = __webpack_require__(31);
-
-	var cx = React.addons.classSet;
-
-	var KUIButton = React.createClass({displayName: 'KUIButton',
-	    propTypes: {
-	        onClick: React.PropTypes.func,
-
-	        // Specify if you want the button to act as a link
-	        href: React.PropTypes.string,
-
-	        type: React.PropTypes.oneOf(["button", "submit"]).isRequired,
-	        label: React.PropTypes.string,
-
-	        // Specify either use="primary" (the default), use="secondary", or
-	        // domainSlug={topic.domainSlug} to color the button appropriately
-	        use: React.PropTypes.oneOf(["primary", "secondary"]),
-	        domainSlug: React.PropTypes.string,
-	        // Specify one of these progress values from UserProgressCache (or
-	        // somewhere else if it's more convenient). If progress="complete" the
-	        // button will be shown colored; otherwise it's shown in gray to
-	        // indicate that it hasn't yet been done.
-	        progress: React.PropTypes.oneOf(["complete", "started", "unstarted"]),
-
-	        // CSS length like "200px" or "100%"
-	        width: React.PropTypes.string
-
-	        // TODO(alpert): "size" prop for big and small buttons (in terms of
-	        // height/font size)
-	    },
-
-	    getDefaultProps: function() {
-	        return {
-	            use: "primary",
-	            width: "auto",
-	            progress: "complete"
-	        };
-	    },
-
-	    getLabel: function() {
-	        return this.props.label != null ?
-	            this.props.label :
-	            this.props.type === "submit" ?
-	                $._("Submit") :
-	                "";
-	    },
-
-	    render: function() {
-	        var domainSlug = this.props.domainSlug;
-	        var progress = this.props.progress;
-	        var className = cx({
-	            "kui-button": true,
-	            "kui-button-submit": this.props.type === "submit",
-	            "kui-button-plain": this.props.type === "button",
-
-	            "kui-button-primary":
-	                !domainSlug && this.props.use === "primary",
-	            "kui-button-secondary":
-	                !domainSlug && this.props.use === "secondary",
-
-	            "kui-button-domain": !!domainSlug,
-	            "kui-button-complete":
-	                domainSlug && progress === "complete",
-	        }) + (domainSlug ? " kui-button-domain-" + domainSlug : "");
-	        if (this.props.href) {
-	            return React.DOM.a({
-	                role: "button", 
-	                type: this.props.type, 
-	                onClick: this.props.onClick, 
-	                href: this.props.href, 
-	                className: className, 
-	                style: {width: this.props.width}}, 
-	                this.getLabel()
-	            );
-	        }
-	        return React.DOM.button({type: this.props.type, 
-	                onClick: this.props.onClick, 
-	                className: className, 
-	                style: {width: this.props.width}}, 
-	            this.getLabel()
-	        );
-	    }
-	});
-
-	module.exports = KUIButton;
-
-
-/***/ },
-/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -4940,10 +4635,315 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */
+
+	var React = __webpack_require__(31);
+	var Spell = __webpack_require__(30);
+	var UserStore = __webpack_require__(16);
+
+	var SpellBadge = React.createClass({displayName: 'SpellBadge',
+	    propTypes: {
+	        exerciseName: React.PropTypes.string,
+	        onClick: React.PropTypes.func
+	    },
+
+	    getDefaultProps: function () {
+	        return {
+	            exerciseName: null,
+	            onClick: function() { }
+	        };
+	    },
+
+	    _getClassName: function () {
+	        var className = "spell-badge";
+	        if (this.props.className) {
+	            className += " " + this.props.className;
+	        }
+	        return className;
+	    },
+
+	    _renderImage: function () {
+	        var spell = new Spell(this.props.exerciseName);
+
+	        var asset = spell.displayName.toLowerCase().replace(/ /, '-');
+	        var url = "/static/img/spells/" + asset + ".png";
+	        return React.DOM.img({className: "icon", src: url});
+	    },
+
+	    render: function () {
+	        var spell = new Spell(this.props.exerciseName);
+	        var powerUp = UserStore.getCounter(this.props.exerciseName);
+
+	        var inlineBlock = {
+	            display: "inline-block"
+	        };
+
+	        return React.DOM.div({
+	                className: this._getClassName(), 
+	                onClick: this.handleClick}, 
+	            React.DOM.div({style: inlineBlock}, this._renderImage()), 
+	            React.DOM.div({style: inlineBlock, className: "content"}, 
+	                /* Only display powerup icon if it's relevant. */
+	                powerUp > 0 && React.DOM.div({className: "powerup"}, "+", powerUp), 
+	                React.DOM.div({className: "title"}, spell.displayName), 
+	                React.DOM.div({className: "description"}, spell.description)
+	            )
+	        );
+	    },
+
+	    handleClick: function() {
+	        this.props.onClick(this.props.exerciseName);
+	    }
+	});
+
+	module.exports = SpellBadge;
+
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */
+
+	var React = __webpack_require__(31);
+	var RP = React.PropTypes
+
+	var Perseus = __webpack_require__(48);
+	var CombatExerciseRenderer = __webpack_require__(44);
+	var Spell = __webpack_require__(30);
+	var Mersenne = __webpack_require__(46);
+
+
+	var CombatExercise = React.createClass({displayName: 'CombatExercise',
+	    propTypes: {
+	        exerciseName: RP.string.isRequired,
+	        problemIndex: RP.number.isRequired
+	    },
+
+	    getInitialState: function() {
+	        return {
+	            content: null,
+	            loadedIndex: null,
+	        };
+	    },
+
+	    componentWillMount: function() {
+	        this._loadSpell();
+	    },
+
+	    componentWillReceiveProps: function(nextProps) {
+	        var problemChanging = (
+	            nextProps.exerciseName !== this.props.exerciseName ||
+	            nextProps.problemIndex !== this.props.problemIndex);
+	        if (problemChanging) {
+	            this._loadSpell();
+	        }
+	    },
+
+	    render: function() {
+	        if (this.state.content) {
+	            return React.DOM.div(null, 
+	                
+	                CombatExerciseRenderer({
+	                    content: this.state.content, 
+	                    onAttack: this.props.onAttack, 
+	                    onFailedAttack: this.props.onFailedAttack})
+	            );
+	        } else {
+	            return React.DOM.div(null, 
+	                "Summoning spell..."
+	            );
+	        }
+	    },
+
+	    shuffle: function(items, seed) {
+	        // mersenne wants a numeric seed
+	        var seed = _.map(this.props.exerciseName, function(c)  {return c.charCodeAt();})
+	        Mersenne.seed_array(seed);
+
+	        // _.shuffle with seeded mersenne
+	        var rand;
+	        var index = 0;
+	        var shuffled = [];
+	        _.each(items, function(item) {
+	            rand = Mersenne.rand(++index);
+	            shuffled[index - 1] = shuffled[rand];
+	            shuffled[rand] = item;
+	        });
+	        return shuffled;
+	    },
+
+	    _loadSpell: function() {
+	        this.setState({content: null});
+
+	        var problemIndex;
+	        $.ajax({
+	            url: "http://www.khanacademy.org/api/v1/exercises/" +
+	                this.props.exerciseName,
+	            cache: false
+	        }).then(function(exercise)  {
+	            var items = exercise.all_assessment_items;
+	            var shuffledItems = _.shuffle(items);
+	            var problemIndex = this.props.problemIndex;
+	            var index = problemIndex % items.length;
+	            var item = shuffledItems[index];
+	            return $.ajax({
+	                url: "http://www.khanacademy.org/api/v1/assessment_items/" +
+	                    item.id +
+	                    "?version=" +
+	                    item.sha,
+	                cache: false
+	            });
+	        }.bind(this)).then(function(item)  {
+	            if (!this.isMounted()) {
+	                // avoid errors when clicking quickly
+	                return;
+	            }
+	            // TODO(aria): Make this not break everything if we've received new
+	            // props
+	            this.setState({content: JSON.parse(item.item_data), loadedIndex: problemIndex});
+	        }.bind(this), function(err)  {
+	            console.error("ERROR LOADING ITEM: ", err);
+	        });
+	    }
+	});
+
+	module.exports = CombatExercise;
+
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */
+
+	var React = __webpack_require__(31);
+	var $__0=    __webpack_require__(3),Actions=$__0.Actions;
+	var SpellBadge = __webpack_require__(34);
+
+	var ActiveSpell = React.createClass({displayName: 'ActiveSpell',
+
+	    _openSpellbook: function() {
+	        Actions.openSpellbook();
+	    },
+
+	    render: function () {
+	        if (this.props.exerciseName) {
+	            return SpellBadge({className: "selected", 
+	                        exerciseName: this.props.exerciseName, 
+	                        onClick: this._openSpellbook});
+	        } else {
+	            return React.DOM.div({onClick: this._openSpellbook, className: "open-spellbook"}, 
+	                "Click to open spellbook."
+	            );
+	        }
+	    }
+	});
+
+	module.exports = ActiveSpell;
+
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */
+
+	var React = __webpack_require__(31);
+
+	var cx = React.addons.classSet;
+
+	var KUIButton = React.createClass({displayName: 'KUIButton',
+	    propTypes: {
+	        onClick: React.PropTypes.func,
+
+	        // Specify if you want the button to act as a link
+	        href: React.PropTypes.string,
+
+	        type: React.PropTypes.oneOf(["button", "submit"]).isRequired,
+	        label: React.PropTypes.string,
+
+	        // Specify either use="primary" (the default), use="secondary", or
+	        // domainSlug={topic.domainSlug} to color the button appropriately
+	        use: React.PropTypes.oneOf(["primary", "secondary"]),
+	        domainSlug: React.PropTypes.string,
+	        // Specify one of these progress values from UserProgressCache (or
+	        // somewhere else if it's more convenient). If progress="complete" the
+	        // button will be shown colored; otherwise it's shown in gray to
+	        // indicate that it hasn't yet been done.
+	        progress: React.PropTypes.oneOf(["complete", "started", "unstarted"]),
+
+	        // CSS length like "200px" or "100%"
+	        width: React.PropTypes.string
+
+	        // TODO(alpert): "size" prop for big and small buttons (in terms of
+	        // height/font size)
+	    },
+
+	    getDefaultProps: function() {
+	        return {
+	            use: "primary",
+	            width: "auto",
+	            progress: "complete"
+	        };
+	    },
+
+	    getLabel: function() {
+	        return this.props.label != null ?
+	            this.props.label :
+	            this.props.type === "submit" ?
+	                $._("Submit") :
+	                "";
+	    },
+
+	    render: function() {
+	        var domainSlug = this.props.domainSlug;
+	        var progress = this.props.progress;
+	        var className = cx({
+	            "kui-button": true,
+	            "kui-button-submit": this.props.type === "submit",
+	            "kui-button-plain": this.props.type === "button",
+
+	            "kui-button-primary":
+	                !domainSlug && this.props.use === "primary",
+	            "kui-button-secondary":
+	                !domainSlug && this.props.use === "secondary",
+
+	            "kui-button-domain": !!domainSlug,
+	            "kui-button-complete":
+	                domainSlug && progress === "complete",
+	        }) + (domainSlug ? " kui-button-domain-" + domainSlug : "");
+	        if (this.props.href) {
+	            return React.DOM.a({
+	                role: "button", 
+	                type: this.props.type, 
+	                onClick: this.props.onClick, 
+	                href: this.props.href, 
+	                className: className, 
+	                style: {width: this.props.width}}, 
+	                this.getLabel()
+	            );
+	        }
+	        return React.DOM.button({type: this.props.type, 
+	                onClick: this.props.onClick, 
+	                className: className, 
+	                style: {width: this.props.width}}, 
+	            this.getLabel()
+	        );
+	    }
+	});
+
+	module.exports = KUIButton;
+
+
+/***/ },
 /* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Promise = __webpack_require__(43);
+	var Promise = __webpack_require__(42);
 	Promise.longStackTraces();
 
 	var _callbacks = [];
@@ -6038,6 +6038,36 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
+	 * Copyright (c) 2014 Petka Antonov
+	 * 
+	 * Permission is hereby granted, free of charge, to any person obtaining a copy
+	 * of this software and associated documentation files (the "Software"), to deal
+	 * in the Software without restriction, including without limitation the rights
+	 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	 * copies of the Software, and to permit persons to whom the Software is
+	 * furnished to do so, subject to the following conditions:</p>
+	 * 
+	 * The above copyright notice and this permission notice shall be included in
+	 * all copies or substantial portions of the Software.
+	 * 
+	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+	 * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	 * THE SOFTWARE.
+	 * 
+	 */
+	"use strict";
+	var Promise = __webpack_require__(47)();
+	module.exports = Promise;
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
 	 * A key-value store to hold the available spells and associated data.
 	 * Loads a JSON file and provides id-based access. As with monster-store,
 	 * this is not a flux datastore!
@@ -6179,36 +6209,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 43 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright (c) 2014 Petka Antonov
-	 * 
-	 * Permission is hereby granted, free of charge, to any person obtaining a copy
-	 * of this software and associated documentation files (the "Software"), to deal
-	 * in the Software without restriction, including without limitation the rights
-	 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	 * copies of the Software, and to permit persons to whom the Software is
-	 * furnished to do so, subject to the following conditions:</p>
-	 * 
-	 * The above copyright notice and this permission notice shall be included in
-	 * all copies or substantial portions of the Software.
-	 * 
-	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
-	 * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	 * THE SOFTWARE.
-	 * 
-	 */
-	"use strict";
-	var Promise = __webpack_require__(47)();
-	module.exports = Promise;
-
-/***/ },
 /* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -6218,7 +6218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Perseus = __webpack_require__(48);
 	var CombatActions = __webpack_require__(9);
 	var EntityStore = __webpack_require__(5);
-	var KUIButton = __webpack_require__(36);
+	var KUIButton = __webpack_require__(37);
 
 	var PERSEUS_ITEM = {
 	    "question": {
