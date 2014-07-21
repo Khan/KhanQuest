@@ -3333,7 +3333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    _(obj.tilesets)
 	                        .each(function(set)  {
 	                            var img = new Image();
-	                            img.src = ("/art/" + set.image);
+	                            img.src = ("art/" + set.image);
 	                            img.onload = function()  {
 	                                _tilesLoadedCount++;
 	                                MapStore.emitChange();

@@ -196,7 +196,7 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
                     _(obj.tilesets)
                         .each(set => {
                             var img = new Image();
-                            img.src = `/art/${set.image}`;
+                            img.src = `art/${set.image}`;
                             img.onload = () => {
                                 _tilesLoadedCount++;
                                 MapStore.emitChange();
