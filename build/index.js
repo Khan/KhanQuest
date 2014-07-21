@@ -118,7 +118,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var CombatScreen = __webpack_require__(14);
 	var Map = __webpack_require__(2);
 
-	var Changeable = __webpack_require__(26);
+	var Changeable = __webpack_require__(28);
 	var PropCheckBox = __webpack_require__(15);
 
 	var UserStore = __webpack_require__(16);
@@ -661,7 +661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var AppDispatcher = __webpack_require__(28);
+	var AppDispatcher = __webpack_require__(26);
 
 	var GameViews = {
 	    MAP: "MAP",
@@ -1724,7 +1724,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var EventEmitter = __webpack_require__(33).EventEmitter;
 	var Promise = __webpack_require__(42);
-	var AppDispatcher = __webpack_require__(28);
+	var AppDispatcher = __webpack_require__(26);
 	var utils = __webpack_require__(24);
 
 	var CombatConstants = __webpack_require__(18);
@@ -2076,7 +2076,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var AppDispatcher = __webpack_require__(28);
+	var AppDispatcher = __webpack_require__(26);
 	var CombatConstants = __webpack_require__(18);
 	var Spell = __webpack_require__(30);
 	var UserStore = __webpack_require__(16);
@@ -2314,7 +2314,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var React = __webpack_require__(31);
 	var RP = React.PropTypes;
-	var KUIButton = __webpack_require__(37);
+	var KUIButton = __webpack_require__(38);
 
 	var DialogData = __webpack_require__(45);
 
@@ -2526,7 +2526,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ = __webpack_require__(32);
 	var EventEmitter = __webpack_require__(33).EventEmitter;
-	var AppDispatcher = __webpack_require__(28);
+	var AppDispatcher = __webpack_require__(26);
 	var $__0=    __webpack_require__(3),constants=$__0.constants;
 	var $__1=       constants,ADD_SPELL=$__1.ADD_SPELL,SET_ACTIVE_SPELL=$__1.SET_ACTIVE_SPELL,NEXT_PROBLEM=$__1.NEXT_PROBLEM,ADJUST_COUNTERS=$__1.ADJUST_COUNTERS;
 
@@ -2623,7 +2623,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ = __webpack_require__(32);
 	var EventEmitter = __webpack_require__(33).EventEmitter;
-	var AppDispatcher = __webpack_require__(28);
+	var AppDispatcher = __webpack_require__(26);
 	var $__0=     __webpack_require__(3),constants=$__0.constants,GameViews=$__0.GameViews;
 	var MapStore = __webpack_require__(22);
 	var $__1=       constants,CHANGE_STATE=$__1.CHANGE_STATE,START_COMBAT=$__1.START_COMBAT,MOVE=$__1.MOVE,SET_LOCATION=$__1.SET_LOCATION;
@@ -3136,7 +3136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var EventEmitter = __webpack_require__(33).EventEmitter;
-	var AppDispatcher = __webpack_require__(28);
+	var AppDispatcher = __webpack_require__(26);
 	var SpriteLoader = __webpack_require__(23);
 	var EntityStore = __webpack_require__(5);
 	var $__0=    __webpack_require__(3),constants=$__0.constants;
@@ -3916,105 +3916,36 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/** @jsx React.DOM */
-	/**
-	 * Changeable
-	 *
-	 * Adds a this.change() function to a component
-	 *
-	 * This.change takes prop changes as parameters, and calls
-	 * this.props.onChange with the modified props.
-	 */
+	var Dispatcher = __webpack_require__(37);
 
-	var WIDGET_PROP_BLACKLIST = __webpack_require__(41);
-
-	var USAGE = "Usage:\n" +
-	            "  this.change({propName: 5}, callback);\n" +
-	            "  this.change(\"propName\", 5, callback);\n" +
-	            "  this.change(\"propName\")";
-
-	/**
-	 * Primary helper function for this.change()
-	 *
-	 * Takes the parameters in a consistent style, once this.change() has
-	 * figured out which way it was called.
-	 */
-	var _changeMultiple = function(component, newProps, callback) {
-	    // Omit "default" props:
-	    // ref and key come from react, and don't actually represent
-	    //   the conceptual state of our component
-	    // onChange comes from our parent to allow this modification,
-	    //   and doesn't conceptually represent the state of our component
-	    var currProps = _.omit(component.props, WIDGET_PROP_BLACKLIST);
-	    var nextProps = _.extend(currProps, newProps);
-	    component.props.onChange(nextProps, callback);
-	};
-
-	/**
-	 * Helper function for changing a single prop
-	 */
-	var _changeSingle = function(component, propName, value, callback) {
-	    if (value === undefined) {
-	        // If called with a single prop name, return a lambda to change
-	        // a single prop on the current object
-	        return _.partial(_changeSingle, component, propName);
-	    } else {
-	        // If called with two values, change a single prop of the
-	        // current object
-	        var newProps = {};
-	        newProps[propName] = value;
-	        _changeMultiple(component, newProps, callback);
-	    }
-	};
-
-	/**
-	 * this.change()
-	 *
-	 * Can be called as follows:
-	 * this.change(newProps, callback);
-	 *
-	 * this.change(propName, propValue, callback);
-	 *
-	 * this.change(propName) -> returns a lambda that takes a prop value to
-	 * set and a callback to call after having set that value.
-	 */
-	var change = function(newPropsOrSinglePropName,
-	                      propValue,
-	                      callback) {
-
-	    if (_.isObject(newPropsOrSinglePropName) &&
-	            callback === undefined) {
-	        // Called with an object of multiple props to change
-	        callback = propValue;
-	        return _changeMultiple(
-	            this,
-	            newPropsOrSinglePropName,  // object newProps
-	            callback
-	        );
-
-	    } else if (_.isString(newPropsOrSinglePropName)) {
-	        // Called with a string propName of a single prop to change
-	        return _changeSingle(
-	            this,
-	            newPropsOrSinglePropName,  // string propName
-	            propValue,
-	            callback
-	        );
-
-	    } else {
-	        throw new Error("Invalid types sent to this.change(): " +
-	                _.toArray(arguments).join() + "\n" + USAGE);
-	    }
-	};
-
-	var Changeable = {
-	    propTypes: {
-	        onChange: React.PropTypes.func.isRequired
+	var AppDispatcher = _.extend({}, Dispatcher.prototype, {
+	    /**
+	    * A bridge function between the views and the dispatcher, marking the
+	    * action as a view action.
+	    * @param  {Object} action The data coming from the view.
+	    */
+	    handleViewAction: function(action) {
+	        console.log(action);
+	        this.dispatch({
+	            source: 'VIEW_ACTION',
+	            action: action
+	        });
 	    },
-	    change: change
-	};
 
-	module.exports = Changeable;
+	    /**
+	    * A bridge function between the server and the dispatcher, marking the
+	    * action as a server action.
+	    * @param  {Object} action The data coming from the view.
+	    */
+	    handleServerAction: function(action) {
+	        this.dispatch({
+	            source: 'SERVER_ACTION',
+	            action: action
+	        });
+	    }
+	});
+
+	module.exports = AppDispatcher;
 
 
 /***/ },
@@ -4195,36 +4126,105 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Dispatcher = __webpack_require__(38);
+	/** @jsx React.DOM */
+	/**
+	 * Changeable
+	 *
+	 * Adds a this.change() function to a component
+	 *
+	 * This.change takes prop changes as parameters, and calls
+	 * this.props.onChange with the modified props.
+	 */
 
-	var AppDispatcher = _.extend({}, Dispatcher.prototype, {
-	    /**
-	    * A bridge function between the views and the dispatcher, marking the
-	    * action as a view action.
-	    * @param  {Object} action The data coming from the view.
-	    */
-	    handleViewAction: function(action) {
-	        console.log(action);
-	        this.dispatch({
-	            source: 'VIEW_ACTION',
-	            action: action
-	        });
-	    },
+	var WIDGET_PROP_BLACKLIST = __webpack_require__(41);
 
-	    /**
-	    * A bridge function between the server and the dispatcher, marking the
-	    * action as a server action.
-	    * @param  {Object} action The data coming from the view.
-	    */
-	    handleServerAction: function(action) {
-	        this.dispatch({
-	            source: 'SERVER_ACTION',
-	            action: action
-	        });
+	var USAGE = "Usage:\n" +
+	            "  this.change({propName: 5}, callback);\n" +
+	            "  this.change(\"propName\", 5, callback);\n" +
+	            "  this.change(\"propName\")";
+
+	/**
+	 * Primary helper function for this.change()
+	 *
+	 * Takes the parameters in a consistent style, once this.change() has
+	 * figured out which way it was called.
+	 */
+	var _changeMultiple = function(component, newProps, callback) {
+	    // Omit "default" props:
+	    // ref and key come from react, and don't actually represent
+	    //   the conceptual state of our component
+	    // onChange comes from our parent to allow this modification,
+	    //   and doesn't conceptually represent the state of our component
+	    var currProps = _.omit(component.props, WIDGET_PROP_BLACKLIST);
+	    var nextProps = _.extend(currProps, newProps);
+	    component.props.onChange(nextProps, callback);
+	};
+
+	/**
+	 * Helper function for changing a single prop
+	 */
+	var _changeSingle = function(component, propName, value, callback) {
+	    if (value === undefined) {
+	        // If called with a single prop name, return a lambda to change
+	        // a single prop on the current object
+	        return _.partial(_changeSingle, component, propName);
+	    } else {
+	        // If called with two values, change a single prop of the
+	        // current object
+	        var newProps = {};
+	        newProps[propName] = value;
+	        _changeMultiple(component, newProps, callback);
 	    }
-	});
+	};
 
-	module.exports = AppDispatcher;
+	/**
+	 * this.change()
+	 *
+	 * Can be called as follows:
+	 * this.change(newProps, callback);
+	 *
+	 * this.change(propName, propValue, callback);
+	 *
+	 * this.change(propName) -> returns a lambda that takes a prop value to
+	 * set and a callback to call after having set that value.
+	 */
+	var change = function(newPropsOrSinglePropName,
+	                      propValue,
+	                      callback) {
+
+	    if (_.isObject(newPropsOrSinglePropName) &&
+	            callback === undefined) {
+	        // Called with an object of multiple props to change
+	        callback = propValue;
+	        return _changeMultiple(
+	            this,
+	            newPropsOrSinglePropName,  // object newProps
+	            callback
+	        );
+
+	    } else if (_.isString(newPropsOrSinglePropName)) {
+	        // Called with a string propName of a single prop to change
+	        return _changeSingle(
+	            this,
+	            newPropsOrSinglePropName,  // string propName
+	            propValue,
+	            callback
+	        );
+
+	    } else {
+	        throw new Error("Invalid types sent to this.change(): " +
+	                _.toArray(arguments).join() + "\n" + USAGE);
+	    }
+	};
+
+	var Changeable = {
+	    propTypes: {
+	        onChange: React.PropTypes.func.isRequired
+	    },
+	    change: change
+	};
+
+	module.exports = Changeable;
 
 
 /***/ },
@@ -4669,7 +4669,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var spell = new Spell(this.props.exerciseName);
 
 	        var asset = spell.displayName.toLowerCase().replace(/ /, '-');
-	        var url = "/static/img/spells/" + asset + ".png";
+	        var url = "static/img/spells/" + asset + ".png";
 	        return React.DOM.img({className: "icon", src: url});
 	    },
 
@@ -4850,6 +4850,79 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var Promise = __webpack_require__(42);
+	Promise.longStackTraces();
+
+	var _callbacks = [];
+	var _promises = [];
+
+	/**
+	 * Add a promise to the queue of callback invocation promises.
+	 * @param {Function} callback The Store's registered callback.
+	 * @param {Object} payload The data from the Action.
+	 */
+	var _addPromise = function(callback, payload) {
+	    _promises.push(Promise.resolve().then(function() {
+	        if (callback(payload)) {
+	            return payload;
+	        } else {
+	            throw new Error("Dispatcher callback unsuccessful");
+	        }
+	    }));
+	};
+
+	/**
+	 * Empty the queue of callback invocation promises.
+	 */
+	var _clearPromises = function() {
+	    _promises = [];
+	};
+
+	var Dispatcher = function() {};
+	Dispatcher.prototype = _.extend(Dispatcher.prototype, {
+	    /**
+	     * Register a Store's callback so that it may be invoked by an action.
+	     * @param {Function} callback The callback to be registered.
+	     * @return {number} The index of the callback within the _callbacks array.
+	     */
+	    register: function(callback) {
+	        _callbacks.push(callback);
+	        return _callbacks.length - 1; // index
+	    },
+
+	    /**
+	     * dispatch
+	     * @param  {Object} payload The data from the action.
+	     */
+	    dispatch: function(payload) {
+	        _callbacks.forEach(function(callback) {
+	            _addPromise(callback, payload);
+	        });
+	        Promise.all(_promises).then(_clearPromises).done();
+	    },
+
+	    /**
+	     * A datastore can use this to wait on other datastores before continuing.
+	     * Unfortunately, this implementation is too simple to do things like
+	     * managing chains of dependencies or detecting dependency cycles.
+	     * @param  {Array} promisesIndexes
+	     * @param  {Function} callback
+	     */
+	    waitFor: function(promiseIndexes, callback) {
+	        var selectedPromises = _promises.filter(function(/*object*/ _, /*number*/ j) {
+	            return promiseIndexes.indexOf(j) !== -1;
+	        });
+	        Promise.all(selectedPromises).then(callback).done();
+	    }
+	});
+
+	module.exports = Dispatcher;
+
+
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/** @jsx React.DOM */
 
 	var React = __webpack_require__(31);
@@ -4937,79 +5010,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	module.exports = KUIButton;
-
-
-/***/ },
-/* 38 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Promise = __webpack_require__(42);
-	Promise.longStackTraces();
-
-	var _callbacks = [];
-	var _promises = [];
-
-	/**
-	 * Add a promise to the queue of callback invocation promises.
-	 * @param {Function} callback The Store's registered callback.
-	 * @param {Object} payload The data from the Action.
-	 */
-	var _addPromise = function(callback, payload) {
-	    _promises.push(Promise.resolve().then(function() {
-	        if (callback(payload)) {
-	            return payload;
-	        } else {
-	            throw new Error("Dispatcher callback unsuccessful");
-	        }
-	    }));
-	};
-
-	/**
-	 * Empty the queue of callback invocation promises.
-	 */
-	var _clearPromises = function() {
-	    _promises = [];
-	};
-
-	var Dispatcher = function() {};
-	Dispatcher.prototype = _.extend(Dispatcher.prototype, {
-	    /**
-	     * Register a Store's callback so that it may be invoked by an action.
-	     * @param {Function} callback The callback to be registered.
-	     * @return {number} The index of the callback within the _callbacks array.
-	     */
-	    register: function(callback) {
-	        _callbacks.push(callback);
-	        return _callbacks.length - 1; // index
-	    },
-
-	    /**
-	     * dispatch
-	     * @param  {Object} payload The data from the action.
-	     */
-	    dispatch: function(payload) {
-	        _callbacks.forEach(function(callback) {
-	            _addPromise(callback, payload);
-	        });
-	        Promise.all(_promises).then(_clearPromises).done();
-	    },
-
-	    /**
-	     * A datastore can use this to wait on other datastores before continuing.
-	     * Unfortunately, this implementation is too simple to do things like
-	     * managing chains of dependencies or detecting dependency cycles.
-	     * @param  {Array} promisesIndexes
-	     * @param  {Function} callback
-	     */
-	    waitFor: function(promiseIndexes, callback) {
-	        var selectedPromises = _promises.filter(function(/*object*/ _, /*number*/ j) {
-	            return promiseIndexes.indexOf(j) !== -1;
-	        });
-	        Promise.all(selectedPromises).then(callback).done();
-	    }
-	});
-
-	module.exports = Dispatcher;
 
 
 /***/ },
@@ -6218,7 +6218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Perseus = __webpack_require__(48);
 	var CombatActions = __webpack_require__(9);
 	var EntityStore = __webpack_require__(5);
-	var KUIButton = __webpack_require__(37);
+	var KUIButton = __webpack_require__(38);
 
 	var PERSEUS_ITEM = {
 	    "question": {

@@ -29,7 +29,7 @@ var SpellBadge = React.createClass({
         var spell = new Spell(this.props.exerciseName);
 
         var asset = spell.displayName.toLowerCase().replace(/ /, '-');
-        var url = "/static/img/spells/" + asset + ".png";
+        var url = "static/img/spells/" + asset + ".png";
         return <img className="icon" src={url} />;
     },
 
