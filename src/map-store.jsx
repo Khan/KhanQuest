@@ -189,7 +189,7 @@ var dispatcherIndex = AppDispatcher.register(function(payload) {
         case FETCH_MAP_DATA:
             _(MAPS).each((map, mapName) => {
                 var manifestName = map.manifestName;
-                $.getJSON(`/art/${manifestName}`).done(obj => {
+                $.getJSON(`art/${manifestName}`).done(obj => {
                     obj.weather = map.weather;
                     _manifests[mapName] = obj;
                     _tileImages[mapName] = [];

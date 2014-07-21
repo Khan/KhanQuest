@@ -21,7 +21,7 @@ var { SpriteRenderer } = require("./sprites/sprite.jsx");
 var StateFromStore = require("./flux/state-from-store-mixin.js");
 
 var Avatar = new Image();
-Avatar.src = "/static/img/red-mage+female.png";
+Avatar.src = "static/img/red-mage+female.png";
 
 var walkDuration = 100;
 
