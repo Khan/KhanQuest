@@ -18,7 +18,7 @@ npm_install:
 	mkdir -p ./node_modules/perseus
 	echo "module.exports = window.Perseus;" > ./node_modules/perseus/index.js
 
-build: install create_build_dir
+build: create_build_dir
 	./node_modules/.bin/webpack
 
 server:
