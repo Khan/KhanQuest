@@ -1,6 +1,4 @@
-A young person's illustrated video game.
-
-Built as part of Khan Academy's Third Annual Healthy Hackathon. Read more [here](http://joelburget.com/healthy-hackathon/) or [here](http://www.princeton.edu/~crmarsh/khanquest/).
+A young person's illustrated video game. Playable at [khan.github.io/KhanQuest/](khan.github.io/KhanQuest/) and built as part of Khan Academy's Third Annual Healthy Hackathon. Read more [here](http://joelburget.com/healthy-hackathon/) or [here](http://www.princeton.edu/~crmarsh/khanquest/).
 
 Building & Running
 ===
