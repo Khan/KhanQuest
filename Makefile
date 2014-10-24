@@ -11,6 +11,9 @@ install: npm_install build_ke build_perseus
 
 npm_install:
 	npm install
+	rm -rf node_modules/perseus
+	git clone https://github.com/Khan/perseus.git node_modules/perseus
+	cd node_modules/perseus && git submodule update --init
 	mkdir -p ./node_modules/react
 	echo "module.exports = window.React;" > ./node_modules/react/index.js
 	mkdir -p ./node_modules/underscore
@@ -33,13 +36,13 @@ perseus_dev_tools:
 
 build_perseus: create_build_dir node_modules/perseus
 	cd node_modules/perseus && make build
-	cp node_modules/perseus/build/perseus-1.js build/perseus.js
-	cp node_modules/perseus/build/perseus-1.css build/perseus.css
+	cp node_modules/perseus/build/perseus-2.js build/perseus.js
+	cp node_modules/perseus/build/perseus-2.css build/perseus.css
 	rm -rf build/perseus/
 	cp -R node_modules/perseus/lib build/perseus/
 
 build_ke: create_build_dir perseus_dev_tools node_modules/perseus
-	cd node_modules/khan-exercises && ../perseus/node_modules/.bin/r.js -o requirejs.config.js out=../../build/ke.js
+	./node_modules/.bin/webpack --config=ke.webpack.config.js
 	rm -rf build/ke
 	cp -R node_modules/khan-exercises/local-only build/ke
 	cp node_modules/khan-exercises/exercises-stub.js build/ke/
